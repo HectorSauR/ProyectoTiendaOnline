@@ -1,0 +1,46 @@
+.main {
+  position: fixed;
+  top: var(--Top);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  padding:calc(var(--Padding) * 2);
+}
+
+.main .contenedor-consultar-productos {
+  width: 100%;
+  height: 100%;
+}
+
+.main .contenedor-consultar-productos h1{
+  color: var(--ColorSecundario);
+  font-size: 1.7rem;
+}
+.main .contenedor-consultar-productos .contenedor-tabla-productos {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: var(--Padding);
+}
+thead {
+  background-color: var(--ColorSecundario);
+}
+
+td{
+  background-color: var(--ColorSecundario);
+}
+
+.main .contenedor-consultar-productos .contenedor-tabla-productos
+.dataTables_wrapper .dataTables_length label ,
+.dataTables_filter label ,
+.dataTables_length label select{
+  color: var(--ColorSecundario);
+
+}
+ .dataTables_filter label input {
+   color: var(--ColorSecundario);
+   outline: none;
+   border: none;
+   margin-bottom: 10px;
+ }

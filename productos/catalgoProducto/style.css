@@ -1,0 +1,138 @@
+.main  {
+    position: absolute;
+    top: 104.17px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+/* CSS PARA LA BARRA DE BUSQUEDA */
+.search{
+    display: flex;
+
+    /*DISPOSICION DEL CONTENEDOR*/
+    margin: 1rem;
+    margin-left: 9%;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 2%;
+    color: white;
+}
+
+.search{    
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.input_search{
+    width: 30%;
+    position: relative;
+}
+
+.text:hover{
+    border: 2px solid aqua;
+}
+
+.icon_search{
+    position: absolute;
+    right: 3px;
+    padding: 0.15rem;
+
+    max-height: 33px;
+    max-width: 33px;
+    width: auto;
+    height: auto;
+
+    cursor: pointer;
+}
+
+.text{
+    height: 10%;
+    width: 100%;
+
+    border-radius: 2rem;
+
+    font-family: inherit;
+    font-size: 18px;
+    color: white;
+    outline: none;
+
+    padding: 0.15rem;
+    background-color: --ColorSecundario;
+    color: black;
+}
+
+/* CSS PARA MOSTRAR LOS PRODUCTOS EN PANTALLA */
+.Prod{
+    margin: 1rem;
+    justify-content: center;
+
+    /*DIVICION DEL CONTENEDOR*/
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, auto));
+
+    gap: 1.5rem;
+    color: black;
+}
+
+.Prod_Title, .Prod_info, .price{
+    margin-left: 10px;
+}
+
+.price{
+   line-height: 38px;
+   font-weight: 600;
+}
+
+.P_info{
+    background-color: white;
+    border-radius: 10px;
+}
+
+.P_info:hover{
+    cursor: pointer;
+    border: 5px solid aqua;
+}
+
+.P_img{
+    width: 100%;
+    border-bottom: 2px solid #3E4078;
+}
+
+/* CSS PARA EL BOTON DE MOSTRAR MAS */
+.button_showMore{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 0.75rem 2rem;
+
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+    background-color: #EDEEFF;
+    transition: background-color 100ms ease-in;
+
+    font-family: inherit;
+    font-size: inherit;
+    color: black;
+}
+
+.btn:hover{
+    background-color: #edeeffe3;
+}
+
+.btn:active{
+    background-color: #edeeff8f;
+    color: white;
+}
+

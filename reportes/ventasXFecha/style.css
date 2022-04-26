@@ -1,0 +1,56 @@
+
+select{
+    padding-left: 80%;
+    border-radius: 20px;
+}
+
+#party{
+    padding-left: 5%;
+    border-radius: 20px;
+}
+
+ul{
+    list-style: none;
+}
+
+#prin{
+
+    float: left;
+    
+}
+
+form li + li {
+    margin-top: 1em;
+  }
+
+#export{
+    float: right;
+    margin-right: 10%;
+    color: white;
+
+}
+
+img:hover{
+    background-color: rgb(89, 195, 195);
+    padding: 1%;
+    border-radius: 20px;
+}
+
+form{
+    color: white;
+}
+
+#ventasT{
+    float: right;
+}
+#btnGenerar{
+    font-size: 20px;
+    color: #3E4078;
+    padding: 2%;
+    background-color: white;
+    border-radius: 20px;
+}
+#btnGenerar:hover{
+    background-color: aqua;
+    color: black;
+}

@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root {
+  --ColorPrincipal: #3E4078;
+  --ColorSecundario: #EDEEFF;
+
+
+  --BorderRadius: 6px;
+  --border: 1.5px;
+  --Padding: 10px;
+  --LetterSpacing: 3px;
+  --Margin: 10px;
+  --Top:104.17px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--ColorPrincipal);
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+.contenedor-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  height: 40px;
+  background-color: var(--ColorSecundario);
+  align-items: center;
+  justify-content: space-between;
+  padding-left: var(--Padding);
+  padding-right: var(--Padding);
+  z-index: 1000;
+}
+
+.contenedor-header div img {
+  width: 30px;
+}
+
+nav {
+  position: fixed;
+  top: 40px;
+  width: 100%;
+  padding: var(--Padding);
+  background-color: var(--ColorPrincipal);
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--border) solid var(--ColorSecundario);
+  z-index: 1000;
+}
+
+nav ul, nav li {
+  list-style: none;
+}
+
+nav .nav-enlaces {
+  display: flex;
+  justify-content: space-around;
+  height: calc(100% - var(--Padding));
+  align-items: stretch;
+}
+
+nav .nav-enlaces li a:hover {}
+
+.contenedor-header div {
+  display: flex;
+}
+
+.contenedor-header div:last-child img {
+  margin-left: var(--Margin);
+  cursor: pointer;
+}
+
+.btn-menu {
+  display: none;
+}
+
+nav .nav-enlaces li a {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorSecundario);
+  text-decoration: none;
+  padding: var(--Padding) calc(var(--Padding) - var(--Padding) / 2);
+  display: block;
+  font-size: 1.2rem;
+}
+
+nav .nav-enlaces li ul {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: .5s opacity;
+}
+
+nav .nav-enlaces li:hover>ul {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+nav .nav-enlaces li>ul>li {
+  transition: transform .5s;
+  border-bottom: var(--border) solid var(--ColorSecundario);
+}
+
+nav .nav-enlaces li>ul>li:hover {
+  transform: scale(1.1);
+  border: var(--border) solid var(--ColorSecundario);
+}
+
+
+
+/*LOGIN*/
+.nav-login-background {
+  position: fixed;
+  top: 104.17px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: var(--ColorPrincipal);
+  padding: var(--Padding);
+  align-items: center;
+  justify-content: center;
+  display: none;
+  opacity: 0;
+  transform: translateY(140%);
+}
+
+.nav-login-background  .nav-login-contenedor {
+  width: 60%;
+  height: 80%;
+  background-color: var(--ColorSecundario);
+  border-radius: var(--BorderRadius);
+  transform: translateY(-140%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.nav-login-background  .nav-login-contenedor form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--Padding);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.nav-login-background  .nav-login-contenedor form div {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-login-background  .nav-login-contenedor form div img {
+  width: 30px;
+  position: absolute;
+  left: 8%;
+  top: 8px;
+}
+
+
+
+.nav-login-background  .nav-login-contenedor form h1 {
+  text-align: center;
+  color: var(--ColorPrincipal);
+  font-weight: 1000;
+  margin-bottom:calc(var(--Margin) * 3);
+}
+.nav-login-background  .nav-login-contenedor form input {
+  width: 85%;
+  padding: calc(var(--Padding));
+  outline: none;
+  border: 0;
+  border-radius: var(--BorderRadius);
+  border: var(--border) solid var(--ColorPrincipal);
+  background-color: var(--ColorSecundario);
+  margin-bottom:calc(var(--Margin) * 2);
+  font-size: 1.3rem;
+  padding-left:33px;
+}
+
+.nav-login-background  .nav-login-contenedor form div button {
+  padding: calc(var(--Padding) * 1.2) calc(var(--Padding) * 3);
+  outline: none;
+  border: 0;
+  border-radius: var(--BorderRadius);
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorSecundario);
+  cursor: pointer;
+  margin-top:var(--Margin);
+  font-weight: 800;
+}
+
+@keyframes efectoLogin {
+  to{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*RESPONSIVE (MOVIL Y TABLET)*/
+@media (max-width:600px) {
+  nav {
+    position: fixed;
+    background-color: var(--ColorPrincipal);
+    top: 40px;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform .5s;
+  }
+
+  .showandhide {
+    transform: translateX(0);
+  }
+
+  nav .nav-enlaces li ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  nav .nav-enlaces {
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100%
+  }
+
+  nav .nav-enlaces li a {}
+
+  .btn-menu {
+    display: block;
+  }
+
+  /*LOGIN */
+  .nav-login-background {
+    top: 40px;
+  }
+  .nav-login-background  .nav-login-contenedor {
+    width: 80%;
+  }
+}
