@@ -1,0 +1,124 @@
+@media only screen and (max-width: 1200px) {
+  div.cont {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div.cont {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0.5rem;
+  }
+}
+
+.main {
+  position: fixed;
+  top: var(--Top);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  padding: calc(var(--Padding) * 2);
+}
+
+.cont {
+  padding: 4rem;
+  display: grid;
+  width: 100%;
+
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 5rem;
+}
+
+.hidden {
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.theme {
+  border: 1px solid var(--ColorSecundario);
+  transition: 0.3s;
+}
+
+.theme:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--ColorSecundario);
+  width: 100%;
+}
+
+.logo {
+  padding: 0.2rem;
+
+  max-height: 27px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--ColorSecundario);
+}
+
+.link {
+  padding: 1rem;
+  color: var(--ColorSecundario);
+
+  font-size: 11px;
+}
+
+.space {
+  height: 20rem;
+}
+
+/* TEXTO DE LA PAGINA */
+.Name {
+  padding: 0.5rem;
+  color: var(--ColorSecundario);
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.tittle {
+  pointer-events: none;
+  user-select: none;
+  color: white;
+
+  padding: 2rem;
+  margin-left: 2rem;
+}
+
+/* TEMAS PARA CADA PANTALLA */
+#Verde {
+  background-color: #2c6235;
+}
+
+#Rojo {
+  background-color: #9c4040;
+}
+
+#Oscuro {
+  background-color: #2d312e;
+}
+
+#Blanco {
+  background-color: #ffff;
+}
+
+#Nav_Blanco,
+#links_Blanco {
+  background-color: #978d8d;
+}
+
+#p_Blanco {
+  color: #2c2b2b;
+}
