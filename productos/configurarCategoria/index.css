@@ -1,0 +1,66 @@
+@media only screen and (max-width: 800px) {
+  div.info {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0.5rem;
+  }
+}
+
+.main {
+  position: fixed;
+  top: var(--Top);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  padding: calc(var(--Padding) * 2);
+}
+
+/* titulo de la pagina */
+.tittle {
+  pointer-events: none;
+  user-select: none;
+  color: white;
+
+  margin: 1rem;
+}
+
+/* div botones de guerdar / eliminar */
+.TOTAL {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+  color: white;
+}
+
+.btn {
+  padding: 0.5rem 1.3rem;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorPrincipal);
+  border-radius: 0.6rem;
+
+  color: #3e4078;
+  font-weight: bold;
+  font-size: 1rem;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorSecundario);
+  border-color: var(--ColorSecundario);
+}
+
+.table {
+  padding: var(--Padding);
+}
+
+thead {
+  background-color: var(--ColorSecundario);
+}
+
+td {
+  background-color: var(--ColorSecundario);
+}

@@ -1,0 +1,137 @@
+@media only screen and (max-width: 800px) {
+  div.info {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0.5rem;
+  }
+}
+
+.main {
+  position: fixed;
+  top: var(--Top);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  padding: calc(var(--Padding) * 2);
+}
+
+/* titulo de la pagina */
+.tittle {
+  pointer-events: none;
+  user-select: none;
+  color: white;
+
+  margin-left: 2rem;
+}
+
+/* div informacion del la venta / cliente */
+.info {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  float: right;
+  padding: 1rem;
+
+  color: white;
+  font-size: 1.3rem;
+}
+
+#imprimir {
+  flex-direction: row;
+  float: initial;
+}
+
+#label_pdf {
+  margin-right: 5rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+}
+
+.input_venta {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+
+  padding: 1.2rem;
+}
+
+#id_venta {
+  bottom: 0;
+}
+
+/* div datos del cliente */
+.client {
+  border: 1px solid var(--ColorSecundario);
+  padding: 1.2rem;
+  border-radius: 1rem;
+}
+
+.client_info {
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorPrincipal);
+  border-radius: 1rem;
+
+  font-size: 1.3rem;
+  width: 80%;
+  padding: 0 0.5rem;
+}
+
+#first {
+  margin-bottom: 1rem;
+}
+
+#p_nom {
+  margin-right: 1rem;
+}
+#p_mail {
+  margin-right: 1.6rem;
+}
+
+#venta {
+  width: auto;
+}
+
+/* div botones de guerdar / eliminar */
+.TOTAL {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem;
+
+  color: white;
+}
+
+.btn {
+  padding: 0.5rem 1.3rem;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorPrincipal);
+  border-radius: 0.6rem;
+
+  color: #3e4078;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 2rem;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorSecundario);
+  border-color: var(--ColorSecundario);
+}
+
+.table {
+  padding: var(--Padding);
+}
+
+thead {
+  background-color: var(--ColorSecundario);
+}
+
+td {
+  background-color: var(--ColorSecundario);
+}
