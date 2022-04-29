@@ -20,12 +20,12 @@
 
     <li><a href="#">Productos</a>
       <ul>
-        <li><a href="http://localhost/ProyectoTiendaOnline/productos/consultarProductos/">Consultar Productos</a></li>
-        <li><a href="http://localhost/ProyectoTiendaOnline/productos/registrarProducto/">Registrar Producto</a></li>
-        <li><a href="http://localhost/ProyectoTiendaOnline/productos/modificarProducto/">Modificar Producto</a></li>
-        <li><a href="http://localhost/ProyectoTiendaOnline/productos/registrarCategoria/">Registrar Categoria</a></li>
-        <li><a href="http://localhost/ProyectoTiendaOnline/productos/modificarCategoria/">Modificar Categoria</a></li>
-        <li><a href="http://localhost/ProyectoTiendaOnline/productos/catalgoProducto/">Catalogo Producto</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/consultarProductos/">Consultar Productos</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/registrarProducto/">Registrar Producto</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/modificarProducto/">Modificar Producto</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/registrarCategoria/">Registrar Categoria</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/modificarCategoria/">Modificar Categoria</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/catalgoProducto/">Catalogo Producto</a></li>
       </ul>
     </li>
 
@@ -70,11 +70,11 @@
       <form>
         <h1>Iniciar Sesion</h1>
         <div>
-          <img src="http://localhost/proyectoTiendaOnline/recursos/imagenes/user.svg" alt="">
+          <img src="<?php echo $pathHost ?>recursos/imagenes/user.svg" alt="">
           <input type="text" name="user" placeholder="Usuario" value="">
         </div>
         <div>
-          <img src="http://localhost/proyectoTiendaOnline/recursos/imagenes/lock.svg" alt="">
+          <img src="<?php echo $pathHost ?>recursos/imagenes/lock.svg" alt="">
           <input type="password" name="clave" placeholder="Contrasena" value="">
         </div>
 
@@ -84,7 +84,7 @@
       </form>
   </div>
 </div>
-<!--<img src="http://<?php echo $patch ?>" alt="no esta">-->
+
 
 <script>
   const btnmenu = document.getElementById("btn-menu");
