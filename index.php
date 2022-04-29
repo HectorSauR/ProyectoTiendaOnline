@@ -1,6 +1,7 @@
+
+<?php include 'recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
  <!DOCTYPE html>
  <html lang="es">
-
  <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
  <body>
    <?php  include './recursos/nav/nav.php' ?>
 
-    
+
 
  </body>
 
