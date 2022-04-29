@@ -1,0 +1,51 @@
+.main {
+  margin-top: 100.17px;
+  padding: var(--Padding);
+}
+.main h1 {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-form {
+  width: 100%;
+
+}
+
+.main .contenedor-form form {
+  display: flex;
+  flex-direction: column;
+  border: var(--border) solid var(--ColorSecundario);
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+  margin-top: var(--Margin);
+  width: 50%;
+}
+.main .contenedor-form form label {
+  color: var(--ColorSecundario);
+  font-weight: 500;
+}
+.main .contenedor-form form input , .main .contenedor-form form select {
+  outline: none;
+  border: none;
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+}
+.main .contenedor-form form button {
+  outline: none;
+
+  padding: var(--Padding);
+  margin-top: var(--Margin);
+  border-radius: var(--BorderRadius);
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorSecundario);
+  border: var(--border) solid var(--ColorSecundario);
+}
+.main .contenedor-form form button:hover {
+  background-color: var(--ColorSecundario);
+  color: var(--ColorPrincipal);
+    border: var(--border) solid transparent;
+}
