@@ -7,7 +7,7 @@
 
   --BorderRadius: 6px;
   --border: 1.5px;
-  --Padding: 10px;
+  --Padding: 5px;
   --LetterSpacing: 3px;
   --Margin: 10px;
 }
@@ -62,7 +62,7 @@ nav .nav-enlaces {
   align-items: stretch;
 }
 
-nav .nav-enlaces li a:hover {}
+ /*nav .nav-enlaces li a:hover {}*/
 
 header div {
   display: flex;
@@ -157,7 +157,7 @@ nav .nav-enlaces li>ul>li:hover {
     height: 100%
   }
 
-  nav .nav-enlaces li a {}
+  /*nav .nav-enlaces li a {}*/
 
   .btn-menu {
     display: block;

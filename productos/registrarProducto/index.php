@@ -1,3 +1,5 @@
+  <?php include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php include '../../recursos/PHP/metodos/verificarSesionUusuario.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
