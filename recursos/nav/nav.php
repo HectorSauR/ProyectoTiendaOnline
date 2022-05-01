@@ -105,6 +105,21 @@
     navLoginContenedor.style.animation = "efectoLogin .5s .5s forwards"
   })
 
+
+  <?php
+      if(!isset($_SESSION['usuario'])){?>
+        document.querySelector(".contenedor-header").style.pointerEvents = "none";
+        document.querySelector("nav").style.pointerEvents = "none";
+
+        navLoginBackground.style.display = "flex";
+        navLoginBackground.style.animation = "efectoLogin .5s forwards";
+        navLoginContenedor.style.animation = "efectoLogin .5s .5s forwards"
+
+
+
+    <?php } ?>
+
+
 </script>
 
 <!--<script src="<?php echo "/ProyectoTiendaOnline/recursos/nav/login.js"; ?>" type="text/javascript"></script>-->
