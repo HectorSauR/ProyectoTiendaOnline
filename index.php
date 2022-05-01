@@ -1,5 +1,6 @@
 
 <?php include 'recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+
  <!DOCTYPE html>
  <html lang="es">
  <head>
@@ -12,6 +13,7 @@
 
  <body>
    <?php  include './recursos/nav/nav.php' ?>
+
 
 
 

@@ -1,1 +1,3 @@
-alert("holaaa");
+document.querySelector("#formRegistro").addEventListener("submit" ,(e)=>{
+  e.preventDefault();
+})

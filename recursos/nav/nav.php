@@ -1,5 +1,5 @@
 
-<?php $patch = $_SERVER["HTTP_HOST"]."/ProyectoTiendaOnline";?>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <header class="contenedor-header">
   <div>
@@ -52,6 +52,8 @@
         <li><a href="">Productos Menos Vendidos</a></li>
       </ul>
     </li>
+
+    <?php if(isset($_SESSION['userAdmin'])){?>
     <li><a href="#">Usuarios</a>
       <ul>
         <li><a href="">Registrar Usuario</a></li>
@@ -59,6 +61,7 @@
 
       </ul>
     </li>
+    <?php } ?>
 
     <li><a href="#">Inicio</a></li>
   </ul>
@@ -67,7 +70,7 @@
 <!--LOGIN-->
 <div class="nav-login-background">
   <div class="nav-login-contenedor">
-      <form>
+      <form  id="formRegistro">
         <h1>Iniciar Sesion</h1>
         <div>
           <img src="<?php echo $pathHost ?>recursos/imagenes/user.svg" alt="">
@@ -99,12 +102,6 @@
   const navLoginBackground = document.querySelector(".nav-login-background");
   const navLoginContenedor = document.querySelector(".nav-login-contenedor");
 
-  btnUsr.addEventListener("click" ,()=>{
-    navLoginBackground.style.display = "flex";
-    navLoginBackground.style.animation = "efectoLogin .5s forwards";
-    navLoginContenedor.style.animation = "efectoLogin .5s .5s forwards"
-  })
-
 
   <?php
       if(!isset($_SESSION['usuario'])){?>
@@ -115,6 +112,37 @@
         navLoginBackground.style.animation = "efectoLogin .5s forwards";
         navLoginContenedor.style.animation = "efectoLogin .5s .5s forwards"
 
+
+        document.querySelector("#formRegistro").addEventListener("submit" ,(e)=>{
+          e.preventDefault();
+
+            var data = new FormData(e.target)
+
+
+
+            fetch('<?php echo $pathHost ?>recursos/PHP/metodos/BuscarUsuarioBD.php', {
+              method: 'POST',
+              body: data
+            }).then(response => response.text()).then(data => {
+              console.log(data)
+              if(data == "1"){
+                window.location.reload();
+              }else if(data == "0"){
+                //alert("Error en inicio de sesion ,verifique porfavor.")
+                Swal.fire(
+                  'Error en inicio de sesion!',
+                  'Verfique porfavor!',
+                  'error'
+                  )
+              }else{
+                  Swal.fire(
+                  'Error en inicio de sesion!',
+                  'Su cuenta fue dada de baja, comuniquese con el administrador!',
+                  'error'
+                )
+              }
+            })//FIN DE FETCH
+          })//FIN DE EVENTO SUBMIT DE FORMULARIO
 
 
     <?php } ?>

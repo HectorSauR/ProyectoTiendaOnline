@@ -13,7 +13,6 @@
       try {
         $this->conect = new PDO($connectionString,$this->user,$this->password);
         $this->conect->setAttribute(PDO::ATTR_ERRMODE ,PDO::ERRMODE_EXCEPTION);
-        echo "Conexion exitosa";
       } catch (Exception $e) {
         $this->conect = "Error de conexion";
         echo "ERROR: ".$e->getMessage();
@@ -21,8 +20,15 @@
 
     }
 
+    public function connect(){
+      return $this->conect;
+    }
+
   }
 
-  $conect = new Conexion();
+
+
+  $conexion = new Conexion();
+  $conexion = $conexion->connect();
 
  ?>
