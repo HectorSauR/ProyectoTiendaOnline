@@ -2,6 +2,12 @@
   margin-top: 100.17px;
   padding: var(--Padding);
 }
+.main .contenedor-app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-top: var(--Margin);
+}
 .main h1 {
   color: var(--ColorSecundario);
   font-weight: 600;
@@ -17,8 +23,6 @@
   border: var(--border) solid var(--ColorSecundario);
   padding: var(--Padding);
   border-radius: var(--BorderRadius);
-  margin-top: var(--Margin);
-  width: 50%;
 }
 .main .contenedor-form form label {
   color: var(--ColorSecundario);
@@ -43,9 +47,45 @@
   background-color: var(--ColorPrincipal);
   color: var(--ColorSecundario);
   border: var(--border) solid var(--ColorSecundario);
+  width: 30%;
 }
 .main .contenedor-form form button:hover {
   background-color: var(--ColorSecundario);
   color: var(--ColorPrincipal);
     border: var(--border) solid transparent;
+}
+
+.main .contenedor-imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main .contenedor-imagen .imagen {
+  width: 50%;
+  height: 50%;
+  border: var(--border) solid var(--ColorSecundario);
+  border-radius: var(--BorderRadius);
+}
+
+.main .contenedor-imagen button {
+  margin-top: var(--Margin);
+  padding: var(--Padding);
+  border: var(--border) solid var(--ColorSecundario);
+  background-color: var(--ColorPrincipal);
+  font-weight: 600;
+  color: var(--ColorSecundario);
+  border-radius: var(--BorderRadius);
+  cursor: pointer;
+  transition: all .3s;
+}
+.main .contenedor-imagen button:hover {
+  background-color: var(--ColorSecundario);
+  color: var(--ColorPrincipal);
+}
+
+
+#agregarImagen {
+  display: none;
 }

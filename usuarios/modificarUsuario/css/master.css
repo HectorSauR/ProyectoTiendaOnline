@@ -1,0 +1,31 @@
+.main {
+  width: 100%;
+  margin-top: 100.17px;
+  padding: var(--Padding);
+}
+.main h1 {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-usuarios {
+  width: 100%;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+margin-top: var(--Margin);
+
+}
+
+.main .contenedor-usuarios .header-nombre ,
+.main .contenedor-usuarios .header-usuario ,
+.main .contenedor-usuarios .header-contra ,
+.main .contenedor-usuarios .header-correo ,
+.main .contenedor-usuarios .header-nivel ,
+.main .contenedor-usuarios .header-opcion {
+  border: var(--border) solid var(--ColorSecundario);
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+
+.main .contenedor-usuarios div p{
+  text-align: center;
+}
