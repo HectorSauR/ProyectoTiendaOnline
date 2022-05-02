@@ -7,6 +7,8 @@ include("../clases/conexion.php");
 $usuario = $_POST['user'];
 $pass = $_POST['clave'];
 
+
+
 $BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
 $Execute = $conexion->query($BuscarUsuario);
 
