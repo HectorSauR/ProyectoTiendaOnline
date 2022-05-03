@@ -10,7 +10,9 @@ $stock = $_POST['txtstock'];
 $stockm = $_POST['txtstockm'];
 $status = $_POST['txtstatus'];
 $imagen = $_FILES['img-elg'];
-$pathimg = "../../recursos/imagenes/productos/".$nombre;
+
+$extension = pathinfo("../../recursos/imagenes/productos/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
+$pathimg = "../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension;
 
 if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stock=="" || $stockm=="" || $status=="" ){
   echo "<script> alert('VERIFICA SI LOS DATOS ESTAN CORRECTOS PORFAVOR');
@@ -22,7 +24,7 @@ if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stoc
 
 $regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?)";
 $consulta = $conexion->prepare($regproducto);
-$arregloprod = array(null,$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,,$status);
+$arregloprod = array('1',$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,$status);
 $res = $consulta->execute($arregloprod);
 //$regproducto = "INSERT INTO productos VALUES ('$nombre','$decripcion','$preciovent','$preciocom','$categoria','$cantidad','$unidadM','$status')";
 //$Execute = $conexion->query($regproducto);
@@ -41,7 +43,6 @@ if($res)
   mkdir($path, 0777, true);
     
   //OBTENER EXTENCION DE IMAGEN
-  $extension = pathinfo("../../recursos/imagenes/productos/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
   //ALMACENA LA IMAGEN EN EL SERVIDOR
   file_put_contents("../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension,$fileContent);
 

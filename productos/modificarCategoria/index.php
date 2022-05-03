@@ -21,11 +21,14 @@
         <h1>Registro de categorias</h1>
 
         <form id="frm" action="index.php" method="post" enctype="multipart/form-data">
-        <div id="buscarDiv">
-        <h3>Buscar</h3>
-        <input type="text" id="buscar" name="consultar">
-        </div>
+ 
+        <div>
+        <div>
+<h3>Buscar</h3>
+            <input type="text" id="buscar" name="consultar">
+</div>
             <div id="dataFF">
+
             <ul>
              <li>
                <label for="name">Nombre:</label>
@@ -39,19 +42,25 @@
             <button type ="submit" id="but" name="consulta">Consultar</button>
             </div>
             <div id="btnDatos">
-            <input type="submit" name="btnModificar" value="Modificar" class="abc">
-            <input type="submit" name="btnEliminar" value="Eliminar" class="abc">
-            </div>
-            <div id="areaImagen">
 
             </div>
-            <div id="area">
 
-                <input type="file" id="btn1" name="imagen" accept="image/*"/>
-                <input type="button" id="btn2" value="Examinar" onclick="document.getElementById('btn1').click()">
+        </div>
+
+        <div id="imagenArea">
+              <div id="areaImagen">
+
+              </div>
+              <div id="area">
+                  <input type="submit" name="btnModificar" value="Modificar" class="abc">
+                  <input type="submit" name="btnEliminar" value="Eliminar" class="abc">
+                  <input type="file" id="btn1" name="imagen" accept="image/*"/>
+                  <input type="button" id="btn2" value="Examinar" onclick="document.getElementById('btn1').click()">
+              </div>
             </div>
-
         </form>
+
+        
 
     </div>
 

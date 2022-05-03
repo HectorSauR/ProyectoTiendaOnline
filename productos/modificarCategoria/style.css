@@ -18,7 +18,7 @@ body{
 
 #frm{
  display: flex;
- flex-direction: column;
+justify-content: space-between;
   
 }
 
@@ -135,16 +135,17 @@ ul {
 }
 #areaImagen{
   padding: 10%;
-  float: right;
+  min-width: 300px;
+  min-height: 300px;
   border-radius: 20px;
   background-color: white;
   
 }
 #buscar{
     border-radius: 20px;
-    padding: 1px;
+    
     font-size: 20px;
-    float: left;
+    
 }
 
 #botones{
@@ -165,7 +166,7 @@ ul {
     margin-top: 5%;
     display: inline-block;
    
-    margin-top: 10%;
+   
 }
 
 .abc:hover{
@@ -174,5 +175,10 @@ ul {
 }
 
 #btnDatos{
-    margin-top: 20%;
+    
+}
+
+#imagenArea{
+  display: flex;
+  flex-direction: column;
 }
