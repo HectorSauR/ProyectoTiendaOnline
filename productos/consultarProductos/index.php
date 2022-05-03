@@ -1,3 +1,8 @@
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,107 +38,26 @@
           </thead>
             <tbody>
 
-            <tr>
-              <td> 0000 </td>
-              <td> fsdfdsdsf</td>
-              <td> asasaddsd </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
+            <?php
 
-            <tr>
-              <td> fsdfdsdsf</td>
-              <td> Cargador</td>
-              <td> 2anhos </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
+              $query = 'SELECT productos.ID_PRODUCTO, productos.NOMBRE, categoria_productos.DESCRIPCION, productos.PRECIO, productos.PRECIO_COMPRA, productos.STOCK FROM `productos` INNER JOIN `categoria_productos` ON productos.ID_CATEGORIA=categoria_productos.ID_CATEGORIA WHERE productos.ID_ESTATUS="1"';
+              $statement = $conexion->prepare($query);
+              $statement->execute();
+              $result = $statement->fetchall();
 
-            </tr>
-
-            <tr>
-              <td> asasaddsd </td>
-              <td> Cargador</td>
-              <td> 1anho </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-              <td> 200 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-              <td> 250 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-              <td> 500 </td>
-              <td> Corte</td>
-              <td> Vigente </td>
-              <td> 200 </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
+              foreach($result as $row)
+              { ?>
+                <tr>
+                  <td> <?php echo $row["ID_PRODUCTO"]; ?> </td>
+                  <td> <?php echo $row["NOMBRE"]; ?> </td>
+                  <td> <?php echo $row["DESCRIPCION"]; ?> </td>
+                  <td> <?php echo $row["PRECIO"]; ?> </td>
+                  <td> <?php echo $row["PRECIO_COMPRA"]; ?> </td>
+                  <td> <?php echo $row["STOCK"]; ?> </td>
+                </tr>
+           <?php
+              } 
+            ?>
         </tbody>
         </table>
       </div>
