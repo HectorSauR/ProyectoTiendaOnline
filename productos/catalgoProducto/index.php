@@ -57,6 +57,8 @@
         <?php
         }
         ?>
+
+        <input type="hidden" id="index" data-id="<?php echo $id; ?>">
     </div>
 
     <!-- button -->
@@ -71,14 +73,14 @@
         $(document).on('click','.btn',function(event){
             event.preventDefault();
 
-            var id = $('.btn').data('id');
+            var id = $('#index').data('id');
             $.ajax({
                 type : 'post',
                 url : 'showMore.php',
                 data : {id:id},
                 success:function(result){
+                    $('#index').remove();
                     $('.Prod').append(result);
-                    alert( <?php echo $id; ?>);
                 },
                 error:function(result){
                     alert('dlakfjhsdfklj');
