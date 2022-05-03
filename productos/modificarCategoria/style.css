@@ -17,8 +17,9 @@ body{
 }
 
 #frm{
-  float: left;
-  border: 3px solid;
+ display: flex;
+ flex-direction: column;
+  
 }
 
 #dataFF {
@@ -29,8 +30,11 @@ body{
     border: 1px solid rgb(255, 255, 255);
     border-radius: 2em;
     float: left;
-    margin-top: 5%;
-    
+    margin-top: 1%;
+    width: 500px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 ul {
@@ -56,6 +60,7 @@ ul {
     /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
        Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
     font: 1em Roboto;
+    padding: 0.2rem 0.5rem;
 
     /* Tamaño uniforme del campo de texto */
     width: 300px;
@@ -75,7 +80,8 @@ ul {
   textarea {
     /* Alinear los campos de texto multilínea con sus etiquetas */
     vertical-align: top;
-
+    min-width: 300px;
+    max-width: 300px;
     /* Proporcionar espacio para escribir texto */
     height: 5em;
   }
@@ -92,7 +98,8 @@ ul {
       border-radius: 20px;
       font-size: 20px;
       color: #3e4178;
-      margin-top: 20%;
+      margin-top: 5%;
+      
       
   }
 
@@ -107,7 +114,7 @@ ul {
 }
 
 #btn2{
-    display: block;
+    
     background-color: white;
       padding-bottom: 5%;
       border-radius: 20px;
@@ -116,7 +123,7 @@ ul {
 }
 
 #area{
-    
+    float: right;
 }
 
 #btn2:hover{
@@ -131,7 +138,7 @@ ul {
   float: right;
   border-radius: 20px;
   background-color: white;
-  margin-right: 10%;
+  
 }
 #buscar{
     border-radius: 20px;
@@ -143,9 +150,9 @@ ul {
 #botones{
     
     float: right;
-    border: 3px solid;
+    
     padding: 2%;
-    margin-right: 10%;
+    margin-right: 20%;
     
 }
 
@@ -157,9 +164,15 @@ ul {
     font-size: 20px;
     margin-top: 5%;
     display: inline-block;
+   
+    margin-top: 10%;
 }
 
 .abc:hover{
     background-color: aqua;
     color: black;
+}
+
+#btnDatos{
+    margin-top: 20%;
 }
