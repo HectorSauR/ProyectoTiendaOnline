@@ -18,7 +18,7 @@ body{
 
 #frm{
   float: left;
-  border: 3px solid;
+  
 }
 
 #dataFF {
@@ -107,7 +107,7 @@ ul {
 }
 
 #btn2{
-    display: block;
+    
     background-color: white;
       padding-bottom: 5%;
       border-radius: 20px;
@@ -116,7 +116,7 @@ ul {
 }
 
 #area{
-    
+    float: right;
 }
 
 #btn2:hover{
@@ -131,7 +131,7 @@ ul {
   float: right;
   border-radius: 20px;
   background-color: white;
-  margin-right: 10%;
+  
 }
 #buscar{
     border-radius: 20px;
@@ -143,9 +143,9 @@ ul {
 #botones{
     
     float: right;
-    border: 3px solid;
+    
     padding: 2%;
-    margin-right: 10%;
+    margin-right: 20%;
     
 }
 
@@ -157,9 +157,15 @@ ul {
     font-size: 20px;
     margin-top: 5%;
     display: inline-block;
+   
+    margin-top: 10%;
 }
 
 .abc:hover{
     background-color: aqua;
     color: black;
+}
+
+#btnDatos{
+    margin-top: 20%;
 }
