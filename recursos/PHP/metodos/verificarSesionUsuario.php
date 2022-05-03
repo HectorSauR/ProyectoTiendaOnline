@@ -1,6 +1,6 @@
 <?php
   if(!isset($_SESSION['usuario'])){
-    header('Location: '.$pathHost)
+    header('Location: '.$pathHost);
     exit();
   }
  ?>
