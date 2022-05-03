@@ -3,16 +3,16 @@
 require '../../recursos/PHP/clases/conexion.php';
 
 $nombre = $_POST['txtnom'];
-$decripcion = $_POST['txtdesc'];
 $preciovent = $_POST['txtprecv'];
 $preciocom = $_POST['txtprecc'];
 $categoria = $_POST['txtcat'];
-$cantidad = $_POST['txtcant'];
-$unidadM = $_POST['txtundm'];
+$stock = $_POST['txtstock'];
+$stockm = $_POST['txtstockm'];
 $status = $_POST['txtstatus'];
 $imagen = $_FILES['img-elg'];
+$pathimg = "../../recursos/imagenes/productos/".$nombre;
 
-if($nombre =="" || $decripcion=="" || $preciovent=="" || $preciocom=="" || $categoria=="" || $cantidad=="" || $unidadM=="" || $status=="" ){
+if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stock=="" || $stockm=="" || $status=="" ){
   echo "<script> alert('VERIFICA SI LOS DATOS ESTAN CORRECTOS PORFAVOR');
   location.href='index.php';
   </script>";
@@ -22,7 +22,7 @@ if($nombre =="" || $decripcion=="" || $preciovent=="" || $preciocom=="" || $cate
 
 $regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?)";
 $consulta = $conexion->prepare($regproducto);
-$arregloprod = array(null,$nombre,$decripcion,$preciovent,$preciocom,$categoria,$cantidad,$unidadM,$status);
+$arregloprod = array(null,$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,,$status);
 $res = $consulta->execute($arregloprod);
 //$regproducto = "INSERT INTO productos VALUES ('$nombre','$decripcion','$preciovent','$preciocom','$categoria','$cantidad','$unidadM','$status')";
 //$Execute = $conexion->query($regproducto);

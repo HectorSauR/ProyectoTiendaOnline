@@ -19,20 +19,18 @@
             <div class="input">
                
               <div  class="textos">
-                    <label for="name">Nombre: </label>
-                    <input type="text" name="txtnom" id="txtnom">
-                    <label for="name">Descripcion: </label>
-                    <input type="text" name="txtdesc" id="txtdesc">
-                    <label for="name">Precio Venta: </label>
-                    <input type="text" name="txtprecv" id="txtprecv">
+                    <label for="name">Id categotria: </label>
+                    <input type="text" name="txtcat" id="txtnom">
+                    <label for="name">nombre: </label>
+                    <input type="text" name="txtnom" id="txtdesc">
                     <label for="name">Precio Compra: </label>
                     <input type="text" name="txtprecc" id="txtprecc">
-                    <label for="name">Categoria: </label>
-                    <input type="text" name="txtcat" id="txtcat">
-                    <label for="name">Cantidad: </label>
-                    <input type="text" name="txtcant" id="txtcant">
-                    <label for="name">Unidad De Medida: </label>
-                    <input type="text" name="txtundm" id="txtundm">
+                    <label for="name">precio: </label>
+                    <input type="text" name="txtprecv" id="txtcat">
+                    <label for="name">stock: </label>
+                    <input type="text" name="txtstock" id="txtcant">
+                    <label for="name">Stock minimo: </label>
+                    <input type="text" name="txtstockm" id="txtundm">
                     <label for="name">Estatus: </label>
                     <input type="text" name="txtstatus" id="txtstatus">
                    
