@@ -1,3 +1,5 @@
+<?php include '../../recursos/PHP/configuracionDelSitioWeb/conf.php'?>
+<?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +11,14 @@
     <title>Document</title>
 </head>
 <body>
-
-  <?php include '../../recursos/nav/nav.php' ?>
+  
+  <?php include '../../recursos/nav/nav.php'?>
 
     <div id="prin">
 
         <h1>Registro de categorias</h1>
-        <form action="/my-handling-form-page" method="post">
-
+        <form id="frm" action="/my-handling-form-page" method="post">
+            <div id="dataFF">
             <ul>
              <li>
                <label for="name">Nombre:</label>
@@ -27,17 +29,17 @@
                <textarea id="msg" name="user_message"></textarea>
              </li>
             </ul>
+            </div>
+              <div id="btn">
+                <button type ="submit" id="but">Registrar</button>
+              </div>
         </form>
         <div id="area">
             <textarea name="" id="text2" cols="30" rows="10"></textarea>
-            <button id="btn2">Examinar</button>
+            <input type="file" id="btn1" accept="image/*"/>
+            
+            <input type="button" id="btn2" value="Examinar" onclick="document.getElementById('btn1').click()">
         </div>
     </div>
-
-    <div id="btn">
-        <button type ="submit" id="but">Registrar</button>
-    </div>
-
-
 </body>
 </html>
