@@ -56,8 +56,8 @@
     <?php if(isset($_SESSION['userAdmin'])){?>
     <li><a href="#">Usuarios</a>
       <ul>
-        <li><a href="">Registrar Usuario</a></li>
-        <li><a href="">Modificar Usuario</a></li>
+        <li><a href="<?php echo $pathHost ?>Usuarios/registrarUsuario/">Registrar Usuario</a></li>
+        <li><a href="<?php echo $pathHost ?>Usuarios/modificarUsuario/">Modificar Usuario</a></li>
 
       </ul>
     </li>

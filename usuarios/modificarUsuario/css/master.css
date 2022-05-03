@@ -14,6 +14,26 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 margin-top: var(--Margin);
 
 }
+.main .contenedor-usuarios div p {
+  color: var(--ColorSecundario);
+}
+.main .contenedor-usuarios div button ,
+ .main .contenedor-usuarios div input{
+  padding:calc(var(--Padding) / 1.5);
+  border-radius: var(--BorderRadius);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.main .contenedor-usuarios .opcion button {
+  margin-right: var(--Margin);
+}
+
+.main .contenedor-usuarios .opcion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .main .contenedor-usuarios .header-nombre ,
 .main .contenedor-usuarios .header-usuario ,
@@ -26,6 +46,115 @@ margin-top: var(--Margin);
   font-weight: 600;
 }
 
+.main .contenedor-buscar input {
+  padding:calc(var(--Padding) / 1.5);
+  outline: none;
+  border: none;
+  border-radius: var(--BorderRadius);
+
+}
+.main .contenedor-buscar label {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-buscar button {
+  padding:calc(var(--Padding) / 1.5);
+  outline: none;
+  border: none;
+  border-radius: var(--BorderRadius);
+  color: var(--ColorSecundario);
+  background-color: var(--ColorPrincipal);
+  border: var(--border) solid var(--ColorSecundario);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .3s;
+}
+.main .contenedor-buscar button:hover {
+  color: var(--ColorPrincipal);
+  background-color: var(--ColorSecundario);
+}
+
 .main .contenedor-usuarios div p{
   text-align: center;
+}
+
+.contenedor-modal {
+  position: fixed;
+  background-color: rgba(0 ,0,0,0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: opacity .3s;
+  display: none;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.contenedor-modal .modal {
+  width: 70%;
+  background-color: var(--ColorPrincipal);
+  display: flex;
+  flex-direction: column;
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+  animation: translate 1s .3s forwards;
+  transform: translateY(-1000px);
+}
+
+@keyframes translate {
+  to {
+    transform: translateY(0);
+  }
+}
+.contenedor-modal .modal h1 {
+  color: var(--ColorSecundario);
+}
+.contenedor-modal .modal form {
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-modal .modal form label {
+  color: var(--ColorSecundario);
+  font-weight: 500;
+}
+.contenedor-modal .modal form input ,
+ .contenedor-modal .modal form select{
+  padding:calc(var(--Padding) / 1.5);
+  outline: none;
+  border: none;
+  border-radius: var(--BorderRadius);
+}
+
+.contenedor-modal .modal form .contenedor-button {
+  margin-top: var(--Margin);
+  width: 100%;
+}
+.contenedor-modal .modal form .contenedor-button button {
+  padding: var(--Padding);
+  outline: none;
+  border: var(--border) solid var(--ColorSecundario);
+  color: var(--ColorSecundario);
+  background-color: var(--ColorPrincipal);
+  border-radius: var(--BorderRadius);
+  cursor: pointer;
+  transition: all .3s;
+
+}
+.contenedor-modal .modal form .contenedor-button button:hover {
+  color: var(--ColorPrincipal);
+  background-color: var(--ColorSecundario);
 }
