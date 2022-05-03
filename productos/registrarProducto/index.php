@@ -1,5 +1,5 @@
-  <?php include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
-<?php include '../../recursos/PHP/metodos/verificarSesionUusuario.php' ?>
+  <?php // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php //include '../../recursos/PHP/metodos/verificarSesionUusuario.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,58 +10,89 @@
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="RegistroDeProducto.css">
 </head>
-<body>
-   
+<body>  
     <?php include '../../recursos/nav/nav.php' ?>
     <div class="main">
         <h1>REGISTRO DE PRODUCTO</h1>
-        <div class="contenido">
+
+        <form class="contenido" action="registrarP.php" method="post" enctype="multipart/form-data">
             <div class="input">
-                <form>
+               
+              <div  class="textos">
+                    <label for="name">Nombre: </label>
+                    <input type="text" name="txtnom" id="txtnom">
+                    <label for="name">Descripcion: </label>
+                    <input type="text" name="txtdesc" id="txtdesc">
+                    <label for="name">Precio Venta: </label>
+                    <input type="text" name="txtprecv" id="txtprecv">
+                    <label for="name">Precio Compra: </label>
+                    <input type="text" name="txtprecc" id="txtprecc">
+                    <label for="name">Categoria: </label>
+                    <input type="text" name="txtcat" id="txtcat">
+                    <label for="name">Cantidad: </label>
+                    <input type="text" name="txtcant" id="txtcant">
+                    <label for="name">Unidad De Medida: </label>
+                    <input type="text" name="txtundm" id="txtundm">
+                    <label for="name">Estatus: </label>
+                    <input type="text" name="txtstatus" id="txtstatus">
+                   
+                    <input type="submit" class="btn" value="Registrar">
+                 </div>
+               
+                
+            </div>
+
+            
+
+            <div class="imagen" >
+                <div class="imgelg" action="registrarimagen.php" method="post" >
+                    <div class="img-mostrar">
+                    <img src="../../recursos/imagenes/regalo.png" alt="" class="imagenselec" name="imagenselec">
+                    </div>
+                    <!-- <button class="examinar">examinar</button> -->
+                    <input type="file" name="img-elg" id="img-elg" class="img-elg">
+
+                    
+                 </div>
+              
+            </div>
+            
+        </form>   
+    </div>
+
+
+
+
+
+    <!-- 
+         <form>
                    <div>
-                       <label for="name">Nombre: </label>
-                       <input type="text">
+                      
                    </div>
                    <div>
-                    <label for="name">Descripcion: </label>
-                    <input type="text">
+                   
                 </div>
                 <div>
-                    <label for="name">Precio Venta: </label>
-                    <input type="number" >
+                  
                 </div>
                 <div>
-                    <label for="name">Precio Compra: </label>
-                    <input type="number">
+                
                 </div>
                 <div>
-                    <label for="name">Categoria: </label>
-                    <select name="" id=""></select>
+                  
                 </div>
                 <div>
-                    <label for="name">Cantidad: </label>
-                    <input type="text">
+                   
                 </div>
                 <div>
-                    <label for="name">Unidad De Medida: </label>
-                    <input type="text">
+                  
                 </div>
                 <div>
-                    <label for="name">Estatus: </label>
-                    <select name="" id=""></select>
+                 
                 </div>
                 </form>
-            </div>
-            <div class="img">
-                <img src="#" alt="#">
-                <div class="btn_examinar">
-                    <input type="button" class="btn" value="Examinar">
-                </div>
-            </div>
-            <div class="btn_registrar">
-                <input type="button" class="btn" value="Registrar">
-            </div>
-        </div>   
-    </div>
+    -->
+
+    <script src="registrarproducto.js"></script>
 </body>
 </html>
