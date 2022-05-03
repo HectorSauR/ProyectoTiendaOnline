@@ -17,24 +17,24 @@
 
 }
 
-.main .contenedor-form form {
+.main .contenedor-form {
   display: flex;
   flex-direction: column;
   border: var(--border) solid var(--ColorSecundario);
   padding: var(--Padding);
   border-radius: var(--BorderRadius);
 }
-.main .contenedor-form form label {
+.main .contenedor-form label {
   color: var(--ColorSecundario);
   font-weight: 500;
 }
-.main .contenedor-form form input , .main .contenedor-form form select {
+.main .contenedor-form input , .main .contenedor-form select {
   outline: none;
   border: none;
   padding: var(--Padding);
   border-radius: var(--BorderRadius);
 }
-.main .contenedor-form form button {
+.main .contenedor-form button {
   outline: none;
 
   padding: var(--Padding);
@@ -49,7 +49,7 @@
   border: var(--border) solid var(--ColorSecundario);
   width: 30%;
 }
-.main .contenedor-form form button:hover {
+.main .contenedor-form button:hover {
   background-color: var(--ColorSecundario);
   color: var(--ColorPrincipal);
     border: var(--border) solid transparent;
@@ -62,11 +62,20 @@
   flex-direction: column;
 }
 
-.main .contenedor-imagen .imagen {
+.main  .contenedor-imagen .imagen {
   width: 50%;
   height: 50%;
   border: var(--border) solid var(--ColorSecundario);
   border-radius: var(--BorderRadius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.main  .contenedor-imagen .imagen img {
+  width: 30%;
+  cursor: pointer;
+
 }
 
 .main .contenedor-imagen button {

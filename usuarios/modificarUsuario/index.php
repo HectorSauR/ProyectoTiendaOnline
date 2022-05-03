@@ -14,7 +14,9 @@
   <div class="main">
     <h1>Gestión de usuarios</h1>
     <div class="contenedor-buscar">
-      <label>Buscar:</label> <input type="text" name="" value=""> <button type="button">Buscar</button>
+      <label>Buscar:</label>
+      <input type="text" name="" value="">
+      <button type="button">Buscar</button>
     </div>
     <div class="contenedor-usuarios">
       <div class="header-nombre">
@@ -39,57 +41,38 @@
       <div class="header-opcion">
         <p>Opcion</p>
       </div>
+    </div>
 
-      <div>
-        <p>Adrian Borquez Parra</p>
-      </div>
 
-      <div>
-        <p>Adrian1</p>
-      </div>
+  </div>
 
-      <div>
-        <p>Adrian1</p>
-      </div>
+  <!--MODAL PARA EDITAR USUARIO -->
 
-      <div>
-        <p>adrian.adrianborquez@gmail.com</p>
-      </div>
-
-      <div>
-        <p>Admin</p>
-      </div>
-
-      <div>
-         <button type="butto">Editar</button>
-        <button type="butto">Eliminar</button>
-      </div>
-
-      <div>
-        <p>Adrian Borquez Parra</p>
-      </div>
-
-      <div>
-        <p>Adrian1</p>
-      </div>
-
-      <div>
-        <p>Adrian1</p>
-      </div>
-
-      <div>
-        <p>adrian.adrianborquez@gmail.com</p>
-      </div>
-
-      <div>
-        <p>Admin</p>
-      </div>
-
-      <div>
-         <button type="butto">Editar</button>
-        <button type="butto">Eliminar</button>
-      </div>
+  <div class="contenedor-modal">
+    <div class="modal">
+      <h1>Editar Usuario</h1>
+      <form id="formEditarUsuario">
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" value="" id="nombre">
+        <label for="">Usuario</label>
+        <input type="text" name="usuario" value="" id="usuario">
+        <label for="">Contraseña</label>
+        <input type="text" name="clave" value="" id="clave">
+        <label for="">Correo</label>
+        <input type="text" name="correo" value="" id="correo">
+        <label for="">Nivel</label>
+        <select name="nivel" id="nivel">
+          <option>Usuario</option>
+          <option>Admin Principal</option>
+        </select>
+        <div class="contenedor-button">
+          <button type="submit">Guardar</button>
+            <button type="button" id="btnCancelarEditarUsuario">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
+
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
