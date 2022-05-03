@@ -17,7 +17,7 @@
     <div id="prin">
 
         <h1>Registro de categorias</h1>
-        <form id="frm" action="/my-handling-form-page" method="post">
+        <form id="frm" action="ingresarDatosBd.php" method="post" enctype="multipart/form-data">
             <div id="dataFF">
             <ul>
              <li>
@@ -29,17 +29,22 @@
                <textarea id="msg" name="user_message"></textarea>
              </li>
             </ul>
+            <button type ="submit" id="but">Registrar</button>
             </div>
-              <div id="btn">
-                <button type ="submit" id="but">Registrar</button>
-              </div>
-        </form>
-        <div id="area">
-            <textarea name="" id="text2" cols="30" rows="10"></textarea>
-            <input type="file" id="btn1" accept="image/*"/>
+                
+                  
+                
+                <div id="area">
+                      <div id="areaImagen">
+
+                      </div>
+                    <input type="file" id="btn1" name="imagen" accept="image/*"/>
             
-            <input type="button" id="btn2" value="Examinar" onclick="document.getElementById('btn1').click()">
-        </div>
+                    <input type="button" id="btn2" value="Examinar" onclick="document.getElementById('btn1').click()">
+                </div>
+        </form>
+
     </div>
+    <script src="main.js"></script>
 </body>
 </html>

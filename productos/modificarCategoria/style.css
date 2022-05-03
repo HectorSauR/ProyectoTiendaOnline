@@ -16,8 +16,9 @@ body{
    float: right;
 }
 
-form{
-  
+#frm{
+  float: left;
+  border: 3px solid;
 }
 
 #dataFF {
@@ -28,6 +29,7 @@ form{
     border: 1px solid rgb(255, 255, 255);
     border-radius: 2em;
     float: left;
+    margin-top: 5%;
     
 }
 
@@ -106,12 +108,7 @@ ul {
 
 #btn2{
     display: block;
-    margin-left: 100%;
-
-    margin-top: 2%;
     background-color: white;
-      width: 120%;
-      padding-top: 5%;
       padding-bottom: 5%;
       border-radius: 20px;
       font-size: 20px;
@@ -119,9 +116,6 @@ ul {
 }
 
 #area{
-    float: right;
-    margin-right: 25%;
-    
     
 }
 
@@ -133,9 +127,39 @@ ul {
   display: none;
 }
 #areaImagen{
-  padding: 160%;
-  
+  padding: 10%;
+  float: right;
   border-radius: 20px;
   background-color: white;
-  
+  margin-right: 10%;
+}
+#buscar{
+    border-radius: 20px;
+    padding: 1px;
+    font-size: 20px;
+    float: left;
+}
+
+#botones{
+    
+    float: right;
+    border: 3px solid;
+    padding: 2%;
+    margin-right: 10%;
+    
+}
+
+.abc{
+    padding: 1%;
+    border-radius: 20px;
+    background-color: white;
+    color: #3e4178;
+    font-size: 20px;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.abc:hover{
+    background-color: aqua;
+    color: black;
 }
