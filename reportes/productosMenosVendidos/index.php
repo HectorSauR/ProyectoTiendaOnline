@@ -1,4 +1,5 @@
-
+<?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <?php // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
 <?php //include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="estilo.css">
+     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <title>Document</title>
 </head>
 <body>

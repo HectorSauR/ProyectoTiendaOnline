@@ -7,7 +7,7 @@
   </div>
   <div>
     <img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt="">
-    <img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt="">
+    <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
     <img class="btn-menu" id="btn-menu" src="https://bluemadness.000webhostapp.com/img_proyecto/icon-menu.png" alt="">
   </div>
 
@@ -31,7 +31,7 @@
 
     <li><a href="#">Cotizaciones</a>
       <ul>
-        <li><a href="">Realizar Cotizacion</a></li>
+        <li><a href="<?php echo $pathHost ?>cotizaciones/realizarCotizacion">Realizar Cotizacion</a></li>
       </ul>
     </li>
 
@@ -39,17 +39,17 @@
     <li><a href="#">Ventas</a>
       <ul>
         <li><a href="">Realizar Venta</a></li>
-        <li><a href="">Consultar Venta</a></li>
+        <li><a href="<?php echo $pathHost ?>ventas/consultarVenta">Consultar Venta</a></li>
       </ul>
     </li>
 
     <li><a href="#">Reportes</a>
       <ul>
-        <li><a href="">Ventas Por Tiempo</a></li>
-        <li><a href="">Ventas Por Fecha</a></li>
-        <li><a href="">Productos</a></li>
-        <li><a href="">Productos Mas Vendidos</a></li>
-        <li><a href="">Productos Menos Vendidos</a></li>
+        <li><a href="<?php echo $pathHost ?>reportes/ventarXTiempo">Ventas Por Tiempo</a></li>
+        <li><a href="<?php echo $pathHost ?>reportes/ventasXFecha">Ventas Por Fecha</a></li>
+        <li><a href="<?php echo $pathHost ?>reportes/productos">Productos</a></li>
+        <li><a href="<?php echo $pathHost ?>reportes/productosMasVendidos">Productos Mas Vendidos</a></li>
+        <li><a href="<?php echo $pathHost ?>reportes/productosMenosVendidos">Productos Menos Vendidos</a></li>
       </ul>
     </li>
 
@@ -63,7 +63,7 @@
     </li>
     <?php } ?>
 
-    <li><a href="#">Inicio</a></li>
+    <li><a href="<?php echo $pathHost ?>">Inicio</a></li>
   </ul>
 </nav>
 

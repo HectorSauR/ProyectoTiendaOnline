@@ -1,5 +1,5 @@
-<?php // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
-<?php //include '../../recursos/PHP/metodos/verificarSesionUusuario.php' ?>
+<?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +9,13 @@
     <title>Registrar Producto</title>
     <link rel="stylesheet" href="../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="ModificarDE.css">
+    <link rel="stylesheet" href="../../recursos/cssprincipal/style.css" />
+
 </head>
 <body>  
     <?php include '../../recursos/nav/nav.php' ?>
     <div class="main">
-        <h1   style="color: white" >REGISTRO DE PRODUCTO</h1>
+        <h1   style="color: white" >MODIFICAR DATOS DE LA EMPRESA</h1>
 
         <form class="contenido" action="modificarDE.php" method="post" enctype="multipart/form-data">
             <div class="input">

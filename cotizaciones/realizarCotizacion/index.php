@@ -1,3 +1,7 @@
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

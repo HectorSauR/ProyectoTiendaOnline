@@ -13,7 +13,7 @@ move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
  $Descripcion  = $_POST['user_message'];
  $rutaImagen="../../recursos/cssprincipal/style.css/".$nombreImagen;
 
-$insertar = "INSERT INTO categoria_productos VALUES ('8','$nombre','$Descripcion','$rutaImagen')";
+$insertar = "INSERT INTO categoria_productos VALUES ('9','$nombre','$Descripcion','$rutaImagen')";
 
 $query = mysqli_query($conectar, $insertar);
 
