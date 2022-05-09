@@ -32,8 +32,4 @@ if(count($r) == 1){
   echo count($r);
 }
 
-
-
-
-
  ?>
