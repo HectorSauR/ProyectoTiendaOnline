@@ -38,7 +38,7 @@
 
     <li><a href="#">Ventas</a>
       <ul>
-        <li><a href="">Realizar Venta</a></li>
+        <li><a href="<?php echo $pathHost ?>ventas/realizarVenta">Realizar Venta</a></li>
         <li><a href="<?php echo $pathHost ?>ventas/consultarVenta">Consultar Venta</a></li>
       </ul>
     </li>

@@ -1,0 +1,122 @@
+.main {
+  margin-top: var(--Top);
+  padding: var(--Padding);
+}
+
+.main .contenedor-titulo{
+  padding-bottom: var(--Padding);
+}
+.main .contenedor-titulo h1 {
+  font-size: 30px;
+  color: var(--ColorSecundario);
+}
+
+.main .contenedor-info-venta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main .contenedor-info-venta .contenedor-buscar-cotizacion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.main .contenedor-info-venta .contenedor-buscar-cotizacion label {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+  margin-right: var(--Margin);
+}
+.main .contenedor-info-venta .contenedor-buscar-cotizacion input {
+  padding:calc(var(--Padding) / 2);
+  outline: none;
+  border: 0;
+  border-radius: var(--BorderRadius);
+}
+.main .contenedor-info-venta .contenedor-datos-cliente > label {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+  margin-left: var(--Padding);
+
+}
+.main .contenedor-info-venta .contenedor-datos-cliente .datos-cliente {
+  padding: var(--Padding);
+  border: var(--border) solid var(--ColorSecundario);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--BorderRadius);
+}
+
+.main .contenedor-info-venta .contenedor-datos-cliente .datos-cliente label {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-info-venta .contenedor-datos-cliente .datos-cliente input {
+  padding:calc(var(--Padding) / 2);
+  outline: none;
+  border: 0;
+  border-radius: var(--BorderRadius);
+
+}
+
+/*CONTENEDOR TABLA */
+.contenedor-tabla-productos .cabecera-tabla {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.contenedor-tabla-productos .cabecera-tabla div {
+  border: var(--border) solid var(--ColorSecundario);
+  color: var(--ColorSecundario);
+  text-align: center;
+}
+.contenedor-tabla-productos .cabecera-tabla div:nth-child(1) ,
+.contenedor-tabla-productos .cabecera-tabla div:nth-child(2) ,
+.contenedor-tabla-productos .cabecera-tabla div:nth-child(3) ,
+.contenedor-tabla-productos .cabecera-tabla div:nth-child(4) ,
+.contenedor-tabla-productos .cabecera-tabla div:nth-child(5) {
+border-right: 0;
+}
+
+
+.contenedor-finalizar-venta {
+  margin-top: var(--Margin);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.contenedor-finalizar-venta .contenedor-tipo-pago {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contenedor-finalizar-venta .contenedor-tipo-pago .tipo-pago {
+  border: var(--border) solid var(--ColorSecundario);
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+}
+.contenedor-finalizar-venta .contenedor-tipo-pago .tipo-pago label {
+  color: var(--ColorSecundario);
+}
+
+.contenedor-finalizar-venta .finalizar-venta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: var(--Padding);
+}
+
+.contenedor-finalizar-venta .finalizar-venta button {
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+  outline: none;
+  border: none;
+  background-color: var(--ColorSecundario);
+  color: var(--ColorPrincipal);
+  font-weight: 600;
+  cursor: pointer;
+}
+.contenedor-finalizar-venta .finalizar-venta p {
+  color: var(--ColorSecundario);
+}
