@@ -24,7 +24,7 @@ if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stoc
 
 $regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?)";
 $consulta = $conexion->prepare($regproducto);
-$arregloprod = array('3',$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,$status);
+$arregloprod = array('7',$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,$status);
 $res = $consulta->execute($arregloprod);
 //$regproducto = "INSERT INTO productos VALUES ('$nombre','$decripcion','$preciovent','$preciocom','$categoria','$cantidad','$unidadM','$status')";
 //$Execute = $conexion->query($regproducto);

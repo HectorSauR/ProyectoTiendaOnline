@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
@@ -22,114 +23,86 @@
     <div class="contenedor-consultar-productos">
       <h1>REPORTE DE VENTAS POR PERIODO DE TIEMPO</h1>
       <div id="prin">
-        <form action="/my-handling-form-page" method="post">
+        <form action="index.php" method="post" name="form1">
             
             <ul>
              <li>
                <label for="Periodo">Fecha:</label>
-               <input id="party" type="datetime-local" name="partydate" value="2017-06-01T08:30">
+               <input id="party" type="date" name="fecha">
              </li>
              <li>
-               <label for="msg">Forma de pago:</label>
-               <select name="FP" id="FP"></select>
+               <label for="msg">Forma de pago (1.- Efectivo, 2.- Tarjeta):</label>
+               <select id="FP" name="frmPago">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+               </select>
              </li>
              <li>
                 <label for="msg">Usuario:</label>
-                <select name="usr" id="usr"></select>
+                <input type="text" value="Nombre" id="usr" name="nameUsr">
               </li>
 
               <li>
-                <button id="btnGenerar">Generar Reporte</button>
+                <button id="btnGenerar" name="generar" type="input">Generar Reporte</button>
               </li>
             </ul> 
-        </form>
+       
 
     </div>
     <div id="export">
         <h2>Exportar como</h2>
-        <a href=""><img src="archivo-pdf.png" alt=""></a>
-        <a href=""><img src="archivo-excel.png" alt=""></a>
+        <button type="submit" name="reportePdf" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()"> <img src="archivo-pdf.png" height ="80" width="100" /></button>
+        <button type="submit" name="reporteExcel" onclick= "document.form1.action = 'reporteExcel.php'; document.form1.submit()"> <img src="archivo-excel.png" height ="80" width="100" /></button>
     </div>
-      <div class="contenedor-tabla-productos">
-        <table id="table_id" class="display">
-          <thead>
+    </form>
+  
+  <?php
+  if (isset($_POST['generar'])) {
+    require 'conexion.php';
+    $frmPago = $_REQUEST['frmPago'];
+    $usr = $_POST['nameUsr'];
+    $fecha = $_REQUEST['fecha'];
+    //$BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
+    $resultado = mysqli_query($conectar,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
+                                                detallesVenta.PRECIO,
+                                                usuario.USUARIO,
+                                                forma_pago.DESCRIPCION
+                                            FROM venta venta 
+                                            INNER JOIN detalle_venta detallesVenta ON venta.ID_VENTA = detallesVenta.ID_VENTA
+                                            INNER JOIN usuario usuario ON venta.ID_USUARIO = usuario.ID_USUARIO
+                                            INNER JOIN forma_pago forma_pago ON venta.ID_FORMA_PAGO = forma_pago.ID_FORMA_PAGO
+                                            WHERE venta.FECHA = '$fecha' AND venta.ID_FORMA_PAGO = '$frmPago'");
+    
+    while($consultas = mysqli_fetch_array($resultado)){
+      echo 
+      "
+        <table width=\"100%\" border=\"1\">
           <tr>
-            <th>Codigo de venta</th>
-            <th>Fecha</th>
-            <th>Usuario</th>
-            <th>Forma de pago</th>
-            <th>Importe</th>
-            <th>Cantidad</th>
-
+            <td><b><center>ID Venta</center></b></td>
+            <td><b><center>Fecha</center></b></td>
+            <td><b><center>Usuario</center></b></td>
+            <td><b><center>Forma de pago</center></b></td>
+            <td><b><center>Importe</center></b></td>
           </tr>
-          </thead>
-            <tbody>
-
-            <tr>
-              <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-
-        </tbody>
+          <tr>
+            <td>".$consultas['ID_VENTA']."</td>
+            <td>".$consultas['FECHA']."</td>
+            <td>".$consultas['USUARIO']."</td>
+            <td>".$consultas['DESCRIPCION']."</td>
+            <td>".$consultas['PRECIO']."</td>
+          </tr>
         </table>
-      </div>
-    </div>
-    <div id="ventasT">
-    <h2>Numero de ventas:</h2>
-    <h2>Total General:</h2>
-    </div>
+      ";
+
+    }
+  }
+  ?>
+
+
 
   </section>
+
+ 
 
   <script type="text/javascript" src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" charset="utf8" src="../../recursos/librerias/jquery/plug-in/datables/datatables.js"></script>
@@ -137,3 +110,4 @@
 </body>
 
 </html>
+<?php ob_end_flush(); ?>

@@ -95,7 +95,7 @@ if (isset($_POST['consulta'])) {
               <td>".$consultas['ID_CATEGORIA']."</td>
               <td>".$consultas['NOMBRE']."</td>
               <td>".$consultas['DESCRIPCION']."</td>
-              <td>".$consultas['IMAGEN']."</td>
+              <td align=\"center\"><img src=".$consultas['IMAGEN']."></td>
             </tr>
           </table>
         ";
