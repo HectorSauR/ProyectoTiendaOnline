@@ -19,54 +19,107 @@
 
 <div class="main">
 
-    <!-- DIV PARA LA BARRA DE BUSQUEDA DE LOS PRODUCTOS -->
-    <div class="search">
-        <p>Buscar: </p>
-        <div class="input_search">
-            <input type="text" class="text">
-            <img src="https://bluemadness.000webhostapp.com/img_proyecto/lupa.png" class="icon_search">
-        </div>
+    <div class = "menu">
+        <!-- DIV PARA LA BARRA DE BUSQUEDA DE LOS PRODUCTOS -->
+        <form class="buscar" method="POST">
+            <div class="search">
+                <p>Buscar: </p>
+                <div class="input_search">
+                    <input type="text" class="text" name="prod">
+                    <button class="icon_search" type="submit"><i class="fa-solid fa-magnifying-glass search_icon"></i></button>
+                </div>
+            </div>
+        </form>
+
+        <!-- DIV PARA EL CARRITO DEL CLIENTE -->
+        <a href="../../cotizaciones/realizarCotizacion"><i class="fa-solid fa-cart-shopping carrito_icon"><span class="notification"></span></i></a>
     </div>
+
 
     <!-- DIV PARA LOS CONTENEDORES CON EL DISPLAY DE LOS PRODUCTOS -->
     <div class="Prod">
 
         <?php
 
-        $query = 'SELECT productos.ID_PRODUCTO, productos.NOMBRE, categoria_productos.DESCRIPCION, productos.PRECIO, productos.IMAGEN FROM `productos` INNER JOIN `categoria_productos` ON productos.ID_CATEGORIA=categoria_productos.ID_CATEGORIA WHERE productos.ID_ESTATUS="1" LIMIT 6;';
+        //OBTENEMOS LAS PAGINACIONES DE LOS PRODUCTOS
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+        }
+        else{
+            $page = 1;
+        }
+        
+        $num_per_page = 6;
+        $start_page = ($page-1)*6;
+
+        $query = "SELECT productos.ID_PRODUCTO, productos.NOMBRE, categoria_productos.DESCRIPCION, productos.PRECIO, productos.IMAGEN FROM `productos` INNER JOIN `categoria_productos` ON productos.ID_CATEGORIA=categoria_productos.ID_CATEGORIA WHERE productos.ID_ESTATUS='1' LIMIT $start_page , $num_per_page;";
         $statement = $conexion->prepare($query);
         $statement->execute();
         $result = $statement->fetchall();
 
         foreach($result as $row)
         { 
-            $id = $row['ID_PRODUCTO'];
             ?>
-
         <div class="P_info">
-            <img src=" <?php echo $row['IMAGEN']; ?> " class="P_img">
-            <div class="P_info_Text">
-                <h1 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h1>
-                <p class="Prod_info"> <?php echo $row['DESCRIPCION']; ?> </p>
-                <span class="price"> $<?php echo $row['PRECIO'] ?> </span>
-                <div>
-                    <button class="btn_info"> Agregar </button>
+            <form class="carrito" method="POST">
+                <img src=" <?php echo $row['IMAGEN']; ?> " class="P_img">
+                <div class="P_info_Text">
+                    <h1 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h1>
+                    <p class="Prod_info"> <?php echo $row['DESCRIPCION']; ?> </p>
+                    <span class="price"> $<?php echo $row['PRECIO'] ?> </span>
+                    <div>
+                        <button class="btn_info" type="submit"> Agregar </button>
+                    </div>
                 </div>
-            </div>
+                
+                <input type="hidden" name="id" value="<?php echo $row['ID_PRODUCTO']; ?>">
+                <input type="hidden" name="cantidad" value= "1">
+                <input type="hidden" name="precio" value= "<?php echo $row['PRECIO']; ?>">
+            </form>
         </div>
+
         <?php
         }
         ?>
 
-        <input type="hidden" id="index" data-id="<?php echo $id; ?>">
+
     </div>
 
-    <!-- button -->
-    <div class="button_showMore">
-        <button type="button" class="btn" data-id="<?php echo $id; ?>"> MOSTRAR MÁS </button>
-    </div>
+        <!-- PAGINACION START -->
+        <div class = "paginacion">
+
+        <?php
+            //mostramos las paginasiones que tendra la pagina
+            $pr_query = "SELECT * FROM `productos` where ID_ESTATUS = '1' ";
+            $pr_result = $conexion->query($pr_query);
+            $total_record = $pr_result->fetchall(PDO::FETCH_ASSOC);
+
+            $total_page = ceil(count($total_record)/$num_per_page);
+            
+            if($page > 1){
+            ?>
+                <a href="./index.php?page=<?php echo ($page - 1) ?>" class="pagg_link"> <i class="fa-solid fa-chevron-left"></i> </a>
+            <?php
+            }
+
+            for($i = 0; $i < $total_page; $i++){
+                ?>
+                <a href="./index.php?page=<?php echo $i + 1; ?>" class="pagg_link"> <?php echo $i + 1; ?> </a>
+                <?php
+            }
+
+            if($i > $page){
+                ?>
+                    <a href="./index.php?page=<?php echo ($page + 1); ?>" class="pagg_link"> <i class="fa-solid fa-chevron-right"></i> </a>
+                <?php
+                }
+        ?>
+        </div>
+        <!-- PAGINACION END -->
 </div>
 
+<script type="text/javascript" src="./master.js"></script>
+<script src="https://kit.fontawesome.com/167cc065d2.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"></script>
 <script  type='text/javascript'>
     $(document).ready(function(){
