@@ -6,12 +6,19 @@
 }
 
 .main {
-  position: fixed;
+  position: absolute;
   top: var(--Top);
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: -11;
+  padding: calc(var(--Padding) * 2);
+}
+
+/* contenido del usuario */
+.page_cont {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 /* titulo de la pagina */
@@ -19,8 +26,6 @@
   pointer-events: none;
   user-select: none;
   color: white;
-
-  margin-left: 2rem;
 }
 
 /* div informacion del la venta / cliente */
@@ -28,7 +33,6 @@
   display: flex;
   flex-direction: column;
   max-width: 700px;
-  float: right;
   padding: 1rem;
 
   color: white;
@@ -93,9 +97,17 @@
   width: auto;
 }
 
+.Bottom {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-betweenz;
+}
+
 /* div botones de guerdar / eliminar */
 .TOTAL {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 5rem;
@@ -115,6 +127,47 @@
   margin-left: 2rem;
 
   cursor: pointer;
+}
+
+.cantidad {
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 3px;
+
+  font-size: initial;
+}
+
+.cantidad:hover {
+  border: 1px solid var(--ColorPrincipal);
+  background: white;
+}
+
+.cantidad:focus {
+  background: white;
+}
+
+.icon_change {
+  cursor: pointer;
+  color: var(--ColorPrincipal);
+}
+
+.icon_change:hover {
+  color: green;
+}
+
+.borrar {
+  border: none;
+  background: none;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+}
+
+.borrar:hover {
+  color: red;
 }
 
 .btn:hover {

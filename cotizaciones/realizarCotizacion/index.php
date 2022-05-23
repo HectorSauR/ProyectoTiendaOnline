@@ -18,27 +18,43 @@
     />
   </head>
   <body>
+  <?php include "../../recursos/nav/nav.php" ?>
+
     <div class="main">
 
-    <?php include "../../recursos/nav/nav.php" ?>
-
+    <div class="page_cont" >
       <h1 class="tittle">COTIZACIÓN</h1>
 
       <!-- DIV PARA INGRESAR EL ID_VENTA -->
       <div class="info" id="main">
         <!-- DIS PARA INGRESAR LOS DATOS DEL CLIENTE -->
+
+        <?php
+        
+          $usuario = $_SESSION['usuario'];
+          //OBTENER DATOS DEL USUARIO
+          $BuscarUsuario = "select * from usuario where USUARIO = '$usuario'";
+          $Execute = $conexion->query($BuscarUsuario);
+          $r = $Execute->fetchall(PDO::FETCH_ASSOC);
+
+          $nombre = $r[0]['NOMBRE'];
+          $correo = $r[0]['CORREO'];
+        ?>
         <p id="first">Datos del cliente:</p>
         <div class="client">
           <div class="input" id="first">
             <p id="p_nom">Nombre:</p>
-            <input type="text" class="client_info" />
+            <input type="text" class="client_info" disabled="disabled"  value= "<?php echo $nombre ?>" />
           </div>
           <div class="input">
             <p id="p_mail">Correo:</p>
-            <input type="text" class="client_info" />
+            <input type="email" class="client_info" disabled="disabled" value= "<?php echo $correo ?>" />
           </div>
         </div>
       </div>
+
+    </div>
+
       <!-- DIV DE LA TABLA DE LOS PRODUCTOS -->
       <div class="table">
         <table id="table_id" class="display">
@@ -46,135 +62,95 @@
             <tr>
               <th>Codigo</th>
               <th>Nombre</th>
-              <th>Unidad de Medida</th>
               <th>Cantidad</th>
               <th>Precio</th>
               <th>Importe</th>
+              <th></th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <td>0000</td>
-              <td>fsdfdsdsf</td>
-              <td>asasaddsd</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
 
-            <tr>
-              <td>fsdfdsdsf</td>
-              <td>Cargador</td>
-              <td>2anhos</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
+          <?php
+            $total = 0;
 
-            <tr>
-              <td>asasaddsd</td>
-              <td>Cargador</td>
-              <td>1anho</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
+            $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and (ID_ESTATUS = 3 or ID_ESTATUS = 2);";
+            $Execute = $conexion->query($BuscarUsuario);
 
-            <tr>
-              <td>200</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
+            $r = $Execute->fetchall(PDO::FETCH_ASSOC);
+            if(count($r) >= 1){
+              $id = $r[0]['ID_COTIZACION'];
+              
+              $query = "SELECT detalle_cotizacion.ID_PRODUCTO, productos.NOMBRE, detalle_cotizacion.CANTIDAD ,detalle_cotizacion.PRECIO_VENTA FROM `detalle_cotizacion` INNER JOIN productos ON detalle_cotizacion.ID_PRODUCTO = productos.ID_PRODUCTO where ID_COTIZACION = $id;";
+              $statement = $conexion->prepare($query);
+              $statement->execute();
+              $result = $statement->fetchall();
+              
+              foreach($result as $row)
+              {
+                $importe = $row['PRECIO_VENTA'] * $row['CANTIDAD'];
+                $importe = $importe + ($importe * 0.16);
 
-            <tr>
-              <td>250</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
+                ?>
+
+                  <tr>
+                    <td><?php echo $row['ID_PRODUCTO'] ?></td>
+                    <td><?php echo $row['NOMBRE'] ?></td>
+                    <form class="producto" action="./php/modificarCotizacion.php" method="POST">
+                      <input type="hidden" name="id_prod" value= "<?php echo $row['ID_PRODUCTO'] ?>">
+                      <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
+
+                      <td><input type="number" name="cantidad" value = "<?php echo $row['CANTIDAD'] ?>" class = "cantidad"><button class="borrar" type="submit"><i class="fa-solid fa-pen icon_change"></button></i></td>
+                    </form>
+                    <td>$<?php echo $row['PRECIO_VENTA'] ?></td>
+                    <td>$<?php echo $importe ?></td>
+                    <form class="producto" action="./php/borrarCotizacion.php" method="POST">
+                      <input type="hidden" name="id_prod" value= "<?php echo $row['ID_PRODUCTO'] ?>">
+                      <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
+                      <td><button class="borrar"><i class="fa-solid fa-trash"></i></button>  </td>
+                    </form>
+                  </tr>
+
+                <?php
+                $total = $total + $importe;
+              }
+            }
+          ?>
+
+
           </tbody>
+
         </table>
       </div>
 
-      <!-- DIV BOTONES GUERDAR / ELIMINAR -->
-      <div class="TOTAL">
-        <button type="button" class="btn">REGISTRAR</button>
-        <p>TOTAL: $</p>
-      </div>
+      <div class = "Bottom">
 
-      <div class="info" id="imprimir">
-        <!-- DIS PARA INGRESAR LOS DATOS DEL CLIENTE -->
+          <div class="info" id="imprimir">
+            <!-- DIS PARA INGRESAR LOS DATOS DEL CLIENTE -->
+            <div class="client">
+              <p id="first">Documento:</p>
+              <input type="radio" name="" id="pdf" value="Descargar PDF" />
+              <label for="pdf" id="label_pdf"> Descargar PDF </label>
+              <input type="radio" name="" id="mail" value="Descargar PDF" />
+              <label for="mail"> Enviar por correo </label>
+            </div>
+          </div>
 
-        <div class="client">
-          <p id="first">Documento:</p>
-          <input type="radio" name="" id="pdf" value="Descargar PDF" />
-          <label for="pdf" id="label_pdf"> Descargar PDF </label>
-          <input type="radio" name="" id="mail" value="Descargar PDF" />
-          <label for="mail"> Enviar por correo </label>
+        <!-- DIV BOTONES GUERDAR / ELIMINAR -->
+        <div class="TOTAL">
+          <p>TOTAL: $<?php echo $total ?></p>
+          <form class="producto" method="POST">
+            <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
+            <button type="submit" class="btn">REGISTRAR</button>
+          </form>
         </div>
-      </div>
-    </div>
+
+        </div>
+
+
+        
+  </div>
+
 
     <!-- Scripts para la tabla -->
     <script
@@ -189,6 +165,68 @@
     ></script>
 
     <!-- SCRIPT PARA DATOS DE LA TABLA -->
+    <script src="https://kit.fontawesome.com/167cc065d2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./master.js"></script>
+
+    <?php
+        if(isset($_GET['var'])){
+            $var = $_GET['var'];
+            if($var == 3){
+              echo "<script>
+              let timerInterval;
+              Swal.fire({
+              title: 'Producto Borrado con exito',
+              html: 'El producto fue borrado de la cotizacion con exito!',
+              icon: 'success',
+              timer: 5000,
+              timerProgressBar: true,
+              didOpen: () => {
+                  Swal.showLoading();
+              },
+              willClose: () => {
+                  clearInterval(timerInterval);
+              },
+              });
+              </script>";
+            }
+            elseif($var == 1){
+              echo "<script>
+              let timerInterval;
+              Swal.fire({
+              title: 'Error al modificar la cantidad',
+              html: 'El producto que intenta agregar esta fuera de stock, por favor intente despues!',
+              icon: 'error',
+              timer: 5000,
+              timerProgressBar: true,
+              didOpen: () => {
+                  Swal.showLoading();
+              },
+              willClose: () => {
+                  clearInterval(timerInterval);
+              },
+              });
+              </script>";
+            }
+            elseif($var == 2){
+              echo "<script>
+              let timerInterval;
+              Swal.fire({
+              title: 'Cantidad modificada con exito',
+              html: 'La cantidad del producto fue modificada con exito!',
+              icon: 'success',
+              timer: 5000,
+              timerProgressBar: true,
+              didOpen: () => {
+                  Swal.showLoading();
+              },
+              willClose: () => {
+                  clearInterval(timerInterval);
+              },
+              });
+              </script>";
+            }
+          }
+    ?>
   </body>
 </html>
