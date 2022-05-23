@@ -33,6 +33,17 @@
   border: 0;
   border-radius: var(--BorderRadius);
 }
+.main .contenedor-info-venta .contenedor-buscar-cotizacion button {
+  margin-left: var(--Margin);
+  border-radius: var(--BorderRadius);
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  padding: var(--Padding);
+  border: 0;
+  background-color: var(--ColorSecundario);
+  color: var(--ColorPrincipal);
+}
 .main .contenedor-info-venta .contenedor-datos-cliente > label {
   color: var(--ColorSecundario);
   font-weight: 600;
@@ -60,22 +71,45 @@
 }
 
 /*CONTENEDOR TABLA */
-.contenedor-tabla-productos .cabecera-tabla {
+.contenedor-tabla-productos {
+  background-color: var(--ColorSecundario);
+}
+.contenedor-tabla-productos .cabecera-tabla ,
+ .contenedor-tabla-productos .tabla{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.contenedor-tabla-productos .cabecera-tabla div {
-  border: var(--border) solid var(--ColorSecundario);
-  color: var(--ColorSecundario);
+
+
+.contenedor-tabla-productos .cabecera-tabla div ,
+.contenedor-tabla-productos .tabla div{
+  border: var(--border) solid var(--ColorPrincipal);
+  color: var(--ColorPrincipal);
   text-align: center;
+}
+
+.contenedor-tabla-productos .cabecera-tabla div{
+  padding: var(--Padding);
+  font-weight: 600;
 }
 .contenedor-tabla-productos .cabecera-tabla div:nth-child(1) ,
 .contenedor-tabla-productos .cabecera-tabla div:nth-child(2) ,
 .contenedor-tabla-productos .cabecera-tabla div:nth-child(3) ,
 .contenedor-tabla-productos .cabecera-tabla div:nth-child(4) ,
-.contenedor-tabla-productos .cabecera-tabla div:nth-child(5) {
+.contenedor-tabla-productos .tabla div:nth-child(1) ,
+.contenedor-tabla-productos .tabla div:nth-child(2) ,
+.contenedor-tabla-productos .tabla div:nth-child(3) ,
+.contenedor-tabla-productos .tabla div:nth-child(4)  {
 border-right: 0;
+}
+
+.contenedor-tabla-productos .tabla div:nth-child(1) ,
+.contenedor-tabla-productos .tabla div:nth-child(2) ,
+.contenedor-tabla-productos .tabla div:nth-child(3) ,
+.contenedor-tabla-productos .tabla div:nth-child(4) ,
+.contenedor-tabla-productos .tabla div:nth-child(5) {
+border-top: 0;
 }
 
 

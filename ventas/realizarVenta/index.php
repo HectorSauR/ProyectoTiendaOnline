@@ -20,16 +20,17 @@
 
       <div class="contenedor-info-venta">
         <div class="contenedor-buscar-cotizacion">
-          <label>Buscar cotizacion:</label>
-          <input type="text" name="" value="">
+          <label>Cotizacion:</label>
+          <input type="text" name="" value="" id="txtIdCotizacion" placeholder="ID">
+          <button type="button" id="btnBuscarCotizacion" name="button">Buscar</button>
         </div>
         <div class="contenedor-datos-cliente">
           <label for="">Datos del cliente:</label>
           <div class="datos-cliente">
             <label>Nombre:</label>
-            <input type="text" name="" value="">
+            <input type="text" name="" value="" id="txtNombre">
             <label>Correo:</label>
-            <input type="text" name="" value="">
+            <input type="text" name="" value="" id="txtCorreo">
           </div>
         </div>
       </div>
@@ -45,9 +46,6 @@
               <p>Nombre</p>
             </div>
             <div>
-              <p>Unidad de medida</p>
-            </div>
-            <div>
               <p>Cantidad</p>
             </div>
             <div>
@@ -58,7 +56,12 @@
             </div>
           </div>
 
+
+
            <!-- LOGICA PARA AGREGAR FILAS DE PRODUCTOS A LA TABLA-->
+
+
+
 
         </div>
 
@@ -75,8 +78,8 @@
           </div>
 
           <div class="finalizar-venta">
-            <p>Total</p>
-            <button type="button" name="button">Finalizar venta</button>
+            <p id="total">Total</p>
+            <button type="button" name="button" id="btnFinalizarVenta">Finalizar venta</button>
           </div>
         </div>
       </div>
