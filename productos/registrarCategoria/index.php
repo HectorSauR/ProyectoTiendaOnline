@@ -1,4 +1,7 @@
-<?php include '../../recursos/PHP/configuracionDelSitioWeb/conf.php'?>
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php'?>
 <!DOCTYPE html>
 <html lang="en">

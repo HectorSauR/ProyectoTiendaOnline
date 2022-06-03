@@ -3,7 +3,21 @@
 
 <header class="contenedor-header">
   <div>
-    <img src="https://bluemadness.000webhostapp.com/img_proyecto/logo_empresa.png" alt="">
+  <?php  
+    //VERIFICAMOS SI EL USUARIO TIENE EL PRODUCTO AGREGADO
+    $BuscarLogo = "SELECT LOGO FROM `info_empresa`;";
+    $Execute = $conexion->query($BuscarLogo);
+    $r = $Execute->fetchall(PDO::FETCH_ASSOC);
+
+    if(count($r) >= 1){?>
+      <img src="<?php echo $r[0]['LOGO']; ?>" alt="">
+    <?php
+    }
+    else { ?>
+      <img src="https://bluemadness.000webhostapp.com/img_proyecto/logo_empresa.png" alt="">
+    <?php
+    }
+  ?>
   </div>
   <div>
     <img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt="">
@@ -39,6 +53,7 @@
     <li><a href="#">Ventas</a>
       <ul>
         <li><a href="<?php echo $pathHost ?>ventas/realizarVenta">Realizar Venta</a></li>
+        <li><a href="<?php echo $pathHost ?>ventas/modificarVenta">Gestionar Venta</a></li>
         <li><a href="<?php echo $pathHost ?>ventas/consultarVenta">Consultar Venta</a></li>
       </ul>
     </li>
