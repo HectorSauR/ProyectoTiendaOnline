@@ -124,3 +124,14 @@ thead {
 td {
   background-color: var(--ColorSecundario);
 }
+.btn-buscar-venta {
+  outline: none;
+  border: none;
+  padding: var(--Padding);
+  background-color: var(--ColorSecundario);
+  cursor: pointer;
+  border-radius: var(--BorderRadius);
+  margin-left: var(--Margin);
+  color: var(--ColorPrincipal);
+  font-weight: 600;
+}
