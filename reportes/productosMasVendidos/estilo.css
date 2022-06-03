@@ -13,8 +13,10 @@ body{
 
   
   .main{
+
+    margin: 0 auto;
     margin-top: 104.17px;
-    width: 90%;
+    width: 95%;
     margin-left: 80px;
   }
   .main .formulario, .main .exportar , .main .tabla-consulta{
@@ -50,8 +52,8 @@ body{
     border-radius: 10px;
 }
 .exportar{
-    width: 85%;
-   position: fixed;
+    width: 90%;
+   
    margin-top: 15px;
    text-align: end;
 }
@@ -63,21 +65,28 @@ body{
 
 .main .tabla-consulta{
     width: 90%;
-    margin-top: 100px;
-
+   
 }
 
 .main .tabla-consulta .ProductosMasVendidos{
-    margin: 0 auto;
+    
+   margin: 0 auto;
     background: #EDEEFF;
     color: #212237;
     border-collapse: collapse;
+    margin-bottom: 15px;
+    
 }
 .main .tabla-consulta .ProductosMasVendidos tr td{
     border: 1px solid #212237;
-    padding: 5px 70px;
+    padding: 5px 25px;
 }
 
 .main .formulario div {
     margin-top: 15px;
+}
+
+
+.excel_reporte {
+    cursor: pointer;
 }

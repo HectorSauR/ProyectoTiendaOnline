@@ -12,7 +12,6 @@
 
   /*DISPOSICION DEL CONTENEDOR*/
   margin: 1rem;
-  margin-left: 9%;
   justify-content: flex-start;
   align-items: center;
 
@@ -34,13 +33,13 @@
 .icon_search {
   position: absolute;
   right: 3px;
+  margin-top: 0.3rem;
+  font-size: 1.3rem;
+
+  background: none;
+  border: none;
+
   padding: 0.15rem;
-
-  max-height: 33px;
-  max-width: 33px;
-  width: auto;
-  height: auto;
-
   cursor: pointer;
 }
 
@@ -48,7 +47,7 @@
   height: 10%;
   width: 100%;
 
-  border-radius: 2rem;
+  border-radius: 0.5rem;
 
   font-family: inherit;
   font-size: 18px;
@@ -58,6 +57,37 @@
   padding: 0.15rem;
   background-color: --ColorSecundario;
   color: black;
+}
+
+/* CSS PARA EL CARRITO DE COMPRAS */
+.menu {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  align-items: center;
+}
+
+.carrito_icon {
+  font-size: 2rem;
+  color: var(--ColorSecundario);
+
+  position: relative;
+}
+
+.notification {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: -2px;
+  right: -10px;
+
+  opacity: 0;
+}
+
+.notification.active {
+  opacity: 1;
 }
 
 /* CSS PARA MOSTRAR LOS PRODUCTOS EN PANTALLA */
@@ -125,37 +155,27 @@
   cursor: pointer;
 }
 
-/* CSS PARA EL BOTON DE MOSTRAR MAS */
-.button_showMore {
+/* PAGINACION DE LA PAGINA */
+.paginacion {
   display: flex;
+  padding-bottom: 2rem;
 
-  justify-content: center;
+  gap: 0.5rem;
+
   align-items: center;
+  justify-content: center;
 }
 
-.btn {
-  margin-top: 50px;
-  margin-bottom: 30px;
-  padding: 0.75rem 2rem;
-
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.5rem;
+.pagg_link {
+  text-decoration: none;
+  color: var(--ColorPrincipal);
 
   background-color: var(--ColorSecundario);
-  transition: background-color 100ms ease-in;
-
-  font-family: inherit;
-  font-size: inherit;
-  color: black;
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
 }
 
-.btn:hover {
-  background-color: #edeeffe3;
-}
-
-.btn:active {
-  background-color: #edeeff8f;
-  color: white;
+.pagg_link:hover {
+  background-color: #8c8888;
+  color: var(--ColorSecundario);
 }

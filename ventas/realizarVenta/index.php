@@ -1,4 +1,7 @@
-<?php include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,8 +12,8 @@
   <link rel="stylesheet" href="css/master.css">
   <title>Venta</title>
 </head>
-<body>
-
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
     <?php  include '../../recursos/nav/nav.php' ?>
 
     <section class="main">

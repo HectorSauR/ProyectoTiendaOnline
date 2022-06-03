@@ -1,6 +1,9 @@
-<?php include '../../recursos/PHP/configuracionDelSitioWeb/conf.php'?>
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php'?>
-
+<?php include 'obtDatos.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,20 +15,27 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
   
   <?php include '../../recursos/nav/nav.php'?>
 
     <div id="prin">
 
-        <h1>Registro de categorias</h1>
+        <h1>Modificar Categoria</h1>
 
         <form id="frm" action="index.php" method="post" enctype="multipart/form-data">
  
         <div>
         <div>
 <h3>Buscar</h3>
-            <input type="text" id="buscar" name="consultar">
+              <select name="consultar" id="periodo">
+                  <?php
+                 foreach ($datos as $dat) {
+                 echo '<option value="' . $dat['NOMBRE'] . '">' . $dat['NOMBRE'] . '</option>';
+                 } //end foreach
+                  ?>
+               </select>
 </div>
             <div id="dataFF">
 
@@ -74,9 +84,14 @@
 </html>
 
 <?php 
+if (isset($_POST['btnEliminar'])) {
+  require 'conexion.php';
+  $nombre=$_POST['user_name'];
+  $modificar=mysqli_query($conectar,"UPDATE categoria_productos SET ID_ESTATUS = '2' WHERE NOMBRE = '$nombre'");
+}
 if (isset($_POST['consulta'])) {
     require 'conexion.php';
-    $dato=$_POST['consultar'];
+    $dato=$_REQUEST['consultar'];
     
     $resultado = mysqli_query($conectar,"SELECT * FROM categoria_productos WHERE NOMBRE = '$dato'");
     
@@ -95,7 +110,7 @@ if (isset($_POST['consulta'])) {
               <td>".$consultas['ID_CATEGORIA']."</td>
               <td>".$consultas['NOMBRE']."</td>
               <td>".$consultas['DESCRIPCION']."</td>
-              <td>".$consultas['IMAGEN']."</td>
+              <td align=\"center\"><img width=100px src=".$consultas['IMAGEN']."></td>
             </tr>
           </table>
         ";
@@ -108,7 +123,7 @@ if (isset($_POST['btnModificar'])) {
     require 'conexion.php';
     $nombre=$_POST['user_name'];
     $desc=$_POST['user_message'];
-    $dato=$_POST['consultar'];
+    $dato=$_REQUEST['consultar'];
 
     $nombreImagen=$_FILES['imagen']['name'];
 
@@ -123,7 +138,7 @@ if (isset($_POST['btnModificar'])) {
             $tamImagen=$_FILES['imagen']['size'];
             $carpeta=$_SERVER['DOCUMENT_ROOT'] . '/ProyectoTiendaOnline/recursos/imagenes/regCategoria/';
             move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
-            $rutaImagen="../../recursos/cssprincipal/style.css/".$nombreImagen;
+            $rutaImagen="../../recursos/imagenes/regCategoria/".$nombreImagen;
             $modificar1=mysqli_query($conectar,"UPDATE categoria_productos SET IMAGEN ='$rutaImagen' WHERE NOMBRE = '$nombre'");
         }
     
@@ -138,7 +153,7 @@ if (isset($_POST['btnModificar'])) {
         $tamImagen=$_FILES['imagen']['size'];
         $carpeta=$_SERVER['DOCUMENT_ROOT'] . '/ProyectoTiendaOnline/recursos/imagenes/regCategoria/';
         move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
-        $rutaImagen="../../recursos/cssprincipal/style.css/".$nombreImagen;
+        $rutaImagen="../../recursos/imagenes/regCategoria/".$nombreImagen;
         $modificar1=mysqli_query($conectar,"UPDATE categoria_productos SET IMAGEN ='$rutaImagen' WHERE NOMBRE = '$dato'");
     }
 

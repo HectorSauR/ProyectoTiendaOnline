@@ -1,7 +1,6 @@
-<?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
-<?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
-<?php // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
-<?php //include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
+<?php   include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php  include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?> 
+<?php require 'pmv.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,26 +9,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="estilo.css">
      <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
-    <title>Document</title>
-</head>
-<body>
-<?php include '../../recursos/nav/nav.php' ?>
+    <title>PRODUCTOS MAS VENDIDOS</title>
 
+    <!-- LINKS PARA EXPORTAR EN EXCEL -->
+    
+</head>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
+    
+<?php include '../../recursos/nav/nav.php' ?>
 
 <div class="main">
  
-<h2>REPORTE DE PRODUCTOS MENOS VENDIDOS</h2>
+    <h2>REPORTE DE PRODUCTOS MENOS VENDIDOS</h2>
 
-<form action="" class="formulario">
+    <form action="" class="formulario">
 
     <div>
         <label for="categorias">Categoría</label>
 
         <select class="categorias" >
             <option selected disabled ></option>
-            <option value="opc1">OPC1</option>
-            <option value="opc2">OPC2</option>
-            <option value="opc3">OPC3</option>
+            <?php
+                 foreach ($datos as $dat) {
+                 echo '<option value="' . $dat['ID_CATEGORIA'] . '">' . $dat['NOMBRE'] . '</option>';
+                 } //end foreach
+             ?>
         </select>
     </div>
     
@@ -38,72 +43,56 @@
 
         <select class="estatus" >
             <option selected disabled ></option>
-            <option value="act">Activo</option>
-            <option value="fdl">Fuera de linea</option>
+            <option value="1">Activo</option>
+            <option value="2">Fuera de linea</option>
         </select>
      </div>
      <div>
-         <label for="NProducto">Numero de producto</label>
-         <input type="number" name="NProducto" id="NProducto">
+         <label for="NProducto">Numero de productos</label>
+         <input type="number" name="NProducto" id="NProducto" class = "NProducto">
      </div>
 
      <input type="button" value="Generar reporte" id="btn-generarReporte">
    
-</form>
+    </form>
 
 
-<div class="exportar">
+    <div class="exportar">
     <h4>Exportar como:</h4>
     <!-- CAMBIAR -->
-    <a href="#"><img src="../../imagenes/PDF IMG.png" alt=""></a>
-    <a href="#"><img src="../../imagenes/EXCEL IMG.png" alt=""></a>
+    <a  class="excel_reporte"><img src="../../recursos/imagenes/archivo-excel.png" alt=""></a>
+    <a href="" class="pdf_reporte"><img src="../../recursos/imagenes/archivo-pdf.png" alt=""></a>
+   
 </div>
 
 
 
-<div class="tabla-consulta">
+<div class="tabla-consulta" id="tabla-consulta">
 
     <table class="ProductosMasVendidos" id="tbl-ProductMasVendidos">
          <thead>
              <tr>
-                 <td>Codigo</td>
-                 <td>Nombre</td>
-                 <td>Unidad de medida</td>
-                 <td>Stock</td>
-                 <td>precio de venta</td>
-                 <td>Cantidad vedida</td>
+                 <td>ID PRODUCTO</td>
+                 <td >Nombre</td>
+                 <td>STOCK</td>
+                 <td>PRECIO DE COMPRA</td>
+                 <td>PRECIO AL PUBLICO</td>
+                 <td>NUMERO DE VENTAS</td>
+                 <td>CANTIDAD VENDIDA</td>
              </tr>
          </thead>
-     <tbody>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>3</td>
-            <td>3</td>
-            <td>3</td>
-            <td>3 </td>
-            <td>3</td>
-        </tr>
-     </tbody>
+         <tbody >
+      </tbody>
      </table>
 </div>
 
+<div id="elementH"></div>
+
 </div>
+<script src="jquery-3.6.0.js"></script>
+<script src="jspdf.min.js"></script>
+<script src="jquery.tableToExcel.js"></script>
+<script src="pmv.js"></script>
 
 </body>
 </html>

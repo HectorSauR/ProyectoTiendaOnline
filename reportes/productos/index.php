@@ -1,5 +1,9 @@
-<?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
+<?php require 'pmv.php' ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,118 +18,97 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
 
   <?php include '../../recursos/nav/nav.php' ?>
 
   <section class="main">
     <div class="contenedor-consultar-productos">
-      <h1>REPORTE DE VENTAS POR PERIODO DE TIEMPO</h1>
+      <h1>REPORTE DE PRODUCTOS</h1>
       <div id="prin">
-        <form action="/my-handling-form-page" method="post">
+        <form action="index.php" method="post" name="form1">
             
             <ul>
              <li>
-               <label for="Periodo">Categoria:</label>
-               <select name="periodo" id="periodo"></select>
+               <label for="periodo">Categoria:</label>
+               <select name="periodo" id="periodo">
+                  <?php
+                 foreach ($datos as $dat) {
+                 echo '<option value="' . $dat['ID_CATEGORIA'] . '">' . $dat['NOMBRE'] . '</option>';
+                 } //end foreach
+                  ?>
+               </select>
              </li>
              <li>
-               <label for="msg">Estatus:</label>
-               <select name="FP" id="FP"></select>
+               <label for="msg">Estatus</label>
+               <select name="FP" id="FP">
+               <?php
+                 foreach ($datos1 as $dat) {
+                 echo '<option value="' . $dat['ID_ESTATUS'] . '">' . $dat['DESCRIPCION'] . '</option>';
+                 } //end foreach
+                  ?>
+               </select>
              </li>
               <li>
-                <button id="btnGenerar">Generar Reporte</button>
+                <button id="btnGenerar" type="submit" name="generar">Generar Reporte</button>
               </li>
             </ul> 
-        </form>
-
-    </div>
+            </div>
     <div id="export">
         <h2>Exportar como</h2>
-        <a href=""><img src="archivo-pdf.png" alt=""></a>
-        <a href=""><img src="archivo-excel.png" alt=""></a>
+        <button type="submit" name="reportePdf" class="report" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()"> <img src="archivo-pdf.png" height ="80" width="100" /></button>
+        <button type="submit" name="reporteExcel" class="report" onclick= "document.form1.action = 'reporteExcel.php'; document.form1.submit()"> <img src="archivo-excel.png" height ="80" width="100" /></button>
     </div>
-      <div class="contenedor-tabla-productos">
-        <table id="table_id" class="display">
-          <thead>
+    <table width="100%" border="1">
           <tr>
-            <th>Codigo de venta</th>
-            <th>Fecha</th>
-            <th>Usuario</th>
-            <th>Forma de pago</th>
-            <th>Importe</th>
-            <th>Cantidad</th>
-
+            <td><b><center>ID PRODCUTO</center></b></td>
+            <td><b><center>NOMBRE</center></b></td>
+            <td><b><center>PRECIO DE COMPRA</center></b></td>
+            <td><b><center>PRECIO DE VENTA</center></b></td>
+            <td><b><center>STOCK</center></b></td>
+            <td><b><center>CATEGORIA</center></b></td>
           </tr>
-          </thead>
-            <tbody>
+    </form>
+    
+    <?php
+  if (isset($_POST['generar'])) {
+    require 'conexion.php';
+    $categoria = $_REQUEST['periodo'];
+    $estatus = $_REQUEST['FP'];
+    //$BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
+    $resultado = mysqli_query($conectar,"SELECT prod.ID_PRODUCTO, prod.NOMBRE, prod.PRECIO_COMPRA, prod.PRECIO, prod.STOCK,
+                                                cat.DESCRIPCION
+                                            FROM productos prod 
+                                            INNER JOIN categoria_productos cat ON prod.ID_CATEGORIA = cat.ID_CATEGORIA
+                                            WHERE prod.ID_CATEGORIA = '$categoria' AND prod.ID_ESTATUS = '$estatus'");
+    
+    while($consultas = mysqli_fetch_array($resultado)){
+      echo 
+      "
+          <tr>
+            <td>".$consultas['ID_PRODUCTO']."</td>
+            <td>".$consultas['NOMBRE']."</td>
+            <td>".$consultas['PRECIO_COMPRA']."</td>
+            <td>".$consultas['PRECIO']."</td>
+            <td>".$consultas['STOCK']."</td>
+            <td>".$consultas['DESCRIPCION']."</td>
+          </tr>
+        
+      ";
 
-            <tr>
-              <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
-            <tr>
-            <td> 0000 </td>
-              <td> 24/04/2022</td>
-              <td> Admin </td>
-              <td> Efectivo </td>
-              <td> 250 </td>
-              <td> 500 </td>
-            </tr>
+    }
+    ?>
+    </table>
+    <?php
+  }
+  ?>
 
 
-        </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="ventasT">
-    <h2>Numero de ventas:</h2>
-    <h2>Total General:</h2>
-    </div>
 
   </section>
 
+  <script src="https://kit.fontawesome.com/167cc065d2.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" charset="utf8" src="../../recursos/librerias/jquery/plug-in/datables/datatables.js"></script>
   <script src="js/main.js" charset="utf-8"></script>

@@ -182,3 +182,7 @@ ul {
   display: flex;
   flex-direction: column;
 }
+
+#periodo{
+  border-radius: 20px;
+}

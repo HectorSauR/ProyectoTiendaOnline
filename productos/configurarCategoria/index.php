@@ -18,10 +18,11 @@
       href="../../recursos/librerias/jquery/plug-in/datables/datatables.css"
     />
   </head>
-  <body>
-    <div class="main">
-      <?php include "../../recursos/nav/nav.php" ?>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
+    <?php include "../../recursos/nav/nav.php" ?>
 
+    <div class="main">
       <h1 class="tittle">CATEGORIAS PARA MOSTRAR</h1>
 
       <!-- DIV DE LA TABLA DE LOS PRODUCTOS -->
@@ -31,97 +32,56 @@
             <tr>
               <th>Codigo</th>
               <th>Descripcion</th>
-              <th></th>
+              <th>Ocultar</th>
             </tr>
+
           </thead>
           <tbody>
-            <tr>
-              <td>0000</td>
-              <td>fsdfdsdsf</td>
-              <td>asasaddsd</td>
-            </tr>
+            <?php
 
-            <tr>
-              <td>fsdfdsdsf</td>
-              <td>Cargador</td>
-              <td>2anhos</td>
-            </tr>
+              $query = 'SELECT ID_CATEGORIA, DESCRIPCION, ID_ESTATUS FROM `categoria_productos`';
+              $statement = $conexion->prepare($query);
+              $statement->execute();
+              $result = $statement->fetchall();
 
-            <tr>
-              <td>asasaddsd</td>
-              <td>Cargador</td>
-              <td>1anho</td>
-            </tr>
+              foreach($result as $row)
+              { ?>
+                  <tr>
+                    <form class="modificarCategoria" method="POST">
+                      <input type="hidden" name = "id_cat" value="<?php echo $row["ID_CATEGORIA"]; ?>">
 
-            <tr>
-              <td>200</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
+                      <td> <?php echo $row["ID_CATEGORIA"]; ?> </td>
+                      <td> <?php echo $row["DESCRIPCION"]; ?> </td>
+                      <?php
+                        if( $row['ID_ESTATUS'] == 1){?>
+                          <input type="hidden" name = "estatus" value="1">
+                          <td> <button class="btn_ocultar"> Ocultar Categoria </button> </td>
+                      <?php
+                        }
+                        else{?>
+                          <input type="hidden" name = "estatus" value="2">
+                          <td> <button class="btn_mostrar"> Mostrar Categoria </button> </td>
+                      <?php
 
-            <tr>
-              <td>250</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Corte</td>
-              <td>Vigente</td>
-            </tr>
+                        }
+                      ?>
+                    </form>
+                  </tr>
+
+              <?php
+              } 
+            ?>
           </tbody>
         </table>
       </div>
 
-      <!-- DIV BOTONES GUERDAR / ELIMINAR -->
-      <div class="TOTAL">
-        <button type="button" class="btn">REGISTRAR</button>
-      </div>
     </div>
 
     <!-- Scripts para la tabla -->
-    <script
-      type="text/javascript"
-      src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"
-    ></script>
-
-    <script
-      type="text/javascript"
-      charset="utf8"
-      src="../../recursos/librerias/jquery/plug-in/datables/datatables.js"
-    ></script>
-
+    <script type="text/javascript" src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="../../recursos/librerias/jquery/plug-in/datables/datatables.js"></script>
     <!-- SCRIPT PARA DATOS DE LA TABLA -->
     <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./js/master.js"></script>
   </body>
 </html>
