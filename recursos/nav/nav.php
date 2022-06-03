@@ -39,6 +39,7 @@
         <li><a href="<?php echo $pathHost ?>productos/modificarProducto/">Modificar Producto</a></li>
         <li><a href="<?php echo $pathHost ?>productos/registrarCategoria/">Registrar Categoria</a></li>
         <li><a href="<?php echo $pathHost ?>productos/modificarCategoria/">Modificar Categoria</a></li>
+        <li><a href="<?php echo $pathHost ?>productos/configurarCategoria/">Configurar Categoria</a></li>
         <li><a href="<?php echo $pathHost ?>productos/catalgoProducto/">Catalogo Producto</a></li>
       </ul>
     </li>

@@ -12,12 +12,12 @@
 }
 
 .main {
-  position: fixed;
+  position: absolute;
   top: var(--Top);
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: -11;
   padding: calc(var(--Padding) * 2);
 }
 
@@ -37,7 +37,7 @@
 }
 
 .theme {
-  border: 1px solid var(--ColorSecundario);
+  border: 1px solid #edeeff;
   transition: 0.3s;
 }
 
@@ -50,7 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--ColorSecundario);
+  background-color: #edeeff;
   width: 100%;
 }
 
@@ -65,12 +65,12 @@
   flex-direction: row;
   justify-content: space-between;
 
-  border-bottom: 1px solid var(--ColorSecundario);
+  border-bottom: 1px solid #edeeff;
 }
 
 .link {
   padding: 1rem;
-  color: var(--ColorSecundario);
+  color: #edeeff;
 
   font-size: 11px;
 }
@@ -95,6 +95,10 @@
 
   padding: 2rem;
   margin-left: 2rem;
+}
+
+#Azul {
+  background-color: #3e4078;
 }
 
 /* TEMAS PARA CADA PANTALLA */

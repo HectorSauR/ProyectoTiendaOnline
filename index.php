@@ -13,12 +13,13 @@
    <title>Inicio</title>
  </head>
 
- <body>
+ <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
    <?php  include './recursos/nav/nav.php' ?>
 
 
 
 
+   <script type="text/javascript" src="./usuarios/modificarTema/js/master.js"></script>
  </body>
 
  </html>
