@@ -1,5 +1,6 @@
 <?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
+<?php require 'pmv.php' ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,23 +29,21 @@
              <li>
                <label for="periodo">Categoria:</label>
                <select name="periodo" id="periodo">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
+                  <?php
+                 foreach ($datos as $dat) {
+                 echo '<option value="' . $dat['ID_CATEGORIA'] . '">' . $dat['NOMBRE'] . '</option>';
+                 } //end foreach
+                  ?>
                </select>
              </li>
              <li>
-               <label for="msg">Estatus (1.- Activo 2.- Baja):</label>
+               <label for="msg">Estatus</label>
                <select name="FP" id="FP">
-                <option value="1">1</option>
-                <option value="2">2</option>
+               <?php
+                 foreach ($datos1 as $dat) {
+                 echo '<option value="' . $dat['ID_ESTATUS'] . '">' . $dat['DESCRIPCION'] . '</option>';
+                 } //end foreach
+                  ?>
                </select>
              </li>
               <li>
@@ -54,9 +53,18 @@
             </div>
     <div id="export">
         <h2>Exportar como</h2>
-        <button type="submit" name="reportePdf" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()"> <img src="archivo-pdf.png" height ="80" width="100" /></button>
-        <button type="submit" name="reporteExcel" onclick= "document.form1.action = 'reporteExcel.php'; document.form1.submit()"> <img src="archivo-excel.png" height ="80" width="100" /></button>
+        <button type="submit" name="reportePdf" class="report" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()"> <img src="archivo-pdf.png" height ="80" width="100" /></button>
+        <button type="submit" name="reporteExcel" class="report" onclick= "document.form1.action = 'reporteExcel.php'; document.form1.submit()"> <img src="archivo-excel.png" height ="80" width="100" /></button>
     </div>
+    <table width="100%" border="1">
+          <tr>
+            <td><b><center>ID PRODCUTO</center></b></td>
+            <td><b><center>NOMBRE</center></b></td>
+            <td><b><center>PRECIO DE COMPRA</center></b></td>
+            <td><b><center>PRECIO DE VENTA</center></b></td>
+            <td><b><center>STOCK</center></b></td>
+            <td><b><center>CATEGORIA</center></b></td>
+          </tr>
     </form>
     
     <?php
@@ -74,15 +82,6 @@
     while($consultas = mysqli_fetch_array($resultado)){
       echo 
       "
-        <table width=\"100%\" border=\"1\">
-          <tr>
-            <td><b><center>ID PRODCUTO</center></b></td>
-            <td><b><center>NOMBRE</center></b></td>
-            <td><b><center>PRECIO DE COMPRA</center></b></td>
-            <td><b><center>PRECIO DE VENTA</center></b></td>
-            <td><b><center>STOCK</center></b></td>
-            <td><b><center>CATEGORIA</center></b></td>
-          </tr>
           <tr>
             <td>".$consultas['ID_PRODUCTO']."</td>
             <td>".$consultas['NOMBRE']."</td>
@@ -91,10 +90,13 @@
             <td>".$consultas['STOCK']."</td>
             <td>".$consultas['DESCRIPCION']."</td>
           </tr>
-        </table>
+        
       ";
 
     }
+    ?>
+    </table>
+    <?php
   }
   ?>
 
@@ -102,6 +104,7 @@
 
   </section>
 
+  <script src="https://kit.fontawesome.com/167cc065d2.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" charset="utf8" src="../../recursos/librerias/jquery/plug-in/datables/datatables.js"></script>
   <script src="js/main.js" charset="utf-8"></script>

@@ -43,7 +43,7 @@
         <select class="estatus" >
             <option selected disabled ></option>
             <option value="1">Activo</option>
-            <option value="0">Fuera de linea</option>
+            <option value="2">Fuera de linea</option>
         </select>
      </div>
      <div>

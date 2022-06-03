@@ -1,5 +1,5 @@
 <?php
-  include '../../recursos/PHP/clases/conexion.php';
+  include '../../../recursos/PHP/clases/conexion.php';
 
     //id de producto
     $nombre = $_POST['prod'];

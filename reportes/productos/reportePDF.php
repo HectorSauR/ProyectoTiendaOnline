@@ -20,7 +20,7 @@ function Header()
     $this -> Cell(40, 10, 'PRECIO COMPRA', 1, 0, 'C', 0);
     $this -> Cell(40, 10, 'PRECIO VENTA', 1, 0, 'C', 0);
     $this -> Cell(20, 10, 'STOCK', 1, 0, 'C', 0);
-    $this -> Cell(40, 10, 'DESCRIPCION', 1, 1, 'C', 0);
+    $this -> Cell(40, 10, 'CATEGORIA', 1, 1, 'C', 0);
 
 }
 

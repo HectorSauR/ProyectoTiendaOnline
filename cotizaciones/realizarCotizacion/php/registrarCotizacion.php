@@ -3,10 +3,10 @@
     session_start();
 
     //id de cotizacion
-    $cotizacion = 1;
+    $cotizacion = $_POST['id_cot'];
 
     //MODIFICAR ESTADO DE LA COTIZACION
-    $modificarCarrito = "UPDATE cotizacion SET `ID_ESTATUS` = 2 WHERE id_cotizacion = $cotizacion";
+    $modificarCarrito = "UPDATE cotizacion SET `ID_ESTATUS` = 3 WHERE id_cotizacion = $cotizacion";
     $consulta =$conexion->prepare($modificarCarrito);
     $r = $consulta->execute();
 ?>

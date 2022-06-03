@@ -74,7 +74,7 @@
           <?php
             $total = 0;
 
-            $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and (ID_ESTATUS = 3 or ID_ESTATUS = 2);";
+            $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 3;";
             $Execute = $conexion->query($BuscarUsuario);
 
             $r = $Execute->fetchall(PDO::FETCH_ASSOC);

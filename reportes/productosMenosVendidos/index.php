@@ -43,7 +43,7 @@
         <select class="estatus" >
             <option selected disabled ></option>
             <option value="1">Activo</option>
-            <option value="0">Fuera de linea</option>
+            <option value="2">Fuera de linea</option>
         </select>
      </div>
      <div>
@@ -89,8 +89,9 @@
 
 </div>
 <script src="jquery-3.6.0.js"></script>
-<script src="js/xlsx.min.js"></script>
 <script src="jspdf.min.js"></script>
+<script src="jquery.tableToExcel.js"></script>
 <script src="pmv.js"></script>
+
 </body>
 </html>

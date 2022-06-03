@@ -4,7 +4,6 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
 
   //OBTENER DATOS DEL FORM
   var data = new FormData(e.target);
-  alert("entro");
 
   //VERIFICA QUE HAY STOCK DEL PRODUCTO
   fetch("./php/registrarCotizacion.php", {

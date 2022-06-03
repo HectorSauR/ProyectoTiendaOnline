@@ -1,6 +1,7 @@
 <?php ob_start();?>
 <?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
+<?php require 'pmv.php' ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,13 +34,22 @@
              <li>
                <label for="msg">Forma de pago (1.- Efectivo, 2.- Tarjeta):</label>
                <select id="FP" name="frmPago">
-                  <option value="1">1</option>
-                  <option value="2" selected>2</option>
+               <?php
+                 foreach ($datos as $dat) {
+                 echo '<option value="' . $dat['ID_FORMA_PAGO'] . '">' . $dat['DESCRIPCION'] . '</option>';
+                 } //end foreach
+                  ?>
                </select>
              </li>
              <li>
-                <label for="msg">Usuario:</label>
-                <input type="text" value="Nombre" id="usr" name="nameUsr">
+             <label for="msg">Usuario:</label>
+                <select name="usr1" id="usr">
+                <?php
+                 foreach ($datos1 as $dat) {
+                 echo '<option value="' . $dat['ID_USUARIO'] . '">' . $dat['USUARIO'] . '</option>';
+                 } //end foreach
+                  ?>
+                </select>
               </li>
 
               <li>
@@ -54,13 +64,21 @@
         <button type="submit" name="reportePdf" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()"> <img src="archivo-pdf.png" height ="80" width="100" /></button>
         <button type="submit" name="reporteExcel" onclick= "document.form1.action = 'reporteExcel.php'; document.form1.submit()"> <img src="archivo-excel.png" height ="80" width="100" /></button>
     </div>
+    <table width="100%" border="1">
+            <tr>
+              <td><b><center>ID Venta</center></b></td>
+              <td><b><center>Fecha</center></b></td>
+              <td><b><center>Usuario</center></b></td>
+              <td><b><center>Forma de pago</center></b></td>
+              <td><b><center>Importe</center></b></td>
+            </tr>
     </form>
   
   <?php
   if (isset($_POST['generar'])) {
     require 'conexion.php';
     $frmPago = $_REQUEST['frmPago'];
-    $usr = $_POST['nameUsr'];
+    $usr = $_REQUEST['usr1'];
     $fecha = $_REQUEST['fecha'];
     //$BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
     $resultado = mysqli_query($conectar,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
@@ -71,19 +89,11 @@
                                             INNER JOIN detalle_venta detallesVenta ON venta.ID_VENTA = detallesVenta.ID_VENTA
                                             INNER JOIN usuario usuario ON venta.ID_USUARIO = usuario.ID_USUARIO
                                             INNER JOIN forma_pago forma_pago ON venta.ID_FORMA_PAGO = forma_pago.ID_FORMA_PAGO
-                                            WHERE venta.FECHA = '$fecha' AND venta.ID_FORMA_PAGO = '$frmPago'");
+                                            WHERE venta.FECHA = '$fecha' AND venta.ID_FORMA_PAGO = '$frmPago' AND venta.ID_USUARIO='$usr'");
     
     while($consultas = mysqli_fetch_array($resultado)){
       echo 
       "
-        <table width=\"100%\" border=\"1\">
-          <tr>
-            <td><b><center>ID Venta</center></b></td>
-            <td><b><center>Fecha</center></b></td>
-            <td><b><center>Usuario</center></b></td>
-            <td><b><center>Forma de pago</center></b></td>
-            <td><b><center>Importe</center></b></td>
-          </tr>
           <tr>
             <td>".$consultas['ID_VENTA']."</td>
             <td>".$consultas['FECHA']."</td>
@@ -91,10 +101,13 @@
             <td>".$consultas['DESCRIPCION']."</td>
             <td>".$consultas['PRECIO']."</td>
           </tr>
-        </table>
+        
       ";
 
     }
+    ?>
+    </table>
+    <?php
   }
   ?>
 
