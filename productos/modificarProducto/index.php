@@ -13,7 +13,8 @@
 
     <title>Document</title>
 </head>
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
     
 
 <?php include '../../recursos/nav/nav.php' ?>
@@ -61,7 +62,7 @@
 
      
       <aside class="imgn">
-        <input type="image" id="iImage" name="imagen" src="usuario.png">
+        <input type="image" id="iImage" name="imagen">
         
         <input type="button" name="examinar" id="examinarbtn" value="Examinar">
 

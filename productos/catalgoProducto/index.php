@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
 
 <?php  include '../../recursos/nav/nav.php' ?>
 
