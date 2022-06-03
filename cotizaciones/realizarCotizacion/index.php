@@ -17,7 +17,8 @@
       href="../../recursos/librerias/jquery/plug-in/datables/datatables.css"
     />
   </head>
-  <body>
+  <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
   <?php include "../../recursos/nav/nav.php" ?>
 
     <div class="main">
@@ -140,8 +141,20 @@
         <div class="TOTAL">
           <p>TOTAL: $<?php echo $total ?></p>
           <form class="producto" method="POST">
-            <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
-            <button type="submit" class="btn">REGISTRAR</button>
+            <?php
+              if(isset($id)){
+                ?>            
+                <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
+                <button type="submit" class="btn">REGISTRAR</button>
+                <?php
+              }
+              else{
+              ?>
+              <button type="submit" class="btn">REGISTRAR</button>
+              <?php
+              }
+            ?>
+
           </form>
         </div>
 

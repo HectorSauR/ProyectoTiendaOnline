@@ -1,6 +1,6 @@
 <?php
-  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
-  include '../../recursos/PHP/clases/conexion.php';
+ // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  //include '../../recursos/PHP/clases/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,8 @@
 
     <title>Document</title>
 </head>
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
     
 
 <?php include '../../recursos/nav/nav.php' ?>
@@ -21,7 +22,7 @@
 
 
       <section class="datos">
-        <h2>GESTIÓN DE USUSARIOS</h2>
+        <h2>GESTIÓN DE PRODUCTO</h2>
         <br>
         <br>
           <label for="">Buscar</label>
@@ -47,7 +48,7 @@
                 <br>
                 <br>
                 <label > Rol:</label> 
-                <div class="select">
+                <div>
                     <select name="rol" id="irol">
                        <option selected disabled>Selecciona un Rol</option>
                        <option value="administrador">administrador</option>
@@ -61,21 +62,23 @@
 
      
       <aside class="imgn">
-        <input type="image" id="iImage" name="imagen" src="usuario.png">
+        <input type="image" id="iImage" name="imagen">
         
         <input type="button" name="examinar" id="examinarbtn" value="Examinar">
 
         
    </aside>
 
-   <footer class="botones"> <input type="button" value="Guardar">
-    <input type="button" value="Modificar">
-    <input type="button" value="Eliminar">
-</footer>
   
    
     </div>
     
+
+    
+   <footer class="botones"> <input type="button" value="Guardar">
+    <input type="button" value="Modificar">
+    <input type="button" value="Eliminar">
+    </footer>
    
 </body>
 </html>

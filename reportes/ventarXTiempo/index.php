@@ -1,4 +1,7 @@
-<?php  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php' ?>
+<?php
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
+?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <?php require 'pmv.php' ?>
 
@@ -16,7 +19,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
 
   <?php include '../../recursos/nav/nav.php' ?>
 
