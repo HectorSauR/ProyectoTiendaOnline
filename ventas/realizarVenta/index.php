@@ -23,6 +23,15 @@
           <label>Cotizacion:</label>
           <input type="text" name="" value="" id="txtIdCotizacion" placeholder="ID">
           <button type="button" id="btnBuscarCotizacion" name="button">Buscar</button>
+
+
+        </div>
+        <div class="contenedor-buscar-cotizacion">
+          <label>Producto:</label>
+          <input type="text" name="" value="" id="txtidproducto" placeholder="ID">
+          <button type="button" id="btnAgregarProducto" name="button">Agregar</button>
+
+
         </div>
         <div class="contenedor-datos-cliente">
           <label for="">Datos del cliente:</label>
