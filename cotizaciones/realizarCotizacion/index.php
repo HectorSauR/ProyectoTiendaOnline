@@ -58,7 +58,7 @@
 
       <!-- DIV DE LA TABLA DE LOS PRODUCTOS -->
       <div class="table">
-        <table id="table_id" class="display">
+        <table class="tabla" id="table_id" class="display">
           <thead>
             <tr>
               <th>Codigo</th>
@@ -74,8 +74,9 @@
 
           <?php
             $total = 0;
+            $id = 0;
 
-            $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 3;";
+            $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 4;";
             $Execute = $conexion->query($BuscarUsuario);
 
             $r = $Execute->fetchall(PDO::FETCH_ASSOC);
@@ -98,10 +99,11 @@
                     <td><?php echo $row['ID_PRODUCTO'] ?></td>
                     <td><?php echo $row['NOMBRE'] ?></td>
                     <form class="producto" action="./php/modificarCotizacion.php" method="POST">
+                      
                       <input type="hidden" name="id_prod" value= "<?php echo $row['ID_PRODUCTO'] ?>">
                       <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
 
-                      <td><input type="number" name="cantidad" value = "<?php echo $row['CANTIDAD'] ?>" class = "cantidad"><button class="borrar" type="submit"><i class="fa-solid fa-pen icon_change"></button></i></td>
+                      <td><p class="hidden"><?php echo $row['CANTIDAD'] ?></p> <input type="number" name="cantidad" value = "<?php echo $row['CANTIDAD'] ?>" class = "cantidad"><button class="borrar" type="submit"><i class="fa-solid fa-pen icon_change"></button></i></td>
                     </form>
                     <td>$<?php echo $row['PRECIO_VENTA'] ?></td>
                     <td>$<?php echo $importe ?></td>
@@ -122,36 +124,23 @@
           </tbody>
 
         </table>
+
+        <h2 class="hidden" > ID de la cotizacion: </h2>
+        <h3 class= "hidden"> <?php echo $id ?> </h3>
       </div>
 
       <div class = "Bottom">
-
-          <div class="info" id="imprimir">
-            <!-- DIS PARA INGRESAR LOS DATOS DEL CLIENTE -->
-            <div class="client">
-              <p id="first">Documento:</p>
-              <input type="radio" name="" id="pdf" value="Descargar PDF" />
-              <label for="pdf" id="label_pdf"> Descargar PDF </label>
-              <input type="radio" name="" id="mail" value="Descargar PDF" />
-              <label for="mail"> Enviar por correo </label>
-            </div>
-          </div>
 
         <!-- DIV BOTONES GUERDAR / ELIMINAR -->
         <div class="TOTAL">
           <p>TOTAL: $<?php echo $total ?></p>
           <form class="producto" method="POST">
             <?php
-              if(isset($id)){
+              if($id != 0){
                 ?>            
                 <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
                 <button type="submit" class="btn">REGISTRAR</button>
                 <?php
-              }
-              else{
-              ?>
-              <button type="submit" class="btn">REGISTRAR</button>
-              <?php
               }
             ?>
 
@@ -166,6 +155,7 @@
 
 
     <!-- Scripts para la tabla -->
+    <script src="tableexport.min.js"></script>
     <script
       type="text/javascript"
       src="../../recursos/librerias/jquery/jquery-3.6.0.min.js"
@@ -176,6 +166,7 @@
       charset="utf8"
       src="../../recursos/librerias/jquery/plug-in/datables/datatables.js"
     ></script>
+    <script src="jspdf.min.js"></script>
 
     <!-- SCRIPT PARA DATOS DE LA TABLA -->
     <script src="https://kit.fontawesome.com/167cc065d2.js" crossorigin="anonymous"></script>

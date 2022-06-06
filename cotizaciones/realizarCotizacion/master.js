@@ -27,5 +27,30 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
           clearInterval(timerInterval);
         },
       });
+
+      var doc = new jsPDF({
+        orientation: "landscape",
+        format: "a2",
+        precision: 3,
+      });
+
+      //OBTENER DATOS DEL FORM
+      var data = new FormData(e.target);
+
+      doc.text("COTIZACION", 30, 30);
+
+      var elementHTML = $(".table").html();
+      var specialElementHandlers = {
+        "#elementH": function (element, renderer) {
+          return true;
+        },
+      };
+      doc.fromHTML(elementHTML, 30, 30, {
+        width: 170,
+        elementHandlers: specialElementHandlers,
+      });
+
+      // Save the PDF
+      doc.save("document.pdf");
     });
 });
