@@ -1,84 +1,148 @@
 <?php
-  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
-  include '../../recursos/PHP/clases/conexion.php';
+ // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+ // include  '../../recursos/PHP/clases/conexion.php';
+
+ require "../../recursos/PHP/clases/conexion.php";
+
+ 
+
+ $query = 'SELECT *  FROM `categoria_productos`; ';
+ $statement = $conexion->prepare($query);
+ $statement->execute();
+ $result = $statement->fetchall();
+
+    $datos = [];
+       foreach($result as $row){
+           $datos[] = [
+               
+               'idcategoria' => $row['ID_CATEGORIA'],
+      
+           ];
+       }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
-    <link rel="stylesheet" href="Estilo.css" />
-
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
+  <link rel="stylesheet" href="css/master.css">
+  <title>Document</title>
 </head>
-<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
-<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
-    
-
-<?php include '../../recursos/nav/nav.php' ?>
-    <div class="dt">
-
-
-      <section class="datos">
-        <h2>GESTIÓN DE PRODUCTO</h2>
-        <br>
-        <br>
-          <label for="">Buscar</label>
-         <input type="search" id="ibuscar" name="buscar">
-        <br>
-        <br>
-
-        <section class="ingr">
-            <article>
-                <label > Nombre:</label>
-                <input type="text" id="inombre" name="nombre"> </article>
-                <br>
-                <label > Usuario:</label>
-                <input type="text" id="iUsuario" name="usuario"> </article>
-                <br>
-                <br>
-                <label > Contraseña:</label>
-                <input type="password" id="icontraseña" name="contraseña"></article>
-                <br>
-                <br>
-                <label > Correo:</label>
-                <input type="email" id="icorreo" name="correo"> </article>
-                <br>
-                <br>
-                <label > Rol:</label> 
-                <div>
-                    <select name="rol" id="irol">
-                       <option selected disabled>Selecciona un Rol</option>
-                       <option value="administrador">administrador</option>
-                       <option value="vendedor">vendedor</option>
-                       <option value="##">y eso no</option>
-                    </select>
-                 </div> 
-        </section>
-       
-      </section>
-
-     
-      <aside class="imgn">
-        <input type="image" id="iImage" name="imagen">
-        
-        <input type="button" name="examinar" id="examinarbtn" value="Examinar">
-
-        
-   </aside>
-
-  
-   
+<body>
+  <?php//  include '../../recursos/nav/nav.php' ?>
+  <div class="main" id="main">
+    <h1>Gestión de productos</h1>
+    <div class="contenedor-buscar">
+      <form  id="frmbuscar">
+      <label>Buscar:</label>
+      <input type="text" name="id_prd_b" value="" class="inpbuscar">
+      <button type="button" class="btnBuscar">Buscar</button>
+      
+      </form>
+      
     </div>
-    
 
-    
-   <footer class="botones"> <input type="button" value="Guardar">
-    <input type="button" value="Modificar">
-    <input type="button" value="Eliminar">
-    </footer>
-   
+      
+        <div class="contenedor-productos">
+                <div class="header-idprd">
+                  <p>ID PRODUCTO</p>
+                </div>
+                <div class="header-idcategoria">
+                  <p>ID CATEGORIA</p>
+                </div>
+
+                <div class="header-nombre">
+                  <p>NOMBRE</p>
+                </div>
+
+                <div class="header-imagen">
+                  <p>IMAGEN</p>
+                  <!-- <img src="../../recursos/imagenes/productos/mcr/mcr.jpg" alt="asdasd"> -->
+                </div>
+
+                <div class="header-precioc">
+                  <p>PRECIO C</p>
+                </div>
+
+                <div class="header-precio">
+                  <p>PRECIO</p>
+                </div>
+
+                <div class="header-stock">
+                  <p>STOCK</p>
+                </div>
+
+                <div class="header-stockmin">
+                  <p>STOCK MIN</p>
+                </div>
+
+                <div class="header-status">
+                  <p>STATUS</p>
+                </div>
+                <div class="header-cb">
+                  <p>CODIGO DE BARRAS</p>
+                </div>
+                <div class="header-opcion">
+                  <p>Opcion</p>
+                </div>
+        </div>
+       
+ 
+            
+          
+            <div class="contenedor-productosD"></div>
+
+
+  </div>
+
+  <!--MODAL PARA EDITAR USUARIO -->
+
+  <div class="contenedor-modal">
+    <div class="modal">
+      <h1>Editar Producto</h1>
+      <form id="formEditarProducto">
+
+       <label for="">CATEGORIA</label>
+        <select name="categoria" id="categoria"> 
+          <?php
+              foreach ($datos as $dat) {
+                 echo '<option value="' . $dat['idcategoria'] . '">' . $dat['idcategoria'] . '</option>';
+              } 
+          ?>
+        </select>
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" value="" id="nombre">
+        <label for="">Imagen</label>
+        <input type="text" name="imagen" value="" id="imagen">
+        <input type="file" name="img_env" id="img_env">
+        <label for="">Precio compra</label>
+        <input type="number" name="precioc" value="" id="precioc">
+        <label for="">Precio</label>
+        <input type="number" name="precio" value="" id="precio">
+        <label for="">Stock</label>
+        <input type="number" name="stock" value="" id="stock">
+        <label for="">Stock Min</label>
+        <input type="number" name="stockm" value="" id="stockm">
+        <label for="">Status</label>
+        <select name="status" id="status"> 
+         <option value="1">ACTIVO</option>
+         <option value="2">INACTIVO</option>
+         <option value="3">EN ESPERA</option>
+         <option value="4">EN TRAMITE</option>
+        </select>
+        
+       
+
+        <div class="contenedor-button">
+           <button type="submit" id = "btnGuardar">Guardar</button>
+            <button type="button" id="btnCancelarEditarUsuario">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
