@@ -249,3 +249,19 @@ nav .nav-enlaces li>ul>li:hover {
     width: 80%;
   }
 }
+
+/*ENALSE PARA INICIAR COMO cliente EN EL SISTEMA*/
+#contenedor-btn-login {
+  display: flex;
+  flex-direction: column;
+}
+#loginCliente {
+  margin-top: var(--Margin);
+  font-weight: 600;
+  color: var(--ColorPrincipal);
+  cursor: pointer;
+  transition: transform .3s;
+}
+#loginCliente:hover {
+  transform: scale(1.2);
+}

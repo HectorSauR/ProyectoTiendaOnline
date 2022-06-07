@@ -204,7 +204,7 @@ var idproducto=  document.querySelector("#txtidproducto").value
         let idproducto = dataTabla[i].querySelector(".producto p").innerText
         let cantidad = dataTabla[i].querySelector(".cantidad p")
 
-
+        
 
         let precio = dataTabla[i].querySelector(".precio p")
         let totalVar = dataTabla[i].querySelector(".total p")
