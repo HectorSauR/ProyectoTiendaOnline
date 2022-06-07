@@ -10,11 +10,13 @@ fetch('../../recursos/PHP/metodos/obtenerUsuariosBD.php').then(res => res.json()
       //VERIFICAR EL NIVEL DE PRIVILEGIO
       var nivel = ""
       if(item.NIVEL == "0"){
-        nivel = "Usuario"
+        nivel = "Cliente"
       }else if(item.NIVEL == "1"){
-        nivel = "Admin Principal"
+        nivel = "Admin"
+      }else{
+        nivel = "Ventas"
       }
-      document.querySelector(".main").innerHTML +=
+      document.querySelector(".contenedor-tabla-usuarios").innerHTML +=
       `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
           <div class="nombre">
@@ -41,11 +43,13 @@ fetch('../../recursos/PHP/metodos/obtenerUsuariosBD.php').then(res => res.json()
 
 
     }
-    document.getElementById("contenedor-usuarios").addEventListener("click",(e)=>{
+    document.querySelector(".contenedor-tabla-usuarios").addEventListener("click",(e)=>{
       //EDITAR USUARIO
       if(e.target.tagName == "BUTTON"){
         document.querySelector(".contenedor-modal").style.display = "flex";
         var contenedor = e.target.parentNode.parentNode
+
+        console.log(contenedor)
         var nombre = contenedor.querySelector(".nombre p").innerText
         var usuario = contenedor.querySelector(".usuario p").innerText
         var contra = contenedor.querySelector(".contra p").innerText
@@ -70,10 +74,12 @@ fetch('../../recursos/PHP/metodos/obtenerUsuariosBD.php').then(res => res.json()
 
 
 
-          if(data.get("nivel") == "Usuario"){
+          if(data.get("nivel") == "Cliente"){
             data.append("nivelN" ,"0")
-          }else if(data.get("nivel") == "Admin Principal"){
+          }else if(data.get("nivel") == "Admin"){
             data.append("nivelN" ,"1")
+          }else{
+            data.append("nivelN" ,"2")
           }
 
           fetch("../../recursos/PHP/metodos/EditarUsuarioBD.php", {
@@ -91,6 +97,28 @@ fetch('../../recursos/PHP/metodos/obtenerUsuariosBD.php').then(res => res.json()
       }
       //DAR DE BAJA A USUARIO
       else if(e.target.tagName == "INPUT"){
+        var contenedor = e.target.parentNode.parentNode
+        var usuario = contenedor.querySelector(".usuario p").innerText
+        var data = new FormData();
+        data.append("id" ,usuario)
+
+
+        fetch("../../recursos/PHP/metodos/eliminarUsuario.php", {
+          method: 'POST',
+          body: data
+        }).then(res => res.text()).then(data => {
+
+          if(data == "2"){
+            Swal.fire(
+              'El sistema no puede quedarse sin usuarios',
+              '',
+              'error')
+          }else{
+            window.location.reload();
+          }
+
+
+        })
 
       }
 

@@ -158,3 +158,7 @@ margin-top: var(--Margin);
   color: var(--ColorPrincipal);
   background-color: var(--ColorSecundario);
 }
+
+.contenedor-tabla-usuarios {
+  width: 100%;
+}
