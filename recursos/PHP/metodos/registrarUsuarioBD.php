@@ -6,7 +6,7 @@
   $clave = $_POST['clave'];
   $correo = $_POST['correo'];
   $imagen = $_FILES['imagen'];
-  $nivel = $_POST['nivel'];
+  $nivel = $_POST['nivelA'];
 
   //LOGICA PARA ALMCENAR LA IMAGEN EN EL SERVIDOR
   $fileContent = file_get_contents($imagen['tmp_name']);

@@ -186,7 +186,11 @@ function finalizarVenta(){
 document.querySelector("#btnAgregarProducto").addEventListener("click",()=>{
 var idproducto=  document.querySelector("#txtidproducto").value
   if(idproducto == ""){
-    alert("Ingrese id")
+    Swal.fire(
+      'Ingrese id.',
+      '',
+      'error'
+    )
   }else{
     var data = new FormData()
 
@@ -204,7 +208,7 @@ var idproducto=  document.querySelector("#txtidproducto").value
         let idproducto = dataTabla[i].querySelector(".producto p").innerText
         let cantidad = dataTabla[i].querySelector(".cantidad p")
 
-        
+
 
         let precio = dataTabla[i].querySelector(".precio p")
         let totalVar = dataTabla[i].querySelector(".total p")
@@ -271,5 +275,13 @@ var idproducto=  document.querySelector("#txtidproducto").value
 
 
 
+  }
+})
+
+
+//EVENTO ENTER EN INPUT
+document.querySelector("#txtidproducto").addEventListener("keypress",(e)=>{
+  if (e.key === "Enter"){
+    document.querySelector("#btnAgregarProducto").click();
   }
 })
