@@ -28,6 +28,30 @@
 
 </header>
 
+
+<script type="text/javascript">
+  document.querySelector("#btn-usr").addEventListener("click",()=>{
+    document.querySelector(".loal-contenedor-modal").classList.toggle("transition-modal")
+  })
+</script>
+
+<!--MODAL PARA MOSTRAR INFO DE USUARIO -->
+<div class="loal-contenedor-modal">
+  <div class="loal-modal">
+    <!--
+    <div class="loal-header">
+      <button type="button" name="button">x</button>
+    </div> -->
+    <div class="loal-body">
+        <img src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt="">
+        <p>loal1</p>
+    </div>
+    <div class="loal-footer">
+        <button type="button" name="button">CERRAR SESION</button>
+    </div>
+  </div>
+</div>
+
 <!--VERIFICAR SI ROL ES IGUAL A ADMIN-->
 <?php if(isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == "1"){?>
   <nav>
