@@ -135,6 +135,8 @@ fetch('../../recursos/PHP/metodos/buscarVentaBD.php').then(res => res.json()).th
     //DAR DE BAJA A USUARIO
     else if(e.target.className == "eliminarS"){
 
+      
+
 
       
     }else if (e.target.className == "btnBuscar"){
