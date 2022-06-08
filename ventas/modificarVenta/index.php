@@ -1,10 +1,10 @@
 <?php
- // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
   include  '../../recursos/PHP/clases/conexion.php';
 
- 
 
- 
+
+
 
  $query = 'SELECT *  FROM `forma_pago` WHERE ID_ESTATUS = 1;';
  $statement = $conexion->prepare($query);
@@ -14,10 +14,10 @@
     $datos = [];
        foreach($result as $row){
            $datos[] = [
-               
+
                'idforma_pago' => $row['ID_FORMA_PAGO'],
                'descripcion' => $row['DESCRIPCION'],
-      
+
            ];
        }
 ?>
@@ -32,7 +32,7 @@
   <title>Document</title>
 </head>
 <body>
-  <?php // include '../../recursos/nav/nav.php' ?>
+  <?php  include '../../recursos/nav/nav.php' ?>
   <div class="main" id="main">
     <h1>Gestión de productos</h1>
     <div class="contenedor-buscar">
@@ -40,12 +40,12 @@
       <label>Buscar:</label>
       <input type="text" name="id_prd_b" value="" class="inpbuscar">
       <button type="button" class="btnBuscar">Buscar</button>
-      
+
       </form>
-      
+
     </div>
 
-      
+
         <div class="contenedor-ventas">
                 <div class="header-idventa">
                   <p>ID VENTA</p>
@@ -78,15 +78,15 @@
                 <div class="header-status">
                   <p>STATUS</p>
                 </div>
-               
+
                 <div class="header-opcion">
                   <p>Opcion</p>
                 </div>
         </div>
-       
- 
-            
-          
+
+
+
+
             <div class="contenedor-ventasD"></div>
 
 
@@ -99,16 +99,16 @@
       <h1>Editar Producto</h1>
       <form id="formEditarVenta">
 
-       
+
         <label for="">Usuario</label>
         <input type="text" name="usuario" value="" id="usuario">
 
         <label for="">Forma de pago</label>
-        <select name="forma_pago" id="forma_pago"> 
+        <select name="forma_pago" id="forma_pago">
           <?php
               foreach ($datos as $dat) {
                  echo '<option value="' . $dat['idforma_pago'] . '">' . $dat['descripcion'] . '</option>';
-              } 
+              }
           ?>
         </select>
         <label for="">Fecha</label>
@@ -122,16 +122,16 @@
 
         <label for="">Precio</label>
         <input type="number" name="precio" value="" id="precio">
-        
+
         <label for="">Status</label>
-        <select name="status" id="status"> 
+        <select name="status" id="status">
          <option value="1">ACTIVO</option>
          <option value="2">INACTIVO</option>
          <option value="3">EN ESPERA</option>
          <option value="4">EN TRAMITE</option>
         </select>
-        
-       
+
+
 
         <div class="contenedor-button">
            <button type="submit" id = "btnGuardar">Guardar</button>

@@ -20,7 +20,7 @@
   ?>
   </div>
   <div>
-    <a href="<?php echo $pathHost ?>usuarios/modificarTema"><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
+    <a><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
     <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
     <img class="btn-menu" id="btn-menu" src="https://bluemadness.000webhostapp.com/img_proyecto/icon-menu.png" alt="">
   </div>
@@ -30,7 +30,7 @@
 
 
 <script type="text/javascript">
-  document.querySelector("#btn-usr").addEventListener("click",()=>{
+    document.querySelector("#btn-usr").addEventListener("click",()=>{
     document.querySelector(".loal-contenedor-modal").classList.toggle("transition-modal")
   })
 </script>

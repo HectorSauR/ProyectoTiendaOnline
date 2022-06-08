@@ -142,6 +142,7 @@ function finalizarVenta(){
 
   let date = new Date();
   data.append("fecha",date.toLocaleDateString())
+
   fetch("../../recursos/PHP/metodos/obtenerIdVenta.php",{
     method:"POST",
     body:data
