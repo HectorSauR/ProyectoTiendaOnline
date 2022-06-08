@@ -186,7 +186,11 @@ function finalizarVenta(){
 document.querySelector("#btnAgregarProducto").addEventListener("click",()=>{
 var idproducto=  document.querySelector("#txtidproducto").value
   if(idproducto == ""){
-    alert("Ingrese id")
+    Swal.fire(
+      'Ingrese id.',
+      '',
+      'error'
+    )
   }else{
     var data = new FormData()
 
@@ -271,5 +275,13 @@ var idproducto=  document.querySelector("#txtidproducto").value
 
 
 
+  }
+})
+
+
+//EVENTO ENTER EN INPUT
+document.querySelector("#txtidproducto").addEventListener("keypress",(e)=>{
+  if (e.key === "Enter"){
+    document.querySelector("#btnAgregarProducto").click();
   }
 })

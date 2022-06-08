@@ -22,30 +22,34 @@
       <input type="text" name="" value="">
       <button type="button">Buscar</button>
     </div>
-    <div class="contenedor-usuarios">
-      <div class="header-nombre">
-        <p>Nombre</p>
-      </div>
-      <div class="header-usuario">
-        <p>Usuario</p>
-      </div>
 
-      <div class="header-contra">
-        <p>Contraseña</p>
-      </div>
+    <div class="contenedor-tabla-usuarios">
+      <div class="contenedor-usuarios">
+        <div class="header-nombre">
+          <p>Nombre</p>
+        </div>
+        <div class="header-usuario">
+          <p>Usuario</p>
+        </div>
 
-      <div class="header-correo">
-        <p>Correo</p>
-      </div>
+        <div class="header-contra">
+          <p>Contraseña</p>
+        </div>
 
-      <div class="header-nivel">
-        <p>Nivel</p>
-      </div>
+        <div class="header-correo">
+          <p>Correo</p>
+        </div>
 
-      <div class="header-opcion">
-        <p>Opcion</p>
+        <div class="header-nivel">
+          <p>Nivel</p>
+        </div>
+
+        <div class="header-opcion">
+          <p>Opcion</p>
+        </div>
       </div>
     </div>
+
 
 
   </div>
@@ -66,8 +70,10 @@
         <input type="text" name="correo" value="" id="correo">
         <label for="">Nivel</label>
         <select name="nivel" id="nivel">
-          <option>Usuario</option>
-          <option>Admin Principal</option>
+          <option>Cliente</option>
+          <option>Admin</option>
+          <option>Ventas</option>
+
         </select>
         <div class="contenedor-button">
           <button type="submit">Guardar</button>

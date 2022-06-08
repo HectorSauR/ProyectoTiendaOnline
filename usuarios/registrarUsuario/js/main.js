@@ -45,6 +45,8 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
 
 
 
+
+
   //VERIFICAR SI USUARIO INGRESADO EXISTE EN LA BD
   fetch("../../recursos/PHP/metodos/verificarUsuarioRegistradoBD.php", {
     method: 'POST',
@@ -60,10 +62,19 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
       //PROCESAR LOS DATOS A PHP
       //alert(data.get("imagen").name);
       var data = new FormData(e.target);
+
+      if(data.get("nivel") == "CLIENTE"){
+        data.append("nivelA","0")
+      }else if(data.get("nivel") == "ADMIN"){
+        data.append("nivelA","1")
+      }else{
+        data.append("nivelA","2")
+      }
       fetch("../../recursos/PHP/metodos/registrarUsuarioBD.php", {
         method: 'POST',
         body: data
       }).then(response => response.text()).then(data => {
+        console.log(data)
 
         if (data == "1") {
           Swal.fire(
