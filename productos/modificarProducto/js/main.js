@@ -168,16 +168,33 @@ fetch('../../recursos/PHP/metodos/buscarProductoBd.php').then(res => res.json())
       console.log(data.get("stock"))
       console.log(data.get("stockm"))
       console.log(data.get("status"))
+      
+      data.append("txtnom" ,data.get("nombre"))
 
-    
-
-      fetch("../../recursos/PHP/metodos/EditarProductoBD.php", {
+      fetch("../../recursos/PHP/metodos/verificarProductoRegistrado.php", {
         method: 'POST',
         body: data
-      }).then(response => response.text()).then(data =>{
-        document.querySelector(".contenedor-modal").style.display = "none";
-        window.location.reload();
+      }).then(response => response.text()).then(data => {
+        if (data == "1") {
+          Swal.fire(
+            'Error al registrar producto.',
+            'Es posible que el producto ya este registrado con ese nombre verifique',
+            'error'
+          )
+        }else{
+          fetch("../../recursos/PHP/metodos/EditarProductoBD.php", {
+            method: 'POST',
+            body: data
+          }).then(response => response.text()).then(data =>{
+            document.querySelector(".contenedor-modal").style.display = "none";
+            window.location.reload();
+          })
+        }
+
       })
+    
+
+      
 
 
 
