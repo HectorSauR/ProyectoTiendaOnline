@@ -118,13 +118,13 @@
         <input type="text" name="imagen" value="" id="imagen">
         <input type="file" name="img_env" id="img_env">
         <label for="">Precio compra</label>
-        <input type="number" name="precioc" value="" id="precioc">
+        <input type="number" name="precioc" value="" id="precioc"  min="0" pattern="^[0-9]+">
         <label for="">Precio</label>
-        <input type="number" name="precio" value="" id="precio">
+        <input type="number" name="precio" value="" id="precio"  min="0" pattern="^[0-9]+">
         <label for="">Stock</label>
-        <input type="number" name="stock" value="" id="stock">
+        <input type="number" name="stock" value="" id="stock"  min="0" pattern="^[0-9]+">
         <label for="">Stock Min</label>
-        <input type="number" name="stockm" value="" id="stockm">
+        <input type="number" name="stockm" value="" id="stockm"  min="0" pattern="^[0-9]+">
         <label for="">Status</label>
         <select name="status" id="status">
          <option value="1">ACTIVO</option>

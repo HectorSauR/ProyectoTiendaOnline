@@ -56,15 +56,15 @@
                     <label for="name">nombre: </label>
                     <input type="text" name="txtnom" id="txtdesc">
                     <label for="name">Precio Compra: </label>
-                    <input type="number" name="txtprecc" id="txtprecc">
+                    <input type="number" name="txtprecc" id="txtprecc"  min="0" pattern="^[0-9]+">
                     <label for="name">precio: </label>
-                    <input type="number" name="txtprecv" id="txtcat">
+                    <input type="number" name="txtprecv" id="txtcat"  min="0" pattern="^[0-9]+">
                     <label for="name">stock: </label>
-                    <input type="number" name="txtstock" id="txtcant">
+                    <input type="number" name="txtstock" id="txtcant"  min="0" pattern="^[0-9]+">
                     <label for="name">Stock minimo: </label>
-                    <input type="number" name="txtstockm" id="txtundm">
+                    <input type="number" name="txtstockm" id="txtundm"  min="0" pattern="^[0-9]+">
                     <label for="name">CODIGO DE BARRAS: </label>
-                    <input type="number" name="txtcb" id="txtcb">
+                    <input type="number" name="txtcb" id="txtcb"  min="0" pattern="^[0-9]+">
                     <label for="name">Estatus: </label>
                     <!-- <input type="text" name="txtstatus" id="txtstatus"> -->
                     <select name="txtstatus" id="txtstatus">

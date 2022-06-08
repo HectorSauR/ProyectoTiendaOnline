@@ -115,13 +115,13 @@
         <input type="date" name="fecha" id="fecha">
 
         <label for="">Id producto</label>
-        <input type="number" name="id_prd" value="" id="id_prd">
+        <input type="number" name="id_prd" value="" id="id_prd" min="0" pattern="^[0-9]+">
 
         <label for="">Cantidad</label>
-        <input type="number" name="cantidad" value="" id="cantidad">
+        <input type="number" name="cantidad" value="" id="cantidad" min="0" pattern="^[0-9]+">
 
         <label for="">Precio</label>
-        <input type="number" name="precio" value="" id="precio">
+        <input type="number" name="precio" value="" id="precio" min="0" pattern="^[0-9]+">
 
         <label for="">Status</label>
         <select name="status" id="status">

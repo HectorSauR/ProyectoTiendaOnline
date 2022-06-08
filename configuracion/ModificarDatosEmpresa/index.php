@@ -37,7 +37,7 @@
                             <textarea name="txtDesc" id="txtDesc" cols="30" rows="8"></textarea>
 
                             <label for="name">Telefono: </label>
-                            <input type="text" name="txttelefono" id="txttelefono">
+                            <input type="text" name="txttelefono" id="txttelefono"  min="0" pattern="^[0-9]+" minlength="10" maxlength="10">
 
                             <label for="name">Correo: </label>
                             <input type="text" name="txtcorreo" id="txtprecc">
