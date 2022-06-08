@@ -35,45 +35,49 @@
     }
   })
   
-  /*
+  
   //LOGICA PARA EL FORMULARIO
-  document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) => {
+  document.querySelector(".contenido").addEventListener("submit", (e) => {
     e.preventDefault()
   
     //DATOS DEL FORMULARIO
     var data = new FormData(e.target);
+
+    
   
-  
+    
   
     //VERIFICAR SI USUARIO INGRESADO EXISTE EN LA BD
-    fetch("../../recursos/PHP/metodos/verificarUsuarioRegistradoBD.php", {
+    fetch("../../recursos/PHP/metodos/verificarProductoRegistrado.php", {
       method: 'POST',
       body: data
     }).then(response => response.text()).then(data => {
       if (data == "1") {
         Swal.fire(
-          'Error al registrar usuario.',
-          'Usuario no esta disponible',
+          'Error al registrar producto.',
+          'Es posible que el producto ya este registrado con ese nombre verifique',
           'error'
         )
       } else {
         //PROCESAR LOS DATOS A PHP
         //alert(data.get("imagen").name);
         var data = new FormData(e.target);
-        fetch("../../recursos/PHP/metodos/registrarUsuarioBD.php", {
+
+        fetch("registrarP.php", {
           method: 'POST',
           body: data
         }).then(response => response.text()).then(data => {
   
+          console.log(data);
           if (data == "1") {
             Swal.fire(
-              'El usuario fue registrado.',
+              'El producto fue registrado.',
               '',
               'success'
             )
           } else {
             Swal.fire(
-              'Error al registrar usuario.',
+              'Error al registrar Producto.',
               'porfavor verifique los datos ingresados en el formulario',
               'error'
             )
@@ -88,4 +92,4 @@
   
   
   })
-  */
+  

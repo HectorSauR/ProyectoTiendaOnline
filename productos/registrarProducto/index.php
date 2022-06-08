@@ -1,5 +1,5 @@
 <?php
-  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  //include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
   include '../../recursos/PHP/clases/conexion.php';
 
 
@@ -18,7 +18,7 @@
            ];
        }
 ?>
-<?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
+<?php// include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,13 +29,17 @@
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="RegistroDeProducto.css">
 </head>
-<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" >
+<!-- onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" -->
+<body  >
 <script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
+<script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    
+  
     <?php //include '../../recursos/nav/nav.php' ?>
     <div class="main">
         <h1>REGISTRO DE PRODUCTO</h1>
 
-        <form class="contenido" action="registrarP.php" method="post" enctype="multipart/form-data">
+        <form class="contenido" >
             <div class="input">
                
               <div  class="textos">
@@ -44,7 +48,7 @@
                     <select name="txtcat" id="txtcat"> 
                         <?php
                             foreach ($datos as $dat) {
-                                echo '<option value="' . $dat['idcategoria'] . '">' . $dat['nombre'] . '</option>';
+                                echo '<option value="' . $dat['idcategoria'] . '">'.$dat['idcategoria'].' > ' . $dat['nombre'] . '</option>';
                             } 
                         ?>
                     </select>
@@ -52,13 +56,13 @@
                     <label for="name">nombre: </label>
                     <input type="text" name="txtnom" id="txtdesc">
                     <label for="name">Precio Compra: </label>
-                    <input type="text" name="txtprecc" id="txtprecc">
+                    <input type="number" name="txtprecc" id="txtprecc">
                     <label for="name">precio: </label>
-                    <input type="text" name="txtprecv" id="txtcat">
+                    <input type="number" name="txtprecv" id="txtcat">
                     <label for="name">stock: </label>
-                    <input type="text" name="txtstock" id="txtcant">
+                    <input type="number" name="txtstock" id="txtcant">
                     <label for="name">Stock minimo: </label>
-                    <input type="text" name="txtstockm" id="txtundm">
+                    <input type="number" name="txtstockm" id="txtundm">
                     <label for="name">CODIGO DE BARRAS: </label>
                     <input type="number" name="txtcb" id="txtcb">
                     <label for="name">Estatus: </label>
@@ -94,36 +98,6 @@
 
 
 
-
-
-    <!-- 
-         <form>
-                   <div>
-                      
-                   </div>
-                   <div>
-                   
-                </div>
-                <div>
-                  
-                </div>
-                <div>
-                
-                </div>
-                <div>
-                  
-                </div>
-                <div>
-                   
-                </div>
-                <div>
-                  
-                </div>
-                <div>
-                 
-                </div>
-                </form>
-    -->
 
     <script src="registrarproducto.js"></script>
 </body>
