@@ -37,8 +37,12 @@ body {
   width: 100%;
 }
 .main .contenido .input .textos{
-  width: 100%;
+  width: 80%;
   align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  margin-left: 30px;
+  border: 2px solid white;
 
 }
 .main h1{
@@ -67,15 +71,17 @@ body {
   padding: 5px;
   width: 30%;
   border-radius: 10px;
+ 
 }
 
 
 .main .contenido .input .textos input[type="submit"] {
   background: #3E4078 ;
-  border: 2px solid black;
+  border: 1.5px solid white;
 }
 .main .contenido .input .textos input[type="submit"]:hover {
   background: white;
+  color: #3E4078;
 }
 
 .main .contenido .imagen{

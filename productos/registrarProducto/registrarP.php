@@ -13,46 +13,38 @@ $imagen = $_FILES['img-elg'];
 $codigo_b = $_POST['txtcb'];
 
 
-$extension = pathinfo("../../recursos/imagenes/productos/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
-$pathimg = "../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension;
-
-if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stock=="" || $stockm=="" || $status=="" || $codigo_b==""){
-  echo "<script> alert('VERIFICA SI LOS DATOS ESTAN CORRECTOS PORFAVOR');
-  location.href='index.php';
-  </script>";
-  return;
-}
 
 
-$regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?,?)";
-$consulta = $conexion->prepare($regproducto);
-$arregloprod = array('8',$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm, $codigo_b,$status);
-$res = $consulta->execute($arregloprod);
-//$regproducto = "INSERT INTO productos VALUES ('$nombre','$decripcion','$preciovent','$preciocom','$categoria','$cantidad','$unidadM','$status')";
-//$Execute = $conexion->query($regproducto);
 
-
-if($res)
-{
-    
-    echo "<script> alert('correcto');
-    location.href='index.php';
-    </script>";
- 
   $fileContent = file_get_contents($imagen['tmp_name']);
   $path = "../../recursos/imagenes/productos/".$nombre;
+  //VERIFICAR SI CARPETA DE nombre EXISTE
   if (!file_exists($path)) {
-  mkdir($path, 0777, true);
-    
+    mkdir($path, 0777, true);
+  }
   //OBTENER EXTENCION DE IMAGEN
+  $extension = pathinfo("../../recursos/imagenes/productos/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
   //ALMACENA LA IMAGEN EN EL SERVIDOR
   file_put_contents("../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension,$fileContent);
+  $pathimg = "../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension;
 
-  }
-}else{
-    echo "<script> alert('MAL');
-    </script>";
-}
+  //OBTENER EL ULTIMO ID
+  $obtenerUltimoId= "select ID_PRODUCTO from productos order by ID_PRODUCTO desc limit 1;";
+  $Execute = $conexion->query($obtenerUltimoId);
+  $r = $Execute->fetchall(PDO::FETCH_ASSOC);
+  $id = $r[0]['ID_PRODUCTO'];
+  $id++;
+
+
+
+  $regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?,?)";
+  $consulta = $conexion->prepare($regproducto);
+  $arregloprod = array($id,$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,$status, $codigo_b);
+  $res = $consulta->execute($arregloprod);
+
+
+  echo $res;
+
 
 
 
