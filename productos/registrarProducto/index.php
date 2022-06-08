@@ -1,6 +1,22 @@
 <?php
   include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
   include '../../recursos/PHP/clases/conexion.php';
+
+
+  
+ $query = 'SELECT *  FROM `categoria_productos`; ';
+ $statement = $conexion->prepare($query);
+ $statement->execute();
+ $result = $statement->fetchall();
+
+    $datos = [];
+       foreach($result as $row){
+           $datos[] = [
+               
+               'idcategoria' => $row['ID_CATEGORIA'],
+               'nombre'=> $row['NOMBRE'],
+           ];
+       }
 ?>
 <?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
@@ -13,9 +29,9 @@
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="RegistroDeProducto.css">
 </head>
-<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" >
 <script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
-    <?php include '../../recursos/nav/nav.php' ?>
+    <?php //include '../../recursos/nav/nav.php' ?>
     <div class="main">
         <h1>REGISTRO DE PRODUCTO</h1>
 
@@ -24,7 +40,15 @@
                
               <div  class="textos">
                     <label for="name">Id categotria: </label>
-                    <input type="text" name="txtcat" id="txtnom">
+                    <!-- <input type="text" name="txtcat" id="txtnom"> -->
+                    <select name="txtcat" id="txtcat"> 
+                        <?php
+                            foreach ($datos as $dat) {
+                                echo '<option value="' . $dat['idcategoria'] . '">' . $dat['nombre'] . '</option>';
+                            } 
+                        ?>
+                    </select>
+
                     <label for="name">nombre: </label>
                     <input type="text" name="txtnom" id="txtdesc">
                     <label for="name">Precio Compra: </label>
@@ -35,9 +59,15 @@
                     <input type="text" name="txtstock" id="txtcant">
                     <label for="name">Stock minimo: </label>
                     <input type="text" name="txtstockm" id="txtundm">
+                    <label for="name">CODIGO DE BARRAS: </label>
+                    <input type="number" name="txtcb" id="txtcb">
                     <label for="name">Estatus: </label>
-                    <input type="text" name="txtstatus" id="txtstatus">
-                     
+                    <!-- <input type="text" name="txtstatus" id="txtstatus"> -->
+                    <select name="txtstatus" id="txtstatus">
+                        <option value="1">ACTIVO</option>
+                        <option value="2">INACTIVO</option>
+                    </select>
+                   
                     <input type="submit" class="btn" value="Registrar">
                  </div>
                

@@ -52,6 +52,7 @@ if ($imagen_File["name"]==''){
         unlink($nombre.".".$extension);
         chdir($old);
         file_put_contents("../../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension,$fileContent);
+        
         $sql = "UPDATE productos SET NOMBRE='$nombre', IMAGEN='$pathimg', ID_CATEGORIA='$categoria',PRECIO_COMPRA='$precioc',PRECIO='$precio',STOCK='$stock',STOCK_MIN='$stockm',ID_ESTATUS='$status' WHERE ID_PRODUCTO='$id'";
         $stmt= $conexion->prepare($sql);
         $stmt->execute([$nombre, $pathimg, $categoria,$precioc,$precio,$stock,$stockm,$status,$id]);
