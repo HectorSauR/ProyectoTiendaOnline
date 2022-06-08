@@ -187,7 +187,42 @@ fetch('../../recursos/PHP/metodos/buscarProductoBd.php').then(res => res.json())
     //DAR DE BAJA A USUARIO
     else if(e.target.className == "eliminarS"){
 
+      var contenedor = e.target.parentNode.parentNode
+      var idprd = contenedor.querySelector(".id-prd > p").innerText;
+      Swal.fire({
+        title: 'Estas completamente seguro que quieres eliminar este producto?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          
+          var data2 = new FormData( );
+          data2.append("id",idprd);
+          console.log(data2.get("id"));
+          
+          fetch("../../recursos/PHP/metodos/eliminarProductoBDxId.php", {
+            method: 'POST',
+            body: data2
+          }).then(response => response.text()).then(data2 =>{
+   
+            console.log(data2)
+            Swal.fire(
+              'Se a eliminado el producto.',
+              '',
+              'success'
+            )
+            setTimeout(funcionConRetraso, 2000);
+          })
 
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+
+      
       
     }else if (e.target.className == "btnBuscar"){
      //alert(e.target);

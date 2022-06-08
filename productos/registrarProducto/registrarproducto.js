@@ -43,49 +43,72 @@
     //DATOS DEL FORMULARIO
     var data = new FormData(e.target);
 
+    console.log(data.get("img-elg").name)
+  if (data.get("img-elg").name==""){
+    Swal.fire(
+      'Error al registrar producto.',
+      'Tienes que elegir una imagen para el producto',
+      'error'
+    )
+  }else{
+//VERIFICAR SI USUARIO INGRESADO EXISTE EN LA BD
+fetch("../../recursos/PHP/metodos/verificarProductoRegistrado.php", {
+  method: 'POST',
+  body: data
+}).then(response => response.text()).then(data => {
+  if (data == "1") {
+    Swal.fire(
+      'Error al registrar producto.',
+      'Es posible que el producto ya este registrado con ese nombre verifique',
+      'error'
+    )
+  } else {
+    //PROCESAR LOS DATOS A PHP
+    //alert(data.get("imagen").name);
+    var data = new FormData(e.target);
+
     
-  
-    
-  
-    //VERIFICAR SI USUARIO INGRESADO EXISTE EN LA BD
-    fetch("../../recursos/PHP/metodos/verificarProductoRegistrado.php", {
+
+    fetch("registrarP.php", {
       method: 'POST',
       body: data
     }).then(response => response.text()).then(data => {
+
+      console.log(data);
       if (data == "1") {
         Swal.fire(
-          'Error al registrar producto.',
-          'Es posible que el producto ya este registrado con ese nombre verifique',
+          'El producto fue registrado.',
+          '',
+          'success'
+        )
+
+
+        
+    document.querySelector("#txtcat").value = 1;
+    document.querySelector("#txtnom").value = "";
+    document.querySelector("#txtprecc").value = "";
+    document.querySelector("#txtprecv").value = "";
+    document.querySelector("#txtstock").value = "";
+    document.querySelector("#txtstockm").value = "";
+    document.querySelector("#txtcb").value = "";
+    document.querySelector("#txtstatus").value = 1;
+    document.querySelector(".imagenselec").src="../../recursos/imagenes/regalo.png";
+    console.log();
+    
+      } else {
+        Swal.fire(
+          'Error al registrar Producto.',
+          'porfavor verifique los datos ingresados en el formulario',
           'error'
         )
-      } else {
-        //PROCESAR LOS DATOS A PHP
-        //alert(data.get("imagen").name);
-        var data = new FormData(e.target);
-
-        fetch("registrarP.php", {
-          method: 'POST',
-          body: data
-        }).then(response => response.text()).then(data => {
-  
-          console.log(data);
-          if (data == "1") {
-            Swal.fire(
-              'El producto fue registrado.',
-              '',
-              'success'
-            )
-          } else {
-            Swal.fire(
-              'Error al registrar Producto.',
-              'porfavor verifique los datos ingresados en el formulario',
-              'error'
-            )
-          }
-  
-        })
       }
+
     })
+  }
+})
+
+  }
+    
   
   
   

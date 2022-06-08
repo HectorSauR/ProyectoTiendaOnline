@@ -32,6 +32,7 @@
 </head>
 <body>
   <?php include '../../recursos/nav/nav.php' ?>
+  <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
   <div class="main" id="main">
     <h1>Gestión de productos</h1>
     <div class="contenedor-buscar">
@@ -108,7 +109,7 @@
         <select name="categoria" id="categoria">
           <?php
               foreach ($datos as $dat) {
-                 echo '<option value="' . $dat['idcategoria'] . '">' . $dat['idcategoria'] . '</option>';
+                echo '<option value="' . $dat['idcategoria'] . '">'.$dat['idcategoria'].' => ' . $dat['nombre'] . '</option>';
               }
           ?>
         </select>
