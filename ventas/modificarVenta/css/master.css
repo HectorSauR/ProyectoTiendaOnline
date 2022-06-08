@@ -1,0 +1,182 @@
+.main {
+  width: 100%;
+  margin-top: 100.17px;
+  padding: var(--Padding);
+}
+.main h1 {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-ventas {
+  width: 100%;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+margin-top: var(--Margin);
+
+}
+.main .contenedor-ventas div p {
+  color: var(--ColorSecundario);
+}
+.main .contenedor-ventas div button ,
+ .main .contenedor-ventas div input{
+  padding:calc(var(--Padding) / 1.5);
+  border-radius: var(--BorderRadius);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.main .contenedor-ventas .opcion button {
+  margin-right: var(--Margin);
+}
+
+.main .contenedor-ventas .opcion {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  margin-left: 35px;
+}
+
+.main .contenedor-ventas .header-idventa ,
+.main .contenedor-ventas .header-usuario ,
+.main .contenedor-ventas .header-forma_pago ,
+.main .contenedor-ventas .header-fecha ,
+.main .contenedor-ventas .header-id_prd ,
+.main .contenedor-ventas .header-cantidad,
+.main .contenedor-ventas .header-precio,
+.main .contenedor-ventas .header-status,
+.main .contenedor-ventas .header-opcion {
+  border: var(--border) solid var(--ColorSecundario);
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-ventas .header-cb div{
+  overflow: scroll;
+}
+.main .contenedor-buscar input {
+  padding:calc(var(--Padding) / 1.5);
+  outline: none;
+  border: none;
+  border-radius: var(--BorderRadius);
+
+}
+.main .contenedor-buscar label {
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-buscar button {
+  padding:calc(var(--Padding) / 1.5);
+  outline: none;
+  border: none;
+  border-radius: var(--BorderRadius);
+  color: var(--ColorSecundario);
+  background-color: var(--ColorPrincipal);
+  border: var(--border) solid var(--ColorSecundario);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .3s;
+}
+.main .contenedor-buscar button:hover {
+  color: var(--ColorPrincipal);
+  background-color: var(--ColorSecundario);
+}
+
+.main .contenedor-ventas div img{
+  width: 60px;
+  align-items: center;
+  margin-left: 30px;
+}
+
+
+.main .contenedor-ventas div {
+  align-items: center;
+}
+
+
+.main .contenedor-ventas .imagen p{
+   display: none;
+}
+
+.main .contenedor-ventas div p {
+  text-align: center;
+}
+
+.contenedor-modal {
+  position: fixed;
+  background-color: rgba(0 ,0,0,0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: opacity .3s;
+  display: none;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.contenedor-modal .modal {
+  width: 70%;
+  background-color: var(--ColorPrincipal);
+  display: flex;
+  flex-direction: column;
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+  animation: translate 1s .3s forwards;
+  transform: translateY(-1000px);
+}
+
+@keyframes translate {
+  to {
+    transform: translateY(0);
+  }
+}
+.contenedor-modal .modal h1 {
+  color: var(--ColorSecundario);
+}
+.contenedor-modal .modal form {
+  display: flex;
+  flex-direction: column;
+}
+.contenedor-modal .modal form label {
+  color: var(--ColorSecundario);
+  font-weight: 500;
+}
+.contenedor-modal .modal form input ,
+ .contenedor-modal .modal form select{
+  padding:calc(var(--Padding) / 1.5);
+  outline: none;
+  border: none;
+  border-radius: var(--BorderRadius);
+}
+
+.contenedor-modal .modal form .contenedor-button {
+  margin-top: var(--Margin);
+  width: 100%;
+}
+.contenedor-modal .modal form .contenedor-button button {
+  padding: var(--Padding);
+  outline: none;
+  border: var(--border) solid var(--ColorSecundario);
+  color: var(--ColorSecundario);
+  background-color: var(--ColorPrincipal);
+  border-radius: var(--BorderRadius);
+  cursor: pointer;
+  transition: all .3s;
+
+}
+.contenedor-modal .modal form .contenedor-button button:hover {
+  color: var(--ColorPrincipal);
+  background-color: var(--ColorSecundario);
+}

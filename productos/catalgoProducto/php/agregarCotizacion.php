@@ -18,7 +18,7 @@ include '../../../recursos/PHP/clases/conexion.php';
     $correo = $r[0]['CORREO'];
 
     //VERIFICAMOS SI TIENE UNA COTIZACION
-    $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre';";
+    $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 4;";
     $Execute = $conexion->query($BuscarUsuario);
     
     $r = $Execute->fetchall(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@ include '../../../recursos/PHP/clases/conexion.php';
         $id = $r[0]['ID_COTIZACION'];
         $id++;
 
-        $agregarCotizacion = "INSERT INTO cotizacion values($id,CURRENT_DATE,'$nombre','$correo','3')";
+        $agregarCotizacion = "INSERT INTO cotizacion values($id,CURRENT_DATE,'$nombre','$correo','4')";
         $consulta =$conexion->prepare($agregarCotizacion);
         $res = $consulta->execute();
 

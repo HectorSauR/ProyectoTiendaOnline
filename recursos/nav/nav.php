@@ -20,7 +20,7 @@
   ?>
   </div>
   <div>
-    <img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt="">
+    <a href="<?php echo $pathHost ?>usuarios/modificarTema"><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
     <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
     <img class="btn-menu" id="btn-menu" src="https://bluemadness.000webhostapp.com/img_proyecto/icon-menu.png" alt="">
   </div>
