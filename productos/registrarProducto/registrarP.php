@@ -10,11 +10,13 @@ $stock = $_POST['txtstock'];
 $stockm = $_POST['txtstockm'];
 $status = $_POST['txtstatus'];
 $imagen = $_FILES['img-elg'];
+$codigo_b = $_POST['txtcb'];
+
 
 $extension = pathinfo("../../recursos/imagenes/productos/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
 $pathimg = "../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension;
 
-if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stock=="" || $stockm=="" || $status=="" ){
+if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stock=="" || $stockm=="" || $status=="" || $codigo_b==""){
   echo "<script> alert('VERIFICA SI LOS DATOS ESTAN CORRECTOS PORFAVOR');
   location.href='index.php';
   </script>";
@@ -22,9 +24,9 @@ if($nombre ==""  || $preciovent=="" || $preciocom=="" || $categoria=="" || $stoc
 }
 
 
-$regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?)";
+$regproducto = "INSERT INTO productos VALUES (?,?,?,?,?,?,?,?,?,?)";
 $consulta = $conexion->prepare($regproducto);
-$arregloprod = array('8',$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm,$status);
+$arregloprod = array('8',$categoria,$nombre,$pathimg,$preciocom,$preciovent,$stock,$stockm, $codigo_b,$status);
 $res = $consulta->execute($arregloprod);
 //$regproducto = "INSERT INTO productos VALUES ('$nombre','$decripcion','$preciovent','$preciocom','$categoria','$cantidad','$unidadM','$status')";
 //$Execute = $conexion->query($regproducto);
