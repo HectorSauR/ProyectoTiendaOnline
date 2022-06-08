@@ -20,7 +20,7 @@
   ?>
   </div>
   <div>
-    <a href="<?php echo $pathHost ?>usuarios/modificarTema"><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
+    <a><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
     <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
     <img class="btn-menu" id="btn-menu" src="https://bluemadness.000webhostapp.com/img_proyecto/icon-menu.png" alt="">
   </div>
@@ -30,11 +30,13 @@
 
 
 <script type="text/javascript">
-  document.querySelector("#btn-usr").addEventListener("click",()=>{
+    document.querySelector("#btn-usr").addEventListener("click",()=>{
     document.querySelector(".loal-contenedor-modal").classList.toggle("transition-modal")
   })
 </script>
 
+
+<?php if(isset($_SESSION['usuario'])){?>
 <!--MODAL PARA MOSTRAR INFO DE USUARIO -->
 <div class="loal-contenedor-modal">
   <div class="loal-modal">
@@ -43,14 +45,26 @@
       <button type="button" name="button">x</button>
     </div> -->
     <div class="loal-body">
-        <img src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt="">
-        <p>loal1</p>
+        <img src="<?php echo $pathHost.$_SESSION['rutaImagenUsuario'] ?>" alt="">
+        <p><?php echo $_SESSION['usuario'] ?></p>
     </div>
     <div class="loal-footer">
-        <button type="button" name="button">CERRAR SESION</button>
+        <button type="button" id="btnCerrarSesion">CERRAR SESION</button>
     </div>
   </div>
 </div>
+
+<!--LOGICA PARA CERRAR SESION -->
+<script type="text/javascript">
+  document.querySelector("#btnCerrarSesion").addEventListener("click",()=>{
+    fetch('<?php echo $pathHost ?>recursos/PHP/metodos/cerrarSesion.php').then(res => res.text()).then(data =>{
+      window.location.href = "<?php  echo $pathHost ?>"
+    })
+
+  })
+</script>
+<?php } ?>
+
 
 <!--VERIFICAR SI ROL ES IGUAL A ADMIN-->
 <?php if(isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == "1"){?>
@@ -125,6 +139,8 @@
 
       <li><a href="#">Ventas</a>
         <ul>
+          <li><a href="<?php echo $pathHost ?>ventas/realizarVenta">Realizar Venta</a></li>
+          <li><a href="<?php echo $pathHost ?>ventas/modificarVenta">Gestionar Venta</a></li>
           <li><a href="<?php echo $pathHost ?>ventas/consultarVenta">Consultar Venta</a></li>
         </ul>
       </li>
@@ -155,13 +171,6 @@
       <li><a href="#">Cotizaciones</a>
         <ul>
           <li><a href="<?php echo $pathHost ?>cotizaciones/realizarCotizacion">Realizar Cotizacion</a></li>
-        </ul>
-      </li>
-
-
-      <li><a href="#">Ventas</a>
-        <ul>
-          <li><a href="<?php echo $pathHost ?>ventas/modificarVenta">Gestionar Venta</a></li>
         </ul>
       </li>
 
@@ -310,7 +319,7 @@
             }).then(response => response.text()).then(data => {
 
               if(data == "1"){
-                window.location.reload();
+                window.location.reload()
               }else if(data == "0"){
                 //alert("Error en inicio de sesion ,verifique porfavor.")
                 Swal.fire(

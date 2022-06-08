@@ -19,9 +19,9 @@ include("../clases/conexion.php");
   }
 
   //REGISTRAR VENTA
-  $agregarVenta = "INSERT INTO venta values(?,?,?,?,?)";
+  $agregarVenta = "INSERT INTO venta values(?,?,?,CURDATE(),?)";
   $consulta =$conexion->prepare($agregarVenta);
-  $arregloDatos = array($id,"1",$formaPago,$fecha,"1");
+  $arregloDatos = array($id,"1",$formaPago,"1");
   $res = $consulta->execute($arregloDatos);
 
   echo $id;

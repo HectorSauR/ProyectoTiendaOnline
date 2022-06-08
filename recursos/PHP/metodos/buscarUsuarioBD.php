@@ -41,6 +41,7 @@ if ($opc == '1') {
     }
 
       //Variables de session
+    $_SESSION['rutaImagenUsuario'] = $r[0]['IMAGEN'];
     $_SESSION['usuario'] = $usuario;
   }else{
     echo count($r);

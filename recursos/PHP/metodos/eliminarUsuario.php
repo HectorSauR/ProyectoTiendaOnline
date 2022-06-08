@@ -17,7 +17,7 @@ if($totalUsuarios == "1"){
   $eliminarUsuario = "UPDATE usuario SET ID_ESTATUS='2' WHERE USUARIO=?";
   $consulta =$conexion->prepare($eliminarUsuario);
   $consulta->execute([$usuario]);
-    echo "2";
+    echo "1";
 }
 
 
