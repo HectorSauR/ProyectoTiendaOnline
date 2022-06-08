@@ -43,6 +43,7 @@
   
     //DATOS DEL FORMULARIO
     var data = new FormData(e.target);
+    data.append("id" ,idprd)
 
     console.log(data.get("img-elg").name)
   if (data.get("img-elg").name==""){
@@ -67,6 +68,7 @@ fetch("../../recursos/PHP/metodos/verificarProductoRegistrado.php", {
     //PROCESAR LOS DATOS A PHP
     //alert(data.get("imagen").name);
     var data = new FormData(e.target);
+    data.append("id" ,idprd)
 
     
 

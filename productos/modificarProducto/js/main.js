@@ -168,7 +168,7 @@ fetch('../../recursos/PHP/metodos/buscarProductoBd.php').then(res => res.json())
       console.log(data.get("stock"))
       console.log(data.get("stockm"))
       console.log(data.get("status"))
-      
+
       data.append("txtnom" ,data.get("nombre"))
 
       fetch("../../recursos/PHP/metodos/verificarProductoRegistrado.php", {
@@ -182,6 +182,8 @@ fetch('../../recursos/PHP/metodos/buscarProductoBd.php').then(res => res.json())
             'error'
           )
         }else{
+          var data = new FormData(e.target);
+          data.append("id" ,idprd)
           fetch("../../recursos/PHP/metodos/EditarProductoBD.php", {
             method: 'POST',
             body: data
