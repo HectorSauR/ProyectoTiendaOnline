@@ -37,7 +37,7 @@
                     <input type="text" name="txtstockm" id="txtundm">
                     <label for="name">Estatus: </label>
                     <input type="text" name="txtstatus" id="txtstatus">
-                   
+                     
                     <input type="submit" class="btn" value="Registrar">
                  </div>
                
