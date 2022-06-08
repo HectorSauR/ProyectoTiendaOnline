@@ -1,0 +1,132 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root {
+    --ColorPrincipal: #3E4078;
+    --ColorSecundario: #EDEEFF;
+  
+  
+    --BorderRadius: 6px;
+    --border: 1.5px;
+    --Padding: 5px;
+    --LetterSpacing: 3px;
+    --Margin: 10px;
+  }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--ColorPrincipal);
+  }
+  
+  .linea{
+      border: 3px solid white ;
+      margin: 0 10%;
+      padding: 15px;
+      border-radius: 20px;
+  }
+  .main{
+    margin-top: 104.17px;
+    height: 100%;
+    
+  }
+
+  
+  
+  
+  .main .contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .main .contenido .input {
+    width: 100%;
+  }
+
+  
+  .main .contenido .input .textos{
+    width: 100%;
+    align-items: center;
+  
+  }
+  .main h1{
+    margin-left: 90px;
+  }
+  
+  .main .contenido .input .textos label,.main .contenido .input .textos input, .main .contenido .input .textos textarea{
+     margin-top: 3px;
+    display: block;
+    margin-left: 120px;
+  }
+
+  .main .contenido .input .textos label{
+    color: white;
+  }
+  
+  .main .contenido .input .textos input, .main .contenido .input .textos textarea {
+    padding: 5px;
+    width: 50%;
+    border-radius: 10px;
+  }
+  
+  
+  .main .contenido .input .textos input[type="submit"]{
+    padding: 5px;
+    width: 30%;
+    border-radius: 10px;
+  }
+  
+  
+  .main .contenido .input .textos input[type="submit"] {
+    background: #3E4078 ;
+    border: 2px solid white;
+    margin-top: 20px;
+    color: white;
+  }
+  .main .contenido .input .textos input[type="submit"]:hover {
+    background: white ;
+    color: #3E4078;
+  }
+
+
+  
+  .main .contenido .imagen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   padding: 5px;
+  
+   width: 90%;
+  }
+  
+  .main .contenido .imagen .imgelg{
+    width: 100% ;
+    height: auto;
+    border: 3px solid white;
+    border-radius: 7px;
+  }
+  
+  .main .contenido .imagen .imgelg input, .main .contenido .imagen .imgelg img{
+   display: block;
+   margin: 20px auto;
+  }
+  
+  .main .contenido .imagen .imgelg img{
+      width: 150px;
+  }
+  
+  .main .contenido .imagen .imgelg input[type="file"]{
+    background: #3E4078;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .img-elg{
+    display: none;
+  }
+  
