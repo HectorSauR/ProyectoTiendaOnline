@@ -13,10 +13,10 @@
   $id = $_POST["id"];
 
 
-
+  
 if ($imagen_File["name"]==''){
 
-  $path = "../../../recursos/imagenes/productos/".$nombre;
+  //$path = "../../../recursos/imagenes/productos/".$nombre;
 
   $sql = "UPDATE productos SET NOMBRE='$nombre', IMAGEN='$imagen', ID_CATEGORIA='$categoria',PRECIO_COMPRA='$precioc',PRECIO='$precio',STOCK='$stock',STOCK_MIN='$stockm',ID_ESTATUS='$status' WHERE ID_PRODUCTO='$id'";
   $stmt= $conexion->prepare($sql);
@@ -35,35 +35,34 @@ if ($imagen_File["name"]==''){
     $sql = "UPDATE productos SET NOMBRE='$nombre', IMAGEN='$pathimg', ID_CATEGORIA='$categoria',PRECIO_COMPRA='$precioc',PRECIO='$precio',STOCK='$stock',STOCK_MIN='$stockm',ID_ESTATUS='$status' WHERE ID_PRODUCTO='$id'";
     $stmt= $conexion->prepare($sql);
     $stmt->execute([$nombre, $pathimg, $categoria,$precioc,$precio,$stock,$stockm,$status,$id]);
-
   }else{
 
     if (!file_exists($pathimg)) {
-
+      
       file_put_contents("../../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension,$fileContent);
       $sql = "UPDATE productos SET NOMBRE='$nombre', IMAGEN='$pathimg', ID_CATEGORIA='$categoria',PRECIO_COMPRA='$precioc',PRECIO='$precio',STOCK='$stock',STOCK_MIN='$stockm',ID_ESTATUS='$status' WHERE ID_PRODUCTO='$id'";
       $stmt= $conexion->prepare($sql);
       $stmt->execute([$nombre, $pathimg, $categoria,$precioc,$precio,$stock,$stockm,$status,$id]);
-
-
+      
     }else{
-       $old = getcwd();
+       $old = getcwd(); 
        chdir($path);
         unlink($nombre.".".$extension);
-        chdir($old);
+        chdir($old); 
         file_put_contents("../../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension,$fileContent);
-        
         $sql = "UPDATE productos SET NOMBRE='$nombre', IMAGEN='$pathimg', ID_CATEGORIA='$categoria',PRECIO_COMPRA='$precioc',PRECIO='$precio',STOCK='$stock',STOCK_MIN='$stockm',ID_ESTATUS='$status' WHERE ID_PRODUCTO='$id'";
         $stmt= $conexion->prepare($sql);
         $stmt->execute([$nombre, $pathimg, $categoria,$precioc,$precio,$stock,$stockm,$status,$id]);
-
     }
+   
 
   }
 }
+  
 
 
-
-
+  
 
  ?>
+
+

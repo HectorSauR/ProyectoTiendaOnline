@@ -32,6 +32,7 @@
         'Seleccione una imagen con formato jpeg o png',
         'error'
       )
+      
     }
   })
   
