@@ -1,5 +1,5 @@
 <?php
-  //include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
   include '../../recursos/PHP/clases/conexion.php';
 
 
@@ -18,7 +18,7 @@
            ];
        }
 ?>
-<?php// include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
+<?php include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,13 +29,13 @@
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="RegistroDeProducto.css">
 </head>
-<!-- onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" -->
-<body  >
+
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" >
 <script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
 <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     
   
-    <?php //include '../../recursos/nav/nav.php' ?>
+    <?php include '../../recursos/nav/nav.php' ?>
     <div class="main">
         <h1>REGISTRO DE PRODUCTO</h1>
 
