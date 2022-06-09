@@ -46,7 +46,7 @@
 
         </div>
         <button type="button" id="activarAgreagarImagen">Examinar</button>
-        <input type="file" value="" name="imagen" id="agregarImagen">
+        <input type="file" value="" name="imagen" id="agregarImagen" required>
       </div>
         </form>
     </div>

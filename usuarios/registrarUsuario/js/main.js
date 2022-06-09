@@ -52,13 +52,14 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
     method: 'POST',
     body: data
   }).then(response => response.text()).then(data => {
+    console.log("dATA EN REGISTARR USUARIO = "+data)
     if (data == "1") {
       Swal.fire(
         'Error al registrar usuario.',
         'Usuario no esta disponible',
         'error'
       )
-    } else {
+    }else {
       //PROCESAR LOS DATOS A PHP
       //alert(data.get("imagen").name);
       var data = new FormData(e.target);
