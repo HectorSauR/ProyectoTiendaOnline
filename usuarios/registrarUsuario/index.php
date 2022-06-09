@@ -27,7 +27,7 @@
             <label>Usuario:</label>
             <input type="text" name="usuario" value="">
             <label>Contraseña:</label>
-            <input type="text" name="clave" value="">
+            <input type="password" name="clave" value="">
             <label>Correo:</label>
             <input type="text" name="correo" value="">
             <label>Nivel:</label>
