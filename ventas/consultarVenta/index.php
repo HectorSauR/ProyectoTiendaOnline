@@ -56,21 +56,14 @@
         <table id="table_id" class="display">
           <thead>
             <tr>
-              <th>Codigo</th>
-              <th>Fecha</th>
-              <th>Usuario</th>
-              <th>Forma de pago</th>
-              <th>Importe</th>
+              <th>Codigo venta</th>
+              <th>Codigo Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody class="row-table">
-            <tr>
-              <td>0000</td>
-              <td>fsdfdsdsf</td>
-              <td>200</td>
-              <td>250</td>
-              <td>500</td>
-            </tr>
           </tbody>
         </table>
       </div>

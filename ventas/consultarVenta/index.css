@@ -6,7 +6,6 @@
 }
 
 .main {
-  position: fixed;
   top: var(--Top);
   left: 0;
   right: 0;

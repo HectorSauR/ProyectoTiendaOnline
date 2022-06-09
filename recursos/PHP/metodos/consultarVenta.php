@@ -1,19 +1,15 @@
 <?php
+
 include("../clases/conexion.php");
 
 
-$id = $_POST['id'];
 
-$BuscarVenta = "select * from detalle_venta where ID_VENTA = '$id'";
+$BuscarVenta = "select * from detalle_venta";
 $Execute = $conexion->query($BuscarVenta);
 
 $r = $Execute->fetchall(PDO::FETCH_ASSOC);
 
   echo json_encode($r);
-
-
-
-
 
 
 

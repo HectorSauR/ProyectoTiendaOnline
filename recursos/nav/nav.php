@@ -14,7 +14,7 @@
     <?php
     }
     else { ?>
-      <img src="https://bluemadness.000webhostapp.com/img_proyecto/logo_empresa.png" alt="">
+    <img src="https://bluemadness.000webhostapp.com/img_proyecto/logo_empresa.png" alt="">
     <?php
     }
   ?>
