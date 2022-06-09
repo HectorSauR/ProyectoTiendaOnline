@@ -17,6 +17,11 @@ margin-top: var(--Margin);
 .main .contenedor-ventas div p {
   color: var(--ColorSecundario);
 }
+
+
+.main .contenedor-ventas div  {
+  border: var(--border) solid var(--ColorSecundario);
+}
 .main .contenedor-ventas div button ,
  .main .contenedor-ventas div input{
   padding:calc(var(--Padding) / 1.5);
@@ -34,6 +39,7 @@ margin-top: var(--Margin);
   align-items: center;
   justify-content: center;
   margin-left: 35px;
+  border: none;
 }
 
 .main .contenedor-ventas .header-idventa ,
@@ -45,9 +51,24 @@ margin-top: var(--Margin);
 .main .contenedor-ventas .header-precio,
 .main .contenedor-ventas .header-status,
 .main .contenedor-ventas .header-opcion {
-  border: var(--border) solid var(--ColorSecundario);
-  color: var(--ColorSecundario);
+  border: var(--border) solid var(--ColorPrincipal);
+  color: var(--ColorPrincipal);
   font-weight: 600;
+  
+  background: white;
+}
+
+
+.main .contenedor-ventas .header-idventa p ,
+.main .contenedor-ventas .header-usuario p ,
+.main .contenedor-ventas .header-forma_pago p ,
+.main .contenedor-ventas .header-fecha p,
+.main .contenedor-ventas .header-id_prd p,
+.main .contenedor-ventas .header-cantidad p,
+.main .contenedor-ventas .header-precio p,
+.main .contenedor-ventas .header-status p,
+.main .contenedor-ventas .header-opcion p{
+color: var(--ColorPrincipal);
 }
 .main .contenedor-ventas .header-cb div{
   overflow: scroll;
@@ -98,6 +119,7 @@ margin-top: var(--Margin);
 
 .main .contenedor-ventas div p {
   text-align: center;
+  
 }
 
 .contenedor-modal {

@@ -177,7 +177,40 @@ fetch('../../recursos/PHP/metodos/buscarVentaBD.php').then(res => res.json()).th
     }
     //DAR DE BAJA A USUARIO
     else if(e.target.className == "eliminarS"){
+      var contenedor = e.target.parentNode.parentNode
+      var idventa = contenedor.querySelector(".id-venta > p").innerText;
+      Swal.fire({
+        title: 'Estas completamente seguro que quieres eliminar esta venta?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          
+          var data2 = new FormData( );
+          data2.append("id",idventa);
+          console.log(data2.get("id"));
+          
+          fetch("../../recursos/PHP/metodos/eliminarVentaBDxId.php", {
+            method: 'POST',
+            body: data2
+          }).then(response => response.text()).then(data2 =>{
+   
+            console.log(data2)
+            Swal.fire(
+              'Se a eliminado la venta.',
+              '',
+              'success'
+            )
+            setTimeout(funcionConRetraso, 2000);
+          })
 
+        } else if (result.isDenied) {
+          Swal.fire('Se a cancelado la operación', '', 'info')
+        }
+      })
 
       
     }else if (e.target.className == "btnBuscar"){
@@ -282,7 +315,9 @@ document.getElementById("btnCancelarEditarUsuario").addEventListener("click", ()
 
 
 
-
+function funcionConRetraso() {
+  window.location.reload();
+}
 
 
 

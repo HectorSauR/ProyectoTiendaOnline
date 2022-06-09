@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="header-opcion">
-                  <p>Opcion</p>
+                  <p>OPCION</p>
                 </div>
         </div>
 
