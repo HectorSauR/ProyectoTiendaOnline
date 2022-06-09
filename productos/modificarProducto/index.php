@@ -118,7 +118,7 @@
         <input type="text" name="nombre" value="" id="nombre">
         <label for="">Imagen</label>
         <input type="text" name="imagen" value="" id="imagen">
-        <input type="file" name="img_env" id="img_env">
+        <input type="file" name="img_env" id="img_env"  accept="image/*">
         <label for="">Precio compra</label>
         <input type="number" name="precioc" value="" id="precioc"  min="0" pattern="^[0-9]+">
         <label for="">Precio</label>

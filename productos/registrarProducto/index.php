@@ -86,7 +86,7 @@
                     <img src="../../recursos/imagenes/regalo.png" alt="" class="imagenselec" name="imagenselec">
                     </div>
                     <!-- <button class="examinar">examinar</button> -->
-                    <input type="file" name="img-elg" id="img-elg" class="img-elg">
+                    <input type="file" name="img-elg" id="img-elg" class="img-elg"  accept="image/*">
 
                     
                  </div>
