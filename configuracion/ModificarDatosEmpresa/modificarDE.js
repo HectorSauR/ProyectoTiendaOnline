@@ -62,6 +62,12 @@ document.getElementById("txttw").value = item.TWITER;
   
         var data = new FormData(e.target);
 
+        if (data.get("img-elg").name=="") {
+          data.append("img","1");
+        } else {
+          data.append("img","2");
+        }
+        
        if (data.get("txtnom")=="" || data.get("txtslogan")=="" || data.get("txtDesc")=="" || data.get("txttelefono")=="" || data.get("txtcorreo")=="" || data.get("txtweb")=="" || data.get("txtfac")=="" || data.get("txttw")=="" ) {
         Swal.fire({
           title: 'Falto un campo por completar estas seguro que quieres guardar?',
@@ -102,6 +108,8 @@ document.getElementById("txttw").value = item.TWITER;
           }
         })
        }else{
+
+       
         fetch("modificarDE.php", {
           method: 'POST',
           body: data
