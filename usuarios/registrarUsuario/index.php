@@ -23,13 +23,13 @@
       <div class="contenedor-form">
 
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="">
+            <input type="text" name="nombre" value="" required>
             <label>Usuario:</label>
-            <input type="text" name="usuario" value="">
+            <input type="text" name="usuario" value="" required>
             <label>Contraseña:</label>
-            <input type="password" name="clave" value="">
+            <input type="password" name="clave" value="" required>
             <label>Correo:</label>
-            <input type="text" name="correo" value="">
+            <input type="text" name="correo" value="" >
             <label>Nivel:</label>
             <select name="nivel">
               <option>CLIENTE</option>
