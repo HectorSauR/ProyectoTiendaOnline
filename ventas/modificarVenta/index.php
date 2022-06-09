@@ -36,7 +36,7 @@
   <?php  include '../../recursos/nav/nav.php' ?>
   <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
   <div class="main" id="main">
-    <h1>Gestión de productos</h1>
+    <h1>Gestión de ventas</h1>
     <div class="contenedor-buscar">
       <form  id="frmbuscar">
       <label>Buscar:</label>
