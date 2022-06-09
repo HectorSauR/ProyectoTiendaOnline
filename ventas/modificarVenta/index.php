@@ -33,6 +33,7 @@
 </head>
 <body>
   <?php  include '../../recursos/nav/nav.php' ?>
+  <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
   <div class="main" id="main">
     <h1>Gestión de productos</h1>
     <div class="contenedor-buscar">
@@ -100,8 +101,8 @@
       <form id="formEditarVenta">
 
 
-        <label for="">Usuario</label>
-        <input type="text" name="usuario" value="" id="usuario">
+        <label for="">Id usuario</label>
+        <input type="number" name="usuario" value="" id="usuario"  min="1" pattern="^[0-9]+">
 
         <label for="">Forma de pago</label>
         <select name="forma_pago" id="forma_pago">
