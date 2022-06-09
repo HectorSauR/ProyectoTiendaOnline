@@ -30,8 +30,10 @@
   <link rel="stylesheet" href="css/master.css">
   <title>Document</title>
 </head>
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
   <?php include '../../recursos/nav/nav.php' ?>
+  <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
   <div class="main" id="main">
     <h1>Gestión de productos</h1>
     <div class="contenedor-buscar">
@@ -108,7 +110,7 @@
         <select name="categoria" id="categoria">
           <?php
               foreach ($datos as $dat) {
-                 echo '<option value="' . $dat['idcategoria'] . '">' . $dat['idcategoria'] . '</option>';
+                echo '<option value="' . $dat['idcategoria'] . '">'.$dat['idcategoria'].' => ' . $dat['nombre'] . '</option>';
               }
           ?>
         </select>
@@ -118,13 +120,13 @@
         <input type="text" name="imagen" value="" id="imagen">
         <input type="file" name="img_env" id="img_env">
         <label for="">Precio compra</label>
-        <input type="number" name="precioc" value="" id="precioc">
+        <input type="number" name="precioc" value="" id="precioc"  min="0" pattern="^[0-9]+">
         <label for="">Precio</label>
-        <input type="number" name="precio" value="" id="precio">
+        <input type="number" name="precio" value="" id="precio"  min="0" pattern="^[0-9]+">
         <label for="">Stock</label>
-        <input type="number" name="stock" value="" id="stock">
+        <input type="number" name="stock" value="" id="stock"  min="0" pattern="^[0-9]+">
         <label for="">Stock Min</label>
-        <input type="number" name="stockm" value="" id="stockm">
+        <input type="number" name="stockm" value="" id="stockm"  min="0" pattern="^[0-9]+">
         <label for="">Status</label>
         <select name="status" id="status">
          <option value="1">ACTIVO</option>

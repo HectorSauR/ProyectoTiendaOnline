@@ -17,11 +17,11 @@
    <?php  include './recursos/nav/nav.php' ?>
 
    
+    
 
 
 
-
-   <script type="text/javascript" src="./usuarios/modificarTema/js/master.js"></script>
+   <script type="text/javascript" src="./Usuarios/modificarTema/js/master.js"></script>
  </body>
 
  </html>

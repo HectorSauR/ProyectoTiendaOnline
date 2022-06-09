@@ -1,188 +1,171 @@
-body{
-    background-color: #3e4178;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+body {
+  background-color: var(--ColorPrincipal);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-
-
-
-#prin{
-    margin: 8%;
+#prin {
+  margin: 8%;
 }
 
-
-#im1{
-   float: right;
+#im1 {
+  float: right;
 }
 
-#frm{
- display: flex;
-justify-content: space-between;
-  
+#frm {
+  display: flex;
+  justify-content: space-between;
 }
 
 #dataFF {
-
-    /* Centrar el formulario en la página */
-    /* Esquema del formulario */
-    padding: 1em;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 2em;
-    float: left;
-    margin-top: 1%;
-    width: 500px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+  /* Centrar el formulario en la página */
+  /* Esquema del formulario */
+  padding: 1em;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 2em;
+  float: left;
+  margin-top: 1%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  form li + li {
-    margin-top: 1em;
-  }
+form li + li {
+  margin-top: 1em;
+}
 
-  label {
-    /* Tamaño y alineación uniforme */
-    display: inline-block;
-    width: 90px;
-    text-align: right;
+label {
+  /* Tamaño y alineación uniforme */
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
 
-  }
-
-  #name,
-  textarea {
-    /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+#name,
+textarea {
+  /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
        Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
-    font: 1em Roboto;
-    padding: 0.2rem 0.5rem;
+  font: 1em Roboto;
+  padding: 0.2rem 0.5rem;
 
-    /* Tamaño uniforme del campo de texto */
-    width: 300px;
-    box-sizing: border-box;
+  /* Tamaño uniforme del campo de texto */
+  width: 300px;
+  box-sizing: border-box;
 
-    /* Hacer coincidir los bordes del campo del formulario */
-    border: 1px solid #999;
-    border-radius: 20px;
-  }
-
-  input:focus,
-  textarea:focus {
-    /* Destacado adicional para elementos que tienen el cursor */
-    border-color: #000;
-  }
-
-  textarea {
-    /* Alinear los campos de texto multilínea con sus etiquetas */
-    vertical-align: top;
-    min-width: 300px;
-    max-width: 300px;
-    /* Proporcionar espacio para escribir texto */
-    height: 5em;
-  }
-
-  #btn{
-    margin-left: 8%;
-  }
-
-  #but{
-      background-color: white;
-      width: 80%;
-      padding-top: 1%;
-      padding-bottom: 1%;
-      border-radius: 20px;
-      font-size: 20px;
-      color: #3e4178;
-      margin-top: 5%;
-      
-      
-  }
-
-  #but:hover{
-      background-color: #00a2ff;
-  }
-
-#text2{
-
-    width: 600px;
-    height: 300px;
+  /* Hacer coincidir los bordes del campo del formulario */
+  border: 1px solid #999;
+  border-radius: 20px;
 }
 
-#btn2{
-    
-    background-color: white;
-      padding-bottom: 5%;
-      border-radius: 20px;
-      font-size: 20px;
-      color: #3e4178;
+input:focus,
+textarea:focus {
+  /* Destacado adicional para elementos que tienen el cursor */
+  border-color: #000;
 }
 
-#area{
-    float: right;
+textarea {
+  /* Alinear los campos de texto multilínea con sus etiquetas */
+  vertical-align: top;
+  min-width: 300px;
+  max-width: 300px;
+  /* Proporcionar espacio para escribir texto */
+  height: 5em;
 }
 
-#btn2:hover{
-    background-color: #00a2ff;
+#btn {
+  margin-left: 8%;
 }
 
-#btn1{
+#but {
+  background-color: white;
+  width: 80%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 20px;
+  font-size: 20px;
+  color: #3e4178;
+  margin-top: 5%;
+}
+
+#but:hover {
+  background-color: #00a2ff;
+}
+
+#text2 {
+  width: 600px;
+  height: 300px;
+}
+
+#btn2 {
+  background-color: white;
+  padding-bottom: 5%;
+  border-radius: 20px;
+  font-size: 20px;
+  color: var(--ColorPrincipal);
+}
+
+#area {
+  float: right;
+}
+
+#btn2:hover {
+  background-color: #00a2ff;
+}
+
+#btn1 {
   display: none;
 }
-#areaImagen{
+#areaImagen {
   padding: 10%;
   min-width: 300px;
   min-height: 300px;
   border-radius: 20px;
   background-color: white;
-  
 }
-#buscar{
-    border-radius: 20px;
-    
-    font-size: 20px;
-    
+#buscar {
+  border-radius: 20px;
+
+  font-size: 20px;
 }
 
-#botones{
-    
-    float: right;
-    
-    padding: 2%;
-    margin-right: 20%;
-    
+#botones {
+  float: right;
+
+  padding: 2%;
+  margin-right: 20%;
 }
 
-.abc{
-    padding: 1%;
-    border-radius: 20px;
-    background-color: white;
-    color: #3e4178;
-    font-size: 20px;
-    margin-top: 5%;
-    display: inline-block;
-   
-   
+.abc {
+  padding: 1%;
+  border-radius: 20px;
+  background-color: white;
+  color: var(--ColorPrincipal);
+  font-size: 20px;
+  margin-top: 5%;
+  display: inline-block;
 }
 
-.abc:hover{
-    background-color: aqua;
-    color: black;
+.abc:hover {
+  background-color: aqua;
+  color: black;
 }
 
-#btnDatos{
-    
+#btnDatos {
 }
 
-#imagenArea{
+#imagenArea {
   display: flex;
   flex-direction: column;
 }
 
-#periodo{
+#periodo {
   border-radius: 20px;
 }

@@ -31,8 +31,10 @@
   <link rel="stylesheet" href="css/master.css">
   <title>Document</title>
 </head>
-<body>
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
+<script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
   <?php  include '../../recursos/nav/nav.php' ?>
+  <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
   <div class="main" id="main">
     <h1>Gestión de productos</h1>
     <div class="contenedor-buscar">
@@ -100,8 +102,8 @@
       <form id="formEditarVenta">
 
 
-        <label for="">Usuario</label>
-        <input type="text" name="usuario" value="" id="usuario">
+        <label for="">Id usuario</label>
+        <input type="number" name="usuario" value="" id="usuario"  min="1" pattern="^[0-9]+">
 
         <label for="">Forma de pago</label>
         <select name="forma_pago" id="forma_pago">
@@ -115,13 +117,13 @@
         <input type="date" name="fecha" id="fecha">
 
         <label for="">Id producto</label>
-        <input type="number" name="id_prd" value="" id="id_prd">
+        <input type="number" name="id_prd" value="" id="id_prd" min="0" pattern="^[0-9]+">
 
         <label for="">Cantidad</label>
-        <input type="number" name="cantidad" value="" id="cantidad">
+        <input type="number" name="cantidad" value="" id="cantidad" min="0" pattern="^[0-9]+">
 
         <label for="">Precio</label>
-        <input type="number" name="precio" value="" id="precio">
+        <input type="number" name="precio" value="" id="precio" min="0" pattern="^[0-9]+">
 
         <label for="">Status</label>
         <select name="status" id="status">

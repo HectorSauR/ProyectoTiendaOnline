@@ -52,5 +52,6 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
 
       // Save the PDF
       doc.save("document.pdf");
+      setTimeout("document.location.reload()", 3000);
     });
 });

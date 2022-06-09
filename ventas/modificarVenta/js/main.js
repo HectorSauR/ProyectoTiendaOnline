@@ -115,18 +115,61 @@ fetch('../../recursos/PHP/metodos/buscarVentaBD.php').then(res => res.json()).th
         e.preventDefault()
 
         var data = new FormData(e.target);
-        data.append("id" ,idventa)
+        //data.append("id" ,idventa)
         
-       // data.append("categoria2",categorias)
-
-        fetch("../../recursos/PHP/metodos/EditarVentaBD.php", {
+        
+        
+        console.log(data.get("usuario"))
+        fetch("../../recursos/PHP/metodos/verificarUsuarioRegistradoxId.php", {
           method: 'POST',
           body: data
         }).then(response => response.text()).then(data =>{
-          document.querySelector(".contenedor-modal").style.display = "none";
-          window.location.reload();
+          console.log(data);
+          if (data == "0") {
+            Swal.fire(
+              'El usuario no se encontro.',
+              'Usuario no encontrado',
+              'error'
+            )
+            
+          } else{
+            var data = new FormData(e.target);
+            fetch("../../recursos/PHP/metodos/verificarProductoRegistradoxId.php", {
+              method: 'POST',
+              body: data
+            }).then(response => response.text()).then(data =>{
+              console.log(data);
+              if (data == "0") {
+                Swal.fire(
+                  'El producto no se encontro.',
+                  'Producto no encontrado',
+                  'error'
+                )
+               
+              }else{
+                var data = new FormData(e.target);
+                data.append("id" ,idventa)
+            
+        
+                fetch("../../recursos/PHP/metodos/EditarVentaBD.php", {
+                  method: 'POST',
+                  body: data
+                }).then(response => response.text()).then(data =>{
+                  document.querySelector(".contenedor-modal").style.display = "none";
+                  window.location.reload();
+                })
+        
+              } 
+            })
+          }
         })
 
+      
+
+
+
+
+       
 
 
       })
