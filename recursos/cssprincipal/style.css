@@ -295,7 +295,8 @@ nav .nav-enlaces li>ul>li:hover {
 
 }
 .loal-contenedor-modal .loal-modal .loal-header button ,
-.loal-contenedor-modal .loal-modal .loal-footer button {
+.loal-contenedor-modal .loal-modal .loal-footer button ,
+ .loal-contenedor-modal .loal-modal .loal-footer a{
   padding: var(--Padding);
   outline: none;
   border: none;
@@ -304,6 +305,7 @@ nav .nav-enlaces li>ul>li:hover {
   color: var(--ColorSecundario);
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
 
 }
 
@@ -329,6 +331,7 @@ nav .nav-enlaces li>ul>li:hover {
 .loal-contenedor-modal .loal-modal .loal-footer {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }

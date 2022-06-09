@@ -50,6 +50,8 @@
     </div>
     <div class="loal-footer">
         <button type="button" id="btnCerrarSesion">CERRAR SESION</button>
+        <br>
+        <a href="#">Temas</a>
     </div>
   </div>
 </div>
