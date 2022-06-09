@@ -11,17 +11,51 @@ if (e.target.value<0){
 })
 
 
-document.querySelector(".categorias").addEventListener("change", (e) =>   {
+document.querySelector("#btn-generarReporte").addEventListener("click", (e) =>   {
     var cantidad_datos = document.querySelector('.NProducto').value;
 
-    document.querySelector(".estatus").value="";
+    var ids = document.querySelector(".estatus").value;
     
     var id = document.querySelector(".categorias").value;
   
+
+
     var object = {
-      "id" : id
+      "id" : id,
+      "ids":ids
+    }
+
+
+    if (object["id"]=="" && object["ids"] ==""){
+      Swal.fire(
+        'no hay datos error.',
+        'porfavor verifique los datos ingresados en el formulario',
+        'error'
+      )
+    }else if (object["id"] !="" && object["ids"] == ""){
+      var object = {
+        "id" : id,
+        "ids":ids,
+        "qr": 1,
+      }
+    }else if (object["id"] =="" && object["ids"] != ""){
+      var object = {
+        "id" : id,
+        "ids":ids,
+        "qr": 2,
+      }
+    }else if (object["id"] !="" && object["ids"] != ""){
+      var object = {
+        "id" : id,
+        "ids":ids,
+        "qr": 3,
+      }
+
     }
   
+    console.log(object["qr"]);
+    console.log(object["id"]);
+    console.log(object["ids"]);
     fetch("./pmvfetch.php",{
       method: "POST",
       body : JSON.stringify(object),
@@ -36,11 +70,11 @@ document.querySelector(".categorias").addEventListener("change", (e) =>   {
 
        datos.sort((a , b)=>{
           
-        if(a.CANTIDAD<b.CANTIDAD){
+        if(a.CANTIDAD>b.CANTIDAD){
             return -1
         }
 
-        if(a.CANTIDAD>b.CANTIDAD){
+        if(a.CANTIDAD<b.CANTIDAD){
             return 1
         }
         
@@ -194,196 +228,201 @@ document.querySelector(".categorias").addEventListener("change", (e) =>   {
            }
        }
   
+        document.querySelector(".estatus").value="";
+    
+        document.querySelector(".categorias").value="";
 
+
+       document.querySelector('.NProducto').value="";
       
       })
   })
 
 
 
-  document.querySelector(".estatus").addEventListener("change", (e) =>   {
-    var cantidad_datos = document.querySelector('.NProducto').value;
-    document.querySelector(".categorias").value="";
-    var id_status = document.querySelector(".estatus").value;
+  // document.querySelector(".estatus").addEventListener("change", (e) =>   {
+  //   var cantidad_datos = document.querySelector('.NProducto').value;
+  //   document.querySelector(".categorias").value="";
+  //   var id_status = document.querySelector(".estatus").value;
 
 
-    var object = {
-        "ids" : id_status
-      }
+  //   var object = {
+  //       "ids" : id_status
+  //     }
     
   
-      fetch("./pmvfetch2.php",{
-        method: "POST",
-        body : JSON.stringify(object),
-        headers : {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(datos => {
-         //console.log(datos);
+  //     fetch("./pmvfetch2.php",{
+  //       method: "POST",
+  //       body : JSON.stringify(object),
+  //       headers : {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then(response => response.json())
+  //     .then(datos => {
+  //        //console.log(datos);
          
   
-         datos.sort((a , b)=>{
+  //        datos.sort((a , b)=>{
             
-          if(a.CANTIDAD<b.CANTIDAD){
-              return -1
-          }
+  //         if(a.CANTIDAD>b.CANTIDAD){
+  //             return -1
+  //         }
   
-          if(a.CANTIDAD>b.CANTIDAD){
-              return 1
-          }
+  //         if(a.CANTIDAD<b.CANTIDAD){
+  //             return 1
+  //         }
           
-         })
-         //console.log(datos);
-          var tablael = document.querySelector('.ProductosMasVendidos');
-          var ctablaelm = document.querySelector('tbody');
+  //        })
+  //        //console.log(datos);
+  //         var tablael = document.querySelector('.ProductosMasVendidos');
+  //         var ctablaelm = document.querySelector('tbody');
 
-          tablael.removeChild(ctablaelm);
+  //         tablael.removeChild(ctablaelm);
 
-         var tablap=document.querySelector('.ProductosMasVendidos');
-         var ctablap=document.createElement("tbody");
+  //        var tablap=document.querySelector('.ProductosMasVendidos');
+  //        var ctablap=document.createElement("tbody");
 
          
-         if (cantidad_datos == "" && datos.length < 5){
+  //        if (cantidad_datos == "" && datos.length < 5){
         
-            console.log('aushdiashd')
+  //           console.log('aushdiashd')
            
-            datos.forEach(element => {
+  //           datos.forEach(element => {
                 
-             var fila =document.createElement('tr');
+  //            var fila =document.createElement('tr');
      
-             var dato = document.createElement('td');
-             dato.innerText = element['ID_PRODUCTO'];
-             fila.appendChild(dato);
+  //            var dato = document.createElement('td');
+  //            dato.innerText = element['ID_PRODUCTO'];
+  //            fila.appendChild(dato);
      
              
-              dato = document.createElement('td');
-             dato.innerText = element['NOMBRE'];
-             fila.appendChild(dato);
+  //             dato = document.createElement('td');
+  //            dato.innerText = element['NOMBRE'];
+  //            fila.appendChild(dato);
      
               
-              dato = document.createElement('td');
-             dato.innerText = element['STOCK'];
-             fila.appendChild(dato);
+  //             dato = document.createElement('td');
+  //            dato.innerText = element['STOCK'];
+  //            fila.appendChild(dato);
      
               
-              dato = document.createElement('td');
-             dato.innerText = element['PRECIO_COMPRA'];
-             fila.appendChild(dato);
+  //             dato = document.createElement('td');
+  //            dato.innerText = element['PRECIO_COMPRA'];
+  //            fila.appendChild(dato);
      
               
-              dato = document.createElement('td');
-             dato.innerText = element['PRECIO'];
-             fila.appendChild(dato);
+  //             dato = document.createElement('td');
+  //            dato.innerText = element['PRECIO'];
+  //            fila.appendChild(dato);
      
-             dato = document.createElement('td');
-             dato.innerText = element['ventrealizadas'];
-             fila.appendChild(dato);
+  //            dato = document.createElement('td');
+  //            dato.innerText = element['ventrealizadas'];
+  //            fila.appendChild(dato);
              
-              dato = document.createElement('td');
-             dato.innerText = element['CANTIDAD'];
-             fila.appendChild(dato);
+  //             dato = document.createElement('td');
+  //            dato.innerText = element['CANTIDAD'];
+  //            fila.appendChild(dato);
      
-             ctablap.appendChild(fila);
+  //            ctablap.appendChild(fila);
      
-             tablap.appendChild(ctablap);
+  //            tablap.appendChild(ctablap);
              
-            });
-           }else if (cantidad_datos == "" && datos.length >=5){
+  //           });
+  //          }else if (cantidad_datos == "" && datos.length >=5){
     
     
-            for (let i = 0; i < 5; i++) {
+  //           for (let i = 0; i < 5; i++) {
                 
-                var fila =document.createElement('tr');
+  //               var fila =document.createElement('tr');
      
-                var dato = document.createElement('td');
-                dato.innerText = datos[i]['ID_PRODUCTO'];
-                fila.appendChild(dato);
+  //               var dato = document.createElement('td');
+  //               dato.innerText = datos[i]['ID_PRODUCTO'];
+  //               fila.appendChild(dato);
         
                 
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['NOMBRE'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['NOMBRE'];
+  //               fila.appendChild(dato);
         
                  
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['STOCK'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['STOCK'];
+  //               fila.appendChild(dato);
         
                  
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['PRECIO_COMPRA'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['PRECIO_COMPRA'];
+  //               fila.appendChild(dato);
         
                  
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['PRECIO'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['PRECIO'];
+  //               fila.appendChild(dato);
         
-                dato = document.createElement('td');
-                dato.innerText = datos[i]['ventrealizadas'];
-                fila.appendChild(dato);
+  //               dato = document.createElement('td');
+  //               dato.innerText = datos[i]['ventrealizadas'];
+  //               fila.appendChild(dato);
                 
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['CANTIDAD'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['CANTIDAD'];
+  //               fila.appendChild(dato);
         
-                ctablap.appendChild(fila);
+  //               ctablap.appendChild(fila);
         
-                tablap.appendChild(ctablap);
+  //               tablap.appendChild(ctablap);
                 
                 
-            }
-           }else if(cantidad_datos != ""){
+  //           }
+  //          }else if(cantidad_datos != ""){
                  
-               for (let i = 0; i < cantidad_datos; i++) {
-                var fila =document.createElement('tr');
+  //              for (let i = 0; i < cantidad_datos; i++) {
+  //               var fila =document.createElement('tr');
      
-                var dato = document.createElement('td');
-                dato.innerText = datos[i]['ID_PRODUCTO'];
-                fila.appendChild(dato);
+  //               var dato = document.createElement('td');
+  //               dato.innerText = datos[i]['ID_PRODUCTO'];
+  //               fila.appendChild(dato);
         
                 
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['NOMBRE'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['NOMBRE'];
+  //               fila.appendChild(dato);
         
                  
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['STOCK'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['STOCK'];
+  //               fila.appendChild(dato);
         
                  
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['PRECIO_COMPRA'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['PRECIO_COMPRA'];
+  //               fila.appendChild(dato);
         
                  
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['PRECIO'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['PRECIO'];
+  //               fila.appendChild(dato);
         
-                dato = document.createElement('td');
-                dato.innerText = datos[i]['ventrealizadas'];
-                fila.appendChild(dato);
+  //               dato = document.createElement('td');
+  //               dato.innerText = datos[i]['ventrealizadas'];
+  //               fila.appendChild(dato);
                 
-                 dato = document.createElement('td');
-                dato.innerText = datos[i]['CANTIDAD'];
-                fila.appendChild(dato);
+  //                dato = document.createElement('td');
+  //               dato.innerText = datos[i]['CANTIDAD'];
+  //               fila.appendChild(dato);
         
-                ctablap.appendChild(fila);
+  //               ctablap.appendChild(fila);
         
-                tablap.appendChild(ctablap);
+  //               tablap.appendChild(ctablap);
                 
                    
-               }
-           }
+  //              }
+  //          }
          
 
          
-        })
-  })
+  //       })
+  // })
 
 
 

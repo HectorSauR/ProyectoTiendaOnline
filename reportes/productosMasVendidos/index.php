@@ -16,7 +16,7 @@
 </head>
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
 <script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
-    
+<script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
 <?php include '../../recursos/nav/nav.php' ?>
 
 <div class="main">
@@ -29,7 +29,7 @@
         <label for="categorias">Categoría</label>
 
         <select class="categorias" >
-            <option selected disabled ></option>
+            <option selected disabled></option>
             <?php
                  foreach ($datos as $dat) {
                  echo '<option value="' . $dat['ID_CATEGORIA'] . '">' . $dat['NOMBRE'] . '</option>';
