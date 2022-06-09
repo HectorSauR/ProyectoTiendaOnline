@@ -270,6 +270,7 @@ var idproducto=  document.querySelector("#txtidproducto").value
 
       `
       document.querySelector("#total").innerText = "Total: $"+total
+      document.getElementById("txtidproducto").value = ""
     })
 
 
