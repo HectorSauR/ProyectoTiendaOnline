@@ -31,7 +31,7 @@
 </head>
 
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" >
-<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
+<script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
 <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     
   

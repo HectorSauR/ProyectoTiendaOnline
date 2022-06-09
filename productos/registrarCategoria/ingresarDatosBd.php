@@ -11,9 +11,16 @@ move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
 
  $nombre  = $_POST['user_name'];
  $Descripcion  = $_POST['user_message'];
- $rutaImagen="../../recursos/cssprincipal/style.css/".$nombreImagen;
+ $rutaImagen="../../recursos/imagenes/regCategoria/".$nombreImagen;
 
-$insertar = "INSERT INTO categoria_productos VALUES (NULL,'$nombre','$Descripcion','$rutaImagen',1)";
+ $obtenerUltimoId= "SELECT ID_CATEGORIA from categoria_productos order by ID_CATEGORIA desc limit 1;";
+
+ $r = mysqli_query($conectar, $obtenerUltimoId);
+ $resultado = mysqli_fetch_array($r);
+ $id = $resultado[0]['ID_CATEGORIA'];
+ $id++;
+
+$insertar = "INSERT INTO categoria_productos VALUES ($id,'$nombre','$Descripcion','$rutaImagen',1)";
 
 $query = mysqli_query($conectar, $insertar);
 

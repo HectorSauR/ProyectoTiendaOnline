@@ -1,6 +1,6 @@
 <?php
- // include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
- // include '../../recursos/PHP/clases/conexion.php';
+  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include '../../recursos/PHP/clases/conexion.php';
 ?>
 <?php // include '../../recursos/PHP/metodos/verificarSesionUsuario.php' ?>
 <!DOCTYPE html>
@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css" />
 
 </head>
-<!-- onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" -->
-<body >
-<script type="text/javascript" src="../../usuarios/modificarTema/js/master.js"></script>
+
+<body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" >
+<script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
 <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-    <?php // include '../../recursos/nav/nav.php' ?>
+    <?php  include '../../recursos/nav/nav.php' ?>
     <div class="main">
         <h1   style="color: white" >MODIFICAR DATOS DE LA EMPRESA</h1>
 
@@ -66,7 +66,7 @@
             <div class="imagen" >
                 <div class="imgelg" >
                     <div class="img-mostrar">
-                        <img src="https://bluemadness.000webhostapp.com/img_proyecto/logo_empresa.png" alt="" class="imagenselec" name="imagenselec" id="imagenselec">
+                        <img src="" alt="" class="imagenselec" name="imagenselec" id="imagenselec">
                     </div>
                     <!-- <button class="examinar">examinar</button> -->
                     <input type="file" name="img-elg" id="img-elg" class="img-elg">

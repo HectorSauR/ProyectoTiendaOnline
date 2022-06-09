@@ -1,59 +1,53 @@
-
-select{
-    
-    border-radius: 20px;
-
+select {
+  border-radius: 20px;
 }
 
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
 
-#prin{
-
-    float: left;
-    
+#prin {
+  float: left;
 }
 
 form li + li {
-    margin-top: 1em;
-  }
-
-#export{
-    float: right;
-    margin-right: 10%;
-    color: white;
-
+  margin-top: 1em;
 }
 
-img:hover{
-    background-color: rgb(89, 195, 195);
-    padding: 1%;
-    border-radius: 20px;
+#export {
+  float: right;
+  margin-right: 10%;
+  color: white;
 }
 
-form{
-    color: white;
+img:hover {
+  background-color: rgb(89, 195, 195);
+  padding: 1%;
+  border-radius: 20px;
 }
 
-#ventasT{
-    float: right;
+form {
+  color: white;
 }
 
-#btnGenerar{
-    font-size: 20px;
-    color: #3E4078;
-    padding: 2%;
-    background-color: white;
-    border-radius: 20px;
+#ventasT {
+  float: right;
 }
 
-#btnGenerar:hover{
-    background-color: aqua;
-    color: black;
+#btnGenerar {
+  font-size: 20px;
+  color: var(--ColorPrincipal);
+  padding: 2%;
+  background-color: white;
+  border-radius: 20px;
 }
 
-.report{
-    background-color: #3E4078;
-    border: #3E4078;
+#btnGenerar:hover {
+  background-color: aqua;
+  color: black;
+}
+
+.report {
+  background-color: var(--ColorPrincipal);
+  border: var(--ColorPrincipal);
 }
