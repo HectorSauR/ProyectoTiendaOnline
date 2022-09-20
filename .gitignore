@@ -1,3 +1,3 @@
 
 recursos/PHP/configuracionDelSitioWeb/conf.php
-recursos/PHP/metodos/buscarUsuarioBD.php
+recursos/PHP/clases/conexion.php
