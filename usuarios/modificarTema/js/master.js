@@ -34,7 +34,7 @@ function checkCookie(nombre) {
   let colorPrincipal = getCookie("colorPrincial" + nombre);
   let colorSecundario = getCookie("colorSecundario" + nombre);
 
-  if (colorPrincipal != null && (colorSecundario == undefined || colorSecundario == null)) {
+  if (colorPrincipal != null) {
     document
       .querySelector(":root")
       .style.setProperty("--ColorPrincipal", colorPrincipal);
