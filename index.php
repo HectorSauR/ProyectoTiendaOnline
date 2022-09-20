@@ -1,6 +1,6 @@
 <?php
-  include 'recursos/PHP/configuracionDelSitioWeb/conf.php';
-  include 'recursos/PHP/clases/conexion.php';
+  include './recursos/PHP/configuracionDelSitioWeb/conf.php';
+  include './recursos/PHP/clases/conexion.php';
 ?>
 
  <!DOCTYPE html>
@@ -14,12 +14,7 @@
  </head>
 
  <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
-   <?php  include 'recursos/nav/nav.php' ?>
-
-
-
-
-
+   <?php  include './recursos/nav/nav.php' ?>
 
    <script type="text/javascript" src="./Usuarios/modificarTema/js/master.js"></script>
  </body>
