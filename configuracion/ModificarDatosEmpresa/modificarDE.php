@@ -17,15 +17,12 @@ $imagenv = $_POST['img'];
 
 if ($imagenv=="1"){
     
-
-    echo "no";
 $regproducto = "UPDATE info_empresa set NOMBRE=? , SLOGAN=? , DESCRIPCION=? , TELEFONO=? , CORREO=? , WEBSITE=? , FACEBOOK=? , TWITER=?";
 $consulta = $conexion->prepare($regproducto);
 $arregloprod = array($nombre,$slogan,$decripcion,$telefono,$correo,$web,$face,$twitter);
 $res = $consulta->execute($arregloprod);
 
 }else{
-    echo "si";
 $fileContent = file_get_contents($imagen['tmp_name']);
 $path = "../../recursos/imagenes/LOGO/".$nombre;
 
@@ -34,9 +31,7 @@ $extension = pathinfo("../../recursos/imagenes/LOGO/".$nombre."/".$imagen["name"
 $pathimg = "../../recursos/imagenes/LOGO/".$nombre.".". $extension;
    
     file_put_contents("../../recursos/imagenes/LOGO/".$nombre.".".$extension,$fileContent);
-  
-
-    $regproducto = "UPDATE info_empresa set NOMBRE=? ,LOGO = ? , SLOGAN=? , DESCRIPCION=? , TELEFONO=? , CORREO=? , WEBSITE=? , FACEBOOK=? , TWITER=?";
+      $regproducto = "UPDATE info_empresa set NOMBRE=? ,LOGO = ? , SLOGAN=? , DESCRIPCION=? , TELEFONO=? , CORREO=? , WEBSITE=? , FACEBOOK=? , TWITER=?";
     $consulta = $conexion->prepare($regproducto);
     $arregloprod = array($nombre,$pathimg,$slogan,$decripcion,$telefono,$correo,$web,$face,$twitter);
     $res = $consulta->execute($arregloprod);
