@@ -4,7 +4,7 @@
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $db = "tienda_online";
+    private $db = "tiendaonline";
     private $conect;
 
     public function __construct(){
@@ -31,4 +31,4 @@
   $conexion = new Conexion();
   $conexion = $conexion->connect();
 
- ?>
+?>

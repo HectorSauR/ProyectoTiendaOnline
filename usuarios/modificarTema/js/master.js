@@ -34,15 +34,16 @@ function checkCookie(nombre) {
   let colorPrincipal = getCookie("colorPrincial" + nombre);
   let colorSecundario = getCookie("colorSecundario" + nombre);
 
+  if (colorSecundario != null) {
+    document
+      .querySelector(":root")
+      .style.setProperty("--ColorSecundario", colorSecundario);
+  }
+
   if (colorPrincipal != null) {
     document
       .querySelector(":root")
       .style.setProperty("--ColorPrincipal", colorPrincipal);
   }
 
-  if (colorSecundario != null) {
-    document
-      .querySelector(":root")
-      .style.setProperty("--ColorSecundario", colorSecundario);
-  }
 }
