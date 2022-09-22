@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Modificar Categoria</title>
 </head>
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
 <script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
