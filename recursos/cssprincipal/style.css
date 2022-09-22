@@ -11,6 +11,14 @@
   --LetterSpacing: 3px;
   --Margin: 10px;
   --Top:104.17px;
+
+
+  --SizeTitulo: 1.6rem;
+
+  --SizeDescripcion: 0.9rem;
+
+  --FontSize: 16px;
+
 }
 
 * {
@@ -25,7 +33,7 @@ body {
 
 html {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: var(--FontSize);
 }
 
 .contenedor-header {
