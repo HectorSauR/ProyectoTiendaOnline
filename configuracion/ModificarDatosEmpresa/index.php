@@ -32,7 +32,7 @@
                             <label for="name">Nombre: </label>
                             <input type="text" name="txtnom" id="txtnom">
 
-                            <label for="name">slogan: </label>
+                            <label for="name">Eslogan: </label>
                             <input type="text" name="txtslogan" id="txtslogan">
 
                             <label for="name"> Descripcion: </label>

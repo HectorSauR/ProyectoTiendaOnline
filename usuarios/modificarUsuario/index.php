@@ -67,7 +67,7 @@
         <label for="">Contraseña</label>
         <input type="text" name="clave" value="" id="clave">
         <label for="">Correo</label>
-        <input type="text" name="correo" value="" id="correo">
+        <input type="text" name="correo" value="" id="correo" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$">
         <label for="">Nivel</label>
         <select name="nivel" id="nivel">
           <option>Cliente</option>

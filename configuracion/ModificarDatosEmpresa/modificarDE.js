@@ -15,7 +15,7 @@ document.getElementById("txtweb").value = item.WEBSITE;
 document.getElementById("txtfac").value = item.FACEBOOK;
 document.getElementById("txttw").value = item.TWITER;
 
-  }
+}
 
 })
   
@@ -56,9 +56,6 @@ document.getElementById("txttw").value = item.TWITER;
 
   document.querySelector(".contenido").addEventListener("submit", (e) => {
     e.preventDefault()
-  
-  
-    
   
         var data = new FormData(e.target);
 
