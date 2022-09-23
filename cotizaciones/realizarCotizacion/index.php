@@ -38,8 +38,15 @@
           $Execute = $conexion->query($BuscarUsuario);
           $r = $Execute->fetchall(PDO::FETCH_ASSOC);
 
-          $nombre = $r[0]['NOMBRE'];
-          $correo = $r[0]['CORREO'];
+          if($r[0]['NOMBRE'] != ""){
+            $nombre = $r[0]['NOMBRE'];
+            $correo = $r[0]['CORREO'];
+          }
+          else{
+            $nombre = "ANONIMO";
+            $correo = "ANONIMO";
+          }
+
         ?>
         <p id="first">Datos del cliente:</p>
         <div class="client">

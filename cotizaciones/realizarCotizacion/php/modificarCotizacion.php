@@ -1,6 +1,5 @@
 <?php
     include '../../../recursos/PHP/clases/conexion.php';
-    session_start();
 
     //id de producto
     $id_prod = $_POST['id_prod'];
@@ -8,8 +7,8 @@
     $cotizacion = $_POST['id_cot'];
 
     //CONFIRMAR EXISTENCIA DEL PRODUCTO
-    $confirmarStock = "SELECT STOCK FROM PRODUCTOS WHERE id_producto = $id_prod;";
-    $Execute = $conexion->query($confirmarStock );
+    $confirmarStock = "SELECT STOCK FROM productos WHERE ID_PRODUCTO = $id_prod;";
+    $Execute = $conexion->query($confirmarStock);
     
     $r = $Execute->fetchall(PDO::FETCH_ASSOC);
     $stock = $r[0]['STOCK'];

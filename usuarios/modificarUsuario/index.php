@@ -31,7 +31,10 @@
         <div class="header-usuario">
           <p>Usuario</p>
         </div>
-
+        <div class="header-imagen">
+          <p>IMAGEN</p>
+                  <!-- <img src="../../recursos/imagenes/productos/mcr/mcr.jpg" alt="asdasd"> -->
+        </div>
         <div class="header-contra">
           <p>Contraseña</p>
         </div>
@@ -64,6 +67,9 @@
         <input type="text" name="nombre" value="" id="nombre">
         <label for="">Usuario</label>
         <input type="text" name="usuario" value="" id="usuario">
+        <label for="">Imagen</label>
+        <input type="text" name="imagen" value="" id="imagen">
+        <input type="file" name="img_env" id="img_env"  accept="image/*">
         <label for="">Contraseña</label>
         <input type="text" name="clave" value="" id="clave">
         <label for="">Correo</label>

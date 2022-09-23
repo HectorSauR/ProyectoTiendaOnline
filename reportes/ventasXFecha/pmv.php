@@ -4,7 +4,7 @@
 
  
 
-  $query = 'SELECT *  FROM `forma_pago`;';
+  $query = 'SELECT *  FROM `forma_pago` ;';
   $statement = $conexion->prepare($query);
   $statement->execute();
   $result = $statement->fetchall();
@@ -18,7 +18,7 @@
             ];
         }
 
-        $query = 'SELECT *  FROM `usuario`;';
+        $query = 'SELECT * FROM usuario WHERE NIVEL=1 OR NIVEL=2;';
         $statement = $conexion->prepare($query);
         $statement->execute();
         $result = $statement->fetchall();

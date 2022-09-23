@@ -9,17 +9,17 @@
 }
 .main .contenedor-usuarios {
   width: 100%;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-margin-top: var(--Margin);
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin-top: var(--Margin);
 }
+
 .main .contenedor-usuarios div p {
   color: var(--ColorSecundario);
 }
-.main .contenedor-usuarios div button ,
- .main .contenedor-usuarios div input{
-  padding:calc(var(--Padding) / 1.5);
+.main .contenedor-usuarios div button,
+.main .contenedor-usuarios div input {
+  padding: calc(var(--Padding) / 1.5);
   border-radius: var(--BorderRadius);
   outline: none;
   border: none;
@@ -35,11 +35,26 @@ margin-top: var(--Margin);
   justify-content: center;
 }
 
-.main .contenedor-usuarios .header-nombre ,
-.main .contenedor-usuarios .header-usuario ,
-.main .contenedor-usuarios .header-contra ,
-.main .contenedor-usuarios .header-correo ,
-.main .contenedor-usuarios .header-nivel ,
+.main .contenedor-usuarios .imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .contenedor-usuarios div img {
+  width: 100px;
+}
+
+.main .contenedor-usuarios .imagen p {
+  display: none;
+}
+
+.main .contenedor-usuarios .header-nombre,
+.main .contenedor-usuarios .header-usuario,
+.main .contenedor-usuarios .header-imagen,
+.main .contenedor-usuarios .header-contra,
+.main .contenedor-usuarios .header-correo,
+.main .contenedor-usuarios .header-nivel,
 .main .contenedor-usuarios .header-opcion {
   border: var(--border) solid var(--ColorSecundario);
   color: var(--ColorSecundario);
@@ -47,18 +62,17 @@ margin-top: var(--Margin);
 }
 
 .main .contenedor-buscar input {
-  padding:calc(var(--Padding) / 1.5);
+  padding: calc(var(--Padding) / 1.5);
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
-
 }
 .main .contenedor-buscar label {
   color: var(--ColorSecundario);
   font-weight: 600;
 }
 .main .contenedor-buscar button {
-  padding:calc(var(--Padding) / 1.5);
+  padding: calc(var(--Padding) / 1.5);
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
@@ -67,20 +81,20 @@ margin-top: var(--Margin);
   border: var(--border) solid var(--ColorSecundario);
   cursor: pointer;
   font-weight: 600;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 .main .contenedor-buscar button:hover {
   color: var(--ColorPrincipal);
   background-color: var(--ColorSecundario);
 }
 
-.main .contenedor-usuarios div p{
+.main .contenedor-usuarios div p {
   text-align: center;
 }
 
 .contenedor-modal {
   position: fixed;
-  background-color: rgba(0 ,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
   right: 0;
@@ -90,7 +104,7 @@ margin-top: var(--Margin);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: opacity .3s;
+  animation: opacity 0.3s;
   display: none;
 }
 
@@ -103,7 +117,6 @@ margin-top: var(--Margin);
   }
 }
 
-
 .contenedor-modal .modal {
   width: 70%;
   background-color: var(--ColorPrincipal);
@@ -111,7 +124,7 @@ margin-top: var(--Margin);
   flex-direction: column;
   padding: var(--Padding);
   border-radius: var(--BorderRadius);
-  animation: translate 1s .3s forwards;
+  animation: translate 1s 0.3s forwards;
   transform: translateY(-1000px);
 }
 
@@ -131,9 +144,9 @@ margin-top: var(--Margin);
   color: var(--ColorSecundario);
   font-weight: 500;
 }
-.contenedor-modal .modal form input ,
- .contenedor-modal .modal form select{
-  padding:calc(var(--Padding) / 1.5);
+.contenedor-modal .modal form input,
+.contenedor-modal .modal form select {
+  padding: calc(var(--Padding) / 1.5);
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
@@ -151,8 +164,7 @@ margin-top: var(--Margin);
   background-color: var(--ColorPrincipal);
   border-radius: var(--BorderRadius);
   cursor: pointer;
-  transition: all .3s;
-
+  transition: all 0.3s;
 }
 .contenedor-modal .modal form .contenedor-button button:hover {
   color: var(--ColorPrincipal);
