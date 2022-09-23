@@ -17,40 +17,14 @@
   <?php  include '../../recursos/nav/nav.php' ?>
   <div class="main">
     <h1>Gestión de usuarios</h1>
-    <div class="contenedor-buscar">
+    <form class="contenedor-buscar">
       <label>Buscar:</label>
-      <input type="text" name="" value="">
-      <button type="button">Buscar</button>
-    </div>
+      <input type="text" name="inputNombreUsuario" id="inputNombreUsuario" value=""  required>
+      <button type="submit">Buscar</button>
+    </form>
 
     <div class="contenedor-tabla-usuarios">
-      <div class="contenedor-usuarios">
-        <div class="header-nombre">
-          <p>Nombre</p>
-        </div>
-        <div class="header-usuario">
-          <p>Usuario</p>
-        </div>
-        <div class="header-imagen">
-          <p>IMAGEN</p>
-                  <!-- <img src="../../recursos/imagenes/productos/mcr/mcr.jpg" alt="asdasd"> -->
-        </div>
-        <div class="header-contra">
-          <p>Contraseña</p>
-        </div>
-
-        <div class="header-correo">
-          <p>Correo</p>
-        </div>
-
-        <div class="header-nivel">
-          <p>Nivel</p>
-        </div>
-
-        <div class="header-opcion">
-          <p>Opcion</p>
-        </div>
-      </div>
+      
     </div>
 
 
