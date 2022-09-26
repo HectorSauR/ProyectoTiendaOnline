@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Consulatar Productos</title>
+  <title>Consultar Productos</title>
   <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
   <link rel="stylesheet" href="../../recursos/librerias/jquery/plug-in/datables/datatables.css">
   <link rel="stylesheet" href="css/master.css">
@@ -79,12 +79,15 @@
   
   <?php
   if (isset($_POST['generar'])) {
-    require 'conexion.php';
+    
+    $conexion2 = new Conexion();
+    $conexion2 = $conexion2->getConectionMysql();
+
     $frmPago = $_REQUEST['frmPago'];
     $usr = $_REQUEST['usr1'];
     $fecha = $_REQUEST['fecha'];
     //$BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
-    $resultado = mysqli_query($conectar,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
+    $resultado = mysqli_query($conexion2,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
                                                 detallesVenta.PRECIO,
                                                 usuario.USUARIO,
                                                 forma_pago.DESCRIPCION

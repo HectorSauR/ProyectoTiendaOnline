@@ -19,10 +19,15 @@
       }
 
     }
+    public function getConectionMysql(){
+      return mysqli_connect($this->host,$this->user,$this->password,$this->db);
+    }
 
     public function connect(){
       return $this->conect;
     }
+
+    
 
   }
 

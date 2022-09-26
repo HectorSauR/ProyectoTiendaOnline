@@ -1,9 +1,13 @@
 <?php
- require 'conexion.php';
+include '../../recursos/PHP/clases/conexion.php';
+
+$conexion2 = new Conexion();
+
+$conectar = $conexion2 -> getConectionMysql();
 
 $nombreImagen=$_FILES['imagen']['name'];
 $tipoImagen=$_FILES['imagen']['type'];
-$tamImagen=$_FILES['imagen']['size'];
+$tamImagen=$_FILES['imagen']['size'];   
 
 $carpeta=$_SERVER['DOCUMENT_ROOT'] . '/ProyectoTiendaOnline/recursos/imagenes/regCategoria/';
 

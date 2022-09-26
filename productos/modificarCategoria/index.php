@@ -83,13 +83,16 @@
 </html>
 
 <?php 
+$conexion2 = new Conexion();
+
+$conectar = $conexion2->getConectionMysql();
+
 if (isset($_POST['btnEliminar'])) {
-  require 'conexion.php';
   $nombre=$_POST['user_name'];
   $modificar=mysqli_query($conectar,"UPDATE categoria_productos SET ID_ESTATUS = '2' WHERE NOMBRE = '$nombre'");
 }
+
 if (isset($_POST['consulta'])) {
-    require 'conexion.php';
     $dato=$_REQUEST['consultar'];
     
     $resultado = mysqli_query($conectar,"SELECT * FROM categoria_productos WHERE NOMBRE = '$dato'");
@@ -119,7 +122,6 @@ if (isset($_POST['consulta'])) {
 }
 
 if (isset($_POST['btnModificar'])) {
-    require 'conexion.php';
     $nombre=$_POST['user_name'];
     $desc=$_POST['user_message'];
     $dato=$_REQUEST['consultar'];
