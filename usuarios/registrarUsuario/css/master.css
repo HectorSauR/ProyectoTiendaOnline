@@ -28,6 +28,33 @@
   color: var(--ColorSecundario);
   font-weight: 500;
 }
+
+/*STYLE PARA CREAR UN OJO EN INPUT PASSWORD
+Y PODER MOSTRAR LA CONTRASEÑA */
+.main .contenedor-form .contenedor-clave {
+  background-color: var(--ColorSecundario);
+  border-radius: var(--BorderRadius);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.main .contenedor-form .contenedor-clave input {
+  width: 100%;
+}
+
+.main .contenedor-form .contenedor-clave .icon-ojo {
+  color: var(--ColorPrincipal);
+  background-color: var(--ColorSecundario);
+  font-size:var(--SizeTitulo);
+  cursor: pointer;
+}
+
+/*FIN DE STYLE PARA CREAR UN OJO EN INPUT PASSWORD
+Y PODER MOSTRAR LA CONTRASEÑA */
+
+
 .main .contenedor-form input , .main .contenedor-form select {
   outline: none;
   border: none;

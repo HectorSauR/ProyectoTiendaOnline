@@ -10,6 +10,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
   <link rel="stylesheet" href="css/master.css">
+
+  <!--LIB ICON FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <title>Registrar usuario</title>
 </head>
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
@@ -27,7 +30,10 @@
             <label>Usuario:</label>
             <input type="text" name="usuario" value="" required>
             <label>Contraseña:</label>
-            <input type="password" name="clave" value="" required>
+            <div class="contenedor-clave">
+            <input type="password" name="clave" id="clave" value="" required>
+            <i class="fa-solid fa-eye icon-ojo"></i>
+            </div>
             <label>Correo:</label>
             <input type="text" name="correo" value="" >
             <label>Nivel:</label>

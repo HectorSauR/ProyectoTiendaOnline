@@ -17,37 +17,14 @@
   <?php  include '../../recursos/nav/nav.php' ?>
   <div class="main">
     <h1>Gestión de usuarios</h1>
-    <div class="contenedor-buscar">
+    <form class="contenedor-buscar">
       <label>Buscar:</label>
-      <input type="text" name="" value="">
-      <button type="button">Buscar</button>
-    </div>
+      <input type="text" name="inputNombreUsuario" id="inputNombreUsuario" value=""  required>
+      <button type="submit">Buscar</button>
+    </form>
 
     <div class="contenedor-tabla-usuarios">
-      <div class="contenedor-usuarios">
-        <div class="header-nombre">
-          <p>Nombre</p>
-        </div>
-        <div class="header-usuario">
-          <p>Usuario</p>
-        </div>
-
-        <div class="header-contra">
-          <p>Contraseña</p>
-        </div>
-
-        <div class="header-correo">
-          <p>Correo</p>
-        </div>
-
-        <div class="header-nivel">
-          <p>Nivel</p>
-        </div>
-
-        <div class="header-opcion">
-          <p>Opcion</p>
-        </div>
-      </div>
+      
     </div>
 
 
@@ -64,6 +41,9 @@
         <input type="text" name="nombre" value="" id="nombre">
         <label for="">Usuario</label>
         <input type="text" name="usuario" value="" id="usuario">
+        <label for="">Imagen</label>
+        <input type="text" name="imagen" value="" id="imagen">
+        <input type="file" name="img_env" id="img_env"  accept="image/*">
         <label for="">Contraseña</label>
         <input type="text" name="clave" value="" id="clave">
         <label for="">Correo</label>

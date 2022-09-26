@@ -4,8 +4,9 @@ include("../clases/conexion.php");
 //variables post
 
 $nombre = $_POST['txtnom'];
+$id = $_POST['id'];
 
-$BuscarProducto= "select * from productos where NOMBRE = '$nombre'";
+$BuscarProducto= "select * from productos where NOMBRE = '$nombre' AND ID_PRODUCTO <> $id";
 $Execute = $conexion->query($BuscarProducto);
 
 $r = $Execute->fetchall(PDO::FETCH_ASSOC);

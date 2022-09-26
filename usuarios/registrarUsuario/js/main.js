@@ -100,3 +100,15 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
 
 
 })
+//LOGJICA PARA HACER FUNCIONAR EL MOSTRAR PASSWORD DE INPUT EN FORMULARIO 
+const ojo = document.querySelector(".icon-ojo"); //icono mostrar
+const inputPassword = document.getElementById("clave");
+
+ojo.addEventListener("click", ()=> {
+
+  if(inputPassword.type == "password") {
+    inputPassword.type = "text"
+  }else {
+    inputPassword.type = "password"
+  }
+})

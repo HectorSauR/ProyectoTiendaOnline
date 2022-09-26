@@ -1,6 +1,7 @@
 <?php
 
 require '../../recursos/PHP/clases/conexion.php';
+require '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
 
 $nombre = $_POST['txtnom'];
 $slogan = $_POST['txtslogan'];
@@ -16,7 +17,6 @@ $imagenv = $_POST['img'];
 
 
 if ($imagenv=="1"){
-    
 $regproducto = "UPDATE info_empresa set NOMBRE=? , SLOGAN=? , DESCRIPCION=? , TELEFONO=? , CORREO=? , WEBSITE=? , FACEBOOK=? , TWITER=?";
 $consulta = $conexion->prepare($regproducto);
 $arregloprod = array($nombre,$slogan,$decripcion,$telefono,$correo,$web,$face,$twitter);
@@ -24,11 +24,11 @@ $res = $consulta->execute($arregloprod);
 
 }else{
 $fileContent = file_get_contents($imagen['tmp_name']);
-$path = "../../recursos/imagenes/LOGO/".$nombre;
+$path = "$pathHost/recursos/imagenes/LOGO/".$nombre;
 
-$extension = pathinfo("../../recursos/imagenes/LOGO/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
+$extension = pathinfo("$pathHost/recursos/imagenes/LOGO/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
 
-$pathimg = "../../recursos/imagenes/LOGO/".$nombre.".". $extension;
+$pathimg = "$pathHost/recursos/imagenes/LOGO/".$nombre.".". $extension;
    
     file_put_contents("../../recursos/imagenes/LOGO/".$nombre.".".$extension,$fileContent);
       $regproducto = "UPDATE info_empresa set NOMBRE=? ,LOGO = ? , SLOGAN=? , DESCRIPCION=? , TELEFONO=? , CORREO=? , WEBSITE=? , FACEBOOK=? , TWITER=?";

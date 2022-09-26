@@ -9,83 +9,78 @@ var total = 0;
 var idProductos = [];
 
 //EVENTO CLICK PARA BUTTON ENCARGADO DE BUSCAR ID DE COTIZACION
-btnBuscarCotizacion.addEventListener("click",()=>{
+btnBuscarCotizacion.addEventListener("click", () => {
   //VERIFICAR ID
-  if(txtIdCotizacion.value == ""){
-    Swal.fire(
-      'ERROR!',
-      'iNGRESE EL ID DE LA COTIZACION',
-      'error'
-    )
-  }else{
+  if (txtIdCotizacion.value == "") {
+    Swal.fire("ERROR!", "iNGRESE EL ID DE LA COTIZACION", "error");
+  } else {
     //TODO CORRECTO
-    let id = txtIdCotizacion.value
+    let id = txtIdCotizacion.value;
 
-    var data = new FormData()
-    data.append("id",id)
+    var data = new FormData();
+    data.append("id", id);
 
-    fetch("../../recursos/PHP/metodos/buscarCotizacionBD.php",{
-      method:"POST",
-      body:data
-    }).then(response => response.json()).then(data => {
-      if(data == ""){
-        Swal.fire(
-          'ERROR!',
-          'LA COTIZACION NO SE ENCONTRO',
-          'error'
-        )
-      }else{
-        nombreUsuario.value = data[0].NOMBR_CLIENTE
-        correoUsuario.value = data[0].CORREO_CLIENTE
-        contadorDetallesCotizacion = -1
-        obtenerDetalleDeCotizacion(id);
-      }
+    fetch("../../recursos/PHP/metodos/buscarCotizacionBD.php", {
+      method: "POST",
+      body: data,
     })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data == "") {
+          Swal.fire("ERROR!", "LA COTIZACION NO SE ENCONTRO", "error");
+        } else {
+          nombreUsuario.value = data[0].NOMBR_CLIENTE;
+          correoUsuario.value = data[0].CORREO_CLIENTE;
+          contadorDetallesCotizacion = -1;
+          obtenerDetalleDeCotizacion(id);
+        }
+      });
   }
-
-})//FIN DE EVENTO CLICK DE BUSCAR COTIZACION
-
-
+}); //FIN DE EVENTO CLICK DE BUSCAR COTIZACION
 
 //METODO ENCARGADO DE OBTENER LOS PRODUCTOS DE LA COTIZACION
 var arrayDetalleDeCotizacion;
-var contadorDetallesCotizacion = 0
-var totalImporte= 0
+var contadorDetallesCotizacion = 0;
+var totalImporte = 0;
 
-function obtenerDetalleDeCotizacion(id){
-
-  let data = new FormData()
-  data.append("id",id)
-  fetch("../../recursos/PHP/metodos/obtenerDetalleDeCotizacionBD.php",{
-    method:"POST",
-    body:data
-  }).then(res => res.json()).then(data => {
-    arrayDetalleDeCotizacion = data
-
-    for(var i of data){
-      console.log(i.ID_PRODUCTO)
-      obtenerProductosDeCotizacion(i.ID_PRODUCTO ,i ,data.length);
-    }
-
-    //
-
+function obtenerDetalleDeCotizacion(id) {
+  let data = new FormData();
+  data.append("id", id);
+  fetch("../../recursos/PHP/metodos/obtenerDetalleDeCotizacionBD.php", {
+    method: "POST",
+    body: data,
   })
-}//FIN METODO ENCARGADO DE OBTENER LOS PRODUCTOS DE LA COTIZACION
+    .then((res) => res.json())
+    .then((data) => {
+      arrayDetalleDeCotizacion = data;
 
-function obtenerProductosDeCotizacion(id ,indice ,lengthData){
-  let data = new FormData()
-  data.append("id",id)
-  fetch("../../recursos/PHP/metodos/obtenerProductosDeCotizacionBD.php",{
-    method:"POST",
-    body:data
-  }).then(res => res.json()).then(data => {
-    contadorDetallesCotizacion++
+      for (var i of data) {
+        console.log(i.ID_PRODUCTO);
+        obtenerProductosDeCotizacion(i.ID_PRODUCTO, i, data.length);
+      }
 
-      var importe = parseFloat(data[0].PRECIO) * parseInt(arrayDetalleDeCotizacion[contadorDetallesCotizacion].CANTIDAD)
-      totalImporte += importe
+      //
+    });
+} //FIN METODO ENCARGADO DE OBTENER LOS PRODUCTOS DE LA COTIZACION
 
-      document.querySelector(".contenedor-tabla-productos").innerHTML +=
-      `
+function obtenerProductosDeCotizacion(id, indice, lengthData) {
+  let data = new FormData();
+  data.append("id", id);
+  fetch("../../recursos/PHP/metodos/obtenerProductosDeCotizacionBD.php", {
+    method: "POST",
+    body: data,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      contadorDetallesCotizacion++;
+
+      var importe =
+        parseFloat(data[0].PRECIO) *
+        parseInt(arrayDetalleDeCotizacion[contadorDetallesCotizacion].CANTIDAD);
+      importe = importe + importe * 0.16;
+      totalImporte += importe;
+
+      document.querySelector(".contenedor-tabla-productos").innerHTML += `
       <div class="tabla">
         <div class="producto">
           <p>${data[0].ID_PRODUCTO}</p>
@@ -105,128 +100,107 @@ function obtenerProductosDeCotizacion(id ,indice ,lengthData){
       </div>
 
 
-      `
+      `;
 
-
-
-
-      document.querySelector("#total").innerText = "Total: $"+totalImporte
-
-  })
+      document.querySelector("#total").innerText = "Total: $" + totalImporte;
+    });
 }
 
 //EVENTO DE BTN PARA FINALIZAR VENTA
-document.querySelector("#btnFinalizarVenta").addEventListener("click",()=>{
-finalizarVenta()
-
-
-
-
-
-
-
-
-})
+document.querySelector("#btnFinalizarVenta").addEventListener("click", () => {
+  finalizarVenta();
+});
 
 //FUNCION ENCARGADA DE FINALIZAR LA VENTA
-function finalizarVenta(){
-  var tipoPago = 0
-  if(document.querySelector("#Efectivo").checked){
-    tipoPago = 1
-  }else{
-    tipoPago = 2
+function finalizarVenta() {
+  var tipoPago = 0;
+  if (document.querySelector("#Efectivo").checked) {
+    tipoPago = 1;
+  } else {
+    tipoPago = 2;
   }
 
-  var data = new FormData()
-  data.append("formaPago",tipoPago)
+  var data = new FormData();
+  data.append("formaPago", tipoPago);
 
   let date = new Date();
-  data.append("fecha",date.toLocaleDateString())
+  data.append("fecha", date.toLocaleDateString());
 
-  fetch("../../recursos/PHP/metodos/obtenerIdVenta.php",{
-    method:"POST",
-    body:data
-  }).then(res => res.text()).then(data => {
+  fetch("../../recursos/PHP/metodos/obtenerIdVenta.php", {
+    method: "POST",
+    body: data,
+  })
+    .then((res) => res.text())
+    .then((data) => {
+      let idventa = data;
+      const dataTabla = document.querySelectorAll(".tabla");
 
-    let idventa = data
-    const dataTabla = document.querySelectorAll(".tabla")
+      for (var item of dataTabla) {
+        let idproducto = item.querySelector(".producto p").innerText;
+        let cantidad = item.querySelector(".cantidad p").innerText;
+        let precio = item.querySelector(".precio p").innerText;
 
+        var data = new FormData();
+        data.append("idventa", idventa);
+        data.append("idproducto", idproducto);
+        data.append("cantidad", cantidad);
+        data.append("precio", precio);
 
-    for(var item of dataTabla){
-      let idproducto = item.querySelector(".producto p").innerText
-      let cantidad = item.querySelector(".cantidad p").innerText
-      let precio = item.querySelector(".precio p").innerText
+        fetch("../../recursos/PHP/metodos/insertarRegistroVentaBD.php", {
+          method: "POST",
+          body: data,
+        })
+          .then((res) => res.text())
+          .then((data) => {
+            console.log(data);
+          });
+      }
 
-
-      var data = new FormData()
-      data.append("idventa", idventa)
-      data.append("idproducto",idproducto)
-      data.append("cantidad",cantidad)
-      data.append("precio",precio)
-
-      fetch("../../recursos/PHP/metodos/insertarRegistroVentaBD.php",{
-        method:"POST",
-        body:data
-      }).then(res => res.text()).then(data => {
-        console.log(data)
-      })
-
-    }
-
-    Swal.fire(
-      '',
-      'VENTA COMPLETADA',
-      'success'
-    )
-    })
+      Swal.fire("", "VENTA COMPLETADA", "success");
+    });
 }
-
 
 //EVENTO CLICK DE AGREGAR PRODUCTO
 
-document.querySelector("#btnAgregarProducto").addEventListener("click",()=>{
-var idproducto=  document.querySelector("#txtidproducto").value
-  if(idproducto == ""){
-    Swal.fire(
-      'Ingrese id.',
-      '',
-      'error'
-    )
-  }else{
-    var data = new FormData()
+document.querySelector("#btnAgregarProducto").addEventListener("click", () => {
+  var idproducto = document.querySelector("#txtidproducto").value;
+  if (idproducto == "") {
+    Swal.fire("Ingrese id.", "", "error");
+  } else {
+    var data = new FormData();
 
-    data.append("id",idproducto);
+    data.append("id", idproducto);
     //PETICION FETCH
-    fetch("../../recursos/PHP/metodos/obtenerInfoProducto.php",{
-      method:"POST",
-      body:data
-    }).then(res => res.json()).then(data => {
+    fetch("../../recursos/PHP/metodos/obtenerInfoProducto.php", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        //VERIFICAR SI PRODUCTO YA FUE AGREGADO
+        const dataTabla = document.querySelectorAll(".tabla");
 
-      //VERIFICAR SI PRODUCTO YA FUE AGREGADO
-      const dataTabla = document.querySelectorAll(".tabla")
+        for (var i = 0; i < dataTabla.length; i++) {
+          let idproducto = dataTabla[i].querySelector(".producto p").innerText;
+          let cantidad = dataTabla[i].querySelector(".cantidad p");
 
-      for(var i=0; i<dataTabla.length; i++){
-        let idproducto = dataTabla[i].querySelector(".producto p").innerText
-        let cantidad = dataTabla[i].querySelector(".cantidad p")
+          let precio = dataTabla[i].querySelector(".precio p");
+          let totalVar = dataTabla[i].querySelector(".total p");
 
+          if (data[0].ID_PRODUCTO == idproducto) {
+            var cantidadVar = parseInt(cantidad.innerText) + 1;
+            cantidad.innerText = cantidadVar;
 
+            totalVar.innerText =
+              parseFloat(precio.innerText) * parseInt(cantidad.innerText);
 
-        let precio = dataTabla[i].querySelector(".precio p")
-        let totalVar = dataTabla[i].querySelector(".total p")
-
-          if(data[0].ID_PRODUCTO == idproducto){
-            var cantidadVar = parseInt(cantidad.innerText) +1
-            cantidad.innerText = cantidadVar
-
-            totalVar.innerText = parseFloat(precio.innerText) * parseInt(cantidad.innerText)
-
-            total = total + parseFloat(precio.innerText)
-            document.querySelector("#total").innerText = "Total: $"+total
-            return
+            total = total + parseFloat(precio.innerText);
+            document.querySelector("#total").innerText = "Total: $" + total;
+            return;
           }
-      }
+        }
 
-      /*
+        /*
       for(var item of dataTabla){
         let idproducto = item.querySelector(".producto p").innerText
         let cantidad = item.querySelector(".cantidad p").innerText
@@ -244,11 +218,8 @@ var idproducto=  document.querySelector("#txtidproducto").value
           }
       }*/
 
-
-
-      total = total + parseFloat(data[0].PRECIO)
-      document.querySelector(".contenedor-tabla-productos").innerHTML +=
-      `
+        total = total + parseFloat(data[0].PRECIO);
+        document.querySelector(".contenedor-tabla-productos").innerHTML += `
       <div class="tabla">
         <div class="producto">
           <p>${data[0].ID_PRODUCTO}</p>
@@ -268,22 +239,16 @@ var idproducto=  document.querySelector("#txtidproducto").value
       </div>
 
 
-      `
-      document.querySelector("#total").innerText = "Total: $"+total
-      document.getElementById("txtidproducto").value = ""
-    })
-
-
-
-
-
+      `;
+        document.querySelector("#total").innerText = "Total: $" + total;
+        document.getElementById("txtidproducto").value = "";
+      });
   }
-})
-
+});
 
 //EVENTO ENTER EN INPUT
-document.querySelector("#txtidproducto").addEventListener("keypress",(e)=>{
-  if (e.key === "Enter"){
+document.querySelector("#txtidproducto").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
     document.querySelector("#btnAgregarProducto").click();
   }
-})
+});
