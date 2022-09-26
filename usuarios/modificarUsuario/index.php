@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
   <link rel="stylesheet" href="css/master.css">
-  <title>Document</title>
+  <title>Modificar Usuario</title>
 </head>
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
 <script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
@@ -47,7 +47,7 @@
         <label for="">Contraseña</label>
         <input type="text" name="clave" value="" id="clave">
         <label for="">Correo</label>
-        <input type="text" name="correo" value="" id="correo">
+        <input type="text" name="correo" value="" id="correo" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$">
         <label for="">Nivel</label>
         <select name="nivel" id="nivel">
           <option>Cliente</option>

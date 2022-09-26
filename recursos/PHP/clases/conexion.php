@@ -4,7 +4,7 @@
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $db = "tienda_online";
+    private $db = "tiendaonline";
     private $conect;
 
     public function __construct(){
@@ -19,10 +19,15 @@
       }
 
     }
+    public function getConectionMysql(){
+      return mysqli_connect($this->host,$this->user,$this->password,$this->db);
+    }
 
     public function connect(){
       return $this->conect;
     }
+
+    
 
   }
 
@@ -31,4 +36,4 @@
   $conexion = new Conexion();
   $conexion = $conexion->connect();
 
- ?>
+?>

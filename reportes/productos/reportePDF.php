@@ -35,7 +35,10 @@ function Footer()
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
 }
-require 'conexion.php';
+require '../../recursos/PHP/clases/conexion.php';
+
+$conectar = $conexion -> getConectionMysql();
+
 $categoria = $_REQUEST['periodo'];
 $estatus = $_REQUEST['FP'];
 $resultado = mysqli_query($conectar,"SELECT prod.ID_PRODUCTO, prod.NOMBRE, prod.PRECIO_COMPRA, prod.PRECIO, prod.STOCK,

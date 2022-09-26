@@ -90,12 +90,17 @@
     </form>
     <?php
   if (isset($_POST['generar'])) {
-    require 'conexion.php';
+    // require '../../recursos/PHP/clases/conexion.php';
+    $conexion2 = new Conexion();
+    $conexion2 = $conexion2->getConectionMysql();
+
     $mes = $_REQUEST['periodo'];
     $formaPago = $_REQUEST['FP'];
     $usr = $_REQUEST['usr'];
+    
     //$BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
-    $resultado = mysqli_query($conectar,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
+    
+    $resultado = mysqli_query($conexion2,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
                                                 detallesVenta.PRECIO,
                                                 usuario.USUARIO,
                                                 forma_pago.DESCRIPCION

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Producto</title>
+    <title>Modificar Datos Empresa</title>
     <!-- <link rel="stylesheet" href="../recursos/cssprincipal/style.css"> -->
     <link rel="stylesheet" href="ModificarDE.css">
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css" />
@@ -32,7 +32,7 @@
                             <label for="name">Nombre: </label>
                             <input type="text" name="txtnom" id="txtnom">
 
-                            <label for="name">slogan: </label>
+                            <label for="name">Eslogan: </label>
                             <input type="text" name="txtslogan" id="txtslogan">
 
                             <label for="name"> Descripcion: </label>

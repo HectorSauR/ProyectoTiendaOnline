@@ -28,7 +28,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
   <link rel="stylesheet" href="css/master.css">
-  <title>Document</title>
+  <title>Modificar Producto</title>
 </head>
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
 <script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
