@@ -32,6 +32,13 @@
 <script type="text/javascript">
     document.querySelector("#btn-usr").addEventListener("click",()=>{
     document.querySelector(".loal-contenedor-modal").classList.toggle("transition-modal")
+    event.stopPropagation()
+  })
+
+  document.body.addEventListener("click", function (evt) {
+      if(document.querySelector(".loal-contenedor-modal").classList.contains('transition-modal')){
+        document.querySelector(".loal-contenedor-modal").classList.remove("transition-modal")
+      }
   })
 </script>
 
