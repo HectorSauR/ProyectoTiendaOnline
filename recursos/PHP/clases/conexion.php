@@ -2,9 +2,9 @@
 
   class Conexion{
     private $host = "localhost";
-    private $user = "root";
-    private $password = "";
-    private $db = "tiendaonline";
+    private $user = "u351136177_Grupo301";
+    private $password = "Grup0#301";
+    private $db = "tienda_online";
     private $conect;
 
     public function __construct(){
