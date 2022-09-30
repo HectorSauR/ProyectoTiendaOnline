@@ -38,9 +38,9 @@
             <input type="text" name="correo" value="" >
             <label>Nivel:</label>
             <select name="nivel">
-              <option>CLIENTE</option>
-              <option>ADMIN</option>
-              <option>VENTAS</option>
+              <option>Cliente</option>
+              <option>Admin</option>
+              <option>Ventas</option>
             </select>
             <button type="submit">Registrar</button>
 
