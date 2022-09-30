@@ -238,7 +238,7 @@ CREATE TABLE `info_empresa` (
 --
 
 INSERT INTO `info_empresa` (`NOMBRE`, `LOGO`, `SLOGAN`, `DESCRIPCION`, `TELEFONO`, `CORREO`, `WEBSITE`, `FACEBOOK`, `TWITER`) VALUES
-('FERREMOSA SA DE CV', 'http://ventas.research-soft.com/ProyectoTiendaOnline//recursos/imagenes/LOGO/FERREMOSA SA DE CV.png', 'A TU SERVICI', 'VENTA DE PRODUCTOS VARIADOS', '1111111111', 'FERREMOSA@OUTLOOK.COM', 'http://ventas.research-soft.com/Proyecto', 'Ferremosa', '@Ferremosa');
+('FERREMOSA SA DE CV', 'http://ventas.research-soft.com/recursos/imagenes/LOGO/FERREMOSA SA DE CV.png', 'A TU SERVICI', 'VENTA DE PRODUCTOS VARIADOS', '1111111111', 'FERREMOSA@OUTLOOK.COM', 'http://ventas.research-soft.com/Proyecto', 'Ferremosa', '@Ferremosa');
 
 -- --------------------------------------------------------
 

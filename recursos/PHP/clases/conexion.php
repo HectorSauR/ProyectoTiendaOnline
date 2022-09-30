@@ -4,7 +4,7 @@
     private $host = "localhost";
     private $user = "u351136177_Grupo301";
     private $password = "Grup0#301";
-    private $db = "tienda_online";
+    private $db = "u351136177_ventas";
     private $conect;
 
     public function __construct(){

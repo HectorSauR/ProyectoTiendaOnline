@@ -58,7 +58,7 @@
     <div class="loal-footer">
         <button type="button" id="btnCerrarSesion">CERRAR SESION</button>
         <br>
-        <a href="<?php echo $pathHost ?>Usuarios/modificarTema">Temas</a>
+        <a href="<?php echo $pathHost ?>usuarios/modificarTema">Temas</a>
     </div>
   </div>
 </div>
@@ -119,10 +119,10 @@
       </li>
 
 
-      <li><a href="#">Usuarios</a>
+      <li><a href="#">usuarios</a>
         <ul>
-          <li><a href="<?php echo $pathHost ?>Usuarios/registrarUsuario/">Registrar Usuario</a></li>
-          <li><a href="<?php echo $pathHost ?>Usuarios/modificarUsuario/">Modificar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>usuarios/registrarUsuario/">Registrar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>usuarios/modificarUsuario/">Modificar Usuario</a></li>
 
         </ul>
       </li>
@@ -238,10 +238,10 @@
       </li>
 
 
-      <li><a href="#">Usuarios</a>
+      <li><a href="#">usuarios</a>
         <ul>
-          <li><a href="<?php echo $pathHost ?>Usuarios/registrarUsuario/">Registrar Usuario</a></li>
-          <li><a href="<?php echo $pathHost ?>Usuarios/modificarUsuario/">Modificar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>usuarios/registrarUsuario/">Registrar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>usuarios/modificarUsuario/">Modificar Usuario</a></li>
 
         </ul>
       </li>
@@ -303,7 +303,7 @@
         document.querySelector("#loginCliente").addEventListener("click",(e)=>{
           var data = new FormData()
           data.append("opc","1");
-          fetch('<?php echo $pathHost ?>recursos/PHP/metodos/BuscarUsuarioBD.php', {
+          fetch('<?php echo $pathHost ?>recursos/PHP/metodos/buscarUsuarioBD.php', {
             method: 'POST',
             body: data
           }).then(response => response.text()).then(data => {
@@ -322,7 +322,7 @@
               data.append("opc","0");
 
 
-            fetch('<?php echo $pathHost ?>recursos/PHP/metodos/BuscarUsuarioBD.php', {
+            fetch('<?php echo $pathHost ?>recursos/PHP/metodos/buscarUsuarioBD.php', {
               method: 'POST',
               body: data
             }).then(response => response.text()).then(data => {
