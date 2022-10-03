@@ -15,7 +15,7 @@ fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
           document.querySelector(".contenedor-modal").style.display = "flex";
           var contenedor = e.target.parentNode.parentNode;
 
-          console.log(contenedor);
+          //console.log(contenedor);
           var nombre = contenedor.querySelector(".nombre p").innerText;
           var usuario = contenedor.querySelector(".usuario p").innerText;
           var imagen = contenedor.querySelector(".imagen > p").innerText;
@@ -151,7 +151,7 @@ document
             <p>${item.USUARIO}</p>
           </div>
           <div class="imagen" >
-          <img src="../../${item.IMAGEN}" alt="asdasd">
+          <img src="../../${item.IMAGEN}" width="60" height="60" alt="IMAGEN">
           <p>${item.IMAGEN}</p>
 
         </div>

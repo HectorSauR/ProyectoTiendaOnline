@@ -3,7 +3,7 @@
 :root {
   --ColorPrincipal: #3E4078;
   --ColorSecundario: #EDEEFF;
-
+  --ColorDanger:#DC3545;
 
   --BorderRadius: 6px;
   --border: 1.5px;

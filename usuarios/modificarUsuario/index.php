@@ -18,8 +18,8 @@
   <div class="main">
     <h1>Gestión de usuarios</h1>
     <form class="contenedor-buscar">
-      <label>Buscar:</label>
-      <input type="text" name="inputNombreUsuario" id="inputNombreUsuario" value=""  required>
+      <!--<label>Buscar:</label>-->
+      <input type="text" name="inputNombreUsuario" id="inputNombreUsuario" value="" placeholder="Nombre"  required>
       <button type="submit">Buscar</button>
     </form>
 
