@@ -151,7 +151,7 @@ document
             <p>${item.USUARIO}</p>
           </div>
           <div class="imagen" >
-          <img src="../../${item.IMAGEN}" width="60" height="60" alt="IMAGEN">
+          <img src="../../${item.IMAGEN}?timestamp=${new Date().getTime()}" width="60" height="60" alt="IMAGEN">
           <p>${item.IMAGEN}</p>
 
         </div>
