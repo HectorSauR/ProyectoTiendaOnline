@@ -42,6 +42,17 @@
   })
 </script>
 
+<?php 
+  $uri = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+
+  if( $_SESSION['userAdmin'] != "1" ){
+    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != "cotizaciones/realizarCotizacion/" ){
+      echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+      header("Location: ". $pathHost );
+    }
+  }
+?>
 
 <?php if(isset($_SESSION['usuario'])){?>
 <!--MODAL PARA MOSTRAR INFO DE USUARIO -->
