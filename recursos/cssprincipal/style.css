@@ -275,6 +275,7 @@ nav .nav-enlaces li>ul>li:hover {
   text-align: center;
   opacity: 1;
   transition: .3s opacity;
+  font-family:'Roboto', sans-serif;;
 
 }
 

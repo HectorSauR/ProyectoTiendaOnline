@@ -28,16 +28,16 @@
       <div class="contenedor-form">
 
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="" placeholder="Ingrese nombre completo" required>
+            <input type="text" name="nombre" value="" placeholder="Ingrese nombre completo" pattern="(-?([A-Z].\s)?([A-Z][a-z]+)\s?)+([A-Z]'([A-Z][a-z]+))?" required>
             <label>Usuario:</label>
-            <input type="text" name="usuario" value="" placeholder="Ingrese nombre de usuario" required>
+            <input type="text" name="usuario" value="" placeholder="Ingrese nombre de usuario" pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,20}$" required>
             <label>Contraseña:</label>
             <div class="contenedor-clave">
-            <input type="password" name="clave" id="clave" value="" placeholder="Ingrese contraseña" required>
+            <input type="password" name="clave" id="clave" value="" placeholder="Ingrese contraseña" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
             <i class="fa-solid fa-eye icon-ojo"></i>
             </div>
             <label>Correo:</label>
-            <input type="text" name="correo" placeholder="Ingrese correo" value="" >
+            <input type="text" name="correo" placeholder="Ingrese correo" value="" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
             <label>Nivel:</label>
             <select name="nivel">
               <option>Cliente</option>
@@ -54,7 +54,7 @@
 
         </div>
         <button type="button" id="activarAgreagarImagen">Examinar</button>
-        <input type="file" name="imagen" id="agregarImagen" accept="image/x-png,image/jpg,image/jpeg"  required>
+        <input type="file" name="imagen" id="agregarImagen" accept="image/png,image/jpg,image/jpeg"  required>
       </div>
 
       
