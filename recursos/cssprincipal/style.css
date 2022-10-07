@@ -214,47 +214,6 @@ nav .nav-enlaces li>ul>li:hover {
   }
 }
 
-/*RESPONSIVE (MOVIL Y TABLET)*/
-@media (max-width:600px) {
-  nav {
-    position: fixed;
-    background-color: var(--ColorPrincipal);
-    top: 40px;
-    width: 100%;
-    transform: translateX(100%);
-    transition: transform .5s;
-  }
-
-  .showandhide {
-    transform: translateX(0);
-  }
-
-  nav .nav-enlaces li ul {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  nav .nav-enlaces {
-    flex-direction: column-reverse;
-    width: 100%;
-    height: 100%
-  }
-
-  nav .nav-enlaces li a {}
-
-  .btn-menu {
-    display: block;
-  }
-
-  /*LOGIN */
-  .nav-login-background {
-    top: 40px;
-  }
-  .nav-login-background  .nav-login-contenedor {
-    width: 80%;
-  }
-}
 
 /*ENALSE PARA INICIAR COMO cliente EN EL SISTEMA*/
 #contenedor-btn-login {
@@ -345,3 +304,50 @@ nav .nav-enlaces li>ul>li:hover {
 .transition-modal {
   transform: translateX(0);
 }
+
+/*RESPONSIVE (MOVIL Y TABLET)*/
+@media (max-width:600px) {
+  nav {
+    position: fixed;
+    background-color: var(--ColorPrincipal);
+    top: 40px;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform .5s;
+  }
+
+  .showandhide {
+    transform: translateX(0);
+  }
+
+  nav .nav-enlaces li ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  nav .nav-enlaces {
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100%
+  }
+
+  nav .nav-enlaces li a {}
+
+  .btn-menu {
+    display: block;
+  }
+
+  /*LOGIN */
+  .nav-login-background {
+    top: 40px;
+  }
+  .nav-login-background  .nav-login-contenedor {
+    width: 80%;
+  }
+  body {
+    --Top:40px;
+  }
+}
+
+

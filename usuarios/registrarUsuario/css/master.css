@@ -1,5 +1,5 @@
 .main {
-  margin-top: 100.17px;
+  margin-top: var(--Top);
   padding: var(--Padding);
 }
 .main .contenedor-app {
@@ -8,6 +8,19 @@
   gap:10px;
   margin-top: var(--Margin);
 }
+
+/*media query para hacer responsive el contenedor de app */
+@media (max-width:600px) {
+  .main .contenedor-app {
+    display: flex;
+    flex-direction: column-reverse;
+
+  }
+
+}
+
+
+
 .main h1 {
   color: var(--ColorSecundario);
   font-weight: 600;
@@ -60,11 +73,11 @@ Y PODER MOSTRAR LA CONTRASEÑA */
   border: none;
   padding: var(--Padding);
   border-radius: var(--BorderRadius);
+  background-color: var(--ColorSecundario);
 }
 .main .contenedor-form button {
   outline: none;
-
-  padding: var(--Padding);
+  padding:var(--Padding);
   margin-top: var(--Margin);
   border-radius: var(--BorderRadius);
 
@@ -74,8 +87,20 @@ Y PODER MOSTRAR LA CONTRASEÑA */
   background-color: var(--ColorPrincipal);
   color: var(--ColorSecundario);
   border: var(--border) solid var(--ColorSecundario);
-  width: 30%;
+  width: 150px;
+  
 }
+/*media query para centrar button submit del form */
+@media (max-width:600px) {
+  .main .contenedor-form button {
+    align-self: center;
+
+  }
+
+}
+
+
+
 .main .contenedor-form button:hover {
   background-color: var(--ColorSecundario);
   color: var(--ColorPrincipal);
@@ -90,8 +115,8 @@ Y PODER MOSTRAR LA CONTRASEÑA */
 }
 
 .main  .contenedor-imagen .imagen {
-  width: 50%;
-  height: 50%;
+  width: 150px;
+    height: 150px;
   border: var(--border) solid var(--ColorSecundario);
   border-radius: var(--BorderRadius);
   display: flex;
@@ -99,8 +124,12 @@ Y PODER MOSTRAR LA CONTRASEÑA */
   justify-content: center;
   overflow: auto;
 }
+.fa-eye:before {
+  background-color: var(--ColorSecundario);
+}
 .main  .contenedor-imagen .imagen img {
-  width: 30%;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 
 }
@@ -115,6 +144,7 @@ Y PODER MOSTRAR LA CONTRASEÑA */
   border-radius: var(--BorderRadius);
   cursor: pointer;
   transition: all .3s;
+  width: 150px;
 }
 .main .contenedor-imagen button:hover {
   background-color: var(--ColorSecundario);
@@ -123,5 +153,7 @@ Y PODER MOSTRAR LA CONTRASEÑA */
 
 
 #agregarImagen {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
 }

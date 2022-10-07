@@ -23,19 +23,21 @@
     <h1>Registro de usuario</h1>
 
       <form id="formRegistroUsuario" class="contenedor-app">
+
+      
       <div class="contenedor-form">
 
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="" required>
+            <input type="text" name="nombre" value="" placeholder="Ingrese nombre completo" required>
             <label>Usuario:</label>
-            <input type="text" name="usuario" value="" required>
+            <input type="text" name="usuario" value="" placeholder="Ingrese nombre de usuario" required>
             <label>Contraseña:</label>
             <div class="contenedor-clave">
-            <input type="password" name="clave" id="clave" value="" required>
+            <input type="password" name="clave" id="clave" value="" placeholder="Ingrese contraseña" required>
             <i class="fa-solid fa-eye icon-ojo"></i>
             </div>
             <label>Correo:</label>
-            <input type="text" name="correo" value="" >
+            <input type="text" name="correo" placeholder="Ingrese correo" value="" >
             <label>Nivel:</label>
             <select name="nivel">
               <option>Cliente</option>
@@ -52,8 +54,10 @@
 
         </div>
         <button type="button" id="activarAgreagarImagen">Examinar</button>
-        <input type="file" value="" name="imagen" id="agregarImagen" required>
+        <input type="file" name="imagen" id="agregarImagen" accept="image/x-png,image/jpg,image/jpeg"  required>
       </div>
+
+      
         </form>
     </div>
 
