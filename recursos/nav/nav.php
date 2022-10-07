@@ -56,9 +56,11 @@
         <p><?php echo $_SESSION['usuario'] ?></p>
     </div>
     <div class="loal-footer">
-        <button type="button" id="btnCerrarSesion">CERRAR SESION</button>
-        <br>
-        <a href="<?php echo $pathHost ?>usuarios/modificarTema">Temas</a>
+        
+        
+        <a href="<?php echo $pathHost ?>usuarios/modificarTema">TEMAS</a>
+
+        <button type="button" id="btnCerrarSesion">CERRAR SESIÓN</button>
     </div>
   </div>
 </div>

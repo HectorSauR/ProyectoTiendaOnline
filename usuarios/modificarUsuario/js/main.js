@@ -104,7 +104,7 @@ document
           <p>Usuario</p>
         </div>
         <div class="header-imagen">
-          <p>IMAGEN</p>
+          <p>Imagen</p>
                   <!-- <img src="../../recursos/imagenes/productos/mcr/mcr.jpg" alt="asdasd"> -->
         </div>
         
@@ -216,9 +216,6 @@ document
         <p>${arrayUsuarios[i].IMAGEN}</p>
 
       </div>
-        <div class="contra">
-          <p>${arrayUsuarios[i].CONTRA}</p>
-        </div>
         <div class="correo">
           <p>${arrayUsuarios[i].CORREO}</p>
         </div>
