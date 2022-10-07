@@ -10,7 +10,7 @@
 .main .contenedor-usuarios {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   margin-top: var(--Margin);
 }
 
@@ -50,10 +50,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 70px;
 }
 
 .main .contenedor-usuarios div img {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  transition: .3s;
+  text-align: center;
+
+}
+
+.main .contenedor-usuarios div img:hover {
+  position: absolute;
+  cursor: pointer;
   width: 100px;
+  height: 100px;
+  border-radius: 0;
+ 
 }
 
 .main .contenedor-usuarios .imagen p {

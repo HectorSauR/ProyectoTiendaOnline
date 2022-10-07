@@ -19,14 +19,14 @@ fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
           var nombre = contenedor.querySelector(".nombre p").innerText;
           var usuario = contenedor.querySelector(".usuario p").innerText;
           var imagen = contenedor.querySelector(".imagen > p").innerText;
-          var contra = contenedor.querySelector(".contra p").innerText;
+          //var contra = contenedor.querySelector(".contra p").innerText;
           var correo = contenedor.querySelector(".correo p").innerText;
           var nivel = contenedor.querySelector(".nivel p").innerText;
 
           document.getElementById("nombre").value = nombre;
           document.getElementById("usuario").value = usuario;
           document.getElementById("imagen").value = imagen;
-          document.getElementById("clave").value = contra;
+          //document.getElementById("clave").value = contra;
           document.getElementById("correo").value = correo;
           document.getElementById("nivel").value = nivel;
 
@@ -48,7 +48,7 @@ fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
                 data.append("nivelN", "2");
               }
 
-              fetch("../../recursos/PHP/metodos/EditarUsuarioBD.php", {
+              fetch("../../recursos/PHP/metodos/editarUsuarioBD.php", {
                 method: "POST",
                 body: data,
               })
@@ -57,7 +57,6 @@ fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
                   document.querySelector(".contenedor-modal").style.display =
                     "none";
                   console.log(data);
-                  window.location.reload();
                 });
             });
         }
@@ -108,9 +107,7 @@ document
           <p>IMAGEN</p>
                   <!-- <img src="../../recursos/imagenes/productos/mcr/mcr.jpg" alt="asdasd"> -->
         </div>
-        <div class="header-contra">
-          <p>Contraseña</p>
-        </div>
+        
 
         <div class="header-correo">
           <p>Correo</p>
@@ -155,9 +152,7 @@ document
           <p>${item.IMAGEN}</p>
 
         </div>
-          <div class="contra">
-            <p>${item.CONTRA}</p>
-          </div>
+          
           <div class="correo">
             <p>${item.CORREO}</p>
           </div>

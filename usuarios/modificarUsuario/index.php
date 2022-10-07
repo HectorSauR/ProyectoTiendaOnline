@@ -44,8 +44,10 @@
         <label for="">Imagen</label>
         <input type="text" name="imagen" value="" id="imagen">
         <input type="file" name="img_env" id="img_env"  accept="image/*">
+        <!-- input coontraseña eliminada por que ningun ADMIN debe poder ver 
+        o modificar la cobtra de ningun otro usuario
         <label for="">Contraseña</label>
-        <input type="text" name="clave" value="" id="clave">
+        <input type="text" name="clave" value="" id="clave">-->
         <label for="">Correo</label>
         <input type="text" name="correo" value="" id="correo" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$">
         <label for="">Nivel</label>
