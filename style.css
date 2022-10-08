@@ -1,34 +1,143 @@
 .main {
   position: absolute;
+  width: 100%;
   top: var(--Top);
   left: 0;
   right: 0;
   bottom: 0;
   z-index: -11;
   padding: calc(var(--Padding) * 2);
-}
-
-.info img {
-  max-width: 300px;
-  max-height: 350px;
-
-  background-color: var(--ColorSecundario);
-  border-radius: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  margin-bottom: 0.5rem;
-}
-
-.info h2 {
-  margin-bottom: 1rem;
-  font-size: 30px;
-}
-
-.info b {
-  font-weight: bold;
+  overflow: hidden;
 }
 
 .info {
   color: var(--ColorSecundario);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main .info h2 {
+  margin: 20px 0;
+}
+
+/* .main .info .contenedor-img .contenedor-texto */
+.main .info .contenedor-texto {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  justify-content: baseline;
+  flex-wrap: wrap;
+}
+
+.main .info .contenedor-texto p {
+  margin-bottom: 1rem;
+  font-size: 15pt;
+  display: inline-block;
+}
+
+.main .info .contenedor-img {
+  margin-top: 30px;
+  width: 40%;
+}
+
+.main .info .contenedor-img img {
+  width: 100vw;
+  /* height: calc(100vh - 94px); */
+  vertical-align: top;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+.main .info .datos-contacto-empresa {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.main .info .datos-contacto-empresa > div {
+  margin-right: 80px;
+}
+
+.main .info .datos-contacto-empresa .descripcion {
+  max-width: 30%;
+}
+
+.main .info .datos-contacto-empresa .services > p {
+  margin-top: 10px;
+}
+
+.main .info .datos-contacto-empresa .services p b {
+  font-weight: bold;
+  font-size: 13pt;
+}
+
+.main .info .datos-contacto-empresa .redes-sociales {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-right: 0px;
+}
+
+.main .info .datos-contacto-empresa .redes-sociales h2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.main .info .datos-contacto-empresa .redes-sociales a {
+  text-decoration: none;
+  font-size: 35pt;
+  color: #fff;
+}
+
+@media screen and (max-width: 1500px){
+  .main .info .contenedor-img{
+    text-align: center;
+  }
+  .main .info .contenedor-img img {
+    min-width: 100vw;
+    height: calc(100vh - 94px);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main .info .datos-contacto-empresa {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .main .info .datos-contacto-empresa > div {
+    margin-right: 0px;
+  }
+
+  .main .info .datos-contacto-empresa .redes-sociales,
+  .main .info .datos-contacto-empresa .servicios,
+  .main .info .datos-contacto-empresa .descripcion {
+    width: 80%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .main .info .datos-contacto-empresa .descripcion{
+    max-width: 80%;
+  }
+  
+  /* .main .info .contenedor-texto {
+    width: 100%;
+  }
+
+  .main .info .contenedor-img {
+    margin-top: 30px;
+    width: 80%;
+  } */
 }

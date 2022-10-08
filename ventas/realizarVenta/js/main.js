@@ -8,6 +8,25 @@ var total = 0;
 
 var idProductos = [];
 
+function comprobarExistenciaCotizacionTabla(idProduct) {
+  const productos = Array.from(document.querySelectorAll(".tabla"));
+  let x = 0;
+  // console.log(productos)
+  productos.length > 0 &&
+    productos.map((producto) => {
+      // console.log(`Registrado: ${producto.getAttribute('id-cotizacion')}... NUEVO: ${idProduct}`)
+      // console.log(`BOOL: ${producto.getAttribute('id-cotizacion') == idProduct}`)
+      if(x == 1) return
+      
+      if (producto.getAttribute("id-cotizacion") == idProduct) {
+        x = 1;
+        return
+      }
+    });
+  // console.log(productos.length > 0 && productos[0].getAttribute('id-cotizacion'))
+  return x == 0 ? false : true;
+}
+
 //EVENTO CLICK PARA BUTTON ENCARGADO DE BUSCAR ID DE COTIZACION
 btnBuscarCotizacion.addEventListener("click", () => {
   //VERIFICAR ID
@@ -20,12 +39,20 @@ btnBuscarCotizacion.addEventListener("click", () => {
     var data = new FormData();
     data.append("id", id);
 
+    // console.log
+    // console.log(comprobarExistenciaCotizacionTabla(id))
+    if(comprobarExistenciaCotizacionTabla(id)) {
+      Swal.fire("ERROR!", "LA COTIZACION NO SE PUEDE REPETIR", "error");
+      return
+    }
+
     fetch("../../recursos/PHP/metodos/buscarCotizacionBD.php", {
       method: "POST",
       body: data,
     })
       .then((response) => response.json())
       .then((data) => {
+        // console.log(data);
         if (data == "") {
           Swal.fire("ERROR!", "LA COTIZACION NO SE ENCONTRO", "error");
         } else {
@@ -53,17 +80,22 @@ function obtenerDetalleDeCotizacion(id) {
     .then((res) => res.json())
     .then((data) => {
       arrayDetalleDeCotizacion = data;
-
+      // console.log(data)
       for (var i of data) {
-        console.log(i.ID_PRODUCTO);
-        obtenerProductosDeCotizacion(i.ID_PRODUCTO, i, data.length);
+        // console.log(i.ID_PRODUCTO);
+        obtenerProductosDeCotizacion(
+          i.ID_PRODUCTO,
+          i,
+          data.length,
+          data[0].ID_COTIZACION
+        );
       }
 
       //
     });
 } //FIN METODO ENCARGADO DE OBTENER LOS PRODUCTOS DE LA COTIZACION
 
-function obtenerProductosDeCotizacion(id, indice, lengthData) {
+function obtenerProductosDeCotizacion(id, indice, lengthData, idCotizacion) {
   let data = new FormData();
   data.append("id", id);
   fetch("../../recursos/PHP/metodos/obtenerProductosDeCotizacionBD.php", {
@@ -73,7 +105,7 @@ function obtenerProductosDeCotizacion(id, indice, lengthData) {
     .then((res) => res.json())
     .then((data) => {
       contadorDetallesCotizacion++;
-
+      // console.log(data)
       var importe =
         parseFloat(data[0].PRECIO) *
         parseInt(arrayDetalleDeCotizacion[contadorDetallesCotizacion].CANTIDAD);
@@ -81,7 +113,7 @@ function obtenerProductosDeCotizacion(id, indice, lengthData) {
       totalImporte += importe;
 
       document.querySelector(".contenedor-tabla-productos").innerHTML += `
-      <div class="tabla">
+      <div class="tabla" id-cotizacion=${idCotizacion}>
         <div class="producto">
           <p>${data[0].ID_PRODUCTO}</p>
         </div>
