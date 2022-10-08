@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="estilo.css">
      <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
-    <title>PRODUCTOS MAS VENDIDOS</title>
+    <title>Productos menos vendidos</title>
 
     <!-- LINKS PARA EXPORTAR EN EXCEL -->
     

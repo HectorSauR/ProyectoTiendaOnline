@@ -7,7 +7,8 @@ include("../clases/conexion.php");
 
 $opc = $_POST['opc'];
 
-
+$con = new Conexion();
+$con = $con->connect();
 
 if ($opc == '1') {
   // code...
@@ -19,7 +20,7 @@ if ($opc == '1') {
   $usuario = $_POST['user'];
   $pass = $_POST['clave'];
   $BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";
-  $Execute = $conexion->query($BuscarUsuario);
+  $Execute = $con->query($BuscarUsuario);
 
   $r = $Execute->fetchall(PDO::FETCH_ASSOC);
 

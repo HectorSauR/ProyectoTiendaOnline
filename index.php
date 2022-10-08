@@ -56,10 +56,8 @@ include 'recursos/PHP/clases/conexion.php';
 
   </div>
 
+   <script type="text/javascript" src="./usuarios/modificarTema/js/master.js"></script>
+ </body>
 
-
-
-  <script type="text/javascript" src="./Usuarios/modificarTema/js/master.js"></script>
-</body>
 
 </html>

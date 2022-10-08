@@ -23,24 +23,26 @@
     <h1>Registro de usuario</h1>
 
       <form id="formRegistroUsuario" class="contenedor-app">
+
+      
       <div class="contenedor-form">
 
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="" required>
+            <input type="text" name="nombre" value="" placeholder="Ingrese nombre completo" pattern="(-?([A-Z].\s)?([A-Z][a-z]+)\s?)+([A-Z]'([A-Z][a-z]+))?" required>
             <label>Usuario:</label>
-            <input type="text" name="usuario" value="" required>
+            <input type="text" name="usuario" value="" placeholder="Ingrese nombre de usuario" pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,20}$" required>
             <label>Contraseña:</label>
             <div class="contenedor-clave">
-            <input type="password" name="clave" id="clave" value="" required>
+            <input type="password" name="clave" id="clave" value="" placeholder="Ingrese contraseña" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
             <i class="fa-solid fa-eye icon-ojo"></i>
             </div>
             <label>Correo:</label>
-            <input type="text" name="correo" value="" >
+            <input type="text" name="correo" placeholder="Ingrese correo" value="" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required>
             <label>Nivel:</label>
             <select name="nivel">
-              <option>CLIENTE</option>
-              <option>ADMIN</option>
-              <option>VENTAS</option>
+              <option>Cliente</option>
+              <option>Admin</option>
+              <option>Ventas</option>
             </select>
             <button type="submit">Registrar</button>
 
@@ -52,8 +54,10 @@
 
         </div>
         <button type="button" id="activarAgreagarImagen">Examinar</button>
-        <input type="file" value="" name="imagen" id="agregarImagen" required>
+        <input type="file" name="imagen" id="agregarImagen" accept="image/png,image/jpg,image/jpeg"  required>
       </div>
+
+      
         </form>
     </div>
 

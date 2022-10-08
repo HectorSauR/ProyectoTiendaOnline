@@ -9,7 +9,7 @@ $nombreImagen=$_FILES['imagen']['name'];
 $tipoImagen=$_FILES['imagen']['type'];
 $tamImagen=$_FILES['imagen']['size'];   
 
-$carpeta=$_SERVER['DOCUMENT_ROOT'] . '/ProyectoTiendaOnline/recursos/imagenes/regCategoria/';
+$carpeta=$_SERVER['DOCUMENT_ROOT'] . '/recursos/imagenes/regCategoria/';
 
 move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
 

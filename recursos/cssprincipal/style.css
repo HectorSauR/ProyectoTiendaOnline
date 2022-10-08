@@ -3,12 +3,12 @@
 :root {
   --ColorPrincipal: #3E4078;
   --ColorSecundario: #EDEEFF;
-
+  --ColorDanger:#DC3545;
 
   --BorderRadius: 6px;
   --border: 1.5px;
   --Padding: 10px;
-  --LetterSpacing: 3px;
+  --LetterSpacing: 1.5px;
   --Margin: 10px;
   --Top:104.17px;
 
@@ -50,6 +50,7 @@ html {
 
 .contenedor-header div img {
   width: 30px;
+  height: 30px;
 }
 
 nav {
@@ -214,6 +215,115 @@ nav .nav-enlaces li>ul>li:hover {
   }
 }
 
+
+/*ENALSE PARA INICIAR COMO cliente EN EL SISTEMA*/
+#contenedor-btn-login {
+  display: flex;
+  flex-direction: column;
+}
+#loginCliente {
+  margin-top: var(--Margin);
+  font-weight: 600;
+  color: var(--ColorPrincipal);
+  cursor: pointer;
+  transition: transform .3s;
+}
+#loginCliente:hover {
+  transform: scale(1.2);
+}
+/*MODAL ENCARGADO DE MOSTRAR INFO DE USUARIO*/
+.loal-contenedor-modal {
+  width: 300px;
+  position: fixed;
+  top: var(--Top);
+  right: 0;
+  border-radius: var(--BorderRadius);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: var(--ColorSecundario);
+  z-index: 999;
+  border: var(--border) solid var(--ColorPrincipal);
+  padding: var(--Padding);
+  transform: translateX(1000px);
+  transition: transform .5s;
+}
+.loal-contenedor-modal .loal-modal{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap:5px;
+}
+.loal-contenedor-modal .loal-modal .loal-header {
+  width: 100%;
+
+}
+.loal-contenedor-modal .loal-modal .loal-header button ,
+.loal-contenedor-modal .loal-modal .loal-footer button ,
+ .loal-contenedor-modal .loal-modal .loal-footer a{
+  padding: var(--Padding) calc(var(--Padding) * 2);
+  outline: none;
+  border: none;
+  background-color: var(--ColorPrincipal);
+  border-radius: var(--BorderRadius);
+  color: var(--ColorSecundario);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: var(--LetterSpacing);
+  width: 200px;
+  text-align: center;
+  opacity: 1;
+  transition: .3s opacity;
+  font-family:'Roboto', sans-serif;;
+
+}
+
+.loal-contenedor-modal .loal-modal .loal-footer a:hover {
+  opacity: .9;
+}
+.loal-contenedor-modal .loal-modal .loal-footer button {
+  background-color: var(--ColorDanger);
+  font-size: var(--FontSize);
+}
+.loal-contenedor-modal .loal-modal .loal-footer button:hover {
+  opacity: .9;
+}
+
+.loal-contenedor-modal .loal-modal .loal-body {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loal-contenedor-modal .loal-modal .loal-body img{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.loal-contenedor-modal .loal-modal .loal-body p {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color:var(--ColorPrincipal);
+}
+.loal-contenedor-modal .loal-modal .loal-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--Padding);
+}
+
+.transition-modal {
+  transform: translateX(0);
+}
+
+
+
 /*RESPONSIVE (MOVIL Y TABLET)*/
 @media (max-width:600px) {
   nav {
@@ -254,94 +364,10 @@ nav .nav-enlaces li>ul>li:hover {
   .nav-login-background  .nav-login-contenedor {
     width: 80%;
   }
+  :root {
+    --Top:40px;
+  }
+  
 }
 
-/*ENALSE PARA INICIAR COMO cliente EN EL SISTEMA*/
-#contenedor-btn-login {
-  display: flex;
-  flex-direction: column;
-}
-#loginCliente {
-  margin-top: var(--Margin);
-  font-weight: 600;
-  color: var(--ColorPrincipal);
-  cursor: pointer;
-  transition: transform .3s;
-}
-#loginCliente:hover {
-  transform: scale(1.2);
-}
-/*MODAL ENCARGADO DE MOSTRAR INFO DE USUARIO*/
-.loal-contenedor-modal {
-  width: 40%;
 
-  position: fixed;
-  top: var(--Top);
-  right: 0;
-  border-radius: var(--BorderRadius);
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  background-color: var(--ColorSecundario);
-  z-index: 999;
-  border: var(--border) solid var(--ColorPrincipal);
-  padding: var(--Padding);
-
-  transform: translateX(1000px);
-  transition: transform .5s;
-}
-.loal-contenedor-modal .loal-modal{
-  display:flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  gap:5px;
-}
-.loal-contenedor-modal .loal-modal .loal-header {
-  width: 100%;
-
-}
-.loal-contenedor-modal .loal-modal .loal-header button ,
-.loal-contenedor-modal .loal-modal .loal-footer button ,
- .loal-contenedor-modal .loal-modal .loal-footer a{
-  padding: var(--Padding);
-  outline: none;
-  border: none;
-  background-color: var(--ColorPrincipal);
-  border-radius: var(--BorderRadius);
-  color: var(--ColorSecundario);
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-
-}
-
-.loal-contenedor-modal .loal-modal .loal-body {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.loal-contenedor-modal .loal-modal .loal-body img{
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-}
-.loal-contenedor-modal .loal-modal .loal-body p {
-  font-weight: 600;
-  font-size: 1.3rem;
-  color:var(--ColorPrincipal);
-}
-.loal-contenedor-modal .loal-modal .loal-footer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.transition-modal {
-  transform: translateX(0);
-}
