@@ -22,7 +22,7 @@
   <div class="main">
     <h1>Registro de usuario</h1>
 
-      <form id="formRegistroUsuario" class="contenedor-app">
+    <form id="formRegistroUsuario" class="contenedor-app">
       <div class="contenedor-form">
 
             <label>Nombre:</label>
@@ -52,10 +52,10 @@
 
         </div>
         <button type="button" id="activarAgreagarImagen">Examinar</button>
-        <input type="file" value="" name="imagen" id="agregarImagen" required>
+        <input type="file" value="" name="imagen" id="agregarImagen" accept="image/*">
       </div>
-        </form>
-    </div>
+    </form>
+  </div>
 
 
 

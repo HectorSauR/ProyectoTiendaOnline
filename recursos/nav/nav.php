@@ -21,7 +21,14 @@
   </div>
   <div>
     <a><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
-    <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
+
+    <?php
+      if( isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == "1" ){
+        ?>
+          <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
+        <?php
+      } 
+    ?>
     <img class="btn-menu" id="btn-menu" src="https://bluemadness.000webhostapp.com/img_proyecto/icon-menu.png" alt="">
   </div>
 
