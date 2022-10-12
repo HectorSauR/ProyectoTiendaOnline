@@ -168,10 +168,11 @@
 
 .contenedor-modal .modal {
   width: 70%;
+  max-width: 500px;
   background-color: var(--ColorPrincipal);
   display: flex;
   flex-direction: column;
-  padding: var(--Padding);
+  padding:calc(var(--Padding) * 2) var(--Padding);
   border-radius: var(--BorderRadius);
   animation: translate 1s 0.3s forwards;
   transform: translateY(-1000px);
@@ -184,18 +185,25 @@
 }
 .contenedor-modal .modal h1 {
   color: var(--ColorSecundario);
+  font-size: var(--SizeTitulo);
+  border-bottom: var(--border) solid var(--ColorSecundario);
+  margin-bottom: var(--Margin);
+  text-align: center;
+  letter-spacing: var(--LetterSpacing);
 }
 .contenedor-modal .modal form {
   display: flex;
   flex-direction: column;
+  
 }
 .contenedor-modal .modal form label {
   color: var(--ColorSecundario);
   font-weight: 500;
+  padding: 0 0 0 calc(var(--Padding) / 2);
 }
 .contenedor-modal .modal form input,
 .contenedor-modal .modal form select {
-  padding: calc(var(--Padding) / 1.5);
+  padding: var(--Padding) calc(var(--Padding) / 2);
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
@@ -204,20 +212,31 @@
 .contenedor-modal .modal form .contenedor-button {
   margin-top: var(--Margin);
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: var(--Padding);
 }
 .contenedor-modal .modal form .contenedor-button button {
   padding: var(--Padding);
   outline: none;
-  border: var(--border) solid var(--ColorSecundario);
+  border: 0;
   color: var(--ColorSecundario);
-  background-color: var(--ColorPrincipal);
   border-radius: var(--BorderRadius);
   cursor: pointer;
   transition: all 0.3s;
+  width: 100%;
+  letter-spacing: var(--LetterSpacing);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 800;
+}
+.contenedor-modal .modal form .contenedor-button button:first-child{
+  background-color: var(--ColorSuccess);
+}
+.contenedor-modal .modal form .contenedor-button button:last-child {
+  background-color: var(--ColorDanger);
 }
 .contenedor-modal .modal form .contenedor-button button:hover {
-  color: var(--ColorPrincipal);
-  background-color: var(--ColorSecundario);
+  opacity: .8;
 }
 
 .contenedor-tabla-usuarios {
