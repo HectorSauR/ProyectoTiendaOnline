@@ -62,6 +62,12 @@
             <button type="button" id="btnCancelarEditarUsuario">Cancelar</button>
         </div>
       </form>
+
+      <div class="container-alert" id="alert">
+        <div class="alert">
+          <p>Error</p>
+        </div>
+      </div>
     </div>
   </div>
 

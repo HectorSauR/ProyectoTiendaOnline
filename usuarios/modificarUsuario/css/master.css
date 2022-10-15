@@ -153,8 +153,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: opacity 0.3s;
+  animation: opacity .3s forwards;
   display: none;
+  opacity: 0;
+  z-index: 1001; /*HEADER Y NAV TIENEN UN VALOR DE 1000 */
 }
 
 @keyframes opacity {
@@ -165,23 +167,53 @@
     opacity: 1;
   }
 }
+@keyframes ocultarContenedorModal {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+  
+}
 
 .contenedor-modal .modal {
-  width: 70%;
+  position: relative;
+  width: 0;
+  overflow: hidden;
   max-width: 500px;
   background-color: var(--ColorPrincipal);
   display: flex;
   flex-direction: column;
   padding:calc(var(--Padding) * 2) var(--Padding);
   border-radius: var(--BorderRadius);
-  animation: translate 1s 0.3s forwards;
-  transform: translateY(-1000px);
+  opacity: 0;
+  animation: widthModal .3s .3s forwards ease-in-out;
+  /*transform: translateY(-1000px);*/
 }
 
-@keyframes translate {
-  to {
-    transform: translateY(0);
+@keyframes widthModal {
+  from {
+    width: 0;
+    opacity: 0;
   }
+  to{
+    width: 70%;
+    opacity: 1;
+  }
+  
+}
+@keyframes ocultarModal {
+  from {
+    width: 70%;
+    opacity: 1;
+  }
+  to{
+    width: 0;
+    opacity: 0;
+    
+  }
+  
 }
 .contenedor-modal .modal h1 {
   color: var(--ColorSecundario);
@@ -196,6 +228,39 @@
   flex-direction: column;
   
 }
+
+/*DISERÑO PARA ALERT DENTRO DE MODAL*/
+.contenedor-modal .modal .container-alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  /*width:calc(100% - var(--Padding) * 2);*/
+  width: 100%;
+  border-radius:0;
+  
+  padding: var(--Padding);
+  background-color: var(--ColorSuccess);
+  opacity: 0;
+  transition: all .3s;
+}
+
+.alertDanger {
+  background-color: var(--ColorDanger) !important;
+}
+.alertShow {
+  opacity: 1 !important;
+}
+
+.contenedor-modal .modal .container-alert .alert {
+
+}
+.contenedor-modal .modal .container-alert .alert p {
+  font-size: var(--SizeDescripcion);
+  font-weight: 800;
+  color: var(--ColorSecundario);
+}
+/*FIN ISERÑO PARA ALERT DENTRO DE MODAL*/
 .contenedor-modal .modal form label {
   color: var(--ColorSecundario);
   font-weight: 500;
@@ -228,15 +293,31 @@
   letter-spacing: var(--LetterSpacing);
   font-family: 'Roboto',sans-serif;
   font-weight: 800;
+  opacity: 1;
 }
 .contenedor-modal .modal form .contenedor-button button:first-child{
   background-color: var(--ColorSuccess);
 }
+
+.contenedor-modal .modal form .contenedor-button button:first-child:disabled {
+  opacity: .3;
+  cursor:progress;
+}
+
+
+
+.contenedor-modal .modal form .contenedor-button button:last-child:disabled {
+  opacity: .3;
+  cursor:crosshair;
+}
+
+
 .contenedor-modal .modal form .contenedor-button button:last-child {
   background-color: var(--ColorDanger);
 }
 .contenedor-modal .modal form .contenedor-button button:hover {
   opacity: .8;
+ 
 }
 
 .contenedor-tabla-usuarios {
