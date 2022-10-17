@@ -21,7 +21,14 @@
   </div>
   <div>
     <a><img id="btn-usr" src="https://bluemadness.000webhostapp.com/img_proyecto/usr.png" alt=""></a>
-    <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
+
+    <?php
+      if( isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == "1" ){
+        ?>
+          <a href="<?php echo $pathHost ?>configuracion/ModificarDatosEmpresa"><img id="" src="https://bluemadness.000webhostapp.com/img_proyecto/conf.png" alt=""></a>
+        <?php
+      } 
+    ?>
     <img class="btn-menu" id="btn-menu" src="https://bluemadness.000webhostapp.com/img_proyecto/icon-menu.png" alt="">
   </div>
 
@@ -42,6 +49,17 @@
   })
 </script>
 
+<?php 
+  $uri = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+
+  if( $_SESSION['userAdmin'] != "1" ){
+    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != "cotizaciones/realizarCotizacion/" ){
+      echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+      header("Location: ". $pathHost );
+    }
+  }
+?>
 
 <?php if(isset($_SESSION['usuario'])){?>
 <!--MODAL PARA MOSTRAR INFO DE USUARIO -->

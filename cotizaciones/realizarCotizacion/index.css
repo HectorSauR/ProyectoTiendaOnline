@@ -134,6 +134,7 @@
 }
 
 .cantidad {
+  max-width: 4rem;
   border: none;
   background: none;
   cursor: pointer;
@@ -188,8 +189,13 @@ thead {
   background-color: var(--ColorSecundario);
 }
 
-td {
+table.dataTable {
+  table-layout: fixed;
   background-color: var(--ColorSecundario);
+}
+
+table.dataTable tr th:nth-child(6){
+  width: 1%;
 }
 
 .hidden {

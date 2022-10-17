@@ -117,7 +117,7 @@
                     <form class="producto" action="./php/borrarCotizacion.php" method="POST">
                       <input type="hidden" name="id_prod" value= "<?php echo $row['ID_PRODUCTO'] ?>">
                       <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
-                      <td><button class="borrar"><i class="fa-solid fa-trash"></i></button>  </td>
+                      <td ><button class="borrar"><i class="fa-solid fa-trash"></i></button>  </td>
                     </form>
                   </tr>
 
