@@ -1,54 +1,97 @@
-
-select{
-    padding-left: 100%;
-    border-radius: 20px;
-
+select {
+  border-radius: 20px;
+  font-size: 12pt;
+  padding: 5px 10px;
+}
+h1 {
+  font-weight: bold;
+}
+table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-ul{
-    list-style: none;
-}
-
-#prin{
-
-    float: left;
-    
+ul {
+  list-style: none;
 }
 
 form li + li {
-    margin-top: 1em;
-  }
+  margin-top: 1em;
+}
 
-#export{
+.contenedor-interaccion {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.contenedor-inputs {
+  width: 40%;
+  max-width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor-inputs form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: left;
+  font-size: 12pt;
+}
+
+.contenedor-inputs form > * {
+  margin-top: 15px;
+}
+
+.contenedor-interaccion .contenedor-exports {
+  color: white;
+}
+
+.contenedor-exports .contenedor-iconos {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.contenedor-exports .contenedor-iconos > a {
+  color: white;
+  text-decoration: none;
+  font-size: 50pt;
+  cursor: pointer;
+}
+
+img:hover {
+  background-color: rgb(89, 195, 195);
+  padding: 1%;
+  border-radius: 20px;
+}
+
+/* #ventasT{
     float: right;
-    margin-right: 10%;
-    color: white;
+} */
 
+#btnGenerar {
+  width: 50%;
+  font-size: 12pt;
+  color: #3e4078;
+  padding: 2%;
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+  min-width: 150px;
+  cursor: pointer;
 }
 
-img:hover{
-    background-color: rgb(89, 195, 195);
-    padding: 1%;
-    border-radius: 20px;
-}
-
-form{
-    color: white;
-}
-
-#ventasT{
-    float: right;
-}
-
-#btnGenerar{
-    font-size: 20px;
-    color: #3E4078;
-    padding: 2%;
-    background-color: white;
-    border-radius: 20px;
-}
-
-#btnGenerar:hover{
-    background-color: aqua;
-    color: black;
+#btnGenerar:hover {
+  background-color: #3e4078;
+  color: white;
 }
