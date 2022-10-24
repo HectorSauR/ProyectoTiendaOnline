@@ -33,14 +33,24 @@ td{
 
 .main .contenedor-consultar-productos .contenedor-tabla-productos
 .dataTables_wrapper .dataTables_length label ,
-.dataTables_filter label ,
-.dataTables_length label select{
+.dataTables_filter label, .dataTables_length label select {
   color: var(--ColorSecundario);
 
 }
- .dataTables_filter label input {
+
+.dataTables_length label select option {
+  color: black;
+}
+
+.dataTables_filter label input {
    color: var(--ColorSecundario);
    outline: none;
    border: none;
    margin-bottom: 10px;
- }
+}
+
+.dataTables_info {
+  color: var(--ColorSecundario) !important;
+}
+
+
