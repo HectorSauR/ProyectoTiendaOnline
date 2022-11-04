@@ -15,6 +15,7 @@ if ($opc == '1') {
   //Variables de session
   $_SESSION['usuario'] = 'cliente';
   $_SESSION['userAdmin'] = "0";
+  $_SESSION['rutaImagenUsuario'] = 'recursos/imagenes/usr.png';
   echo "1";
 }else {
   $usuario = $_POST['user'];

@@ -54,7 +54,7 @@
   echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
 
   if( $_SESSION['userAdmin'] != "1" ){
-    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != "cotizaciones/realizarCotizacion/" ){
+    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" ){
       echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
       header("Location: ". $pathHost );
     }
