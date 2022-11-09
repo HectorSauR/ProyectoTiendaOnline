@@ -106,3 +106,8 @@ td {
   border: none;
   margin-bottom: 10px;
 }
+
+
+.dataTables_wrapper .dataTables_length label select {
+  background: rgb(97, 95, 95);
+}

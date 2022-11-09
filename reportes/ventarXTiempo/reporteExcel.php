@@ -1,17 +1,14 @@
 <?php 
-require 'conexion.php';
+require "../../recursos/PHP/clases/conexion.php";
+$conexion2 = new Conexion();
+$conectar = $conexion2->getConectionMysql();
 $mes = $_REQUEST['periodo'];
 $formaPago = $_REQUEST['FP'];
 $usr = $_REQUEST['usr'];
-$resultado = mysqli_query($conectar,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
-                                      detallesVenta.PRECIO,
-                                      usuario.USUARIO,
-                                      forma_pago.DESCRIPCION
-                                      FROM venta venta 
-                                      INNER JOIN detalle_venta detallesVenta ON venta.ID_VENTA = detallesVenta.ID_VENTA
-                                      INNER JOIN usuario usuario ON venta.ID_USUARIO = usuario.ID_USUARIO
-                                      INNER JOIN forma_pago forma_pago ON venta.ID_FORMA_PAGO = forma_pago.ID_FORMA_PAGO
-                                      WHERE MONTH(venta.FECHA)='$mes' AND venta.ID_FORMA_PAGO = '$formaPago' AND venta.ID_USUARIO = '$usr'");
+$resultado = mysqli_query($conectar,"SELECT * FROM reporte_por_tiempo
+                                      WHERE MONTH(FECHA)='$mes' 
+                                      AND ID_FORMA_PAGO = '$formaPago' 
+                                      AND ID_USUARIO = '$usr'");
 
 header ("Content-Type: application/vnd.ms-excel; charset=iso-8859-1");
 header ("Content-Disposition: attachment; filename=datos-ventas.xls");       
