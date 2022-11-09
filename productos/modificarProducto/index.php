@@ -2,10 +2,6 @@
  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
   include  '../../recursos/PHP/clases/conexion.php';
 
- //require "../../recursos/PHP/clases/conexion.php";
-
-
-
  $query = 'SELECT *  FROM `categoria_productos`; ';
  $statement = $conexion->prepare($query);
  $statement->execute();
@@ -20,6 +16,7 @@
            ];
        }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

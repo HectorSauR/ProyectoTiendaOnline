@@ -1,4 +1,4 @@
-fetch("../../recursos/PHP/metodos/buscarProductoBd.php")
+fetch("../../recursos/PHP/metodos/buscarProductoBD.php")
   .then((res) => res.json())
   .then((data) => {
     for (var item of data) {

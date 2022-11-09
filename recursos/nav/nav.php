@@ -54,7 +54,7 @@
   echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
 
   if( $_SESSION['userAdmin'] != "1" ){
-    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" ){
+    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
       echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
       header("Location: ". $pathHost );
     }
@@ -76,7 +76,7 @@
     <div class="loal-footer">
         
         
-        <a href="<?php echo $pathHost ?>usuarios/modificarTema">TEMAS</a>
+        <a href="<?php echo $pathHost ?>Usuarios/modificarTema">TEMAS</a>
 
         <button type="button" id="btnCerrarSesion">CERRAR SESIÓN</button>
     </div>
@@ -141,8 +141,8 @@
 
       <li><a href="#">usuarios</a>
         <ul>
-          <li><a href="<?php echo $pathHost ?>usuarios/registrarUsuario/">Registrar Usuario</a></li>
-          <li><a href="<?php echo $pathHost ?>usuarios/modificarUsuario/">Modificar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>Usuarios/registrarUsuario/">Registrar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>Usuarios/modificarUsuario/">Modificar Usuario</a></li>
 
         </ul>
       </li>
@@ -260,8 +260,8 @@
 
       <li><a href="#">usuarios</a>
         <ul>
-          <li><a href="<?php echo $pathHost ?>usuarios/registrarUsuario/">Registrar Usuario</a></li>
-          <li><a href="<?php echo $pathHost ?>usuarios/modificarUsuario/">Modificar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>Usuarios/registrarUsuario/">Registrar Usuario</a></li>
+          <li><a href="<?php echo $pathHost ?>Usuarios/modificarUsuario/">Modificar Usuario</a></li>
 
         </ul>
       </li>
