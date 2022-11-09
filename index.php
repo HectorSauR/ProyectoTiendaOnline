@@ -47,9 +47,8 @@ include 'recursos/PHP/clases/conexion.php';
         </div>
         <div class="redes-sociales">
           <h2>Redes Sociales</h2>
-          <a href="<?php echo $r[0]['FACEBOOK'] ?>"><i class='bx bxl-facebook-circle'></i></a>
-          <a href="<?php echo $r[0]['TWITER'] ?>"><i class='bx bxl-twitter'></i></a>
-          <!-- <p><b>Website:</b> <?php echo $r[0]['WEBSITE'] ?></p> -->
+          <a href="https://www.facebook.com/<?php echo $r[0]['FACEBOOK'] ?>"><i class='bx bxl-facebook-circle'></i></a>
+          <a href="https://twitter.com/<?php echo $r[0]['TWITER'] ?>"><i class='bx bxl-twitter'></i></a>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Datos Empresa</title>
     <!-- <link rel="stylesheet" href="../recursos/cssprincipal/style.css"> -->
-    <link rel="stylesheet" href="ModificarDE.css">
+    <link rel="stylesheet" href="./modificarDE.css">
     <link rel="stylesheet" href="../../recursos/cssprincipal/style.css" />
 
 </head>

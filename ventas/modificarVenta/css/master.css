@@ -6,11 +6,12 @@
 .main h1 {
   color: var(--ColorSecundario);
   font-weight: 600;
+  text-align: center;
 }
 .main .contenedor-ventas {
   width: 100%;
 display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 margin-top: var(--Margin);
 
 }
@@ -54,7 +55,6 @@ margin-top: var(--Margin);
   border: var(--border) solid var(--ColorPrincipal);
   color: var(--ColorPrincipal);
   font-weight: 600;
-  
   background: white;
 }
 
@@ -68,11 +68,16 @@ margin-top: var(--Margin);
 .main .contenedor-ventas .header-precio p,
 .main .contenedor-ventas .header-status p,
 .main .contenedor-ventas .header-opcion p{
-color: var(--ColorPrincipal);
+  color: var(--ColorPrincipal);
 }
 .main .contenedor-ventas .header-cb div{
   overflow: scroll;
 }
+
+.main .contenedor-buscar{
+  margin: 20pxF;
+}
+
 .main .contenedor-buscar input {
   padding:calc(var(--Padding) / 1.5);
   outline: none;
@@ -149,7 +154,7 @@ color: var(--ColorPrincipal);
 
 
 .contenedor-modal .modal {
-  width: 70%;
+  width: 40%;
   background-color: var(--ColorPrincipal);
   display: flex;
   flex-direction: column;
