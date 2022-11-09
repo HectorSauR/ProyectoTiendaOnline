@@ -1,4 +1,4 @@
-//ARRAY usuarios 
+//ARRAY usuarios
 var arrayUsuarios;
 
 //VARIABLES PARA MODIFICAR UN USUARIO
@@ -12,47 +12,55 @@ var nivel;
 fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
   .then((res) => res.json())
   .then((data) => {
-    arrayUsuarios = data
+    arrayUsuarios = data;
     mostrarUsuariosDom(arrayUsuarios);
-
   }); //FIN DE FETCH
 
-  document.querySelector(".contenedor-tabla-usuarios").addEventListener("click", (e) => {
+document
+  .querySelector(".contenedor-tabla-usuarios")
+  .addEventListener("click", (e) => {
     //EDITAR USUARIO
     if (e.target.tagName == "BUTTON") {
-
-
-      document.querySelector(".contenedor-modal").style.display = "flex";
+      document.querySelector(
+        ".contenedor-modal"
+      ).style.display = "flex";
 
       contenedor = e.target.parentNode.parentNode;
-     
-      //console.log(contenedor);
-      nombre = contenedor.querySelector(".nombre p").innerText;
-      usuario = contenedor.querySelector(".usuario p").innerText;
-      imagen = contenedor.querySelector(".imagen > p").innerText;
-      correo = contenedor.querySelector(".correo p").innerText;
-      nivel = contenedor.querySelector(".nivel p").innerText;
 
-    
+      //console.log(contenedor);
+      nombre =
+        contenedor.querySelector(".nombre p").innerText;
+      usuario =
+        contenedor.querySelector(".usuario p").innerText;
+      imagen =
+        contenedor.querySelector(".imagen > p").innerText;
+      correo =
+        contenedor.querySelector(".correo p").innerText;
+      nivel =
+        contenedor.querySelector(".nivel p").innerText;
+
       document.getElementById("nombre").value = nombre;
       document.getElementById("usuario").value = usuario;
       document.getElementById("imagen").value = imagen;
       document.getElementById("correo").value = correo;
       document.getElementById("nivel").value = nivel;
-
     }
     //DAR DE BAJA A USUARIO
     else if (e.target.tagName == "INPUT") {
       var contenedor1 = e.target.parentNode.parentNode;
-      var usuario1 = contenedor1.querySelector(".usuario p").innerText;
+      var usuario1 =
+        contenedor1.querySelector(".usuario p").innerText;
       var data = new FormData();
 
       data.append("id", usuario1);
 
-      fetch("../../recursos/PHP/metodos/eliminarUsuario.php", {
-        method: "POST",
-        body: data,
-      })
+      fetch(
+        "../../recursos/PHP/metodos/eliminarUsuario.php",
+        {
+          method: "POST",
+          body: data,
+        }
+      )
         .then((res) => res.text())
         .then((data) => {
           if (data == "2") {
@@ -68,128 +76,168 @@ fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
     }
   });
 
+//LOGICA PARA EDITAR USUARIO
+document
+  .getElementById("formEditarUsuario")
+  .addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  
-       //LOGICA PARA EDITAR USUARIO
+    //DESHABILITAR BUTTON GUARDAR Y CANCELAR HASTA QUE SE SEA RETORNADO ALGO POR EL METODO FETCH
+    document.querySelector(
+      ".contenedor-modal .modal form .contenedor-button button:first-child"
+    ).disabled = true;
+    document.querySelector(
+      ".contenedor-modal .modal form .contenedor-button button:last-child"
+    ).disabled = true;
 
-       document
-       .getElementById("formEditarUsuario")
-       .addEventListener("submit", (e) => {
-         e.preventDefault();
+    var data = new FormData(e.target);
 
-         //DESHABILITAR BUTTON GUARDAR Y CANCELAR HASTA QUE SE SEA RETORNADO ALGO POR EL METODO FETCH
-         document.querySelector(".contenedor-modal .modal form .contenedor-button button:first-child").disabled = true
-         document.querySelector(".contenedor-modal .modal form .contenedor-button button:last-child").disabled = true
-        
+    data.append("id", usuario);
 
+    if (data.get("nivel") == "Cliente") {
+      data.append("nivelN", "0");
+    } else if (data.get("nivel") == "Admin") {
+      data.append("nivelN", "1");
+    } else {
+      data.append("nivelN", "2");
+    }
 
-         var data = new FormData(e.target);
+    data.append("usuarioActivo", "1");
+    // console.log(data);
 
-       
+    fetch(
+      "../../recursos/PHP/metodos/editarUsuarioBD.php",
+      {
+        method: "POST",
+        body: data,
+      }
+    )
+      .then((response) => response.text())
+      .then((data) => {
+        //HABILITAR BUTTON GUARDAR Y CANCELAR
+        document.querySelector(
+          ".contenedor-modal .modal form .contenedor-button button:first-child"
+        ).disabled = false;
+        document.querySelector(
+          ".contenedor-modal .modal form .contenedor-button button:last-child"
+        ).disabled = false;
 
-         data.append("id", usuario);
+        var arrData = JSON.parse(data);
 
-         if (data.get("nivel") == "Cliente") {
-           data.append("nivelN", "0");
-         } else if (data.get("nivel") == "Admin") {
-           data.append("nivelN", "1");
-         } else {
-           data.append("nivelN", "2");
-         }
+        //document.querySelector(".contenedor-modal").style.display = "none";
+        // console.log(arrData);
+        if (arrData[0] == true) {
+          //VERIFICO SI EN EL ARRDATA SE OBTIENE UNA
+          // OPCION 'TRUE' DE MODIFICACION DE IMAGEN DE USUARIO
+          if (arrData[2] == true) {
+            //ACTUALIZO LA RUTA DE IMAGEN EN EL MODAL DE INFO DE USUARIO
+            document.querySelector(
+              ".loal-contenedor-modal .loal-modal .loal-body img"
+            ).src = `../../${
+              arrData[1]
+            }?timestamp=${new Date().getTime()}`;
 
-         fetch("../../recursos/PHP/metodos/editarUsuarioBD.php", {
-           method: "POST",
-           body: data,
-         })
-           .then((response) => response.text())
-           .then((data) => {
+          }
+          //ACTUALIZO LA RUTA DE IMAGEN EN LA LISTA DE USUARIO
+          //(USUARIO SELECCIONADO PARA MODIFICA)
+          contenedor.querySelector(
+            ".imagen img"
+          ).src = `../../${
+            arrData[1]
+          }?timestamp=${new Date().getTime()}`;
 
-             //HABILITAR BUTTON GUARDAR Y CANCELAR
-              document.querySelector(".contenedor-modal .modal form .contenedor-button button:first-child").disabled = false
-              document.querySelector(".contenedor-modal .modal form .contenedor-button button:last-child").disabled = false
-          
-           
-            var arrData = JSON.parse(data)
-          
-             //document.querySelector(".contenedor-modal").style.display = "none";
-             
-             if(arrData[0] == true){
+          if (
+            document
+              .getElementById("alert")
+              .classList.contains("alertDanger")
+          )
+            document
+              .getElementById("alert")
+              .classList.remove("alertDanger");
 
-              //VERIFICO SI EN EL ARRDATA SE OPTIENE UNA
-              // OPCION 'TRUE' DE MODIFICACION DE IMAGEN DE USUARIO
-                if(arrData[2] == true){
-                  //ACTUALIZO LA RUTA DE IMAGEN EN EL MODAL DE INFO DE USUARIO
-                  document.querySelector(".loal-contenedor-modal .loal-modal .loal-body img").src=`../../${arrData[1]}?timestamp=${new Date().getTime()}`
-                  
-                  //ACTUALIZO LA RUTA DE IMAGEN EN LA LISTA DE USUARIO
-                  //(USUARIO SELECCIONADO PARA MODIFICA)
-                  contenedor.querySelector(".imagen img").src = `../../${arrData[1]}?timestamp=${new Date().getTime()}`
-                
-                }
-              
+          contenedor.querySelector(".nombre p").innerText =
+            document.getElementById("nombre").value;
+          contenedor.querySelector(".usuario p").innerText =
+            document.getElementById("usuario").value;
+          contenedor.querySelector(
+            ".imagen > p"
+          ).innerText =
+            document.getElementById("imagen").value;
 
-                 if(document.getElementById("alert").classList.contains("alertDanger"))
-                    document.getElementById("alert").classList.remove("alertDanger")
-                 
+          contenedor.querySelector(".correo p").innerText =
+            document.getElementById("correo").value;
+          contenedor.querySelector(".nivel p").innerText =
+            document.getElementById("nivel").value;
 
-                 contenedor.querySelector(".nombre p").innerText = document.getElementById("nombre").value;
-                 contenedor.querySelector(".usuario p").innerText = document.getElementById("usuario").value;
-                 contenedor.querySelector(".imagen > p").innerText = document.getElementById("imagen").value;
-                
-                 contenedor.querySelector(".correo p").innerText = document.getElementById("correo").value;
-                 contenedor.querySelector(".nivel p").innerText = document.getElementById("nivel").value;
-                 
-                 if(!document.getElementById("alert").classList.contains("alertShow"))
-                    document.getElementById("alert").classList.add("alertShow")
+          if (
+            !document
+              .getElementById("alert")
+              .classList.contains("alertShow")
+          )
+            document
+              .getElementById("alert")
+              .classList.add("alertShow");
 
-                 document.querySelector(".container-alert .alert p").innerText = "Usuario modificado."
-                 setTimeout(ocultarModalEditarUsuario , 1500)
+          document.querySelector(
+            ".container-alert .alert p"
+          ).innerText = "Usuario modificado.";
+          setTimeout(ocultarModalEditarUsuario, 1500);
 
-                 //ACTUALIZAR ARRAY DE USUARIOS PARA LAS BUSQUEDAS LOCALES
-             }else {
+          //ACTUALIZAR ARRAY DE USUARIOS PARA LAS BUSQUEDAS LOCALES
+        } else {
+          document
+            .getElementById("alert")
+            .classList.add("alertDanger");
+          document
+            .getElementById("alert")
+            .classList.add("alertShow");
+          document.querySelector(
+            ".container-alert .alert p"
+          ).innerText = arrData[2];
+        }
+      });
+  });
 
-               
-              
-               document.getElementById("alert").classList.add("alertDanger")
-               document.getElementById("alert").classList.add("alertShow")
-               document.querySelector(".container-alert .alert p").innerText = arrData[2]
+//FUNCION PARA TIMEOUT CERRAR MODAL EDITAR USUARIO
+function ocultarModalEditarUsuario() {
+  document.querySelector(
+    ".contenedor-modal .modal"
+  ).style.animation = "ocultarModal .3s ease-in-out";
 
+  setTimeout(() => {
+    document.querySelector(
+      ".contenedor-modal"
+    ).style.animation = "ocultarContenedorModal .3s";
+    setTimeout(() => {
+      document.querySelector(
+        ".contenedor-modal"
+      ).style.display = "none";
 
-               
+      document.querySelector(
+        ".contenedor-modal"
+      ).style.animation = "";
+      document.querySelector(
+        ".contenedor-modal .modal"
+      ).style.animation = "";
+    }, 300);
+  }, 300);
 
-               
-             }
-             
-           });
-       });
-
-  //FUNCION PARA TIMEOUT CERRAR MODAL EDITAR USUARIO
-  function ocultarModalEditarUsuario(){
-    document.querySelector(".contenedor-modal .modal").style.animation = "ocultarModal .3s ease-in-out"
-
-    setTimeout(()=>{
-      document.querySelector(".contenedor-modal").style.animation = "ocultarContenedorModal .3s"
-      setTimeout(()=> {
-        document.querySelector(".contenedor-modal").style.display = "none"
-
-        document.querySelector(".contenedor-modal").style.animation = ""
-        document.querySelector(".contenedor-modal .modal").style.animation = ""
-      },300)
-    },300)
-  
-      document.getElementById("alert").classList.remove("alertShow")
-     
-  }
+  document
+    .getElementById("alert")
+    .classList.remove("alertShow");
+}
 
 document
   .getElementById("btnCancelarEditarUsuario")
   .addEventListener("click", () => {
-    ocultarModalEditarUsuario()
+    ocultarModalEditarUsuario();
   });
 
-  //MOSTRAR HEADER TABLA USUARIOS 
-  function mostrarHeaderTablaUsuarios(){
-    document.querySelector(".contenedor-tabla-usuarios").innerHTML = `
+//MOSTRAR HEADER TABLA USUARIOS
+function mostrarHeaderTablaUsuarios() {
+  document.querySelector(
+    ".contenedor-tabla-usuarios"
+  ).innerHTML = `
     <div class="contenedor-usuarios">
         <div class="header-nombre">
           <p>Nombre</p>
@@ -216,24 +264,26 @@ document
         </div>
       </div>
     
-      `
-  }
+      `;
+}
 
-  //FUNCION PARA RECORRER USUARIOS Y MOSTRARLOS EN PANTALLA
-  function mostrarUsuariosDom(data){
-    mostrarHeaderTablaUsuarios()
-    
-    for (var item of data) {
-      //VERIFICAR EL NIVEL DE PRIVILEGIO
-      var nivel = "";
-      if (item.NIVEL == "0") {
-        nivel = "Cliente";
-      } else if (item.NIVEL == "1") {
-        nivel = "Admin";
-      } else {
-        nivel = "Ventas";
-      }
-      document.querySelector(".contenedor-tabla-usuarios").innerHTML += `
+//FUNCION PARA RECORRER USUARIOS Y MOSTRARLOS EN PANTALLA
+function mostrarUsuariosDom(data) {
+  mostrarHeaderTablaUsuarios();
+
+  for (var item of data) {
+    //VERIFICAR EL NIVEL DE PRIVILEGIO
+    var nivel = "";
+    if (item.NIVEL == "0") {
+      nivel = "Cliente";
+    } else if (item.NIVEL == "1") {
+      nivel = "Admin";
+    } else {
+      nivel = "Ventas";
+    }
+    document.querySelector(
+      ".contenedor-tabla-usuarios"
+    ).innerHTML += `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
           <div class="nombre">
             <p>${item.NOMBRE}</p>
@@ -242,7 +292,9 @@ document
             <p>${item.USUARIO}</p>
           </div>
           <div class="imagen" >
-          <img src="../../${item.IMAGEN}?timestamp=${new Date().getTime()}" width="60" height="60" alt="IMAGEN">
+          <img src="../../${
+            item.IMAGEN
+          }?timestamp=${new Date().getTime()}" width="60" height="60" alt="IMAGEN">
           <p>${item.IMAGEN}</p>
 
         </div>
@@ -259,45 +311,55 @@ document
           </div>
         </div>
       `;
-    }
   }
+}
 
-  const formBuscarUsuario = document.querySelector(".contenedor-buscar");
+const formBuscarUsuario = document.querySelector(
+  ".contenedor-buscar"
+);
 
-  formBuscarUsuario.addEventListener("submit",(e)=>{
-    e.preventDefault()
+formBuscarUsuario.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    var data = new FormData(e.target)
+  var data = new FormData(e.target);
 
-    var busqueda = data.get("inputNombreUsuario").toUpperCase()
+  var busqueda = data
+    .get("inputNombreUsuario")
+    .toUpperCase();
 
-    var longitudBusqueda = busqueda.length
+  var longitudBusqueda = busqueda.length;
 
-  var usuarioEncontrado = false
+  var usuarioEncontrado = false;
 
   var nombreUsuario;
 
+  document.querySelector(
+    ".contenedor-tabla-usuarios"
+  ).innerHTML = "";
+  mostrarHeaderTablaUsuarios();
 
-  document.querySelector(".contenedor-tabla-usuarios").innerHTML = ""
-  mostrarHeaderTablaUsuarios()
+  for (var i = 0; i < arrayUsuarios.length; i++) {
+    nombreUsuario = arrayUsuarios[i].NOMBRE.toUpperCase();
+    for (var j = 0; j < nombreUsuario.length; j++) {
+      if (
+        nombreUsuario.substring(j, longitudBusqueda + j) ==
+        busqueda
+      ) {
+        usuarioEncontrado = true;
 
-  for(var i =0; i < arrayUsuarios.length; i++){
-    nombreUsuario = arrayUsuarios[i].NOMBRE.toUpperCase()
-    for(var j = 0; j < nombreUsuario.length; j++){
-      if(nombreUsuario.substring(j,longitudBusqueda + j) == busqueda){
-        usuarioEncontrado = true
-
-         //VERIFICAR EL NIVEL DE PRIVILEGIO
-      var nivel = "";
-      if (arrayUsuarios[i].NIVEL == "0") {
-        nivel = "Cliente";
-      } else if (arrayUsuarios[i].NIVEL == "1") {
-        nivel = "Admin";
-      } else {
-        nivel = "Ventas";
-      }
-        //MOSTRAMOS USUARIO 
-        document.querySelector(".contenedor-tabla-usuarios").innerHTML += `
+        //VERIFICAR EL NIVEL DE PRIVILEGIO
+        var nivel = "";
+        if (arrayUsuarios[i].NIVEL == "0") {
+          nivel = "Cliente";
+        } else if (arrayUsuarios[i].NIVEL == "1") {
+          nivel = "Admin";
+        } else {
+          nivel = "Ventas";
+        }
+        //MOSTRAMOS USUARIO
+        document.querySelector(
+          ".contenedor-tabla-usuarios"
+        ).innerHTML += `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
         <div class="nombre">
           <p>${arrayUsuarios[i].NOMBRE}</p>
@@ -322,34 +384,31 @@ document
         </div>
       </div>
 
-        `
+        `;
       }
     }
   }
 
   //--A
-  if(!usuarioEncontrado){
+  if (!usuarioEncontrado) {
     Swal.fire(
-      'Error al buscar usuario.',
-      'Ningun usuario fue encontrado con ese nombre.',
-      'error'
-    )
+      "Error al buscar usuario.",
+      "Ningun usuario fue encontrado con ese nombre.",
+      "error"
+    );
   }
 
-    //console.log(buscarUsuario)
+  //console.log(buscarUsuario)
+});
 
+//EVENTO CHANGE DE INPUT BUSCAR PRODUCTO
+document
+  .getElementById("inputNombreUsuario")
+  .addEventListener("keyup", (e) => {
+    if (e.target.value == "") {
+      mostrarUsuariosDom(arrayUsuarios);
+    }
+  });
 
-  })
-
-
-  //EVENTO CHANGE DE INPUT BUSCAR PRODUCTO
-document.getElementById("inputNombreUsuario").addEventListener("keyup",(e)=>{
-  if(e.target.value == ""){
-    mostrarUsuariosDom(arrayUsuarios)
-  }
-})
-
-  //BUSCAR USUARIO POR NOMBRE 
-  function mostrarUsuariosPorNombre(data){
-
-  }
+//BUSCAR USUARIO POR NOMBRE
+function mostrarUsuariosPorNombre(data) {}

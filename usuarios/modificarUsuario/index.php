@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../recursos/cssprincipal/style.css">
-  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="./css/master.css">
   <title>Modificar Usuario</title>
 </head>
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
@@ -42,7 +42,7 @@
         <label for="">Usuario</label>
         <input type="text" name="usuario" value="" id="usuario" pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,20}$" required>
         <label for="">Imagen</label>
-        <input type="text" name="imagen" value="" id="imagen" pattern="([0-9a-zA-Z\/])+([0-9a-zA-Z\._-]+.(png|PNG|jp[e]?g|JP[E]?G))" required>
+        <input type="text" name="imagen" value="" id="imagen" class="ruta-imagen-form" pattern="([0-9a-zA-Z\/])+([0-9a-zA-Z\._-]+.(png|PNG|jp[e]?g|JP[E]?G))" required>
         <input type="file" name="img_env" id="img_env" accept="image/png,image/jpg,image/jpeg">
         <!-- input coontraseña eliminada por que ningun ADMIN debe poder ver 
         o modificar la cobtra de ningun otro usuario

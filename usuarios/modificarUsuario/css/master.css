@@ -28,6 +28,9 @@
   background-color: var(--ColorSecundario);
 }
 
+.ruta-imagen-form{
+  display: none;
+}
 
 .main .contenedor-usuarios .opcion {
   display: flex;
@@ -109,7 +112,6 @@
 .main .contenedor-buscar label {
   color: var(--ColorSecundario);
   font-weight: 600;
-  
 }
 .main .contenedor-buscar button {
   padding: calc(var(--Padding) / 1.1) var(--Padding);
@@ -264,7 +266,8 @@
 .contenedor-modal .modal form label {
   color: var(--ColorSecundario);
   font-weight: 500;
-  padding: 0 0 0 calc(var(--Padding) / 2);
+  margin: 10px 0;
+
 }
 .contenedor-modal .modal form input,
 .contenedor-modal .modal form select {
