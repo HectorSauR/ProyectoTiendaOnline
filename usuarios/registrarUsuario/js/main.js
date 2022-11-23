@@ -118,3 +118,16 @@ ojo.addEventListener("click", ()=> {
     inputPassword.type = "password"
   }
 })
+
+
+//LOGICA PARA IMPLEMMETAR MODAL PARA INFO DE CAMPOS DE FORMULARIO
+document.querySelector('.btn-info-campos-form').addEventListener('click',(e) => {
+  
+
+  document.querySelector('.contenedor-info-campos-form').classList.toggle('show-info-campos-form')
+
+})
+
+document.querySelector('.btn-cerrar').addEventListener('click',()=> {
+  document.querySelector('.contenedor-info-campos-form').classList.toggle('show-info-campos-form')
+})

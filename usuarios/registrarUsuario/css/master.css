@@ -36,7 +36,51 @@
   border: var(--border) solid var(--ColorSecundario);
   padding: var(--Padding);
   border-radius: var(--BorderRadius);
+  position:relative;
 }
+
+.main .contenedor-form .contenedor-info-campos-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--ColorPrincipal);
+  padding: var(--Padding);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.main .contenedor-form .contenedor-info-campos-form h3 {
+  color: var(--ColorSecundario);
+}
+
+.main .contenedor-form .contenedor-info-campos-form p {
+  color: red;
+  font-weight: 1000;
+}
+
+.show-info-campos-form {
+  opacity: 1 !important;
+  pointer-events:all !important;
+}
+
+.main .contenedor-form .contenedor-info-campos-form .btn-cerrar {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background-color: red;
+  width: 40px;
+  height: 40px;
+
+}
+.main .contenedor-form .contenedor-botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .main .contenedor-form label {
   color: var(--ColorSecundario);
   font-weight: 500;

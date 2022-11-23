@@ -42,7 +42,31 @@
               <option>Admin</option>
               <option>Ventas</option>
             </select>
+            <div class="contenedor-botones">
             <button type="submit" id="btnRegistrar">Registrar</button>
+            <button type="button" class="btn-info-campos-form">?</button>
+
+
+            <div class="contenedor-info-campos-form">
+              <h1>Formato solicitado</h1>
+              <h3>Campo <span>Nombre</span> </h3>
+              <p>Tiene que empesar con mayuscula y mayor a un caracter.</p>
+
+              <h3>Campo <span>Usuario</span> </h3>
+              <p>mayor a 3 caracter y tiene que tener almenos un nuemro.</p>
+
+              <h3>Campo <span>Contraseña</span> </h3>
+              <p>mayor a 7 caracteres ,almenos un nuemero ,almenos un caracter especial ,almenos una mayuscula.</p>
+           
+              <h3>Campo <span>Correo</span> </h3>
+              <p>Correo valido</p>
+
+              <button type="button" class="btn-cerrar">X</button>
+         
+            </div>
+
+            </div>
+            
 
       </div>
 
