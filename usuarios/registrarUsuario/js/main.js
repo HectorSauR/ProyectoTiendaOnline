@@ -1,3 +1,6 @@
+const btnRegistro = document.querySelector('#btnRegistrar')
+
+
 document.querySelector("#activarAgreagarImagen").addEventListener("click", () => {
   document.querySelector("#agregarImagen").click();
 })
@@ -41,19 +44,67 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
   e.preventDefault()
 
   //BLOQUEAR BUTTON PARA EVITAR ERROR CON RED
-  let btnRegistro = document.querySelector('#btnRegistrar')
+ 
 
   btnRegistro.classList.toggle('deshabilitarBtnRegistro')
   //DATOS DEL FORMULARIO
   var data = new FormData(e.target);
 
-  console.log(data.get("imagen").name);
+ 
+  //VALIDAR INPUT POR SEGURIDAD
+  if(data.get('nombre') == "" || data.get('nombre').length < 2){
+    Swal.fire(
+      'Error en formulario.',
+      'Campo nombre incorrecto ,verifique el formato solicitado',
+      'error'
+    )
+    btnRegistro.classList.toggle('deshabilitarBtnRegistro')
+    return false
+  }
+
+  if(data.get('usuario') == "" || data.get('usuario').length < 4){
+    Swal.fire(
+      'Error en formulario.',
+      'Campo usuario incorrecto ,verifique el formato solicitado',
+      'error'
+    )
+    btnRegistro.classList.toggle('deshabilitarBtnRegistro')
+    return false
+
+  }
+
+  if(data.get('clave') == "" || data.get('clave').length < 8){
+    Swal.fire(
+      'Error en formulario.',
+      'Campo clave incorrecto ,verifique el formato solicitado',
+      'error'
+    )
+    btnRegistro.classList.toggle('deshabilitarBtnRegistro')
+  return false
+    }
+
+
+    const regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+    if(data.get('correo') == "" || !regExp.test(data.get('correo'))){
+      Swal.fire(
+        'Error en formulario.',
+        'Campo correo incorrecto ,verifique el formato solicitado',
+        'error'
+      )
+      btnRegistro.classList.toggle('deshabilitarBtnRegistro')
+      return false
+    }
+
+
+
+
   if (data.get("imagen").name==""){
     Swal.fire(
       'Error al registrar producto.',
       'Tienes que elegir una imagen para el producto',
       'error'
     )
+    btnRegistro.classList.toggle('deshabilitarBtnRegistro')
   }
   else{
 
@@ -68,6 +119,7 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
           'Usuario no esta disponible',
           'error'
         )
+        btnRegistro.classList.toggle('deshabilitarBtnRegistro')
       }else {
         //PROCESAR LOS DATOS A PHP
         //alert(data.get("imagen").name);
