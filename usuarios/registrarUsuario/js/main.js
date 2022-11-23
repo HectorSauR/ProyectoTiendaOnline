@@ -40,6 +40,10 @@ document.querySelector("#agregarImagen").addEventListener("change", (e) => {
 document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) => {
   e.preventDefault()
 
+  //BLOQUEAR BUTTON PARA EVITAR ERROR CON RED
+  let btnRegistro = document.querySelector('#btnRegistrar')
+
+  btnRegistro.classList.toggle('deshabilitarBtnRegistro')
   //DATOS DEL FORMULARIO
   var data = new FormData(e.target);
 
@@ -80,7 +84,7 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
           method: 'POST',
           body: data
         }).then(response => response.text()).then(data => {
-          console.log(data)
+          btnRegistro.classList.toggle('deshabilitarBtnRegistro')
 
           if (data == "1") {
             Swal.fire(

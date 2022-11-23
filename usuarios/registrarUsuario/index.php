@@ -42,7 +42,7 @@
               <option>Admin</option>
               <option>Ventas</option>
             </select>
-            <button type="submit">Registrar</button>
+            <button type="submit" id="btnRegistrar">Registrar</button>
 
       </div>
 

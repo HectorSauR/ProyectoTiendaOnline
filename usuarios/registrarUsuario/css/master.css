@@ -157,3 +157,9 @@ Y PODER MOSTRAR LA CONTRASEÑA */
   pointer-events: none;
   position: fixed;
 }
+
+/* CLASE PARA BTN REGISTRO PARA DESHABILITARLO */
+.deshabilitarBtnRegistro {
+  pointer-events: none !important;
+  opacity: .6 !important;
+}
