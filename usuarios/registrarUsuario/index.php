@@ -53,7 +53,7 @@
               <p>Tiene que empesar con mayuscula y mayor a un caracter.</p>
 
               <h3>Campo <span>Usuario</span> </h3>
-              <p>mayor a 3 caracter y tiene que tener almenos un nuemro.</p>
+              <p>mayor a 3 caracteres y tiene que tener almenos un numero.</p>
 
               <h3>Campo <span>Contraseña</span> </h3>
               <p>mayor a 7 caracteres ,almenos un nuemero ,almenos un caracter especial ,almenos una mayuscula.</p>
