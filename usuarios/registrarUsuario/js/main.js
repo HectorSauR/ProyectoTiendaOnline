@@ -145,9 +145,10 @@ document.querySelector("#formRegistroUsuario").addEventListener("submit", (e) =>
               'success'
             )
           } else {
+            console.log(data)
             Swal.fire(
               'Error al registrar usuario.',
-              'porfavor verifique los datos ingresados en el formulario',
+              'El correo electronico no esta disponible.',
               'error'
             )
           }
