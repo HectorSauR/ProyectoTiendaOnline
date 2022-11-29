@@ -38,7 +38,7 @@ foreach ($result as $row) {
     <div class="contenedor-buscar">
       <form id="frmbuscar">
         <label>Buscar:</label>
-        <input type="text" name="id_prd_b" value="" class="inpbuscar">
+        <input type="text" name="id_prd_b" id="id_prd_b" value="" class="inpbuscar">
         <button type="button" class="btnBuscar">Buscar</button>
       </form>
     </div>
@@ -72,7 +72,15 @@ foreach ($result as $row) {
       </div>
 
       <div class="header-precio">
-        <p>IMPORTE</p>
+        <p>IMPORTE SIN IVA</p>
+      </div>
+
+      <div class="header-precio">
+        <p>IVA</p>
+      </div>
+
+      <div class="header-precio">
+        <p>IMPORTE TOTAL</p>
       </div>
 
       <div class="header-status">

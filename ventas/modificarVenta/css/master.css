@@ -10,9 +10,9 @@
 }
 .main .contenedor-ventas {
   width: 100%;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-margin-top: var(--Margin);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin-top: var(--Margin);
 
 }
 .main .contenedor-ventas div p {

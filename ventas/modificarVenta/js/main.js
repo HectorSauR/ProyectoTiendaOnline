@@ -1,12 +1,19 @@
 fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
   .then((res) => res.json())
   .then((data) => {
-    for (var item of data) {
-      //VERIFICAR EL NIVEL DE PRIVILEGIO
+    // console.log(data);
 
-      document.querySelector(
-        ".contenedor-ventasD"
-      ).innerHTML += `
+    let ultimoId = data[data.length - 1].ID_VENTA;
+
+    for (let x = 0; x < ultimoId; x++) {
+      let arr = data.filter((data) => data.ID_VENTA == x);
+      arr.forEach((item, index) => {
+        let precio = item.PRECIO * item.CANTIDAD;
+        let iva = parseFloat((precio * 0.16).toFixed(2));
+        // console.log(item)
+        document.querySelector(
+          ".contenedor-ventasD"
+        ).innerHTML += `
 
         <div class="contenedor-ventas" id="contenedor-ventas">
           <div class="id-venta">
@@ -25,13 +32,19 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
             <p>${item.ID_PRODUCTO}</p>
           </div>
           <div class="precioProd">
-          <p>${item.PRECIO}</p>
+          <p>${item.PRECIO.toFixed(2)}</p>
           </div>
           <div class="cantidad">
           <p>${item.CANTIDAD}</p>
           </div>
           <div class="precio">
-          <p>${item.PRECIO * item.CANTIDAD}</p>
+          <p>${precio}</p>
+          </div>
+          <div class="precio">
+          <p>${iva}</p>
+          </div>
+          <div class="precio">
+          <p>${precio + iva}</p>
           </div>
           <div class="status">
           <p>${item.ID_ESTATUS}</p>
@@ -43,15 +56,17 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
 
         </div>
       `;
-      //
+      });
     }
+
+
 
     document
       .getElementById("main")
       .addEventListener("click", (e) => {
         //EDITAR USUARIO
 
-        console.log(e.target);
+        // console.log(e.target);
 
         //       let opcion = document.querySelectorAll(".opcion");
         //   opcion.forEach((btn) =>  {
@@ -246,25 +261,38 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
           var data2 = new FormData();
           var idB =
             document.querySelector(".inpbuscar").value;
+          if (idB == "") {
+            rellenarTabla();
+            return;
+          }
           data2.append("id_v_b", idB);
-          fetch(
-            "../../recursos/PHP/metodos/BuscarVentaBDxId.php",
-            {
-              method: "POST",
-              body: data2,
-            }
-          )
-            .then((response) => response.text())
-            .then((data2) => {
-              data2 = JSON.parse(data2);
+          filtrarPorId(data2);
+        } else {
+        }
+      });
+  });
 
-              for (var item of data2) {
-                //VERIFICAR EL NIVEL DE PRIVILEGIO
+//LOGICA PARA EDITAR USUARIO
 
-                document.querySelector(
-                  ".contenedor-ventasD"
-                ).innerHTML = `
-    
+//     })
+// }) //FIN DE FETCH
+function rellenarTabla() {
+  fetch("../../recursos/PHP/metodos/buscarVentaBD.php", {
+    method: "GET",
+  })
+    .then((response) => response.text())
+    .then((data2) => {
+      data2 = JSON.parse(data2);
+      let contenedor = document.querySelector(
+        ".contenedor-ventasD"
+      );
+      contenedor.innerHTML = "";
+      for (var item of data2) {
+        //VERIFICAR EL NIVEL DE PRIVILEGIO
+        let precio = item.PRECIO * item.CANTIDAD;
+        let iva = parseFloat((precio * 0.16).toFixed(2));
+
+        contenedor.innerHTML += `
           <div class="contenedor-ventas" id="contenedor-ventas">
           <div class="id-venta">
             <p>${item.ID_VENTA}</p>
@@ -281,11 +309,20 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
           <div class="id_prd">
             <p>${item.ID_PRODUCTO}</p>
           </div>
+          <div class="precioProd">
+          <p>${item.PRECIO.toFixed(2)}</p>
+          </div>
           <div class="cantidad">
           <p>${item.CANTIDAD}</p>
           </div>
           <div class="precio">
-          <p>${item.PRECIO}</p>
+          <p>${precio}</p>
+          </div>
+          <div class="precio">
+          <p>${iva}</p>
+          </div>
+          <div class="precio">
+          <p>${precio + iva}</p>
           </div>
           <div class="status">
           <p>${item.ID_ESTATUS}</p>
@@ -297,18 +334,77 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
 
         </div>
           `;
-                //
-              }
-            });
-        } else {
-        }
-      });
-  });
+        //
+      }
+    });
+}
 
-//LOGICA PARA EDITAR USUARIO
+function filtrarPorId(data) {
+  console.log(data);
+  fetch("../../recursos/PHP/metodos/BuscarVentaBDxId.php", {
+    method: "POST",
+    body: data,
+  })
+    .then((response) => response.text())
+    .then((data2) => {
+      console.log(data2);
+      data2 = JSON.parse(data2);
+      document.querySelector(
+        ".contenedor-ventasD"
+      ).innerHTML = "";
+      for (var item of data2) {
+        //VERIFICAR EL NIVEL DE PRIVILEGIO
+        let precio = item.PRECIO * item.CANTIDAD;
+        let iva = parseFloat((precio * 0.16).toFixed(2));
 
-//     })
-// }) //FIN DE FETCH
+        document.querySelector(
+          ".contenedor-ventasD"
+        ).innerHTML += `
+          <div class="contenedor-ventas" id="contenedor-ventas">
+          <div class="id-venta">
+            <p>${item.ID_VENTA}</p>
+          </div>
+          <div class="usuario">
+            <p>${item.ID_USUARIO}</p>
+          </div>
+          <div class="forma_pago">
+            <p>${item.ID_FORMA_PAGO}</p>
+          </div>
+          <div class="fecha" >
+            <p>${item.FECHA}</p>
+          </div>
+          <div class="id_prd">
+            <p>${item.ID_PRODUCTO}</p>
+          </div>
+          <div class="precioProd">
+          <p>${item.PRECIO.toFixed(2)}</p>
+          </div>
+          <div class="cantidad">
+          <p>${item.CANTIDAD}</p>
+          </div>
+          <div class="precio">
+          <p>${precio}</p>
+          </div>
+          <div class="precio">
+          <p>${iva}</p>
+          </div>
+          <div class="precio">
+          <p>${precio + iva}</p>
+          </div>
+          <div class="status">
+          <p>${item.ID_ESTATUS}</p>
+          </div>
+          <div class="opcion" >
+            <button class="editarS">Editar</button>
+            <input class="eliminarS" type="button" value="Eliminar">
+          </div>
+
+        </div>
+          `;
+        //
+      }
+    });
+}
 
 document
   .getElementById("btnCancelarEditarUsuario")
