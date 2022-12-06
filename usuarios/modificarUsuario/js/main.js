@@ -64,19 +64,41 @@ document
       var data = new FormData();
 
       data.append("id", usuario1);
-
-      fetch("../../recursos/PHP/metodos/eliminarUsuario.php", {
-        method: "POST",
-        body: data,
+      Swal.fire({
+        title: '¿Seguro que lo desea dar de baja?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Si',
+        denyButtonText: 'No',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+          denyButton: 'order-3',
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch("../../recursos/PHP/metodos/eliminarUsuario.php", {
+            method: "POST",
+            body: data,
+          })
+            .then((res) => res.text())
+            .then((data) => {
+              if (data == "2") {
+                Swal.fire("El sistema no puede quedarse sin usuarios", "", "error");
+              } else {
+                Swal.fire('El usuario fue dado de baja', '', 'success')
+                window.location.reload();
+              }
+            });
+        
+        } else if (result.isDenied) {
+          //Swal.fire('', '', 'info')
+        }
       })
-        .then((res) => res.text())
-        .then((data) => {
-          if (data == "2") {
-            Swal.fire("El sistema no puede quedarse sin usuarios", "", "error");
-          } else {
-            window.location.reload();
-          }
-        });
+      
+
+     
     }
   });
 
