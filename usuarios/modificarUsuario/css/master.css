@@ -66,10 +66,11 @@
 }
 
 .main .contenedor-usuarios div img:hover {
-  position: absolute;
+  
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  transform: scale(2.5);
+  object-fit: fill;
+
   border-radius: 0;
  
 }
@@ -323,13 +324,17 @@
  
 }
 
+
+/*CONTENEDOR DE LA LISTA DE USUARIOS */
 .contenedor-scroll {
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
+  
 }
 
 .contenedor-tabla-usuarios {
   width: 100%;
+  height: calc(100vh - var(--Top) - 85.17px - (calc(var(--Padding) * 4)));
   min-width: 950px;  
 }
 
