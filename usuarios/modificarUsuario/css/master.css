@@ -323,6 +323,51 @@
  
 }
 
+.contenedor-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 .contenedor-tabla-usuarios {
   width: 100%;
+  min-width: 950px;  
+}
+
+
+/*OCULTAR INPUT FILE PARA IMAGEN*/
+#img_env {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+}
+
+.contenedor-imagen {
+ 
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+#imgUser {
+  width: 33px;
+  height: 33px;
+  object-fit: cover;
+  transition: .3s transform ,border-radius;
+  border-radius: 50%;
+}
+
+#imgUser:hover {
+  transform: scale(2.5);
+  border-radius: 0;
+}
+#btnExaminarImagen {
+  cursor: pointer;
+  background-color: var(--ColorSecundario);
+  transition: .3s opacity;
+  font-weight: 600;
+  color: var(--ColorPrincipal);
+}
+#btnExaminarImagen:hover {
+  opacity: .8;
 }
