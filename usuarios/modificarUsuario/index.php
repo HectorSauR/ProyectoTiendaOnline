@@ -23,9 +23,12 @@
       <button type="submit">Buscar</button>
     </form>
 
+    <div class="contenedor-scroll">
     <div class="contenedor-tabla-usuarios">
       
+      </div>
     </div>
+    
 
 
 
@@ -44,6 +47,12 @@
         <label for="">Imagen</label>
         <input type="text" name="imagen" value="" id="imagen" class="ruta-imagen-form" pattern="([0-9a-zA-Z\/])+([0-9a-zA-Z\._-]+.(png|PNG|jp[e]?g|JP[E]?G))" required>
         <input type="file" name="img_env" id="img_env" accept="image/png,image/jpg,image/jpeg">
+       
+        <div class="contenedor-imagen">
+        <input type="button" value="Examinar" id="btnExaminarImagen">
+        <img id="imgUser" src="" alt="">
+        </div>
+        
         <!-- input coontraseña eliminada por que ningun ADMIN debe poder ver 
         o modificar la cobtra de ningun otro usuario
         <label for="">Contraseña</label>
