@@ -9,6 +9,21 @@ var imagen;
 var correo;
 var nivel;
 
+btnExaminarImagen.addEventListener("click", () => {
+  img_env.click();
+});
+
+img_env.addEventListener("change", (e) => {
+  console.log(e.target.files);
+
+  var imagen = e.target.files[0];
+
+  //VISTA PREVIA DE IMAGEN
+  var imgCodificada = URL.createObjectURL(imagen);
+
+  imgUser.src = imgCodificada;
+});
+
 fetch("../../recursos/PHP/metodos/obtenerUsuariosBD.php")
   .then((res) => res.json())
   .then((data) => {
@@ -21,54 +36,43 @@ document
   .addEventListener("click", (e) => {
     //EDITAR USUARIO
     if (e.target.tagName == "BUTTON") {
-      document.querySelector(
-        ".contenedor-modal"
-      ).style.display = "flex";
+      document.querySelector(".contenedor-modal").style.display = "flex";
 
       contenedor = e.target.parentNode.parentNode;
 
       //console.log(contenedor);
-      nombre =
-        contenedor.querySelector(".nombre p").innerText;
-      usuario =
-        contenedor.querySelector(".usuario p").innerText;
-      imagen =
-        contenedor.querySelector(".imagen > p").innerText;
-      correo =
-        contenedor.querySelector(".correo p").innerText;
-      nivel =
-        contenedor.querySelector(".nivel p").innerText;
+      nombre = contenedor.querySelector(".nombre p").innerText;
+      usuario = contenedor.querySelector(".usuario p").innerText;
+      imagen = contenedor.querySelector(".imagen > p").innerText;
+      correo = contenedor.querySelector(".correo p").innerText;
+      nivel = contenedor.querySelector(".nivel p").innerText;
 
       document.getElementById("nombre").value = nombre;
       document.getElementById("usuario").value = usuario;
+
       document.getElementById("imagen").value = imagen;
+      imgUser.src = `../../${imagen}?timestamp=${new Date().getTime()}`;
       document.getElementById("correo").value = correo;
       document.getElementById("nivel").value = nivel;
+
+      console.log(img_env.value);
     }
     //DAR DE BAJA A USUARIO
     else if (e.target.tagName == "INPUT") {
       var contenedor1 = e.target.parentNode.parentNode;
-      var usuario1 =
-        contenedor1.querySelector(".usuario p").innerText;
+      var usuario1 = contenedor1.querySelector(".usuario p").innerText;
       var data = new FormData();
 
       data.append("id", usuario1);
 
-      fetch(
-        "../../recursos/PHP/metodos/eliminarUsuario.php",
-        {
-          method: "POST",
-          body: data,
-        }
-      )
+      fetch("../../recursos/PHP/metodos/eliminarUsuario.php", {
+        method: "POST",
+        body: data,
+      })
         .then((res) => res.text())
         .then((data) => {
           if (data == "2") {
-            Swal.fire(
-              "El sistema no puede quedarse sin usuarios",
-              "",
-              "error"
-            );
+            Swal.fire("El sistema no puede quedarse sin usuarios", "", "error");
           } else {
             window.location.reload();
           }
@@ -77,154 +81,123 @@ document
   });
 
 //LOGICA PARA EDITAR USUARIO
-document
-  .getElementById("formEditarUsuario")
-  .addEventListener("submit", (e) => {
-    e.preventDefault();
+document.getElementById("formEditarUsuario").addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    //DESHABILITAR BUTTON GUARDAR Y CANCELAR HASTA QUE SE SEA RETORNADO ALGO POR EL METODO FETCH
-    document.querySelector(
-      ".contenedor-modal .modal form .contenedor-button button:first-child"
-    ).disabled = true;
-    document.querySelector(
-      ".contenedor-modal .modal form .contenedor-button button:last-child"
-    ).disabled = true;
+  //DESHABILITAR BUTTON GUARDAR Y CANCELAR HASTA QUE SE SEA RETORNADO ALGO POR EL METODO FETCH
+  document.querySelector(
+    ".contenedor-modal .modal form .contenedor-button button:first-child"
+  ).disabled = true;
+  document.querySelector(
+    ".contenedor-modal .modal form .contenedor-button button:last-child"
+  ).disabled = true;
 
-    var data = new FormData(e.target);
+  var data = new FormData(e.target);
 
-    data.append("id", usuario);
+  data.append("id", usuario);
 
-    if (data.get("nivel") == "Cliente") {
-      data.append("nivelN", "0");
-    } else if (data.get("nivel") == "Admin") {
-      data.append("nivelN", "1");
-    } else {
-      data.append("nivelN", "2");
-    }
+  if (data.get("nivel") == "Cliente") {
+    data.append("nivelN", "0");
+  } else if (data.get("nivel") == "Admin") {
+    data.append("nivelN", "1");
+  } else {
+    data.append("nivelN", "2");
+  }
 
-    data.append("usuarioActivo", "1");
-    // console.log(data);
+  data.append("usuarioActivo", "1");
+  // console.log(data);
 
-    fetch(
-      "../../recursos/PHP/metodos/editarUsuarioBD.php",
-      {
-        method: "POST",
-        body: data,
-      }
-    )
-      .then((response) => response.text())
-      .then((data) => {
-        //HABILITAR BUTTON GUARDAR Y CANCELAR
-        document.querySelector(
-          ".contenedor-modal .modal form .contenedor-button button:first-child"
-        ).disabled = false;
-        document.querySelector(
-          ".contenedor-modal .modal form .contenedor-button button:last-child"
-        ).disabled = false;
+  fetch("../../recursos/PHP/metodos/editarUsuarioBD.php", {
+    method: "POST",
+    body: data,
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      //HABILITAR BUTTON GUARDAR Y CANCELAR
+      document.querySelector(
+        ".contenedor-modal .modal form .contenedor-button button:first-child"
+      ).disabled = false;
+      document.querySelector(
+        ".contenedor-modal .modal form .contenedor-button button:last-child"
+      ).disabled = false;
 
-        var arrData = JSON.parse(data);
+      var arrData = JSON.parse(data);
 
-        //document.querySelector(".contenedor-modal").style.display = "none";
-        // console.log(arrData);
-        if (arrData[0] == true) {
-          //VERIFICO SI EN EL ARRDATA SE OBTIENE UNA
-          // OPCION 'TRUE' DE MODIFICACION DE IMAGEN DE USUARIO
-          if (arrData[2] == true) {
-            //ACTUALIZO LA RUTA DE IMAGEN EN EL MODAL DE INFO DE USUARIO
-            document.querySelector(
-              ".loal-contenedor-modal .loal-modal .loal-body img"
-            ).src = `../../${
-              arrData[1]
-            }?timestamp=${new Date().getTime()}`;
+      //document.querySelector(".contenedor-modal").style.display = "none";
+      // console.log(arrData);
+      if (arrData[0] == true) {
+        //VERIFICO SI EN EL ARRDATA SE OBTIENE UNA
+        // OPCION 'TRUE' DE MODIFICACION DE IMAGEN DE USUARIO
+        if (arrData[2] == true) {
+          //ACTUALIZO LA RUTA DE IMAGEN EN EL MODAL DE INFO DE USUARIO
+          //DONDE SE ENCUENTRA EL CERRAR SESION
 
-          }
-          //ACTUALIZO LA RUTA DE IMAGEN EN LA LISTA DE USUARIO
-          //(USUARIO SELECCIONADO PARA MODIFICA)
-          contenedor.querySelector(
-            ".imagen img"
-          ).src = `../../${
+          document.querySelector(
+            ".loal-contenedor-modal .loal-modal .loal-body img"
+          ).src = `../../${arrData[1]}?timestamp=${new Date().getTime()}`;
+        }
+        //ACTUALIZO LA RUTA DE IMAGEN EN LA LISTA DE USUARIOS
+        //(USUARIO SELECCIONADO PARA MODIFICA)
+        //SOLO SE MODIFICA SI ES QUE EN EL FOEM EDITAR DATOS DE USUARIO
+        //SE MODIFICO LA IMAGEN
+        if (arrData[1] !== "") {
+          contenedor.querySelector(".imagen img").src = `../../${
             arrData[1]
           }?timestamp=${new Date().getTime()}`;
 
-          if (
-            document
-              .getElementById("alert")
-              .classList.contains("alertDanger")
-          )
-            document
-              .getElementById("alert")
-              .classList.remove("alertDanger");
-
-          contenedor.querySelector(".nombre p").innerText =
-            document.getElementById("nombre").value;
-          contenedor.querySelector(".usuario p").innerText =
-            document.getElementById("usuario").value;
-          contenedor.querySelector(
-            ".imagen > p"
-          ).innerText =
-            document.getElementById("imagen").value;
-
-          contenedor.querySelector(".correo p").innerText =
-            document.getElementById("correo").value;
-          contenedor.querySelector(".nivel p").innerText =
-            document.getElementById("nivel").value;
-
-          if (
-            !document
-              .getElementById("alert")
-              .classList.contains("alertShow")
-          )
-            document
-              .getElementById("alert")
-              .classList.add("alertShow");
-
-          document.querySelector(
-            ".container-alert .alert p"
-          ).innerText = "Usuario modificado.";
-          setTimeout(ocultarModalEditarUsuario, 1500);
-
-          //ACTUALIZAR ARRAY DE USUARIOS PARA LAS BUSQUEDAS LOCALES
-        } else {
-          document
-            .getElementById("alert")
-            .classList.add("alertDanger");
-          document
-            .getElementById("alert")
-            .classList.add("alertShow");
-          document.querySelector(
-            ".container-alert .alert p"
-          ).innerText = arrData[2];
+          //LIMPIAR INPUT FILE
+          img_env.value = "";
         }
-      });
-  });
+
+        if (document.getElementById("alert").classList.contains("alertDanger"))
+          document.getElementById("alert").classList.remove("alertDanger");
+
+        contenedor.querySelector(".nombre p").innerText =
+          document.getElementById("nombre").value;
+        contenedor.querySelector(".usuario p").innerText =
+          document.getElementById("usuario").value;
+        contenedor.querySelector(".imagen > p").innerText =
+          document.getElementById("imagen").value;
+
+        contenedor.querySelector(".correo p").innerText =
+          document.getElementById("correo").value;
+        contenedor.querySelector(".nivel p").innerText =
+          document.getElementById("nivel").value;
+
+        if (!document.getElementById("alert").classList.contains("alertShow"))
+          document.getElementById("alert").classList.add("alertShow");
+
+        document.querySelector(".container-alert .alert p").innerText =
+          "Usuario modificado.";
+        setTimeout(ocultarModalEditarUsuario, 1500);
+
+        //ACTUALIZAR ARRAY DE USUARIOS PARA LAS BUSQUEDAS LOCALES
+      } else {
+        document.getElementById("alert").classList.add("alertDanger");
+        document.getElementById("alert").classList.add("alertShow");
+        document.querySelector(".container-alert .alert p").innerText =
+          arrData[2];
+      }
+    });
+});
 
 //FUNCION PARA TIMEOUT CERRAR MODAL EDITAR USUARIO
 function ocultarModalEditarUsuario() {
-  document.querySelector(
-    ".contenedor-modal .modal"
-  ).style.animation = "ocultarModal .3s ease-in-out";
+  document.querySelector(".contenedor-modal .modal").style.animation =
+    "ocultarModal .3s ease-in-out";
 
   setTimeout(() => {
-    document.querySelector(
-      ".contenedor-modal"
-    ).style.animation = "ocultarContenedorModal .3s";
+    document.querySelector(".contenedor-modal").style.animation =
+      "ocultarContenedorModal .3s";
     setTimeout(() => {
-      document.querySelector(
-        ".contenedor-modal"
-      ).style.display = "none";
+      document.querySelector(".contenedor-modal").style.display = "none";
 
-      document.querySelector(
-        ".contenedor-modal"
-      ).style.animation = "";
-      document.querySelector(
-        ".contenedor-modal .modal"
-      ).style.animation = "";
+      document.querySelector(".contenedor-modal").style.animation = "";
+      document.querySelector(".contenedor-modal .modal").style.animation = "";
     }, 300);
   }, 300);
 
-  document
-    .getElementById("alert")
-    .classList.remove("alertShow");
+  document.getElementById("alert").classList.remove("alertShow");
 }
 
 document
@@ -235,9 +208,7 @@ document
 
 //MOSTRAR HEADER TABLA USUARIOS
 function mostrarHeaderTablaUsuarios() {
-  document.querySelector(
-    ".contenedor-tabla-usuarios"
-  ).innerHTML = `
+  document.querySelector(".contenedor-tabla-usuarios").innerHTML = `
     <div class="contenedor-usuarios">
         <div class="header-nombre">
           <p>Nombre</p>
@@ -281,9 +252,7 @@ function mostrarUsuariosDom(data) {
     } else {
       nivel = "Ventas";
     }
-    document.querySelector(
-      ".contenedor-tabla-usuarios"
-    ).innerHTML += `
+    document.querySelector(".contenedor-tabla-usuarios").innerHTML += `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
           <div class="nombre">
             <p>${item.NOMBRE}</p>
@@ -314,18 +283,14 @@ function mostrarUsuariosDom(data) {
   }
 }
 
-const formBuscarUsuario = document.querySelector(
-  ".contenedor-buscar"
-);
+const formBuscarUsuario = document.querySelector(".contenedor-buscar");
 
 formBuscarUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
 
   var data = new FormData(e.target);
 
-  var busqueda = data
-    .get("inputNombreUsuario")
-    .toUpperCase();
+  var busqueda = data.get("inputNombreUsuario").toUpperCase();
 
   var longitudBusqueda = busqueda.length;
 
@@ -333,18 +298,13 @@ formBuscarUsuario.addEventListener("submit", (e) => {
 
   var nombreUsuario;
 
-  document.querySelector(
-    ".contenedor-tabla-usuarios"
-  ).innerHTML = "";
+  document.querySelector(".contenedor-tabla-usuarios").innerHTML = "";
   mostrarHeaderTablaUsuarios();
 
   for (var i = 0; i < arrayUsuarios.length; i++) {
     nombreUsuario = arrayUsuarios[i].NOMBRE.toUpperCase();
     for (var j = 0; j < nombreUsuario.length; j++) {
-      if (
-        nombreUsuario.substring(j, longitudBusqueda + j) ==
-        busqueda
-      ) {
+      if (nombreUsuario.substring(j, longitudBusqueda + j) == busqueda) {
         usuarioEncontrado = true;
 
         //VERIFICAR EL NIVEL DE PRIVILEGIO
@@ -357,9 +317,7 @@ formBuscarUsuario.addEventListener("submit", (e) => {
           nivel = "Ventas";
         }
         //MOSTRAMOS USUARIO
-        document.querySelector(
-          ".contenedor-tabla-usuarios"
-        ).innerHTML += `
+        document.querySelector(".contenedor-tabla-usuarios").innerHTML += `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
         <div class="nombre">
           <p>${arrayUsuarios[i].NOMBRE}</p>
@@ -402,13 +360,11 @@ formBuscarUsuario.addEventListener("submit", (e) => {
 });
 
 //EVENTO CHANGE DE INPUT BUSCAR PRODUCTO
-document
-  .getElementById("inputNombreUsuario")
-  .addEventListener("keyup", (e) => {
-    if (e.target.value == "") {
-      mostrarUsuariosDom(arrayUsuarios);
-    }
-  });
+document.getElementById("inputNombreUsuario").addEventListener("keyup", (e) => {
+  if (e.target.value == "") {
+    mostrarUsuariosDom(arrayUsuarios);
+  }
+});
 
 //BUSCAR USUARIO POR NOMBRE
 function mostrarUsuariosPorNombre(data) {}
