@@ -55,7 +55,7 @@ document
       document.getElementById("correo").value = correo;
       document.getElementById("nivel").value = nivel;
 
-      console.log(img_env.value);
+      console.log(imagen)
     }
     //DAR DE BAJA A USUARIO
     else if (e.target.tagName == "INPUT") {
@@ -85,7 +85,7 @@ document
             .then((res) => res.text())
             .then((data) => {
               if (data == "2") {
-                Swal.fire("El sistema no puede quedarse sin usuarios", "", "error");
+                Swal.fire("Por motivos de seguridad usted mismo no se puede dar de baja", "", "info");
               } else {
                 Swal.fire('El usuario fue dado de baja', '', 'success')
                 window.location.reload();
@@ -135,6 +135,7 @@ document.getElementById("formEditarUsuario").addEventListener("submit", (e) => {
   })
     .then((response) => response.text())
     .then((data) => {
+      console.log(data)
       //HABILITAR BUTTON GUARDAR Y CANCELAR
       document.querySelector(
         ".contenedor-modal .modal form .contenedor-button button:first-child"
@@ -167,6 +168,11 @@ document.getElementById("formEditarUsuario").addEventListener("submit", (e) => {
             arrData[1]
           }?timestamp=${new Date().getTime()}`;
 
+          contenedor.querySelector(".imagen > p").innerText =
+          `${
+            arrData[1]
+          }`;
+
           //LIMPIAR INPUT FILE
           img_env.value = "";
         }
@@ -178,8 +184,7 @@ document.getElementById("formEditarUsuario").addEventListener("submit", (e) => {
           document.getElementById("nombre").value;
         contenedor.querySelector(".usuario p").innerText =
           document.getElementById("usuario").value;
-        contenedor.querySelector(".imagen > p").innerText =
-          document.getElementById("imagen").value;
+      
 
         contenedor.querySelector(".correo p").innerText =
           document.getElementById("correo").value;
