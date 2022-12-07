@@ -13,6 +13,8 @@ $correo = $_POST["correo"];
 $nivel = $_POST["nivelN"];
 $id = $_POST["id"]; //ID ES NOMBRE DE USUARIO;
 
+session_start();
+
 
 if ($imagen_File["name"] == '') {
 
@@ -24,6 +26,11 @@ if ($imagen_File["name"] == '') {
     $stmt->execute([$nombre, $usuario, $nivel, $imagen, $correo, $id]);
     $miArray = array("0" => true, "1" => '', "2" => false);
 
+
+    //VERIFICAR QUE SE ALLA MODIFICADO EL NOMBRE DE USUARIO 
+    if($id != $usuario){
+      $_SESSION['usuario'] = $usuario;
+    }
     echo json_encode($miArray);
   } catch (PDOException $Exception) {
     //echo $Exception->getMessage();
@@ -44,16 +51,16 @@ if ($imagen_File["name"] == '') {
 
 
   //ACTUALIZAR RUTA DE IMAGEN DE USURIO
-  session_start();
+  
   $usuarioActivo = $_SESSION['usuario'];
 
   if ($usuarioActivo == $usuario) {
     $_SESSION['rutaImagenUsuario'] = $pathimgBD;
     //ARREGLO PARA REGRESAR DEL METODO FETCH JS
-    $miArray = array("0" => true, "1" => $pathimgBD, "2" => true);
+    $miArray = array("0" => true, "1" => $pathimgBD, "2" => true , "3" => $pathimg);
   } else {
     //ARREGLO PARA REGRESAR DEL METODO FETCH JS
-    $miArray = array("0" => true, "1" => $pathimgBD, "2" => false);
+    $miArray = array("0" => true, "1" => $pathimgBD, "2" => false , "3" => $pathimg);
   }
 
   //VERIFICA SI NO EXISTE LA RUTA DONDE SE GUARDA LA IMAGEN DE USUARIO ACTUAL
@@ -67,6 +74,10 @@ if ($imagen_File["name"] == '') {
       $stmt = $conexion->prepare($sql);
       $result = $stmt->execute([$nombre, $usuario, $nivel, $pathimgBD, $correo, $id]);
 
+      //VERIFICAR QUE SE ALLA MODIFICADO EL NOMBRE DE USUARIO 
+    if($id != $usuario){
+      $_SESSION['usuario'] = $usuario;
+    }
       echo json_encode($miArray);
     } catch (PDOException $Exception) {
       echo  json_encode($Exception->errorInfo);
@@ -84,6 +95,10 @@ if ($imagen_File["name"] == '') {
       $stmt = $conexion->prepare($sql);
       $result = $stmt->execute([$nombre, $usuario, $nivel, $pathimgBD, $correo, $id]);
 
+      //VERIFICAR QUE SE ALLA MODIFICADO EL NOMBRE DE USUARIO 
+    if($id != $usuario){
+      $_SESSION['usuario'] = $usuario;
+    }
       echo json_encode($miArray);
     } catch (PDOException $Exception) {
       echo  json_encode($Exception->errorInfo);
