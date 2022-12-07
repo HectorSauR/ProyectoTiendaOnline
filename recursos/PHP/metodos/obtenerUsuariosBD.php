@@ -2,7 +2,7 @@
 include("../clases/conexion.php");
 
 
-$obtenerUsuarios = "select * from usuario where ID_ESTATUS = 1";
+$obtenerUsuarios = "select * from usuario";
 $Execute = $conexion->query($obtenerUsuarios);
 
 $r = $Execute->fetchall(PDO::FETCH_ASSOC);

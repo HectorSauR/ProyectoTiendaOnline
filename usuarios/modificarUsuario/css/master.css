@@ -38,8 +38,15 @@
   justify-content: center;
   padding:calc(var(--Padding) / 2);
 }
-.main .contenedor-usuarios div input {
+.main .contenedor-usuarios div input[value="Eliminar"] {
   background-color: var(--ColorDanger);
+  color: var(--ColorSecundario);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  
+}
+.main .contenedor-usuarios div input[value="Activar"] {
+  background-color: var(--ColorSuccess);
   color: var(--ColorSecundario);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

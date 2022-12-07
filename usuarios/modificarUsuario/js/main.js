@@ -58,7 +58,7 @@ document
       console.log(imagen)
     }
     //DAR DE BAJA A USUARIO
-    else if (e.target.tagName == "INPUT") {
+    else if (e.target.tagName == "INPUT" && e.target.value == "Eliminar") {
       var contenedor1 = e.target.parentNode.parentNode;
       var usuario1 = contenedor1.querySelector(".usuario p").innerText;
       var data = new FormData();
@@ -99,6 +99,40 @@ document
       
 
      
+    }else if (e.target.tagName == "INPUT" && e.target.value == "Activar") {
+      Swal.fire({
+        title: '¿Seguro que desea activar la cuenta?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Si',
+        denyButtonText: 'No',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+          denyButton: 'order-3',
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          var contenedor1 = e.target.parentNode.parentNode;
+          var usuario1 = contenedor1.querySelector(".usuario p").innerText;
+          var data = new FormData();
+    
+          data.append("usuario", usuario1);
+
+          fetch("../../recursos/PHP/metodos/activarCuentaUsuario.php", {
+            method: "POST",
+            body: data,
+          })
+            .then((res) => res.text())
+            .then(() => {
+              window.location.reload();
+            });
+        
+        } else if (result.isDenied) {
+          //Swal.fire('', '', 'info')
+        }
+      })
     }
   });
 
@@ -269,6 +303,7 @@ function mostrarHeaderTablaUsuarios() {
 function mostrarUsuariosDom(data) {
   mostrarHeaderTablaUsuarios();
 
+  console.log(data)
   for (var item of data) {
     //VERIFICAR EL NIVEL DE PRIVILEGIO
     var nivel = "";
@@ -278,6 +313,14 @@ function mostrarUsuariosDom(data) {
       nivel = "Admin";
     } else {
       nivel = "Ventas";
+    }
+
+    //VERIFICAR SI EL STATUS ES ACTIVO=1 O BAJA=2
+    let valueBtnUser = ""
+    if(item.ID_ESTATUS == "1"){
+      valueBtnUser = "Eliminar"
+    }else if(item.ID_ESTATUS == "2"){
+      valueBtnUser = "Activar"
     }
     document.querySelector(".contenedor-tabla-usuarios").innerHTML += `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
@@ -303,7 +346,7 @@ function mostrarUsuariosDom(data) {
           </div>
           <div class="opcion">
             <button>Editar</button>
-            <input type="button" value="Eliminar">
+            <input type="button" value="${valueBtnUser}">
           </div>
         </div>
       `;
@@ -343,6 +386,14 @@ formBuscarUsuario.addEventListener("submit", (e) => {
         } else {
           nivel = "Ventas";
         }
+
+        //VERIFICAR SI EL STATUS ES ACTIVO=1 O BAJA=2
+    let valueBtnUser = ""
+    if(arrayUsuarios[i].ID_ESTATUS == "1"){
+      valueBtnUser = "Eliminar"
+    }else if(arrayUsuarios[i].ID_ESTATUS == "2"){
+      valueBtnUser = "Activar"
+    }
         //MOSTRAMOS USUARIO
         document.querySelector(".contenedor-tabla-usuarios").innerHTML += `
         <div class="contenedor-usuarios" id="contenedor-usuarios">
@@ -365,7 +416,7 @@ formBuscarUsuario.addEventListener("submit", (e) => {
         </div>
         <div class="opcion">
           <button>Editar</button>
-          <input type="button" value="Eliminar">
+          <input type="button" value="${valueBtnUser}">
         </div>
       </div>
 
