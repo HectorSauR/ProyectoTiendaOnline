@@ -1,20 +1,6 @@
 <?php
  include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
   include  '../../recursos/PHP/clases/conexion.php';
-
- $query = 'SELECT *  FROM `categoria_productos`; ';
- $statement = $conexion->prepare($query);
- $statement->execute();
- $result = $statement->fetchall();
-
-    $datos = [];
-       foreach($result as $row){
-           $datos[] = [
-
-               'idcategoria' => $row['ID_CATEGORIA'],
-
-           ];
-       }
 ?>
 
 <!DOCTYPE html>
@@ -34,64 +20,20 @@
   <div class="main" id="main">
     <h1>Gestión de productos</h1>
     <div class="contenedor-buscar">
-      <form  id="frmbuscar">
-      <label>Buscar:</label>
-      <input type="text" name="id_prd_b" value="" class="inpbuscar">
-      <button type="button" class="btnBuscar">Buscar</button>
-
-      </form>
+    <form class="contenedor-buscar">
+      <!--<label>Buscar:</label>-->
+      <input type="text" name="inputProducto" id="inputProducto" value="" placeholder="Nombre"  required>
+      <button type="submit">Buscar</button>
+    </form>
 
     </div>
 
 
-        <div class="contenedor-productos">
-                <div class="header-idprd">
-                  <p>ID PRODUCTO</p>
-                </div>
-                <div class="header-idcategoria">
-                  <p>ID CATEGORIA</p>
-                </div>
-
-                <div class="header-nombre">
-                  <p>NOMBRE</p>
-                </div>
-
-                <div class="header-imagen">
-                  <p>IMAGEN</p>
-                  <!-- <img src="../../recursos/imagenes/productos/mcr/mcr.jpg" alt="asdasd"> -->
-                </div>
-
-                <div class="header-precioc">
-                  <p>PRECIO C</p>
-                </div>
-
-                <div class="header-precio">
-                  <p>PRECIO</p>
-                </div>
-
-                <div class="header-stock">
-                  <p>STOCK</p>
-                </div>
-
-                <div class="header-stockmin">
-                  <p>STOCK MIN</p>
-                </div>
-
-                <div class="header-status">
-                  <p>STATUS</p>
-                </div>
-                <div class="header-cb">
-                  <p>CODIGO DE BARRAS</p>
-                </div>
-                <div class="header-opcion">
-                  <p>Opcion</p>
-                </div>
-        </div>
-
-
-
-
-            <div class="contenedor-productosD"></div>
+    <div class="contenedor-scroll">
+    <div class="contenedor-tabla-producto">
+      
+    </div>
+    </div>
 
 
   </div>
@@ -102,43 +44,54 @@
     <div class="modal">
       <h1>Editar Producto</h1>
       <form id="formEditarProducto">
-
-       <label for="">CATEGORIA</label>
-        <select name="categoria" id="categoria">
-          <?php
-              foreach ($datos as $dat) {
-                echo '<option value="' . $dat['idcategoria'] . '">'.$dat['idcategoria'].' => ' . $dat['nombre'] . '</option>';
-              }
-          ?>
-        </select>
         <label for="">Nombre</label>
-        <input type="text" name="nombre" value="" id="nombre">
-        <label for="">Imagen</label>
-        <input type="text" name="imagen" value="" id="imagen">
-        <input type="file" name="img_env" id="img_env"  accept="image/*">
-        <label for="">Precio compra</label>
-        <input type="number" name="precioc" value="" id="precioc"  min="0" pattern="^[0-9]+">
-        <label for="">Precio</label>
-        <input type="number" name="precio" value="" id="precio"  min="0" pattern="^[0-9]+">
-        <label for="">Stock</label>
-        <input type="number" name="stock" value="" id="stock"  min="0" pattern="^[0-9]+">
-        <label for="">Stock Min</label>
-        <input type="number" name="stockm" value="" id="stockm"  min="0" pattern="^[0-9]+">
-        <label for="">Status</label>
-        <select name="status" id="status">
-         <option value="1">ACTIVO</option>
-         <option value="2">INACTIVO</option>
-         <option value="3">EN ESPERA</option>
-         <option value="4">EN TRAMITE</option>
+        <input type="text" name="nombre" value="" id="nombre" pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,20}$" required>
+        
+        <label for="">CATEGORIA</label>
+        <select name="categoria" id="categoria">
         </select>
 
+        <label for="">Imagen</label>
+        <input type="text" name="imagen" value="" id="imagen" class="ruta-imagen-form" pattern="([0-9a-zA-Z\/])+([0-9a-zA-Z\._-]+.(png|PNG|jp[e]?g|JP[E]?G))" required>
+        <input type="file" name="img_env" id="img_env" accept="image/png,image/jpg,image/jpeg">
+       
+        <div class="contenedor-imagen">
+        <input type="button" value="Examinar" id="btnExaminarImagen">
+        <img id="imgUser" src="" alt="">
+        </div>
+        
+        <!-- input coontraseña eliminada por que ningun ADMIN debe poder ver 
+        o modificar la cobtra de ningun otro usuario
+        <label for="">Contraseña</label>
+        <input type="text" name="clave" value="" id="clave">-->
+        <label for="">Precio Venta</label>
+        <input type="number" name="precio" min= "0" max="999999999" id="precio" required>
+        <label for="">Precio Compra</label>
+        <input type="number" name="precio_c" min= "0" max="999999999" id="precio_c" required>
+        <label for="">Stock</label>
+        <input type="number" name="stock" min= "0" max="999999999" id="stock" required>
+        <label for="">Stock Minimo</label>
+        <input type="number" name="stockm" min= "0" max="999999999" id="stock_m" required>
+        <label for="">Codigo de barras</label>
+        <input type="text" name="codigo" minlength="13" maxlength="13" min="0" pattern="^[0-9]+"  id="codigo" required>
 
+        <label for="">Estatus</label>
+        <select name="estatus" id="estatus">
+          <option>Activo</option>
+          <option>Eliminado</option>
+        </select>
 
         <div class="contenedor-button">
-           <button type="submit" id = "btnGuardar">Guardar</button>
-            <button type="button" id="btnCancelarEditarUsuario">Cancelar</button>
+          <button type="submit">Guardar</button>
+            <button type="button" id="btnCancelarEditarProducto">Cancelar</button>
         </div>
       </form>
+
+      <div class="container-alert" id="alert">
+        <div class="alert">
+          <p>Error</p>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -27,7 +27,7 @@
                 <form class="carrito" method="POST">
                     <img src=" <?php echo $row['IMAGEN']; ?> " class="P_img">
                     <div class="P_info_Text">
-                        <h1 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h1>
+                        <h2 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h2>
                         <p class="Prod_info"> <?php echo $row['DESCRIPCION']; ?> </p>
                         <span class="price"> $<?php echo $row['PRECIO'] ?> </span>
                         <div>

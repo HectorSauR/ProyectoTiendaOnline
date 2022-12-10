@@ -54,10 +54,14 @@
   echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
 
   if( $_SESSION['userAdmin'] != "1" ){
-    if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
-      echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
-      header("Location: ". $pathHost );
+    
+    if ( !isset($_GET['page']) ) {
+      if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
+        echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+        header("Location: ". $pathHost );
+      }
     }
+    
   }
 ?>
 

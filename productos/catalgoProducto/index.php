@@ -50,8 +50,8 @@
             $page = 1;
         }
         
-        $num_per_page = 6;
-        $start_page = ($page-1)*6;
+        $num_per_page = 10;
+        $start_page = ($page-1)*10;
 
         $query = "SELECT productos.ID_PRODUCTO, productos.NOMBRE, categoria_productos.DESCRIPCION, productos.PRECIO, productos.IMAGEN FROM `productos` INNER JOIN `categoria_productos` ON productos.ID_CATEGORIA=categoria_productos.ID_CATEGORIA WHERE productos.ID_ESTATUS='1' LIMIT $start_page , $num_per_page;";
         $statement = $conexion->prepare($query);
@@ -65,7 +65,7 @@
             <form class="carrito" method="POST">
                 <img src=" <?php echo $row['IMAGEN']; ?> " class="P_img">
                 <div class="P_info_Text">
-                    <h1 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h1>
+                    <h2 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h2>
                     <p class="Prod_info"> <?php echo $row['DESCRIPCION']; ?> </p>
                     <span class="price"> $<?php echo $row['PRECIO'] ?> </span>
                     <div>

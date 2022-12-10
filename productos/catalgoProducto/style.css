@@ -97,7 +97,7 @@
 
   /*DIVICION DEL CONTENEDOR*/
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(190px, auto));
 
   gap: 1.5rem;
   color: black;

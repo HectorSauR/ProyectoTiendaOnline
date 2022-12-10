@@ -2,14 +2,11 @@
 
 include("../clases/conexion.php");
 
-
-
 $id =  $_POST["id"];
 
-$eliminarProducto = "DELETE FROM productos WHERE ID_PRODUCTO='$id';";
-$Execute = $conexion->query($eliminarProducto);
-$r = $Execute->fetchall(PDO::FETCH_ASSOC);
+$eliminarProducto = "UPDATE productos SET ID_ESTATUS='2' WHERE ID_PRODUCTO = ?;";
+$consulta =$conexion->prepare($eliminarProducto);
+$consulta->execute([$id]);
 
 
-
- ?>
+?>
