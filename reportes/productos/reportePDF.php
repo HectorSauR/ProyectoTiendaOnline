@@ -37,7 +37,8 @@ function Footer()
 }
 require '../../recursos/PHP/clases/conexion.php';
 
-$conectar = $conexion -> getConectionMysql();
+$conexion2  = new Conexion();
+$conectar = $conexion2->getConectionMysql();
 
 $categoria = $_REQUEST['periodo'];
 $estatus = $_REQUEST['FP'];

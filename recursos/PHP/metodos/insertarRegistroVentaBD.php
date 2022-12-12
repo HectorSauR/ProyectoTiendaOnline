@@ -17,6 +17,3 @@ include("../clases/conexion.php");
   $sql = "UPDATE productos SET STOCK=STOCK-? WHERE ID_PRODUCTO=?";
   $stmt= $conexion->prepare($sql);
   $stmt->execute([$cantidad ,$idproducto]);
-
-
- ?>

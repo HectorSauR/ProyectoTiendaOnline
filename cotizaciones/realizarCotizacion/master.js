@@ -5,6 +5,49 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
   //OBTENER DATOS DEL FORM
   var data = new FormData(e.target);
 
+  if(document.getElementById('email_cliente') && !document.getElementById('email_cliente').disabled){
+    var email = document.getElementById('email_cliente').value;
+    var nombre = document.getElementById('nombre_cliente').value;
+    if( !email || !nombre){
+      let timerInterval;
+      Swal.fire({
+        title: "Porfavor ingresa tus datos",
+        html: "Asegurate de haber ingresado tus datos correctamente.",
+        icon: "error",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
+      });
+      return
+    }
+  
+    if(!email.match(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)){
+      let timerInterval;
+      Swal.fire({
+        title: "Correo inválido",
+        html: "Porfavor ingresa un correo valido ej cliente@gmail.com",
+        icon: "error",
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
+      });
+      return
+    }
+
+    data.append('nombre', nombre);
+    data.append('email', email);
+  }
+
   //VERIFICA QUE HAY STOCK DEL PRODUCTO
   fetch("./php/registrarCotizacion.php", {
     method: "POST",

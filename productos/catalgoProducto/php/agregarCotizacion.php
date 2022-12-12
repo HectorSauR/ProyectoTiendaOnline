@@ -1,6 +1,13 @@
 <?php
 
 include '../../../recursos/PHP/clases/conexion.php';
+    class Cotizacion {
+        public $ID_PRODUCTO;
+        public $CANTIDAD;
+        public $PRECIO_VENTA;
+        public $NOMBRE;
+    }
+
     session_start();
 
     //id de producto
@@ -8,6 +15,43 @@ include '../../../recursos/PHP/clases/conexion.php';
     $precio = $_POST['precio'];
     $usuario = $_SESSION['usuario'];
 
+    
+    if($_SESSION['userAdmin'] == "0"){
+        
+        if(!isset($_SESSION['id_cotizacion'])){
+            $obtenerUltimoId= "SELECT ID_COTIZACION from cotizacion order by ID_COTIZACION desc limit 1;";
+            $Execute = $conexion->query($obtenerUltimoId);
+    
+            $r = $Execute->fetchall(PDO::FETCH_ASSOC);
+            $id = $r[0]['ID_COTIZACION'];
+            $id++;
+            $_SESSION['id_cotizacion'] = $id;
+        }
+
+        $array_cotizacion = [];
+        $query = "SELECT * FROM `productos` WHERE `ID_PRODUCTO` = $id_prod;";
+        $Execute = $conexion->query($query);
+
+        $producto = $Execute->fetchall(PDO::FETCH_ASSOC);
+        $producto = $producto[0];
+        
+        if($_SESSION["cotizacion"]) $array_cotizacion = explode("|", $_SESSION["cotizacion"]);
+        
+        $cotizacion = new Cotizacion();
+        $cotizacion->ID_PRODUCTO = $id_prod;
+        $cotizacion->CANTIDAD = 1;
+        $cotizacion->PRECIO_VENTA = $producto['PRECIO'];
+        $cotizacion->NOMBRE = $producto['NOMBRE'];
+
+        array_push($array_cotizacion, json_encode($cotizacion));
+
+        if(!(count($array_cotizacion) > 1)){
+            $_SESSION["cotizacion"] = $array_cotizacion[0];
+            return;
+        }
+        $_SESSION["cotizacion"] = implode("|", $array_cotizacion);
+        return;
+    }
 
     //OBTENER DATOS DEL USUARIO
     $BuscarUsuario = "select * from usuario where USUARIO = '$usuario'";
@@ -22,6 +66,7 @@ include '../../../recursos/PHP/clases/conexion.php';
     $Execute = $conexion->query($BuscarUsuario);
     
     $r = $Execute->fetchall(PDO::FETCH_ASSOC);
+
     if(count($r) >= 1){
         $id = $r[0]['ID_COTIZACION'];
         

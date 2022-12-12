@@ -72,8 +72,9 @@
     
     <?php
   if (isset($_POST['generar'])) {
-    require '../../recursos/PHP/clases/conexion.php';
-    $conectar = $conexion -> getConectionMysql();
+    // require '../../recursos/PHP/clases/conexion.php'
+    $conexion2  = new Conexion();
+    $conectar = $conexion2->getConectionMysql();
     $categoria = $_REQUEST['periodo'];
     $estatus = $_REQUEST['FP'];
     //$BuscarUsuario = "select * from usuario where USUARIO = '$usuario' and CONTRA = '$pass'";

@@ -324,6 +324,7 @@
         navLoginContenedor.style.animation = "efectoLogin .5s .5s forwards"
 
         //LOGICA PARA CUANDO EL SUAURIO SEA UN cliente
+        // FIXME: AQUI ESTA EL INICIO DEL CLIENTE
         document.querySelector("#loginCliente").addEventListener("click",(e)=>{
           var data = new FormData()
           data.append("opc","1");

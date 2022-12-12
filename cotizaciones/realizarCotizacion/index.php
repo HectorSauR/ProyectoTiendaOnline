@@ -19,7 +19,12 @@
   </head>
   <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')">
 <script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
-  <?php include "../../recursos/nav/nav.php" ?>
+  <?php include "../../recursos/nav/nav.php";
+    $prueba = $_SESSION["cotizacion"];
+
+    $prueba2 = explode("|", $_SESSION["cotizacion"]);
+    $prueba2 = json_decode($prueba2[0]);
+  ?>
 
     <div class="main">
 
@@ -46,7 +51,7 @@
             $nombre = "ANONIMO";
             $correo = "ANONIMO";
           }
-
+          if($_SESSION["userAdmin"]!=0){
         ?>
         <p id="first">Datos del cliente:</p>
         <div class="client">
@@ -60,9 +65,26 @@
           </div>
         </div>
       </div>
+      <?php
+          }else{
+            ?>
+            <p id="first">Datos del cliente:</p>
+            <div class="client">
+              <div class="input" id="first">
+                <p id="p_nom">Nombre:</p>
+                <input type="text" class="client_info" id="nombre_cliente" placeholder="Ingresa tu nombre" required/>
+              </div>
+              <div class="input">
+                <p id="p_mail">Correo:</p>
+                <input type="email" class="client_info" id="email_cliente" placeholder="Ingresa tu email" required/>
+              </div>
+            </div>
+          </div>
+            <?php
+          }
+      ?>
 
     </div>
-
       <!-- DIV DE LA TABLA DE LOS PRODUCTOS -->
       <div class="table">
         <table class="tabla" id="table_id" class="display">
@@ -83,14 +105,25 @@
             $total = 0;
             $id = 0;
 
-            $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 4;";
-            $Execute = $conexion->query($BuscarUsuario);
+            if($_SESSION['userAdmin'] != "0"){
+  
+              $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 4;";
+              $Execute = $conexion->query($BuscarUsuario);
+  
+              $r = $Execute->fetchall(PDO::FETCH_ASSOC);
 
-            $r = $Execute->fetchall(PDO::FETCH_ASSOC);
-            if(count($r) >= 1){
+            }
+            if(count($r) >= 1 && $_SESSION['userAdmin'] != "0"){
               $id = $r[0]['ID_COTIZACION'];
               
-              $query = "SELECT detalle_cotizacion.ID_PRODUCTO, productos.NOMBRE, detalle_cotizacion.CANTIDAD ,detalle_cotizacion.PRECIO_VENTA FROM `detalle_cotizacion` INNER JOIN productos ON detalle_cotizacion.ID_PRODUCTO = productos.ID_PRODUCTO where ID_COTIZACION = $id;";
+              $query = "SELECT detalle_cotizacion.ID_PRODUCTO, 
+                          productos.NOMBRE, 
+                          detalle_cotizacion.CANTIDAD ,
+                          detalle_cotizacion.PRECIO_VENTA 
+                          FROM `detalle_cotizacion` 
+                          INNER JOIN productos 
+                          ON detalle_cotizacion.ID_PRODUCTO = productos.ID_PRODUCTO 
+                          where ID_COTIZACION = $id;";
               $statement = $conexion->prepare($query);
               $statement->execute();
               $result = $statement->fetchall();
@@ -124,7 +157,57 @@
                 <?php
                 $total = $total + $importe;
               }
+            }else if($_SESSION['userAdmin'] == "0" && isset($_SESSION['cotizacion'])){
+              $id = $_SESSION['id_cotizacion'];
+              $result = explode("|", $_SESSION["cotizacion"]);
+              
+              foreach($result as $row)
+              {
+                $row = json_decode($row);
+                $importe = $row->PRECIO_VENTA * $row->CANTIDAD;
+                $importe = $importe + ($importe * 0.16);
+                
+                ?>
+                  <tr>
+                    <td><?php echo $row->ID_PRODUCTO ?></td>
+                    <td><?php echo $row->NOMBRE ?></td>
+                    <form 
+                      class="producto" 
+                      action="./php/modificarCotizacionCliente.php" 
+                      method="POST">
+                      
+                      <input type="hidden" name="id_prod" value= "<?php echo $row->ID_PRODUCTO?>">
+
+                      <td>
+                        <p class="hidden"><?php echo $row->CANTIDAD?></p> 
+                        <input 
+                          type="number"
+                          name="cantidad" 
+                          value = "<?php echo $row->CANTIDAD?>" 
+                          class = "cantidad">
+                        <button class="borrar" type="submit">
+                          <i class="fa-solid fa-pen icon_change"></i>
+                        </button>
+                      </td>
+                    </form>
+                    <td>$<?php echo $row->PRECIO_VENTA?></td>
+                    <td>$<?php echo $importe ?></td>
+                    <form 
+                      class="producto" 
+                      action="./php/borrarCotizacionCliente.php" 
+                      method="POST">
+                      <input 
+                        type="hidden" 
+                        name="id_prod" 
+                        value= "<?php echo $row->ID_PRODUCTO?>">
+                      <td ><button class="borrar"><i class="fa-solid fa-trash"></i></button></td>
+                    </form>
+                  </tr>
+
+                <?php
+                $total = $total + $importe;
             }
+          }
           ?>
 
 
@@ -143,14 +226,21 @@
           <p>TOTAL: $<?php echo $total ?></p>
           <form class="producto" method="POST">
             <?php
-              if($id != 0){
+              // FIXME: aqui se registra la cotizacion
+              if($id != 0 && !isset($_SESSION["id_cotizacion"])){
                 ?>            
                 <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
                 <button type="submit" class="btn">REGISTRAR</button>
                 <?php
               }
-            ?>
 
+              if(isset($_SESSION["id_cotizacion"])){
+                ?>            
+                <input type="hidden" name="id_cot" value="<?php echo $_SESSION["id_cotizacion"]?>">
+                <button type="submit" class="btn">REGISTRAR</button>
+                <?php
+              }
+            ?>
           </form>
         </div>
 

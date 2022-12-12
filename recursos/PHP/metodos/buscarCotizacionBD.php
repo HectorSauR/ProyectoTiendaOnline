@@ -9,5 +9,9 @@ $Execute = $conexion->query($BuscarCotizacion);
 
 $r = $Execute->fetchall(PDO::FETCH_ASSOC);
 
-  echo json_encode($r);
- ?>
+if ($r[0]['ID_ESTATUS'] == 2) {
+  echo 0;
+  return;
+}
+
+echo json_encode($r);

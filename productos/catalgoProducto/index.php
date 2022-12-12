@@ -57,7 +57,7 @@
         $statement = $conexion->prepare($query);
         $statement->execute();
         $result = $statement->fetchall();
-
+        
         foreach($result as $row)
         { 
             ?>

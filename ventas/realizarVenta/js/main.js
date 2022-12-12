@@ -11,19 +11,15 @@ var idProductos = [];
 function comprobarExistenciaCotizacionTabla(idProduct) {
   const productos = Array.from(document.querySelectorAll(".tabla"));
   let x = 0;
-  // console.log(productos)
   productos.length > 0 &&
     productos.map((producto) => {
-      // console.log(`Registrado: ${producto.getAttribute('id-cotizacion')}... NUEVO: ${idProduct}`)
-      // console.log(`BOOL: ${producto.getAttribute('id-cotizacion') == idProduct}`)
       if(x == 1) return
       
       if (producto.getAttribute("id-cotizacion") == idProduct) {
         x = 1;
         return
       }
-    });
-  // console.log(productos.length > 0 && productos[0].getAttribute('id-cotizacion'))
+    }); 
   return x == 0 ? false : true;
 }
 
@@ -33,14 +29,11 @@ btnBuscarCotizacion.addEventListener("click", () => {
   if (txtIdCotizacion.value == "") {
     Swal.fire("ERROR!", "iNGRESE EL ID DE LA COTIZACION", "error");
   } else {
-    //TODO CORRECTO
     let id = txtIdCotizacion.value;
 
     var data = new FormData();
     data.append("id", id);
 
-    // console.log
-    // console.log(comprobarExistenciaCotizacionTabla(id))
     if(comprobarExistenciaCotizacionTabla(id)) {
       Swal.fire("ERROR!", "LA COTIZACION NO SE PUEDE REPETIR", "error");
       return
@@ -52,7 +45,10 @@ btnBuscarCotizacion.addEventListener("click", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        if (data == 0) {
+          Swal.fire("ERROR!", "VENTA YA TERMINADA", "error");
+          return
+        }
         if (data == "") {
           Swal.fire("ERROR!", "LA COTIZACION NO SE ENCONTRO", "error");
         } else {
@@ -73,6 +69,7 @@ var totalImporte = 0;
 function obtenerDetalleDeCotizacion(id) {
   let data = new FormData();
   data.append("id", id);
+  
   fetch("../../recursos/PHP/metodos/obtenerDetalleDeCotizacionBD.php", {
     method: "POST",
     body: data,
@@ -143,6 +140,31 @@ document.querySelector("#btnFinalizarVenta").addEventListener("click", () => {
   finalizarVenta();
 });
 
+
+//Fucion para actualizar las cotizaciones
+function actualizarCotizaciones(){
+  const productos = Array.from(document.querySelectorAll(".tabla"));
+  cotizaciones = productos.map((producto) => {
+    return parseInt(producto.getAttribute("id-cotizacion"))
+  }); 
+
+  temp = new Set(cotizaciones);
+
+  cotizaciones = [...temp];
+
+  var data = new FormData();
+  data.append("cotizaciones", cotizaciones);
+
+  fetch("../../recursos/PHP/metodos/finalizarCotizacion.php", {
+    method: "POST",
+    body: data,
+  })
+  .then((res) => res.text())
+  .then((data) => {
+    console.log(data);
+  })
+}
+
 //FUNCION ENCARGADA DE FINALIZAR LA VENTA
 function finalizarVenta() {
   var tipoPago = 0;
@@ -151,7 +173,7 @@ function finalizarVenta() {
   } else {
     tipoPago = 2;
   }
-
+  actualizarCotizaciones();
   var data = new FormData();
   data.append("formaPago", tipoPago);
 
@@ -189,6 +211,10 @@ function finalizarVenta() {
       }
 
       Swal.fire("", "VENTA COMPLETADA", "success");
+      setTimeout(() => {
+        location.reload();
+      },1500)
+
     });
 }
 

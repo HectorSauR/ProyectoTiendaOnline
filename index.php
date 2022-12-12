@@ -27,11 +27,6 @@ include 'recursos/PHP/clases/conexion.php';
   ?>
   <div class="main">
     <div class="info">
-      <!-- <h2>Datos generales</h2>
-      <div class="contenedor-texto">
-        <p><b>Nombre:</b> <?php echo $r[0]['NOMBRE'] ?></p>
-        <p><b>Slogan:</b> <?php echo $r[0]['SLOGAN'] ?></p>
-      </div> -->
       <div class="contenedor-img">
         <img src="<?php echo $r[0]['LOGO'] ?>" alt="">
       </div>
