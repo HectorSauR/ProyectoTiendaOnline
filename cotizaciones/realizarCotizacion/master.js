@@ -54,7 +54,7 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
     body: data,
   })
     .then((response) => response.text())
-    .then((data) => {
+    .then(async(data) => {
       //alerta
       let timerInterval;
       Swal.fire({
@@ -77,8 +77,7 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
         precision: 3,
       });
 
-      //OBTENER DATOS DEL FORM
-      var data = new FormData(e.target);
+      
 
       doc.text("COTIZACION", 30, 30);
 
@@ -92,9 +91,27 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
         width: 170,
         elementHandlers: specialElementHandlers,
       });
+      //OBTENER DATOS DEL HTML
+      var data = new FormData();
+      let email = document.getElementById('email_cliente').value
+      let nombre = document.getElementById('nombre_cliente').value
 
+      let pdf = doc.output()
+      // console.log(pdf)
+      data.append('tabla', elementHTML)
+      data.append('correo', email)
+      data.append('nombre', nombre)
+      data.append('doc', pdf)
+
+      const response = await fetch("./php/mandarCorreo.php", {
+        method: "POST",
+        body: data,
+      })
+      const msg = await response.text()
+      console.log(msg)
       // Save the PDF
       doc.save("document.pdf");
       setTimeout("document.location.reload()", 3000);
+      // hector.sauceda.01@gmail.com
     });
 });

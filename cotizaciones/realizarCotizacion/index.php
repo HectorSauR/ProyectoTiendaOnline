@@ -226,7 +226,6 @@
           <p>TOTAL: $<?php echo $total ?></p>
           <form class="producto" method="POST">
             <?php
-              // FIXME: aqui se registra la cotizacion
               if($id != 0 && !isset($_SESSION["id_cotizacion"])){
                 ?>            
                 <input type="hidden" name="id_cot" value= "<?php echo $id ?>">
