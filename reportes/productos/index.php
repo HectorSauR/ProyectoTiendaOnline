@@ -31,7 +31,7 @@
             <ul>
              <li>
                <label for="periodo">Categoria:</label>
-               <select name="periodo" id="periodo">
+               <select name="periodo" id="periodo" value="<?php if (isset($_POST['generar'])) {echo $_POST['periodo'];} ?>">
                   <?php
                  foreach ($datos as $dat) {
                  echo '<option value="' . $dat['ID_CATEGORIA'] . '">' . $dat['NOMBRE'] . '</option>';
@@ -71,7 +71,13 @@
     </form>
     
     <?php
-  if (isset($_POST['generar'])) {
+  if (isset($_POST['generar'])) { ?>
+  <script>
+      document.querySelector('#periodo').value = "<?php echo $_POST['periodo']?>"
+      document.querySelector('#FP').value = "<?php echo $_POST['FP']?>"
+  </script>
+  <?php 
+   
     // require '../../recursos/PHP/clases/conexion.php'
     $conexion2  = new Conexion();
     $conectar = $conexion2->getConectionMysql();

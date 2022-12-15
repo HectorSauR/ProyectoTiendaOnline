@@ -98,8 +98,14 @@ include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
         </tr>
         </form>
         <?php
-        if (isset($_POST['generar'])) {
+        if (isset($_POST['generar'])) { ?>
+        <script>
+            document.querySelector('#periodo').value = "<?php echo $_POST['periodo']?>"
+            document.querySelector('#usr').value = "<?php echo $_POST['usr']?>"
+            document.querySelector('#FP').value = "<?php echo $_POST['FP']?>"
 
+        </script>
+          <?php
           $conexion2 = new Conexion();
           $conexion2 = $conexion2->getConectionMysql();
 

@@ -384,7 +384,7 @@ font-size: calc(var(--FontSize) + 2px);
 }
 .l-contenedor-table>.t-body {
   background-color: var(--ColorSecundario);
-  font-size: calc(var(--FontSize) + 2px);
+  font-size: var(--FontSize);
 }
 /*FIN STYLE TABLE GENERAL*/
 
