@@ -371,4 +371,20 @@ nav .nav-enlaces li>ul>li:hover {
   
 }
 
+/*STYLE TABLE GENERAL*/
+.l-contenedor-table {
+  background-color: var(--ColorSecundario);
+}
+
+.l-contenedor-table>.l-thead {
+  background-color: var(--ColorSecundario);
+border: var(--border) solid black;
+color: black;
+font-size: calc(var(--FontSize) + 2px);
+}
+.l-contenedor-table>.t-body {
+  background-color: var(--ColorSecundario);
+  font-size: calc(var(--FontSize) + 2px);
+}
+/*FIN STYLE TABLE GENERAL*/
 
