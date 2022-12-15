@@ -51,17 +51,17 @@
 
 <?php 
   $uri = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
-
   if( $_SESSION['userAdmin'] != "1" ){
     
-    if ( !isset($_GET['page']) ) {
-      if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
-        echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
-        header("Location: ". $pathHost );
+    if( !isset($_GET['page'])  ) {
+      if( !isset($_GET['var']) ) {
+        if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
+          echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+          header("Location: ". $pathHost );
+        }
+        echo "<script>console.log('entro aqui Objects: " . $pathHost . "' );</script>";
       }
     }
-    
   }
 ?>
 

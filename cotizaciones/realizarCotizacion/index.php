@@ -22,8 +22,11 @@
   <?php include "../../recursos/nav/nav.php";
     $prueba = $_SESSION["cotizacion"];
 
-    $prueba2 = explode("|", $_SESSION["cotizacion"]);
-    $prueba2 = json_decode($prueba2[0]);
+    if( isset( $_SESSION["cotizacion"] ) ) {
+      $prueba2 = explode("|", $_SESSION["cotizacion"]);
+      $prueba2 = json_decode($prueba2[0]);
+    }
+
   ?>
 
     <div class="main">
@@ -103,8 +106,7 @@
 
           <?php
             $total = 0;
-            $id = 0;
-
+            $id = 0;            
             if($_SESSION['userAdmin'] != "0"){
   
               $BuscarUsuario = "SELECT ID_COTIZACION FROM `cotizacion` WHERE NOMBR_CLIENTE = '$nombre' and ID_ESTATUS = 4;";
