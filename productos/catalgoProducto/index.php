@@ -58,12 +58,22 @@
         $statement->execute();
         $result = $statement->fetchall();
         
+        
         foreach($result as $row)
-        { 
+        {      
             ?>
         <div class="P_info">
             <form class="carrito" method="POST">
-                <img src=" <?php echo $row['IMAGEN']; ?> " class="P_img">
+                <img src=" <?php 
+                    if ( file_exists("../../".$row['IMAGEN']) ) {
+                        echo $pathHost.$row['IMAGEN']; 
+                    }
+                    else {
+                        echo " https://www.ekoparkotomasyon.com/wp-content/public_html/cart/image/data/uploads/2013/12/default-placeholder.png ";
+                    }
+                    
+                    ?>  " 
+                class="P_img">
                 <div class="P_info_Text">
                     <h2 class="Prod_Title"> <?php echo $row['NOMBRE'];  ?> </h2>
                     <p class="Prod_info"> <?php echo $row['DESCRIPCION']; ?> </p>
