@@ -227,14 +227,16 @@ document.querySelector("#btn-generarReporte").addEventListener("click", (e) =>  
                
            }
        }
-  
+       
+
+       /*
         document.querySelector(".estatus").value="";
     
         document.querySelector(".categorias").value="";
 
 
        document.querySelector('.NProducto').value="";
-      
+      */
       })
   })
 

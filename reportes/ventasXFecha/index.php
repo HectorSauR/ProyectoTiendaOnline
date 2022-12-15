@@ -78,7 +78,14 @@
     </form>
   
   <?php
-  if (isset($_POST['generar'])) {
+  if (isset($_POST['generar'])) { ?>
+  <script>
+            document.querySelector('#party').value = "<?php echo $_POST['fecha']?>"
+            document.querySelector('#FP').value = "<?php echo $_POST['frmPago']?>"
+            document.querySelector('#usr').value = "<?php echo $_POST['usr1']?>"
+
+  </script>
+  <?php
     
     $conexion2 = new Conexion();
     $conexion2 = $conexion2->getConectionMysql();
