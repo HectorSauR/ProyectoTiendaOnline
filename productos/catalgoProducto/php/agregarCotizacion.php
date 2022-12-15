@@ -37,6 +37,11 @@ include '../../../recursos/PHP/clases/conexion.php';
         
         if($_SESSION["cotizacion"]) $array_cotizacion = explode("|", $_SESSION["cotizacion"]);
         
+        foreach($array_cotizacion as $cotizacion){
+            $cotizacion = json_decode($cotizacion);
+            if($cotizacion->ID_PRODUCTO == $id_prod) return;
+        }
+
         $cotizacion = new Cotizacion();
         $cotizacion->ID_PRODUCTO = $id_prod;
         $cotizacion->CANTIDAD = 1;

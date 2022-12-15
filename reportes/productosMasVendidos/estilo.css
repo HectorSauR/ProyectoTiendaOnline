@@ -1,92 +1,132 @@
 * {
-    margin: 0;
-    padding: 0;
-    
-  }
-
-
-body{
-    background: #3E4078;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  
-  .main{
-
-    margin: 0 auto;
-    margin-top: 104.17px;
-    width: 95%;
-    margin-left: 80px;
-  }
-  .main .formulario, .main .exportar , .main .tabla-consulta{
-      display: block;
-  }
-  .main .formulario{
-      width: 60%;
-  }
-
-  .main h2{
-          padding-bottom: 30px;
-  }
-
-  .main .formulario select, .main .formulario input {
-      background-color: #EDEEFF;
-      width: 35%;
-      border-radius: 16px;
-      display: block;
-      
+  margin: 0;
+  padding: 0;
 }
 
-.main .formulario input[type="number"]{
-    text-align:center;
+body {
+  background: #3e4078;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.main .formulario input[type="button"]{
-    font-size: medium;
-    width: 20%;
-    margin-top: 15px;
-    padding: 5px;
-    text-align:center;
-    color: #3E4078;
-    border-radius: 10px;
-}
-.exportar{
-    width: 90%;
-   
-   margin-top: 15px;
-   text-align: end;
+.main {
+  width: 95%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 104.17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.exportar img{
-    width: 50px;
+.main .formulario select,
+.main .formulario input {
+  background-color: #edeeff;
+  border-radius: 16px;
 }
 
-
-.main .tabla-consulta{
-    width: 90%;
-   
+.main .formulario input[type="number"] {
+  text-align: center;
 }
 
-.main .tabla-consulta .ProductosMasVendidos{
-    
-   margin: 0 auto;
-    background: #EDEEFF;
-    color: #212237;
-    border-collapse: collapse;
-    margin-bottom: 15px;
-    
+.main .formulario input[type="button"] {
+  font-size: medium;
+  width: 20%;
+  margin-top: 15px;
+  padding: 5px;
+  text-align: center;
+  color: #3e4078;
+  border-radius: 10px;
 }
-.main .tabla-consulta .ProductosMasVendidos tr td{
-    border: 1px solid #212237;
-    padding: 5px 25px;
+.exportar {
+  width: 90%;
+
+  margin-top: 15px;
+  text-align: end;
+}
+
+.exportar img {
+  width: 50px;
+}
+
+.main .tabla-consulta {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main .tabla-consulta .ProductosMasVendidos {
+  margin: 0 auto;
+  background: #edeeff;
+  color: #212237;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+.main .tabla-consulta .ProductosMasVendidos tr td {
+  border: 1px solid #212237;
+  padding: 5px 25px;
 }
 
 .main .formulario div {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
-
 .excel_reporte {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.contenedor-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.contenedor-form form {
+  width: 300px;
+}
+
+.contenedor-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.contenedor-inputs > input,
+.contenedor-inputs > select {
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+.contenedor-inputs label {
+  margin-top: 10px;
+}
+
+.contenedor-exports {
+  color: white;
+}
+
+#btn-generarReporte{
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.contenedor-exports .contenedor-iconos {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.contenedor-exports .contenedor-iconos > a {
+  color: white;
+  text-decoration: none;
+  font-size: 50pt;
+  cursor: pointer;
 }

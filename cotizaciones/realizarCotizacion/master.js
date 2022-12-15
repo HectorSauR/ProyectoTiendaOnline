@@ -103,15 +103,17 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
       data.append('nombre', nombre)
       data.append('doc', pdf)
 
-      const response = await fetch("./php/mandarCorreo.php", {
+      fetch("./php/mandarCorreo.php", {
         method: "POST",
         body: data,
       })
-      const msg = await response.text()
-      console.log(msg)
+        .then((response) => response.text())
+        .then((data) => {
+          console.log(data)
+          setTimeout("document.location.reload()", 3000);
+        })
       // Save the PDF
       doc.save("document.pdf");
-      setTimeout("document.location.reload()", 3000);
       // hector.sauceda.01@gmail.com
     });
 });

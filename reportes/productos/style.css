@@ -6,18 +6,8 @@ ul {
   list-style: none;
 }
 
-#prin {
-  float: left;
-}
-
 form li + li {
   margin-top: 1em;
-}
-
-#export {
-  float: right;
-  margin-right: 10%;
-  color: white;
 }
 
 img:hover {
@@ -50,4 +40,61 @@ form {
 .report {
   background-color: var(--ColorPrincipal);
   border: var(--ColorPrincipal);
+}
+
+h1{
+  text-align: center;
+  color: #fff;
+}
+
+.contenedor-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.contenedor-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.contenedor-inputs > input,
+.contenedor-inputs > select {
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+.contenedor-inputs label {
+  margin-top: 10px;
+}
+
+.contenedor-inputs button {
+  margin: 10px 0;
+}
+
+.contenedor-exports {
+  color: white;
+}
+
+.contenedor-exports .contenedor-iconos {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.contenedor-exports .contenedor-iconos > a {
+  color: white;
+  text-decoration: none;
+  font-size: 50pt;
+  cursor: pointer;
+}
+
+table {
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }

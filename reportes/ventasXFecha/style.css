@@ -1,65 +1,114 @@
-
-select{
-    padding-left: 10%;
-    border-radius: 20px;
+select {
+  padding-left: 10%;
+  border-radius: 20px;
 }
 
-#party{
-    
-    border-radius: 20px;
+#party {
+  border-radius: 20px;
 }
 
-ul{ 
-    list-style: none;
+ul {
+  list-style: none;
 }
 
-#prin{
-    display: flex;
-    float: left;
-    
+#prin {
+  display: flex;
+  float: left;
 }
 
 form li + li {
-    margin-top: 1em;
-  }
-
-#export{
-    float: right;
-    margin-right: 10%;
-    color: white;
-
+  margin-top: 1em;
+}
+.contenedor-consultar-productos{
+  overflow-y: scroll;
 }
 
-img:hover{
-    background-color: rgb(89, 195, 195);
-    padding: 1%;
-    border-radius: 20px;
+img:hover {
+  background-color: rgb(89, 195, 195);
+  padding: 1%;
+  border-radius: 20px;
 }
 
-form{
-    color: white;
+form {
+  color: white;
 }
 
-#ventasT{
-    float: right;
-}
-#btnGenerar{
-    font-size: 20px;
-    color: #3E4078;
-    padding: 2%;
-    background-color: white;
-    border-radius: 20px;
-}
-#btnGenerar:hover{
-    background-color: aqua;
-    color: black;
+h1,
+h2 {
+  text-align: center;
 }
 
-#usr{
-    border-radius: 20px;
+h2 {
+  margin-bottom: 10px;
 }
 
-table{
-    align-items: center;
+.contenedor-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 
+.contenedor-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contenedor-inputs > input,
+.contenedor-inputs > select {
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+.contenedor-inputs label {
+  margin-top: 10px;
+}
+
+.contenedor-inputs button {
+  margin: 10px 0;
+}
+
+.contenedor-exports {
+  color: white;
+}
+
+.contenedor-exports .contenedor-iconos {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.contenedor-exports .contenedor-iconos > a {
+  color: white;
+  text-decoration: none;
+  font-size: 50pt;
+  cursor: pointer;
+}
+
+#ventasT {
+  float: right;
+}
+#btnGenerar {
+  font-size: 20px;
+  color: #3e4078;
+  padding: 2%;
+  background-color: white;
+  border-radius: 20px;
+}
+#btnGenerar:hover {
+  background-color: aqua;
+  color: black;
+}
+
+#usr {
+  border-radius: 20px;
+}
+
+table {
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -44,10 +44,13 @@ form li + li {
   color: white;
   text-align: left;
   font-size: 12pt;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor-inputs form > * {
   margin-top: 15px;
+  width: 100%;
 }
 
 .contenedor-interaccion .contenedor-exports {

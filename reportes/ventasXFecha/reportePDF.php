@@ -34,9 +34,12 @@ function Footer()
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
 }
-require 'conexion.php';
+require "../../recursos/PHP/clases/conexion.php";
+
+$conexion2 = new Conexion();
+$conectar = $conexion2->getConectionMysql();
+
 $frmPago = $_REQUEST['frmPago'];
-$usr = $_POST['nameUsr'];
 $fecha = $_REQUEST['fecha'];
 $resultado = mysqli_query($conectar,"SELECT venta.FECHA, venta.ID_VENTA, venta.ID_FORMA_PAGO, venta.ID_USUARIO,
                                             detallesVenta.PRECIO,
