@@ -74,7 +74,7 @@
       <button type="button" name="button">x</button>
     </div> -->
     <div class="loal-body">
-        <img src="<?php echo $pathHost.$_SESSION['rutaImagenUsuario'] ?>" alt="">
+        <img src="<?php echo $pathHost.$_SESSION['rutaImagenUsuario']?>?timestamp=<?php echo time() ?>" alt="">
         <p><?php echo $_SESSION['usuario'] ?></p>
     </div>
     <div class="loal-footer">
