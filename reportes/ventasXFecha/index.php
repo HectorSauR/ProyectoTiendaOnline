@@ -55,7 +55,7 @@ include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
         <div id="export" class="contenedor-exports">
           <h2>Exportar como</h2>
           <div class="contenedor-iconos">
-            <a type="button" href="#" target="_blank" name="reportePdf" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()">
+            <a target="_blank" name="reportePdf" onclick= "document.form1.action = 'reportePDF.php'; document.form1.submit()">
               <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
             </a>
             <a target="_blank" name="reporteExcel" onclick= "document.form1.action = 'reporteExcel.php'; document.form1.submit()">
@@ -86,10 +86,13 @@ include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
 
         <?php
         if (isset($_POST['generar'])) {?>
+          
           <script>
+                    
                     document.querySelector('#party').value = "<?php echo $_POST['fecha']?>"
                     document.querySelector('#FP').value = "<?php echo $_POST['frmPago']?>"
                     document.querySelector('#usr').value = "<?php echo $_POST['usr1']?>"
+                    
         
           </script>
           <?php

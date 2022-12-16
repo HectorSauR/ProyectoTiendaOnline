@@ -58,7 +58,7 @@
                 <h2>Exportar como</h2>
                 <div class="contenedor-iconos">
                     <!-- CAMBIAR -->
-                    <a href="" class="pdf_reporte"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                    <a class="pdf_reporte"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
                     <a class="excel_reporte"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
                 </div>
             </div>

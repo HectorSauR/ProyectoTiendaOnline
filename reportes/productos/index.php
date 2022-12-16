@@ -53,7 +53,7 @@ include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
       <div id="export" class="contenedor-exports">
         <h2>Exportar como</h2>
         <div class="contenedor-iconos">
-          <a type="button" href="#" target="_blank" name="reportePdf" onclick="document.form1.action = './reportePDF.php';
+          <a  target="_blank" name="reportePdf" onclick="document.form1.action = './reportePDF.php';
                 document.form1.submit()">
             <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
           </a>
