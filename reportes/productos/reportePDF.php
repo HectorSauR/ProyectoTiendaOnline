@@ -6,6 +6,9 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
+
+   include '../../fpdf/headerEmpresa/header.php';
+
     // Arial bold 15
     $this->SetFont('Arial','B',12);
     // Movernos a la derecha
