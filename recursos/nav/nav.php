@@ -281,14 +281,14 @@
 <div class="nav-login-background">
   <div class="nav-login-contenedor">
       <form  id="formRegistro">
-        <h1>Iniciar Sesion</h1>
+        <h1>Iniciar Sesión</h1>
         <div>
           <img src="<?php echo $pathHost ?>recursos/imagenes/user.svg" alt="">
           <input type="text" name="user" placeholder="Usuario" value="">
         </div>
         <div>
           <img src="<?php echo $pathHost ?>recursos/imagenes/lock.svg" alt="">
-          <input type="password" name="clave" placeholder="Contrasena" value="">
+          <input type="password" name="clave" placeholder="Contraseña" value="">
         </div>
 
         <div id="contenedor-btn-login">
@@ -357,14 +357,14 @@
               }else if(data == "0"){
                 //alert("Error en inicio de sesion ,verifique porfavor.")
                 Swal.fire(
-                  'Error en inicio de sesion!',
-                  'Verfique porfavor!',
+                  '',
+                  '<b>Error con credenciales ingresadas , verfique porfavor</b>',
                   'error'
                   )
               }else if(data == "3"){
                   Swal.fire(
-                  'Error en inicio de sesion!',
-                  'Su cuenta fue dada de baja, comuniquese con el administrador!',
+                  '',
+                  '<b>Su cuenta fue dada de baja, comuniquese con un administrador del sistema</b>',
                   'error'
                 )
               }
