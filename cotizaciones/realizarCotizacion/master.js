@@ -48,7 +48,6 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
     data.append('email', email);
   }
 
-  //VERIFICA QUE HAY STOCK DEL PRODUCTO
   fetch("./php/registrarCotizacion.php", {
     method: "POST",
     body: data,
@@ -56,6 +55,8 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
     .then((response) => response.text())
     .then(async(data) => {
       //alerta
+      console.log(data)
+
       let timerInterval;
       Swal.fire({
         title: "Cotizacion registrada con exito",
@@ -70,50 +71,30 @@ document.querySelector(".TOTAL").addEventListener("submit", (e) => {
           clearInterval(timerInterval);
         },
       });
-
-      var doc = new jsPDF({
-        orientation: "landscape",
-        format: "a2",
-        precision: 3,
-      });
-
-      
-
-      doc.text("COTIZACION", 30, 30);
-
-      var elementHTML = $(".table").html();
-      var specialElementHandlers = {
-        "#elementH": function (element, renderer) {
-          return true;
-        },
-      };
-      doc.fromHTML(elementHTML, 30, 30, {
-        width: 170,
-        elementHandlers: specialElementHandlers,
-      });
       //OBTENER DATOS DEL HTML
-      var data = new FormData();
+      var info = new FormData();
       let email = document.getElementById('email_cliente').value
       let nombre = document.getElementById('nombre_cliente').value
-
-      let pdf = doc.output()
-      // console.log(pdf)
-      data.append('tabla', elementHTML)
-      data.append('correo', email)
-      data.append('nombre', nombre)
-      data.append('doc', pdf)
+      let total = document.getElementById('total_cotizacion').innerText
+      
+      info.append('correo', email)
+      info.append('nombre', nombre)
+      info.append('id_cot', data)
+      info.append('total', total)
 
       fetch("./php/mandarCorreo.php", {
         method: "POST",
-        body: data,
+        body: info,
       })
         .then((response) => response.text())
         .then((data) => {
-          console.log(data)
+          let URLactual = window.location
+          
+          let url = URLactual + 'php/pdfs/' + data
+
+          window.open(url, "_blank");
+
           setTimeout("document.location.reload()", 3000);
         })
-      // Save the PDF
-      doc.save("document.pdf");
-      // hector.sauceda.01@gmail.com
     });
 });

@@ -125,6 +125,7 @@
   border: 1px solid var(--ColorPrincipal);
   border-radius: 0.6rem;
 
+  text-decoration: none;
   color: #3e4078;
   font-weight: bold;
   font-size: 1rem;

@@ -22,10 +22,10 @@
             $consulta =$conexion->prepare($agregarDcot);
             $res = $consulta->execute();
         }
-
         unset($_SESSION['id_cotizacion']);
         unset($_SESSION['cotizacion']);
-        return;
+        echo $id_cotizacion;
+        return ;
     }
     //id de cotizacion
 

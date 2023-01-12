@@ -225,8 +225,8 @@
 
         <!-- DIV BOTONES GUERDAR / ELIMINAR -->
         <div class="TOTAL">
-          <p>TOTAL: $<?php echo $total ?></p>
-          <form class="producto" method="POST">
+          <p >TOTAL: <span id='total_cotizacion'>$<?php echo $total ?></span></p>
+          <form class="producto" method="POST" action="./php/mandarCorreo.php">
             <?php
               if($id != 0 && !isset($_SESSION["id_cotizacion"])){
                 ?>            
@@ -288,6 +288,7 @@
               },
               willClose: () => {
                   clearInterval(timerInterval);
+                  history.go(-1);
               },
               });
               </script>";
@@ -306,6 +307,7 @@
               },
               willClose: () => {
                   clearInterval(timerInterval);
+                  history.go(-1);
               },
               });
               </script>";
@@ -324,6 +326,7 @@
               },
               willClose: () => {
                   clearInterval(timerInterval);
+                  history.go(-1);
               },
               });
               </script>";
