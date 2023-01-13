@@ -42,10 +42,10 @@ $mes = $_REQUEST['periodo'];
 $formaPago = $_REQUEST['FP'];
 $usr = $_REQUEST['usr'];
 
-$resultado = 
-mysqli_query(
-    $conectar, 
-    "SELECT * FROM reporte_por_tiempo
+$resultado =
+    mysqli_query(
+        $conectar,
+        "SELECT * FROM reporte_por_tiempo
     WHERE MONTH(FECHA)='$mes' 
     AND ID_FORMA_PAGO = '$formaPago' 
     AND ID_USUARIO = '$usr'"
@@ -57,6 +57,7 @@ $pdf = new PDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
+$total = 0;
 
 while ($consultas = mysqli_fetch_array($resultado)) {
     $pdf->Cell(30, 10, $consultas['ID_VENTA'], 1, 0, 'C', 0);
@@ -64,6 +65,12 @@ while ($consultas = mysqli_fetch_array($resultado)) {
     $pdf->Cell(40, 10, $consultas['USUARIO'], 1, 0, 'C', 0);
     $pdf->Cell(40, 10, $consultas['DESCRIPCION'], 1, 0, 'C', 0);
     $pdf->Cell(40, 10, $consultas['PRECIO'], 1, 1, 'C', 0);
+    $total += $consultas['PRECIO'];
 }
 
-$pdf->Output("I","ReporteVentaPorTiempo_MES_".$mes);
+$pdf->Ln(10);
+
+$pdf->Cell(0, 10, "TOTAL: $" . $total, 0, 1, 'R', 0);
+
+
+$pdf->Output("I", "ReporteVentaPorTiempo_MES_" . $mes);

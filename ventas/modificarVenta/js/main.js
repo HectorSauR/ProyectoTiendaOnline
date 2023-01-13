@@ -1,11 +1,10 @@
 fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data);
 
-    let ultimoId = data[data.length - 1].ID_VENTA;
+    let ultimoId = data[0].ID_VENTA;
 
-    for (let x = 0; x < ultimoId; x++) {
+    for (let x = ultimoId; x > 0; x--) {
       let arr = data.filter((data) => data.ID_VENTA == x);
       arr.forEach((item, index) => {
         let precio = item.PRECIO * item.CANTIDAD;
