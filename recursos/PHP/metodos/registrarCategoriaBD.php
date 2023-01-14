@@ -17,21 +17,8 @@
     echo json_encode(array("estado"=>"error" ,"mensaje"=>"Nombre de categoria ya registrada."));
   }else{
     //NO HAY CATEGORIA CON EL MISMO NOMBRE
-     //LOGICA PARA ALMCENAR LA IMAGEN EN EL SERVIDOR
-  $fileContent = file_get_contents($imagen['tmp_name']);
-  $path = "../../../recursos/imagenes/regCategoria/".$nombre;
-  //VERIFICAR SI CARPETA DE USUARIO EXISTE
-  if (!file_exists($path)) {
-    mkdir($path, 0777, true);
-  }
-  //OBTENER EXTENCION DE IMAGEN
-  $extension = pathinfo("../../../recursos/imagenes/regCategoria/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
-  //ALMACENA LA IMAGEN EN EL SERVIDOR
-  file_put_contents("../../../recursos/imagenes/regCategoria/".$nombre."/".$nombre.".".$extension,$fileContent);
 
-  //LOGICA PARA INSERTAR LOS DATOS EN LA BD
-
-  //OBTENER EL ULTIMO ID
+    //OBTENER EL ULTIMO ID
   $obtenerUltimoId= "select ID_CATEGORIA from categoria_productos order by ID_CATEGORIA desc limit 1;";
   $Execute = $conexion->query($obtenerUltimoId);
 
@@ -39,9 +26,26 @@
   $id = $r[0]['ID_CATEGORIA'];
   $id++;
 
+     //LOGICA PARA ALMCENAR LA IMAGEN EN EL SERVIDOR
+  $fileContent = file_get_contents($imagen['tmp_name']);
+  $path = "../../../recursos/imagenes/regCategoria/".$id;
+  //VERIFICAR SI CARPETA DE USUARIO EXISTE
+  if (!file_exists($path)) {
+    mkdir($path, 0777, true);
+  }
+  //OBTENER EXTENCION DE IMAGEN
+  $extension = pathinfo("../../../recursos/imagenes/regCategoria/".$id."/".$imagen["name"], PATHINFO_EXTENSION);
+  //ALMACENA LA IMAGEN EN EL SERVIDOR
+  file_put_contents("../../../recursos/imagenes/regCategoria/".$id."/".$id.".".$extension,$fileContent);
+
+  //LOGICA PARA INSERTAR LOS DATOS EN LA BD
+
+  
+
+
   $agregarUsuario = "INSERT INTO categoria_productos values(?,?,?,?,?)";
   $consulta =$conexion->prepare($agregarUsuario);
-  $arregloDatos = array($id,$nombre,$descripcion,"recursos/imagenes/regCategoria/".$nombre."/".$nombre.".".$extension ,"1");
+  $arregloDatos = array($id,$nombre,$descripcion,"recursos/imagenes/regCategoria/".$id."/".$id.".".$extension ,"1");
   $res = $consulta->execute($arregloDatos);
 
   echo json_encode(array("estado"=>"success" ,"mensaje"=>"Categoria guardada."));
