@@ -19,145 +19,64 @@
   
   <?php include '../../recursos/nav/nav.php'?>
 
-    <div id="prin">
-
-        <h1>Modificar Categoria</h1>
-
-        <form id="frm" action="index.php" method="post" enctype="multipart/form-data">
- 
-        <div>
-        <div>
-<h3>Buscar</h3>
-              <select name="consultar" id="periodo">
-                  <?php
-                 foreach ($datos as $dat) {
-                 echo '<option value="' . $dat['NOMBRE'] . '">' . $dat['NOMBRE'] . '</option>';
-                 } //end foreach
-                  ?>
-               </select>
-</div>
-            <div id="dataFF">
-
-            <ul>
-             <li>
-               <label for="name">Nombre:</label>
-               <input type="text" id="name" name="user_name"/>
-             </li>
-             <li>
-               <label for="msg">Descripción:</label>
-               <textarea id="msg" name="user_message"></textarea>
-             </li>
-            </ul>
-            <button type ="submit" id="but" name="consulta">Consultar</button>
-            </div>
-            <div id="btnDatos">
-
-            </div>
-
-        </div>
-
-        <div id="imagenArea">
-              <div id="areaImagen">
-
-              </div>
-              <div id="area">
-                  <input type="submit" name="btnModificar" value="Modificar" class="abc">
-                  <input type="submit" name="btnEliminar" value="Eliminar" class="abc">
-                  <input type="file" id="btn1" name="imagen" accept="image/*"/>
-                  <input type="button" id="btn2" value="Examinar" onclick="document.getElementById('btn1').click()">
-              </div>
-            </div>
-        </form>
-
-        
-
-    </div>
-
-    <form action="index.php" id="botones" method="post">
-
+   
+  <div class="main">
+    <h1>Gestión de categorias</h1>
+    <form class="contenedor-buscar">
+      <!--<label>Buscar:</label>-->
+      <input type="text" name="inputNombreUsuario" id="inputNombreUsuario" value="" placeholder="Nombre"  required>
+      <button type="submit">Buscar</button>
     </form>
+
+    <div class="contenedor-scroll">
+    <div class="contenedor-tabla-usuarios">
+      
+      </div>
+    </div>
+    
+
+
+
+  </div>
+
+  <!--MODAL PARA EDITAR USUARIO -->
+
+  <div class="contenedor-modal">
+    <div class="modal">
+      <h1>Editar categoria</h1>
+      <form id="formEditarUsuario">
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" value="" id="nombre" >
+        <label for="">Descripcion</label>
+        <input type="text" name="descripcion" value="" id="usuario" >
+        <label for="">Imagen</label>
+        <input type="text" name="imagen" value="" id="imagen" class="ruta-imagen-form" >
+        <input type="file" name="img_env" id="img_env" accept="image/png,image/jpg,image/jpeg">
+       
+        <div class="contenedor-imagen">
+        <input type="button" value="Examinar" id="btnExaminarImagen">
+        <img id="imgUser" src="" alt="">
+        </div>
+        
+       
+        <div class="contenedor-button">
+          <button type="submit">Guardar</button>
+            <button type="button" id="btnCancelarEditarUsuario">Cancelar</button>
+        </div>
+      </form>
+
+      <div class="container-alert" id="alert">
+        <div class="alert">
+          <p>Error</p>
+        </div>
+      </div>
+    </div>
+  </div>   
+
+    
 
     <script src="main.js"></script>
 </body>
 
 </html>
 
-<?php 
-$conexion2 = new Conexion();
-
-$conectar = $conexion2->getConectionMysql();
-
-if (isset($_POST['btnEliminar'])) {
-  $nombre=$_POST['user_name'];
-  $modificar=mysqli_query($conectar,"UPDATE categoria_productos SET ID_ESTATUS = '2' WHERE NOMBRE = '$nombre'");
-}
-
-if (isset($_POST['consulta'])) {
-    $dato=$_REQUEST['consultar'];
-    
-    $resultado = mysqli_query($conectar,"SELECT * FROM categoria_productos WHERE NOMBRE = '$dato'");
-    
-    while($consultas = mysqli_fetch_array($resultado))
-    {
-        echo 
-        "
-          <table width=\"100%\" border=\"1\">
-            <tr>
-              <td><b><center>ID categoria</center></b></td>
-              <td><b><center>Nombre</center></b></td>
-              <td><b><center>Descripcion</center></b></td>
-              <td><b><center>Imagen</center></b></td>
-            </tr>
-            <tr>
-              <td>".$consultas['ID_CATEGORIA']."</td>
-              <td>".$consultas['NOMBRE']."</td>
-              <td>".$consultas['DESCRIPCION']."</td>
-              <td align=\"center\"><img width=100px src=".$consultas['IMAGEN']."></td>
-            </tr>
-          </table>
-        ";
-
-    }
-    
-}
-
-if (isset($_POST['btnModificar'])) {
-    $nombre=$_POST['user_name'];
-    $desc=$_POST['user_message'];
-    $dato=$_REQUEST['consultar'];
-
-    $nombreImagen=$_FILES['imagen']['name'];
-
-
-    if ($nombre<>"") {
-        $modificar=mysqli_query($conectar,"UPDATE categoria_productos SET NOMBRE='$nombre' WHERE NOMBRE = '$dato'");
-        if ($desc<>"") {
-            $modificar1=mysqli_query($conectar,"UPDATE categoria_productos SET DESCRIPCION ='$desc' WHERE NOMBRE = '$nombre'");
-        }
-        if ($nombreImagen<>"") {
-            $tipoImagen=$_FILES['imagen']['type'];
-            $tamImagen=$_FILES['imagen']['size'];
-            $carpeta=$_SERVER['DOCUMENT_ROOT'] . '/recursos/imagenes/regCategoria/';
-            move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
-            $rutaImagen="../../recursos/imagenes/regCategoria/".$nombreImagen;
-            $modificar1=mysqli_query($conectar,"UPDATE categoria_productos SET IMAGEN ='$rutaImagen' WHERE NOMBRE = '$nombre'");
-        }
-    
-    }
-
-    if ($desc<>"") {
-        $modificar1=mysqli_query($conectar,"UPDATE categoria_productos SET DESCRIPCION ='$desc' WHERE NOMBRE = '$dato'");
-    }
-
-    if ($nombreImagen<>"") {
-        $tipoImagen=$_FILES['imagen']['type'];
-        $tamImagen=$_FILES['imagen']['size'];
-        $carpeta=$_SERVER['DOCUMENT_ROOT'] . '/recursos/imagenes/regCategoria/';
-        move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombreImagen);
-        $rutaImagen="../../recursos/imagenes/regCategoria/".$nombreImagen;
-        $modificar1=mysqli_query($conectar,"UPDATE categoria_productos SET IMAGEN ='$rutaImagen' WHERE NOMBRE = '$dato'");
-    }
-
-
-}
-?>
