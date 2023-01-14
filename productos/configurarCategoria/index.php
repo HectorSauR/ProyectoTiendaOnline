@@ -31,7 +31,7 @@
           <thead>
             <tr>
               <th>Codigo</th>
-              <th>Descripcion</th>
+              <th>Nombre</th>
               <th>Ocultar</th>
             </tr>
 
@@ -39,7 +39,7 @@
           <tbody>
             <?php
 
-              $query = 'SELECT ID_CATEGORIA, DESCRIPCION, ID_ESTATUS FROM `categoria_productos`';
+              $query = 'SELECT ID_CATEGORIA, NOMBRE, ID_ESTATUS FROM `categoria_productos`';
               $statement = $conexion->prepare($query);
               $statement->execute();
               $result = $statement->fetchall();
@@ -51,7 +51,7 @@
                       <input type="hidden" name = "id_cat" value="<?php echo $row["ID_CATEGORIA"]; ?>">
 
                       <td> <?php echo $row["ID_CATEGORIA"]; ?> </td>
-                      <td> <?php echo $row["DESCRIPCION"]; ?> </td>
+                      <td> <?php echo $row["NOMBRE"]; ?> </td>
                       <?php
                         if( $row['ID_ESTATUS'] == 1){?>
                           <input type="hidden" name = "estatus" value="1">

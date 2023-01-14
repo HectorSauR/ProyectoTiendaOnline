@@ -30,7 +30,7 @@
           <tr>
             <th>Codigo</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
+            <th>Categoria</th>
             <th>Precio Compra</th>
             <th>Precio Venta</th>
             <th>Stock</th>
@@ -41,7 +41,7 @@
 
             <?php
 
-              $query = 'SELECT productos.ID_PRODUCTO, productos.NOMBRE, categoria_productos.DESCRIPCION, productos.PRECIO, productos.PRECIO_COMPRA, productos.STOCK FROM `productos` INNER JOIN `categoria_productos` ON productos.ID_CATEGORIA=categoria_productos.ID_CATEGORIA WHERE productos.ID_ESTATUS="1"';
+              $query = 'SELECT productos.ID_PRODUCTO, productos.NOMBRE ,productos.PRECIO ,productos.PRECIO_COMPRA ,productos.STOCK ,categoria_productos.NOMBRE as CATEGORIA ,categoria_productos.DESCRIPCION  FROM categoria_productos,productos WHERE productos.ID_CATEGORIA = categoria_productos.ID_CATEGORIA and productos.ID_ESTATUS="1";';
               $statement = $conexion->prepare($query);
               $statement->execute();
               $result = $statement->fetchall();
@@ -51,9 +51,10 @@
                 <tr>
                   <td> <?php echo $row["ID_PRODUCTO"]; ?> </td>
                   <td> <?php echo $row["NOMBRE"]; ?> </td>
-                  <td> <?php echo $row["DESCRIPCION"]; ?> </td>
-                  <td> <?php echo $row["PRECIO"]; ?> </td>
+                  <td> <?php echo $row["CATEGORIA"]; ?> </th>
+                 
                   <td> <?php echo $row["PRECIO_COMPRA"]; ?> </td>
+                  <td> <?php echo $row["PRECIO"]; ?> </td>
                   <td> <?php echo $row["STOCK"]; ?> </td>
                 </tr>
            <?php
