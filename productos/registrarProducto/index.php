@@ -4,7 +4,7 @@
 
 
   
- $query = 'SELECT *  FROM `categoria_productos`; ';
+ $query = 'SELECT *  FROM `categoria_productos` WHERE ID_ESTATUS = "1"';
  $statement = $conexion->prepare($query);
  $statement->execute();
  $result = $statement->fetchall();
@@ -32,18 +32,17 @@
 
 <body onload="checkCookie('<?php echo $_SESSION['usuario'] ?>')" >
 <script type="text/javascript" src="../../Usuarios/modificarTema/js/master.js"></script>
-<script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+
     
   
     <?php include '../../recursos/nav/nav.php' ?>
     <div class="main">
-        <h1>REGISTRO DE PRODUCTO</h1>
+        <h1>Registro de producto</h1>
 
-        <form class="contenido" >
-            <div class="input">
+        <form id="formRegistroCategoria" class="contenedor-app" >
+            <div class="contenedor-form">
                
-              <div  class="textos">
-                    <label for="name">Id categotria: </label>
+            <label>Id categotria: </label>
                     <!-- <input type="text" name="txtcat" id="txtnom"> -->
                     <select name="txtcat" id="txtcat"> 
                         <?php
@@ -53,45 +52,40 @@
                         ?>
                     </select>
 
-                    <label for="name">nombre: </label>
-                    <input type="text" name="txtnom" id="txtnom">
-                    <label for="name">Precio Compra: </label>
-                    <input type="number" name="txtprecc" id="txtprecc" min="0" pattern="^[0-9]+">
-                    <label for="name">precio: </label>
-                    <input type="number" name="txtprecv" id="txtprecv" min="0" pattern="^[0-9]+">
-                    <label for="name">stock: </label>
+                    <label >nombre: </label>
+                    <input type="text" name="txtnom" id="txtnom" required>
+                    <label >Precio Compra: </label>
+                    <input type="text" name="txtprecc" id="txtprecc"  pattern="^[.]?\d+(?:[.]\d*?)?$" required>
+                    <label >precio: </label>
+                    <input type="text" name="txtprecv" id="txtprecv"  pattern="^[.]?\d+(?:[.]\d*?)?$" required>
+                    <label >stock: </label>
                     <input type="number" name="txtstock" id="txtstock" min="0" pattern="^[0-9]+">
-                    <label for="name">Stock minimo: </label>
+                    <label >Stock minimo: </label>
                     <input type="number" name="txtstockm" id="txtstockm" min="0" pattern="^[0-9]+">
-                    <label for="name">CODIGO DE BARRAS: </label>
+                    <label >CODIGO DE BARRAS: </label>
                     <input type="number" name="txtcb" id="txtcb" min="0" pattern="^[0-9]+">
-                    <label for="name">Estatus: </label>
+                    <label >Estatus: </label>
                     <!-- <input type="text" name="txtstatus" id="txtstatus"> -->
                     <select name="txtstatus" id="txtstatus">
                         <option value="1">ACTIVO</option>
                         <option value="2">INACTIVO</option>
                     </select>
                    
-                    <input type="submit" class="btn" value="Registrar">
-                 </div>
-               
+                    <button type="submit" class="btn"> Registrar </button>
                 
             </div>
 
+            <div class="contenedor-imagen">
+            <h1>Imagen</h1>
+            <div class="imagen">
+    
+            </div>
+            <button type="button" id="activarAgreagarImagen">Examinar</button>
+            <input type="file" value="" name="imagen" id="agregarImagen" accept="image/*">
+          </div>
             
 
-            <div class="imagen" >
-                <div class="imgelg" action="registrarimagen.php" method="post" >
-                    <div class="img-mostrar">
-                    <img src="../../recursos/imagenes/regalo.png" alt="" class="imagenselec" name="imagenselec">
-                    </div>
-                    <!-- <button class="examinar">examinar</button> -->
-                    <input type="file" name="img-elg" id="img-elg" class="img-elg"  accept="image/*">
-
-                    
-                 </div>
-              
-            </div>
+           
             
         </form>   
     </div>

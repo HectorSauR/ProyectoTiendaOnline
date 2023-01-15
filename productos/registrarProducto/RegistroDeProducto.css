@@ -1,156 +1,148 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
-:root {
-  --ColorPrincipal: #3e4078;
-  --ColorSecundario: #edeeff;
-
-  --BorderRadius: 6px;
-  --border: 1.5px;
-  --Padding: 5px;
-  --LetterSpacing: 3px;
-  --Margin: 10px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/*
 body {
   background-color: var(--ColorPrincipal);
-}
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}*/
 
 .main {
-  margin-top: 104.17px;
-  height: 100%;
+  margin-top: var(--Top);
+  padding: var(--Padding);
 }
 
-.main .contenido {
+.main .contenedor-app {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-top: var(--Margin);
 }
 
-.main .contenido .input {
-  width: 100%;
+/*media query para hacer responsive el contenedor de app */
+@media (max-width:600px) {
+  .main .contenedor-app {
+    display: flex;
+    flex-direction: column-reverse;
+
+  }
+
 }
-.main .contenido .input .textos {
-  width: 80%;
-  align-items: center;
-  border-radius: 10px;
-  padding: 15px;
-  margin-left: 30px;
-  border: 2px solid white;
-}
+
+
 .main h1 {
-  margin-left: 90px;
-  color: white;
+  color: var(--ColorSecundario);
+  font-weight: 600;
+}
+.main .contenedor-form {
+  width: 100%;
+
 }
 
-.main .contenido .input .textos label,
-.main .contenido .input .textos input,
-.main .contenido .input .textos select {
-  margin-top: 3px;
-  display: block;
-  margin-left: 120px;
+.main .contenedor-form {
+  display: flex;
+  flex-direction: column;
+  border: var(--border) solid var(--ColorSecundario);
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+  position:relative;
 }
 
-.main .contenido .input .textos label {
-  color: white;
+.main .contenedor-form label {
+  color: var(--ColorSecundario);
+  font-weight: 500;
 }
 
-.main .contenido .input .textos input,
-.main .contenido .input .textos select {
-  padding: 5px;
-  width: 50%;
-  border-radius: 10px;
+.main .contenedor-form input ,.main .contenedor-form select{
+  outline: none;
+  border: none;
+  padding: var(--Padding);
+  border-radius: var(--BorderRadius);
+  background-color: var(--ColorSecundario);
+}
+.main .contenedor-form button {
+  outline: none;
+  padding:var(--Padding);
+  margin-top: var(--Margin);
+  border-radius: var(--BorderRadius);
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorSecundario);
+  border: var(--border) solid var(--ColorSecundario);
+  width: 150px;
+  
+}
+/*media query para centrar button submit del form */
+@media (max-width:600px) {
+  .main .contenedor-form button {
+    align-self: center;
+
+  }
+
 }
 
-.main .contenido .input .textos input[type="submit"] {
-  padding: 5px;
-  width: 30%;
-  border-radius: 10px;
-}
 
-.main .contenido .input .textos input[type="submit"] {
-  background: var(--ColorPrincipal);
-  border: 1.5px solid white;
-}
-.main .contenido .input .textos input[type="submit"]:hover {
-  background: white;
+
+.main .contenedor-form button:hover {
+  background-color: var(--ColorSecundario);
   color: var(--ColorPrincipal);
+    border: var(--border) solid transparent;
 }
 
-.main .contenido .imagen {
+.main .contenedor-imagen {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
-
-  width: 90%;
+  flex-direction: column;
 }
 
-.main .contenido .imagen .imgelg {
+.main  .contenedor-imagen .imagen {
+  width: 150px;
+    height: 150px;
+  border: var(--border) solid var(--ColorSecundario);
+  border-radius: var(--BorderRadius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+
+.main  .contenedor-imagen .imagen img {
   width: 100%;
-  height: auto;
-  border: 3px solid white;
-  border-radius: 7px;
+  height: 100%;
+  cursor: pointer;
+
 }
 
-.main .contenido .imagen .imgelg input,
-.main .contenido .imagen .imgelg img {
-  display: block;
-  margin: 20px auto;
-}
-
-.main .contenido .imagen .imgelg img {
+.main .contenedor-imagen button {
+  margin-top: var(--Margin);
+  padding: var(--Padding);
+  border: var(--border) solid var(--ColorSecundario);
+  background-color: var(--ColorPrincipal);
+  font-weight: 600;
+  color: var(--ColorSecundario);
+  border-radius: var(--BorderRadius);
+  cursor: pointer;
+  transition: all .3s;
   width: 150px;
 }
-
-.main .contenido .imagen .imgelg input[type="file"] {
-  background: var(--ColorPrincipal);
-  border-radius: 10px;
-  padding: 10px;
+.main .contenedor-imagen button:hover {
+  background-color: var(--ColorSecundario);
+  color: var(--ColorPrincipal);
 }
 
-.img-elg {
-  display: none;
+
+#agregarImagen {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
 }
 
-/*nav .nav-enlaces li a:hover {}*/
-
-/*RESPONSIVE (MOVIL Y TABLET)
-@media (max-width:600px) {
-  nav {
-    position: fixed;
-    background-color: var(--ColorPrincipal);
-    top: 40px;
-    width: 100%;
-    transform: translateX(100%);
-    transition: transform .5s;
-  }
-
-  .showandhide {
-    transform: translateX(0);
-  }
-
-  nav .nav-enlaces li ul {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  nav .nav-enlaces {
-    flex-direction: column-reverse;
-    width: 100%;
-    height: 100%
-  }
-
-  /*nav .nav-enlaces li a {}
-
-  .btn-menu {
-    display: block;
-  }
+/* CLASE PARA BTN REGISTRO PARA DESHABILITARLO */
+.deshabilitarBtnRegistro {
+  pointer-events: none !important;
+  opacity: .6 !important;
 }
-
-*/

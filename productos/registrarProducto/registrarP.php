@@ -9,7 +9,7 @@ $categoria = $_POST['txtcat'];
 $stock = $_POST['txtstock'];
 $stockm = $_POST['txtstockm'];
 $status = $_POST['txtstatus'];
-$imagen = $_FILES['img-elg'];
+$imagen = $_FILES['imagen'];
 $codigo_b = $_POST['txtcb'];
 
 
