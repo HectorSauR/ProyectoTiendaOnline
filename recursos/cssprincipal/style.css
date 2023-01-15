@@ -6,7 +6,7 @@
   --ColorDanger:#DC3545;
   --ColorSuccess:#4BB543;
 
-  --BorderRadius: 10px;
+  --BorderRadius: 5px;
   --border: 1.5px;
   --Padding: 10px;
   --LetterSpacing: 1.5px;
@@ -77,8 +77,6 @@ nav .nav-enlaces {
   align-items: stretch;
 }
 
-nav .nav-enlaces li a:hover {}
-
 .contenedor-header div {
   display: flex;
 }
@@ -142,8 +140,9 @@ nav .nav-enlaces li>ul>li:hover {
 }
 
 .nav-login-background  .nav-login-contenedor {
+  
   width: 60%;
-  height: 80%;
+  height: 70%;
   background-color: var(--ColorSecundario);
   border-radius: var(--BorderRadius);
   transform: translateY(-140%);
@@ -152,6 +151,7 @@ nav .nav-enlaces li>ul>li:hover {
   justify-content: center;
   opacity: 0;
 }
+
 .nav-login-background  .nav-login-contenedor form {
   display: flex;
   flex-direction: column;
@@ -181,7 +181,7 @@ nav .nav-enlaces li>ul>li:hover {
 .nav-login-background  .nav-login-contenedor form h1 {
   text-align: center;
   color: var(--ColorPrincipal);
-  font-weight: 1000;
+  font-weight: 700;
   margin-bottom:calc(var(--Margin) * 3);
 }
 .nav-login-background  .nav-login-contenedor form input {
@@ -199,6 +199,7 @@ nav .nav-enlaces li>ul>li:hover {
 
 .nav-login-background  .nav-login-contenedor form div button {
   padding: calc(var(--Padding) * 1.2) calc(var(--Padding) * 3);
+  width: 150px;
   outline: none;
   border: 0;
   border-radius: var(--BorderRadius);
@@ -206,7 +207,12 @@ nav .nav-enlaces li>ul>li:hover {
   color: var(--ColorSecundario);
   cursor: pointer;
   margin-top:var(--Margin);
-  font-weight: 800;
+  font-weight: 600;
+  opacity: 1;
+  transition: .3s all;
+}
+.nav-login-background  .nav-login-contenedor form div button:hover {
+  opacity: .8;
 }
 
 @keyframes efectoLogin {
@@ -352,7 +358,6 @@ nav .nav-enlaces li>ul>li:hover {
     height: 100%
   }
 
-  nav .nav-enlaces li a {}
 
   .btn-menu {
     display: block;
@@ -363,7 +368,11 @@ nav .nav-enlaces li>ul>li:hover {
     top: 40px;
   }
   .nav-login-background  .nav-login-contenedor {
-    width: 80%;
+    width: 100%;
+    height: 60%;
+  }
+  .nav-login-background  .nav-login-contenedor form div button {
+    width: 85%;
   }
   :root {
     --Top:40px;
