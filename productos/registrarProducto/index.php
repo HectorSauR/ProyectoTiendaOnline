@@ -71,7 +71,7 @@
                         <option value="2">INACTIVO</option>
                     </select>
                    
-                    <button type="submit" class="btn"> Registrar </button>
+                    <button type="submit" class="btn" id="btnRegistrar"> Registrar </button>
                 
             </div>
 
