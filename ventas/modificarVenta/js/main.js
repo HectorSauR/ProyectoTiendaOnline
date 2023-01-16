@@ -31,7 +31,7 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
             <p>${item.ID_PRODUCTO}</p>
           </div>
           <div class="precioProd">
-          <p>${item.PRECIO.toFixed(2)}</p>
+          <p>${item.PRECIO}</p>
           </div>
           <div class="cantidad">
           <p>${item.CANTIDAD}</p>
@@ -339,14 +339,12 @@ function rellenarTabla() {
 }
 
 function filtrarPorId(data) {
-  console.log(data);
   fetch("../../recursos/PHP/metodos/BuscarVentaBDxId.php", {
     method: "POST",
     body: data,
   })
     .then((response) => response.text())
     .then((data2) => {
-      console.log(data2);
       data2 = JSON.parse(data2);
       document.querySelector(
         ".contenedor-ventasD"
@@ -376,7 +374,7 @@ function filtrarPorId(data) {
             <p>${item.ID_PRODUCTO}</p>
           </div>
           <div class="precioProd">
-          <p>${item.PRECIO.toFixed(2)}</p>
+          <p>${item.PRECIO}</p>
           </div>
           <div class="cantidad">
           <p>${item.CANTIDAD}</p>

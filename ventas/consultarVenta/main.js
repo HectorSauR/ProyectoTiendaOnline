@@ -20,6 +20,7 @@ fetch("../../recursos/PHP/metodos/consultarVenta.php", {
       document.querySelector(".row-table").innerHTML += `
       <tr>
         <td>${item.ID_VENTA}</td>
+        <td>${item.FECHA}</td>
         <td>${item.ID_PRODUCTO}</td>
         <td>${item.CANTIDAD}</td>
         <td>${item.PRECIO}</td>
@@ -69,6 +70,7 @@ document.querySelector(".btn-buscar-venta").addEventListener("click", () => {
           document.querySelector(".row-table").innerHTML += `
             <tr>
               <td>${item.ID_VENTA}</td>
+              <td>${item.FECHA}</td>
               <td>${item.ID_PRODUCTO}</td>
               <td>${item.CANTIDAD}</td>
               <td>${item.PRECIO}</td>

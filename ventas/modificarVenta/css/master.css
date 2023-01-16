@@ -1,46 +1,48 @@
 .main {
   width: 100%;
-  margin-top: 100.17px;
+  margin-top: var(--Top);
   padding: var(--Padding);
 }
 .main h1 {
   color: var(--ColorSecundario);
   font-weight: 600;
-  text-align: center;
 }
 .main .contenedor-ventas {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
   margin-top: var(--Margin);
-
 }
 .main .contenedor-ventas div p {
   color: var(--ColorSecundario);
 }
 
-
-.main .contenedor-ventas div  {
-  border: var(--border) solid var(--ColorSecundario);
-}
 .main .contenedor-ventas div button ,
  .main .contenedor-ventas div input{
-  padding:calc(var(--Padding) / 1.5);
+  padding:var(--Padding) calc(var(--Padding) / 1.5);
   border-radius: var(--BorderRadius);
   outline: none;
   border: none;
   cursor: pointer;
+  width: 50%;
+  background-color: var(--ColorSecundario);
 }
-.main .contenedor-ventas .opcion button {
-  margin-right: var(--Margin);
-}
-
 .main .contenedor-ventas .opcion {
-  /* display: flex; */
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 35px;
-  border: none;
+  padding:calc(var(--Padding) / 2);
+}
+
+.main .contenedor-ventas div input {
+  background-color: var(--ColorDanger);
+  color: var(--ColorSecundario);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.main .contenedor-ventas div button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .main .contenedor-ventas .header-idventa ,
@@ -52,74 +54,62 @@
 .main .contenedor-ventas .header-precio,
 .main .contenedor-ventas .header-status,
 .main .contenedor-ventas .header-opcion {
-  border: var(--border) solid var(--ColorPrincipal);
-  color: var(--ColorPrincipal);
+  border: var(--border) solid var(--ColorSecundario);
+  color: var(--ColorSecundario);
   font-weight: 600;
-  background: white;
+  /*
+  font-size: calc(var(--SizeDescripcion) * 1.3);frmbuscar
+  */
+  padding: var(--Padding) calc(var(--Padding) / 2);
 }
 
-
-.main .contenedor-ventas .header-idventa p ,
-.main .contenedor-ventas .header-usuario p ,
-.main .contenedor-ventas .header-forma_pago p ,
-.main .contenedor-ventas .header-fecha p,
-.main .contenedor-ventas .header-id_prd p,
-.main .contenedor-ventas .header-cantidad p,
-.main .contenedor-ventas .header-precio p,
-.main .contenedor-ventas .header-status p,
-.main .contenedor-ventas .header-opcion p{
-  color: var(--ColorPrincipal);
-}
 .main .contenedor-ventas .header-cb div{
   overflow: scroll;
 }
 
-.main .contenedor-buscar{
-  margin: 20pxF;
+.main .frmbuscar {
+  display: flex;
+  flex-direction:row;
+  justify-content: end;
 }
 
-.main .contenedor-buscar input {
-  padding:calc(var(--Padding) / 1.5);
+.main .frmbuscar input {
+  padding: calc(var(--Padding) / 1.2);
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
-
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  
 }
-.main .contenedor-buscar label {
+
+.main .frmbuscar label {
   color: var(--ColorSecundario);
   font-weight: 600;
 }
-.main .contenedor-buscar button {
-  padding:calc(var(--Padding) / 1.5);
+.main .frmbuscar button {
+  padding: calc(var(--Padding) / 1.1) var(--Padding);
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   color: var(--ColorSecundario);
   background-color: var(--ColorPrincipal);
   border: var(--border) solid var(--ColorSecundario);
   cursor: pointer;
   font-weight: 600;
-  transition: all .3s;
+  transition: all 0.3s;
 }
-.main .contenedor-buscar button:hover {
+.main .frmbuscar button:hover {
   color: var(--ColorPrincipal);
   background-color: var(--ColorSecundario);
 }
 
-.main .contenedor-ventas div img{
-  width: 60px;
-  align-items: center;
-  margin-left: 30px;
-}
-
-
 .main .contenedor-ventas div {
+  display: flex;
   align-items: center;
-}
-
-
-.main .contenedor-ventas .imagen p{
-   display: none;
+  justify-content: center;
 }
 
 .main .contenedor-ventas div p {

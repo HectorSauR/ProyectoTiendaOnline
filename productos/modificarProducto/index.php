@@ -65,15 +65,15 @@
         <label for="">Contraseña</label>
         <input type="text" name="clave" value="" id="clave">-->
         <label for="">Precio Venta</label>
-        <input type="number" name="precio" min= "0" max="999999999" id="precio" required>
+        <input type="number" name="precio" min= "0" step="0.01" pattern="^\d*(\.\d{0,2})?$" max="999999999" id="precio" required>
         <label for="">Precio Compra</label>
-        <input type="number" name="precio_c" min= "0" max="999999999" id="precio_c" required>
+        <input type="number" name="precio_c" min= "0" step="0.01" pattern="^\d*(\.\d{0,2})?$" max="999999999" id="precio_c" required>
         <label for="">Stock</label>
         <input type="number" name="stock" min= "0" max="999999999" id="stock" required>
         <label for="">Stock Minimo</label>
         <input type="number" name="stockm" min= "0" max="999999999" id="stock_m" required>
         <label for="">Codigo de barras</label>
-        <input type="text" name="codigo" minlength="13" maxlength="13" min="0" pattern="^[0-9]+"  id="codigo" required>
+        <input type="text" name="codigo" pattern="^[0-9]+"  id="codigo" required>
 
         <label for="">Estatus</label>
         <select name="estatus" id="estatus">

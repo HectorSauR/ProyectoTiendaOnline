@@ -35,10 +35,9 @@ foreach ($result as $row) {
   <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
   <div class="main" id="main">
     <h1>Gestión de ventas</h1>
-    <div class="contenedor-buscar">
+    <div class="frmbuscar">
       <form id="frmbuscar">
-        <label>Buscar:</label>
-        <input type="text" name="id_prd_b" id="id_prd_b" value="" class="inpbuscar">
+        <input type="text" name="id_prd_b" id="id_prd_b" value="" placeholder="ID Venta" class="inpbuscar">
         <button type="button" class="btnBuscar">Buscar</button>
       </form>
     </div>

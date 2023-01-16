@@ -218,7 +218,7 @@ document.getElementById("formEditarProducto").addEventListener("submit", (e) => 
           document.getElementById("alert").classList.add("alertShow");
 
         document.querySelector(".container-alert .alert p").innerText =
-          "Usuario modificado.";
+          "Producto modificado.";
         setTimeout(ocultarModalEditarProducto, 1500);
 
         //ACTUALIZAR ARRAY DE USUARIOS PARA LAS BUSQUEDAS LOCALES

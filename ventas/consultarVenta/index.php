@@ -57,6 +57,7 @@
           <thead>
             <tr>
               <th>Codigo venta</th>
+              <th>Fecha venta</th>
               <th>Codigo Producto</th>
               <th>Cantidad</th>
               <th>Precio</th>
