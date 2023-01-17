@@ -1,6 +1,7 @@
 <?php
 include("../clases/conexion.php");
 
+  session_start();
 
   $formaPago = $_POST['formaPago'];
   $fecha = $_POST['fecha'];
@@ -18,11 +19,12 @@ include("../clases/conexion.php");
     $id++;
   }
 
-  //REGISTRAR VENTA
+  $usuario = $_SESSION['id_usuario'];
+
+  // //REGISTRAR VENTA
   $agregarVenta = "INSERT INTO venta values(?,?,?,CURDATE(),?)";
   $consulta =$conexion->prepare($agregarVenta);
-  $arregloDatos = array($id,"1",$formaPago,"1");
+  $arregloDatos = array($id,$usuario,$formaPago,"1");
   $res = $consulta->execute($arregloDatos);
 
   echo $id;
- ?>

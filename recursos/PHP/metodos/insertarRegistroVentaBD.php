@@ -1,12 +1,11 @@
 <?php
-include("../clases/conexion.php");
+  include("../clases/conexion.php");
 
 
   $idventa = $_POST['idventa'];
   $idproducto = $_POST['idproducto'];
   $cantidad = $_POST['cantidad'];
   $precio = $_POST['precio'];
-
 
   $agregarUsuario = "INSERT INTO detalle_venta values(?,?,?,?)";
   $consulta =$conexion->prepare($agregarUsuario);

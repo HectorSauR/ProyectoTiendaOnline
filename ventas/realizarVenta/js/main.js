@@ -173,7 +173,6 @@ function finalizarVenta() {
   } else {
     tipoPago = 2;
   }
-  actualizarCotizaciones();
   var data = new FormData();
   data.append("formaPago", tipoPago);
 
@@ -186,6 +185,7 @@ function finalizarVenta() {
   })
     .then((res) => res.text())
     .then((data) => {
+      actualizarCotizaciones();
       let idventa = data;
       const dataTabla = document.querySelectorAll(".tabla");
 
@@ -199,7 +199,7 @@ function finalizarVenta() {
         data.append("idproducto", idproducto);
         data.append("cantidad", cantidad);
         data.append("precio", precio);
-
+        // console.log(data);
         fetch("../../recursos/PHP/metodos/insertarRegistroVentaBD.php", {
           method: "POST",
           body: data,

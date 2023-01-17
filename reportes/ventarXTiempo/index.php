@@ -112,7 +112,6 @@ include '../../recursos/PHP/configuracionDelSitioWeb/conf.php';
           $mes = $_REQUEST['periodo'];
           $formaPago = $_REQUEST['FP'];
           $usr = $_REQUEST['usr'];
-
           $resultado = mysqli_query(
             $conexion2,
             "SELECT * FROM reporte_por_tiempo

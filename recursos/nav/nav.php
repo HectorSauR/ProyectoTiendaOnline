@@ -51,7 +51,7 @@
 
 <?php 
   $uri = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  if( $_SESSION['userAdmin'] != "1" ){
+  if( $_SESSION['userAdmin'] == "0" ){
     
     if( !isset($_GET['page'])  ) {
       if( !isset($_GET['var']) ) {
