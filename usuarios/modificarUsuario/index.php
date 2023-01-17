@@ -41,7 +41,7 @@
       <h1>Editar Usuario</h1>
       <form id="formEditarUsuario">
         <label for="">Nombre</label>
-        <input type="text" name="nombre" value="" id="nombre" pattern="(-?([A-Z].\s)?([A-Z][a-z]+)\s?)+([A-Z]'([A-Z][a-z]+))?" required>
+        <input type="text" name="nombre" value="" id="nombre" pattern="^[A-Z](\w{2,}\s{0,1}){1,3}\w$" required>
         <label for="">Usuario</label>
         <input type="text" name="usuario" value="" id="usuario" pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,20}$" required>
         <label for="">Imagen</label>

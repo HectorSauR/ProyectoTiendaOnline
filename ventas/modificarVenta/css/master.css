@@ -145,10 +145,10 @@
 
 .contenedor-modal .modal {
   width: 40%;
+  padding: 40px 30px 40px 30px;
   background-color: var(--ColorPrincipal);
   display: flex;
   flex-direction: column;
-  padding: var(--Padding);
   border-radius: var(--BorderRadius);
   animation: translate 1s .3s forwards;
   transform: translateY(-1000px);
@@ -161,6 +161,7 @@
 }
 .contenedor-modal .modal h1 {
   color: var(--ColorSecundario);
+  margin-bottom: 15px;
 }
 .contenedor-modal .modal form {
   display: flex;
@@ -169,6 +170,7 @@
 .contenedor-modal .modal form label {
   color: var(--ColorSecundario);
   font-weight: 500;
+  margin-bottom: 5px;
 }
 .contenedor-modal .modal form input ,
  .contenedor-modal .modal form select{
@@ -176,13 +178,19 @@
   outline: none;
   border: none;
   border-radius: var(--BorderRadius);
+  margin-bottom: 10px;
 }
 
 .contenedor-modal .modal form .contenedor-button {
   margin-top: var(--Margin);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 .contenedor-modal .modal form .contenedor-button button {
+  width: 20%;
   padding: var(--Padding);
   outline: none;
   border: var(--border) solid var(--ColorSecundario);

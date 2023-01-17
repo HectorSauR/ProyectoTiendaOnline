@@ -7,15 +7,32 @@ $statement = $conexion->prepare($query);
 $statement->execute();
 $result = $statement->fetchall();
 
-$datos = [];
+$forma_de_pago = [];
 foreach ($result as $row) {
-  $datos[] = [
+  $forma_de_pago[] = [
 
     'idforma_pago' => $row['ID_FORMA_PAGO'],
     'descripcion' => $row['DESCRIPCION'],
 
   ];
 }
+
+$query = 'SELECT * FROM USUARIO WHERE NIVEL != 0;';
+$statement = $conexion->prepare($query);
+$statement->execute();
+$result = $statement->fetchall();
+
+$usuarios = [];
+foreach ($result as $row) {
+  $usuarios[] = [
+
+    'id_usr' => $row['ID_USUARIO'],
+    'nombre' => $row['NOMBRE'],
+
+  ];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -100,23 +117,30 @@ foreach ($result as $row) {
 
   <div class="contenedor-modal">
     <div class="modal">
-      <h1>Editar Producto</h1>
+      <h1>Editar Venta</h1>
       <form id="formEditarVenta">
 
 
-        <label for="">Id usuario</label>
-        <input type="number" name="usuario" value="" id="usuario" min="1" pattern="^[0-9]+">
+        <label for="">Usuario</label>
+        <!-- <input type="number" name="usuario" value="" id="usuario" min="1" pattern="^[0-9]+"> -->
+        <select name="usuario" id="usuario">
+          <?php
+          foreach ($usuarios as $dat) {
+            echo '<option value="' . $dat['id_usr'] . '">' . $dat['nombre'] . '</option>';
+          }
+          ?>
+        </select>
 
         <label for="">Forma de pago</label>
         <select name="forma_pago" id="forma_pago">
           <?php
-          foreach ($datos as $dat) {
+          foreach ($forma_de_pago as $dat) {
             echo '<option value="' . $dat['idforma_pago'] . '">' . $dat['descripcion'] . '</option>';
           }
           ?>
         </select>
         <label for="">Fecha</label>
-        <input type="date" name="fecha" id="fecha">
+        <input type="date" name="fecha" id="fecha" readonly>
 
         <label for="">Id producto</label>
         <input type="number" name="id_prd" value="" id="id_prd" min="0" pattern="^[0-9]+">

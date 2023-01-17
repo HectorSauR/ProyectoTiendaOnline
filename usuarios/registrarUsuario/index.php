@@ -26,7 +26,7 @@
       <div class="contenedor-form">
 
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="" placeholder="Ingrese nombre completo" pattern="(-?([A-Z].\s)?([A-Z][a-z]+)\s?)+([A-Z]'([A-Z][a-z]+))?" required>
+            <input type="text" name="nombre" value="" placeholder="Ingrese nombre completo" pattern="^[A-Z](\w{2,}\s{0,1}){1,3}\w$" required>
             <label>Usuario:</label>
             <input type="text" name="usuario" value="" placeholder="Ingrese nombre de usuario" pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{3,20}$" required>
             <label>Contraseña:</label>
@@ -50,13 +50,13 @@
             <div class="contenedor-info-campos-form">
               <h1>Formato solicitado</h1>
               <h3>Campo <span>Nombre</span> </h3>
-              <p>Tiene que empesar con mayuscula y mayor a un caracter.</p>
+              <p>Tiene que empezar con mayuscula y mayor a 3 carácteres.</p>
 
               <h3>Campo <span>Usuario</span> </h3>
-              <p>mayor a 3 caracteres y tiene que tener almenos un numero.</p>
+              <p>mayor a 3 carácteres y tiene que tener almenos un numero.</p>
 
               <h3>Campo <span>Contraseña</span> </h3>
-              <p>mayor a 7 caracteres ,almenos un nuemero ,almenos un caracter especial ,almenos una mayuscula.</p>
+              <p>mayor a 7 carácteres ,almenos un nuemero ,almenos un caracter especial ,almenos una mayuscula.</p>
            
               <h3>Campo <span>Correo</span> </h3>
               <p>Correo valido</p>

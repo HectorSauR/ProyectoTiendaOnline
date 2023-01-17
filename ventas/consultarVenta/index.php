@@ -57,10 +57,10 @@
           <thead>
             <tr>
               <th>Codigo venta</th>
-              <th>Fecha venta</th>
-              <th>Codigo Producto</th>
+              <th>Usuario</th>
+              <th>Metodo De Pago</th>
               <th>Cantidad</th>
-              <th>Precio</th>
+              <th>Estado</th>
               <th>Total</th>
             </tr>
           </thead>

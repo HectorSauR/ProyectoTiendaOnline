@@ -1,7 +1,6 @@
 fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
   .then((res) => res.json())
   .then((data) => {
-
     let ultimoId = data[0].ID_VENTA;
 
     for (let x = ultimoId; x > 0; x--) {
@@ -57,8 +56,6 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
       `;
       });
     }
-
-
 
     document
       .getElementById("main")
@@ -146,11 +143,9 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
               e.preventDefault();
 
               var data = new FormData(e.target);
-              //data.append("id" ,idventa)
 
-              console.log(data.get("usuario"));
               fetch(
-                "../../recursos/PHP/metodos/verificarUsuarioRegistradoxId.php",
+                "../../recursos/PHP/metodos/verificarProductoRegistradoxId.php",
                 {
                   method: "POST",
                   body: data,
@@ -158,17 +153,19 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
               )
                 .then((response) => response.text())
                 .then((data) => {
-                  console.log(data);
                   if (data == "0") {
                     Swal.fire(
-                      "El usuario no se encontro.",
-                      "Usuario no encontrado",
+                      "El producto no se encontro.",
+                      "Producto no encontrado",
                       "error"
                     );
                   } else {
                     var data = new FormData(e.target);
+
+                    data.append("id", idventa);
+                    console.log(data);
                     fetch(
-                      "../../recursos/PHP/metodos/verificarProductoRegistradoxId.php",
+                      "../../recursos/PHP/metodos/EditarVentaBD.php",
                       {
                         method: "POST",
                         body: data,
@@ -177,33 +174,12 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
                       .then((response) => response.text())
                       .then((data) => {
                         console.log(data);
-                        if (data == "0") {
-                          Swal.fire(
-                            "El producto no se encontro.",
-                            "Producto no encontrado",
-                            "error"
-                          );
-                        } else {
-                          var data = new FormData(e.target);
-                          data.append("id", idventa);
+                        document.querySelector(
+                          ".contenedor-modal"
+                        ).style.display = "none";
+                        // window.location.reload();
+                        rellenarTabla();
 
-                          fetch(
-                            "../../recursos/PHP/metodos/EditarVentaBD.php",
-                            {
-                              method: "POST",
-                              body: data,
-                            }
-                          )
-                            .then((response) =>
-                              response.text()
-                            )
-                            .then((data) => {
-                              document.querySelector(
-                                ".contenedor-modal"
-                              ).style.display = "none";
-                              window.location.reload();
-                            });
-                        }
                       });
                   }
                 });
@@ -245,7 +221,10 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
                     "",
                     "success"
                   );
-                  setTimeout(funcionConRetraso, 2000);
+                  setTimeout(
+                    () => window.location.reload(),
+                    2000
+                  );
                 });
             } else if (result.isDenied) {
               Swal.fire(
@@ -409,30 +388,4 @@ document
     document.querySelector(
       ".contenedor-modal"
     ).style.display = "none";
-    window.location.reload();
-    //  data.append("id","")
-    //   data.append("categoria","")
-    //   data.append("nombre","")
-    //  data.append("imagen","")
-    //  data.append("img_env","")
-    //   data.append("precioc","")
-    //   data.append("precio","")
-    //   data.append("stock","")
-    //   data.append("stockm","")
-    //   data.append("status","")
-
-    //   console.log(data.get("id"))
-    //   console.log(data.get("categoria"))
-    //   console.log(data.get("nombre"))
-    //   console.log(data.get("imagen"))
-    //   console.log(data.get("img_env"))
-    //   console.log(data.get("precioc"))
-    //   console.log(data.get("precio"))
-    //   console.log(data.get("stock"))
-    //   console.log(data.get("stockm"))
-    //   console.log(data.get("status"))
   });
-
-function funcionConRetraso() {
-  window.location.reload();
-}
