@@ -72,7 +72,7 @@
       <!-- DIV BOTONES GUERDAR / ELIMINAR -->
       <div class="buttons" style="display:none;">
         <input type="button" value="GUARDAR" class="btn" />
-        <button type="button" class="btn">ELIMINAR</button>
+        <button type="button" class="btn"> Desactivar </button>
       </div>
     </div>
 

@@ -130,7 +130,7 @@ foreach ($result as $row) {
         <label for="">Status</label>
         <select name="status" id="status">
           <option value="1">ACTIVO</option>
-          <option value="2">INACTIVO</option>
+          <option value="2">Desactivado</option>
           <option value="3">EN ESPERA</option>
           <option value="4">EN TRAMITE</option>
         </select>

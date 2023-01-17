@@ -65,7 +65,7 @@ function mostrarUsuariosDom(data) {
       //VERIFICAR SI EL STATUS ES ACTIVO=1 O BAJA=2
       let valueBtnUser = ""
       if(item.ID_ESTATUS == "1"){
-        valueBtnUser = "Eliminar"
+        valueBtnUser = "Desactivar"
       }else if(item.ID_ESTATUS == "2"){
         valueBtnUser = "Activar"
       }

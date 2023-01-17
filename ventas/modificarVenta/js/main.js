@@ -50,7 +50,7 @@ fetch("../../recursos/PHP/metodos/buscarVentaBD.php")
           </div>
           <div class="opcion" >
             <button class="editarS">Editar</button>
-            <input class="eliminarS" type="button" value="Eliminar">
+            <input class="eliminarS" type="button" value="Desactivar">
           </div>
 
         </div>
@@ -328,7 +328,7 @@ function rellenarTabla() {
           </div>
           <div class="opcion" >
             <button class="editarS">Editar</button>
-            <input class="eliminarS" type="button" value="Eliminar">
+            <input class="eliminarS" type="button" value="Desactivado">
           </div>
 
         </div>
@@ -393,7 +393,7 @@ function filtrarPorId(data) {
           </div>
           <div class="opcion" >
             <button class="editarS">Editar</button>
-            <input class="eliminarS" type="button" value="Eliminar">
+            <input class="eliminarS" type="button" value="Desactivado">
           </div>
 
         </div>

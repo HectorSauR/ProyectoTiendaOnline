@@ -332,7 +332,7 @@ function mostrarProductoDom(data) {
           </div>
           <div class="opcion">
             <button>Editar</button>
-            <input type="button" value="Eliminar">
+            <input type="button" value="Desactivar">
           </div>
 
           <div class="id oculto">
@@ -406,7 +406,7 @@ formBuscarProducto.addEventListener("submit", (e) => {
           </div>
           <div class="opcion">
             <button>Editar</button>
-            <input type="button" value="Eliminar">
+            <input type="button" value="Desactivar">
           </div>
 
           <div class="id oculto">

@@ -52,10 +52,19 @@
 <?php 
   $uri = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   if( $_SESSION['userAdmin'] == "0" ){
-    
     if( !isset($_GET['page'])  ) {
       if( !isset($_GET['var']) ) {
-        if(  $uri != $pathHost && $uri != $pathHost."productos/catalgoProducto/" && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
+        if(  $uri != $pathHost && $uri != $pathHost."productos//" && $uri != $pathHost."productos/catalgoProducto/" &&  $uri != $pathHost."cotizaciones/realizarCotizacion/" && $uri != $pathHost."Usuarios/modificarTema/" ){
+          echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
+          header("Location: ". $pathHost );
+        }
+        echo "<script>console.log('entro aqui Objects: " . $pathHost . "' );</script>";
+      }
+    }
+  } else if ( $_SESSION['userAdmin'] == "2") {
+    if( !isset($_GET['page'])  ) {
+      if( !isset($_GET['var']) ) {
+        if(  $uri != $pathHost && $uri != $pathHost."productos/consultarProductos/" &&  $uri != $pathHost."ventas/realizarVenta/" && $uri != $pathHost."ventas/modificarVenta/" && $uri != $pathHost."ventas/consultarVenta/" ){
           echo "<script>console.log('Debug Objects: " . $pathHost . "' );</script>";
           header("Location: ". $pathHost );
         }

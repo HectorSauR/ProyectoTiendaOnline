@@ -78,7 +78,7 @@
         <label for="">Estatus</label>
         <select name="estatus" id="estatus">
           <option>Activo</option>
-          <option>Eliminado</option>
+          <option>Desactivado</option>
         </select>
 
         <div class="contenedor-button">

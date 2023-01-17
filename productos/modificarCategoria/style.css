@@ -38,7 +38,7 @@
   justify-content: center;
   padding:calc(var(--Padding) / 2);
 }
-.main .contenedor-usuarios div input[value="Eliminar"] {
+.main .contenedor-usuarios div input[value="Desactivar"] {
   background-color: var(--ColorDanger);
   color: var(--ColorSecundario);
   border-top-left-radius: 0;
