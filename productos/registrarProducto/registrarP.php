@@ -26,7 +26,7 @@ $codigo_b = $_POST['txtcb'];
   $extension = pathinfo("../../recursos/imagenes/productos/".$nombre."/".$imagen["name"], PATHINFO_EXTENSION);
   //ALMACENA LA IMAGEN EN EL SERVIDOR
   file_put_contents("../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension,$fileContent);
-  $pathimg = "../../recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension;
+  $pathimg = "recursos/imagenes/productos/".$nombre."/".$nombre.".".$extension;
 
   //OBTENER EL ULTIMO ID
   $obtenerUltimoId= "select ID_PRODUCTO from productos order by ID_PRODUCTO desc limit 1;";
